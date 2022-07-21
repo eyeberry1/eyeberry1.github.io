@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://example.com/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220720182721687.png">
 <meta property="og:image" content="http://example.com/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220721153833886.png">
 <meta property="article:published_time" content="2022-07-13T10:46:09.671Z">
-<meta property="article:modified_time" content="2022-07-21T13:35:11.063Z">
+<meta property="article:modified_time" content="2022-07-21T15:11:54.172Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Lumerical">
 <meta property="article:tag" content="inverse design">
@@ -216,7 +216,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      23k 字
+      26k 字
     </span>
   
 
@@ -225,7 +225,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      189 分钟
+      213 分钟
     </span>
   
 
@@ -642,12 +642,13 @@ dtype=float, order='C')</p>
 <p>​ order:可选参数，c代表与c语言类似，行优先；F代表列优先</p>
 <p>例子</p>
 <p>np.zeros(5) array([ 0., 0., 0., 0., 0.])</p>
-<h2 id="parameterizedgeometry">parameterizedGeometry</h2>
+<h2 id="geometry">geometry</h2>
+<h3 id="parameterizedgeometry">parameterizedGeometry</h3>
 <p>在此示例中，我们使用<em>函数 FunctionDefinedPolygon</em>
 将光栅耦合器几何图形设置为多边形。或者，我们可以改用函数<em>ParametrizedGeometry</em>，从而在几何形状的设置方式上提供更大的灵活性。</p>
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">bounds </span>= [(min_feature_size, <span class="hljs-number">1</span>)]*(<span class="hljs-number">2</span>*n_grates)<br><span class="hljs-keyword">bounds[0] </span>= (-<span class="hljs-number">3</span>,<span class="hljs-number">3</span>)      <span class="hljs-comment">#&lt; Bounds for the stating position</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vala"><span class="hljs-meta"># geometry = ParameterizedGeometry(func = etched_grating,</span><br><span class="hljs-meta">#                                   initial_params = params,</span><br><span class="hljs-meta">#                                   bounds = bounds,</span><br><span class="hljs-meta">#                                   dx = 1e-5)</span><br></code></pre></td></tr></table></figure>
-<h2 id="functiondefinedpolygon">FunctionDefinedPolygon</h2>
+<h3 id="functiondefinedpolygon">FunctionDefinedPolygon</h3>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">geometry</span> = FunctionDefinedPolygon(func = grating_params_pos,<br><span class="hljs-attr">initial_params</span> = params,<br><span class="hljs-attr">bounds</span> = bounds,<br><span class="hljs-attr">z</span> = <span class="hljs-number">0.0</span>,<br><span class="hljs-attr">depth</span> = height,<br><span class="hljs-attr">eps_out</span> = indexSiO2 ** <span class="hljs-number">2</span>,<br><span class="hljs-attr">eps_in</span> = indexSi ** <span class="hljs-number">2</span>,<br><span class="hljs-attr">edge_precision</span> = <span class="hljs-number">5</span>,<br><span class="hljs-attr">dx</span> = <span class="hljs-number">1</span>e-<span class="hljs-number">5</span>)<br></code></pre></td></tr></table></figure>
 <p>dx 是最小网格</p>
 <p>bounds是每个参数的取值范围。</p>
@@ -668,17 +669,29 @@ eps_in = indexSi ** 2,
 </tr>
 </tbody>
 </table>
+<h3 id="edge_precision-int"><strong>: edge_precision:</strong>
+<em>int</em></h3>
+<p>Number of quadrature(正交) points along each edge for computing the
+FOM gradient using the shape derivative approximation method.</p>
+<p>不太知道为什么是5</p>
 <h2 id="fom设置">fom设置</h2>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">fom</span> = ModeMatch(monitor_name = <span class="hljs-string">&#x27;fom&#x27;</span>,<br><span class="hljs-attr">mode_number</span> = <span class="hljs-number">1</span>,<br><span class="hljs-attr">direction</span> = <span class="hljs-string">&#x27;Backward&#x27;</span>,<br><span class="hljs-attr">target_T_fwd</span> = lambda wl: np.<span class="hljs-literal">on</span>es(wl.size),<br><span class="hljs-attr">norm_p</span> = <span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
 <p>mode_number = 1 意味着TE mode</p>
 <p>direction = backward 方向</p>
-<p><strong>target_T_fwd:</strong> <em>float or function</em></p>
+<h3 id="target_t_fwd-float-or-function"><strong>target_T_fwd:</strong>
+<em>float or function</em></h3>
 <p>A function which will take the number of Wavelengths points and
 return values [0,1]. Usually passed as a <a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/controlflow.html#lambda-expressions">lambda
 function</a> or a single float value for single wavelength FOM. To
 specify a more advanced spectrum one can define a function, it may be
 helpful to use, <a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/routines.window.html">numpy
 windows</a> as a template.</p>
+<h3 id="norm_p-float"><strong>: norm_p:</strong> <em>float</em></h3>
+<p>Is the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Norm_(mathematics)">generalized
+p-norm</a> used in the FOM calculation. The p-norm, with p≥1p≥1 allows
+the user to increase the weight of the error. Since p=1p=1 provides a
+lower bound on this function, a higher p-number will increase the weight
+of the error term. Default p =1.0</p>
 <h3 id="numpy.ones">numpy.ones（）</h3>
 <p>函数参数 (numpy.ones() function arguments)</p>
 <p>numpy.ones（）函数的语法为：</p>
@@ -692,8 +705,33 @@ windows</a> as a template.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">lambda argument_list:expersion<br></code></pre></td></tr></table></figure>
 <h2 id="optimizer">optimizer</h2>
 <figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">optimizer = ScipyOptimizers(max_iter = <span class="hljs-number">250</span>,<br><span class="hljs-function"><span class="hljs-keyword">method</span> = &#x27;<span class="hljs-title">L</span>-<span class="hljs-title">BFGS</span>-<span class="hljs-title">B</span>&#x27;,</span><br><span class="hljs-function"><span class="hljs-title">scaling_factor</span> = 1,</span><br><span class="hljs-function"><span class="hljs-title">pgtol</span> = 1<span class="hljs-title">e</span>-6)</span><br></code></pre></td></tr></table></figure>
+<p><strong>: method:</strong> <em>str</em></p>
+<p>Chosen minimization algorithm; experimenting with this option should
+only be done by advanced users. Default = ‘L-BFGS-B'</p>
+<p><strong>: scaling_factor:</strong> <em>none,</em> <em>float,
+np.array</em></p>
+<p>None, scalar or a vector the same length as the optimization
+parameters. This is used to scale the optimization parameters. As of
+2021R1.1, the default behavior in shape optimization is to automatically
+map the parameters the range [0,1] within the optimization routines;
+which was always the case in topology. The <a target="_blank" rel="noopener" href="https://support.lumerical.com/hc/en-us/articles/360052044913">bounds</a>,
+defined in the geometry class, or eps_min/eps_max are used for this.
+Default = None</p>
+<p><strong>: pgtol:</strong> <em>float</em></p>
+<p>The iteration will stop when max(|proj gi| i = 1, ...,
+n)&lt;=pgtol|max(|proj gi| i = 1, ..., n)&lt;=pgtol| where gigi is the
+i-th component of the projected gradient. Default = 1.0e-5</p>
 <h2 id="仿真设置">仿真设置</h2>
 <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">base_script = load<span class="hljs-constructor">_from_lsf(<span class="hljs-params">os</span>.<span class="hljs-params">path</span>.<span class="hljs-params">join</span>(<span class="hljs-params">os</span>.<span class="hljs-params">path</span>.<span class="hljs-params">dirname</span>(<span class="hljs-params">__file__</span>)</span>, base_script_2d))<br></code></pre></td></tr></table></figure>
+<h2 id="合并">合并</h2>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-comment">######## PUT EVERYTHING TOGETHER ########</span><br>    <span class="hljs-attr">lambda_start</span> = lambda_c*<span class="hljs-number">1</span>e9 - bandwidth_in_nm/<span class="hljs-number">2</span><br>    <span class="hljs-attr">lambda_end</span>   = lambda_c*<span class="hljs-number">1</span>e9 + bandwidth_in_nm/<span class="hljs-number">2</span><br>    <span class="hljs-attr">lambda_pts</span>   = int(bandwidth_in_nm/<span class="hljs-number">10</span>)+<span class="hljs-number">1</span><br>    <span class="hljs-attr">wavelengths</span> = Wavelengths(start = lambda_start*<span class="hljs-number">1</span>e-<span class="hljs-number">9</span>, stop = lambda_end*<span class="hljs-number">1</span>e-<span class="hljs-number">9</span>, points = lambda_pts)<br>    <span class="hljs-attr">opt</span> = Optimization(base_script = base_script,<br>    <span class="hljs-attr">wavelengths</span> = wavelengths,<br>    <span class="hljs-attr">fom</span> = fom,<br>    <span class="hljs-attr">geometry</span> = geometry,<br>    <span class="hljs-attr">optimizer</span> = optimizer,<br>    <span class="hljs-attr">use_var_fdtd</span> = <span class="hljs-literal">False</span>,<br>    <span class="hljs-attr">hide_fdtd_cad</span> = <span class="hljs-literal">False</span>,<br>    <span class="hljs-attr">use_deps</span> = <span class="hljs-literal">True</span>,<br>    <span class="hljs-attr">plot_history</span> = <span class="hljs-literal">True</span>,<br>    <span class="hljs-attr">store_all_simulations</span> = <span class="hljs-literal">True</span>,<br>    <span class="hljs-attr">save_global_index</span> = <span class="hljs-literal">False</span>,<br>    <span class="hljs-attr">label</span> = None)<br></code></pre></td></tr></table></figure>
+<h2 id="运行">运行</h2>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs clean">######## RUN THE OPTIMIZER ########<br>    result = opt.run(working_dir=working_dir)<br><br>    return result<br></code></pre></td></tr></table></figure>
+<h1 id="主函数">主函数</h1>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br><br>    params_file = params_file_apod<br>    result_file = params_final<br>    sim_file = sim_2d_final<br><br>with open(os.path.join(cur_path, params_file)) as fh:<br>    initial_params = json.load(fh, <span class="hljs-attribute">cls</span>=LumDecoder)[<span class="hljs-string">&quot;initial_params&quot;</span>]<br><br>cur_path = os.path.dirname(os.path.realpath(__file__))<br>working_dir = os.path.join(cur_path,<span class="hljs-string">&#x27;FreeGrating_1etch&#x27;</span>)<br><br>opt_result_2D = runGratingOptimization(<span class="hljs-attribute">bandwidth_in_nm</span>=bandwidth_in_nm,<br><span class="hljs-attribute">etch_depth</span>=etch_depth,<br>n_grates = n_grates,<br><span class="hljs-attribute">initial_params</span>=initial_params,<br><span class="hljs-attribute">min_feature_size</span>=min_feature_size,<br><span class="hljs-attribute">working_dir</span>=working_dir)<br><br>opt_params_2D = opt_result_2D[1]<br><br>with open(os.path.join(cur_path, result_file), <span class="hljs-string">&quot;w&quot;</span>) as fh:<br>    json.dump(&#123; <span class="hljs-string">&quot;initial_params&quot;</span>: opt_params_2D &#125;, fh, <span class="hljs-attribute">cls</span>=LumEncoder, indent = 4)<br><br>np.savetxt(os.path.join(cur_path, <span class="hljs-string">&quot;apod_2D_params.txt&quot;</span>), opt_params_2D)<br><br><span class="hljs-comment">######## 2-D SIMULATION WITH OPTIMIZED STRUCTURE ########</span><br>with lumapi.FDTD(filename = os.path.join(cur_path, base_sim_2d), hide = <span class="hljs-literal">True</span>) as fdtd:<br>    vtx = grating_params_pos(opt_params_2D)<br>    fdtd.addpoly()<br>    fdtd.<span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;vertices&quot;</span>, vtx)<br>    fdtd.<span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;x&quot;</span>, 0)<br>    fdtd.<span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;y&quot;</span>, 0)<br>    fdtd.<span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;index&quot;</span>, indexSi)<br>    fdtd.save(os.path.join(cur_path, sim_file))<br><br></code></pre></td></tr></table></figure>
+<h2 id="np.savetxt">np.savetxt</h2>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lindaxin/p/8392956.html">np.savetxt()——将array保存到txt文件，并保持原格式
+- 深度学习1 - 博客园 (cnblogs.com)</a></p>
 
             </div>
             <hr>
