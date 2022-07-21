@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://example.com/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220715200533891.png">
 <meta property="og:image" content="http://example.com/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220720182721687.png">
 <meta property="article:published_time" content="2022-07-13T10:46:09.671Z">
-<meta property="article:modified_time" content="2022-07-21T07:16:52.305Z">
+<meta property="article:modified_time" content="2022-07-21T07:36:19.248Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220713185123368.png">
@@ -213,7 +213,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      22k 字
+      23k 字
     </span>
   
 
@@ -222,7 +222,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      184 分钟
+      190 分钟
     </span>
   
 
@@ -655,7 +655,7 @@ dtype=float, order='C')</p>
 <p>bounds是每个参数的取值范围。</p>
 <div class="code-wrapper"><pre><code class="hljs">eps_out = indexSiO2 ** 2,
 eps_in = indexSi ** 2,
-# you&#39;xiao&#39;zh</code></pre></div>
+# 有效折射率的平方</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -673,6 +673,25 @@ eps_in = indexSi ** 2,
 <h2 id="fom设置">fom设置</h2>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">fom</span> = ModeMatch(monitor_name = <span class="hljs-string">&#x27;fom&#x27;</span>,<br><span class="hljs-attr">mode_number</span> = <span class="hljs-number">1</span>,<br><span class="hljs-attr">direction</span> = <span class="hljs-string">&#x27;Backward&#x27;</span>,<br><span class="hljs-attr">target_T_fwd</span> = lambda wl: np.<span class="hljs-literal">on</span>es(wl.size),<br><span class="hljs-attr">norm_p</span> = <span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
 <p>mode_number = 1 意味着TE mode</p>
+<p>direction = backward 方向</p>
+<p><strong>target_T_fwd:</strong> <em>float or function</em></p>
+<p>A function which will take the number of Wavelengths points and
+return values [0,1]. Usually passed as a <a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/controlflow.html#lambda-expressions">lambda
+function</a> or a single float value for single wavelength FOM. To
+specify a more advanced spectrum one can define a function, it may be
+helpful to use, <a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/routines.window.html">numpy
+windows</a> as a template.</p>
+<h3 id="numpy.ones">numpy.ones（）</h3>
+<p>函数参数 (numpy.ones() function arguments)</p>
+<p>numpy.ones（）函数的语法为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">ones(shape, dtype<span class="hljs-operator">=</span><span class="hljs-keyword">None</span>, <span class="hljs-keyword">order</span><span class="hljs-operator">=</span><span class="hljs-string">&#x27;C&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p>1.shape：一个整数类型或者一个整数元组，用于定义数组的大小。如果仅指定一个整数类型变量，则返回一维数组。如果指定的是整数元组，则返回给定形状的数组。
+2.dtype：可选参数，默认值为float。用于指定数组的数据类型。
+3.order：指定内存重以行优先(‘C’)还是列优先(‘F’)顺序存储多维数组。</p>
+<h3 id="lambda-函数">lambda 函数</h3>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/80960485">细说Python的lambda函数用法，建议收藏
+- 知乎 (zhihu.com)</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">lambda argument_list:expersion<br></code></pre></td></tr></table></figure>
 <h2 id="optimizer">optimizer</h2>
 <figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">optimizer = ScipyOptimizers(max_iter = <span class="hljs-number">250</span>,<br><span class="hljs-function"><span class="hljs-keyword">method</span> = &#x27;<span class="hljs-title">L</span>-<span class="hljs-title">BFGS</span>-<span class="hljs-title">B</span>&#x27;,</span><br><span class="hljs-function"><span class="hljs-title">scaling_factor</span> = 1,</span><br><span class="hljs-function"><span class="hljs-title">pgtol</span> = 1<span class="hljs-title">e</span>-6)</span><br></code></pre></td></tr></table></figure>
 <h2 id="仿真设置">仿真设置</h2>
