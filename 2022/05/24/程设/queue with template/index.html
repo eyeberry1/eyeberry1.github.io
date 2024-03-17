@@ -1,0 +1,630 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Description Please modify class Queue&#39;s declaration and definition so as to finish the test from main.cpp. Attention: please use template you have learned in the class to finish this assignment an">
+<meta property="og:type" content="article">
+<meta property="og:title" content="template(queue)">
+<meta property="og:url" content="http://example.com/2022/05/24/%E7%A8%8B%E8%AE%BE/queue%20with%20template/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Description Please modify class Queue&#39;s declaration and definition so as to finish the test from main.cpp. Attention: please use template you have learned in the class to finish this assignment an">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-24T03:03:28.851Z">
+<meta property="article:modified_time" content="2022-05-24T06:20:41.314Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>template(queue) - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>eyeberry</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talk/">
+                <i class="iconfont icon-kakao-talk-fill"></i>
+                Talk
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+        style="background: url('/img/page.jpg') no-repeat center center;
+          background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="template(queue)">
+              
+            </span>
+
+<!-- 添加的代码 -->
+<!-- ========================================================================= -->
+            
+<!-- ========================================================================= -->
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-24 11:03" pubdate>
+        May 24, 2022 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      7.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      61 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">template(queue)</h1>
+            
+            <div class="markdown-body">
+              <h1 id="description">Description</h1>
+<p>Please modify class <code>Queue</code>'s declaration and definition
+so as to finish the test from <code>main.cpp</code>.</p>
+<p><strong>Attention:</strong> please use template you have learned in
+the class to finish this assignment and DO NOT add or modify any memeber
+functions or member variables.</p>
+<p><strong>Warning:</strong> DO NOT USE <code>queue</code> in STL.</p>
+<p>The <code>Queue</code>'s declaration with element type
+<code>int</code> is below:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Queue</span> &#123;</span><br>  <span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Queue</span>();<br><br>    <span class="hljs-built_in">Queue</span>(<span class="hljs-keyword">const</span> Queue &amp; another);<br>    ~<span class="hljs-built_in">Queue</span>();<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">front</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">back</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> element)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(Queue &amp; queue)</span></span>;<br><br>  <span class="hljs-keyword">private</span>:<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> &#123;</span><br>      <span class="hljs-keyword">int</span> element;<br>      Node* next;<br>      <span class="hljs-built_in">Node</span>(<span class="hljs-keyword">int</span> ele, Node* n = <span class="hljs-literal">NULL</span>) &#123;<br>        element = ele;<br>        next = n;<br>      &#125;<br>    &#125;;<br>    Node* front_node;<br>    Node* back_node;<br>    <span class="hljs-keyword">int</span> node_num;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h1 id="hint">Hint</h1>
+<p>如果你对类中的成员函数有疑问，函数的具体作用，请参见：<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/queue/queue/?kw=queue">www.cplusplus.com里的queue内容</a></p>
+<p>Author: 黎洋</p>
+<h1 id="main.cpplock">main.cpp(lock)</h1>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;Queue.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sstream&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Job</span> &#123;</span><br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-function"><span class="hljs-keyword">explicit</span> <span class="hljs-title">Job</span><span class="hljs-params">(<span class="hljs-keyword">int</span> pri = <span class="hljs-number">0</span>)</span> </span>&#123;<br>            id = number++;<br>            priority = pri;<br>        &#125;<br>        <span class="hljs-function">string <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>&#123;<br>            stringstream ss;<br>            ss &lt;&lt; <span class="hljs-string">&quot;[&quot;</span> &lt;&lt; id &lt;&lt; <span class="hljs-string">&quot;:&quot;</span> &lt;&lt; priority &lt;&lt; <span class="hljs-string">&quot;]&quot;</span>;<br>            <span class="hljs-keyword">return</span> ss.<span class="hljs-built_in">str</span>();<br>        &#125;<br>    <span class="hljs-keyword">private</span>:<br>        <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> number;<br>        <span class="hljs-keyword">int</span> id;<br>        <span class="hljs-keyword">int</span> priority;<br>&#125;;<br><br><span class="hljs-keyword">int</span> Job::number = <span class="hljs-number">0</span>;<br><br><span class="hljs-function"><span class="hljs-keyword">template</span>&lt;class T&gt;</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(Queue&lt;T&gt; queue)</span> </span>&#123;<br>    <span class="hljs-keyword">while</span> (!queue.<span class="hljs-built_in">empty</span>()) &#123;<br>        cout &lt;&lt; queue.<span class="hljs-built_in">front</span>() &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>        queue.<span class="hljs-built_in">pop</span>();<br>    &#125;<br>    cout &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">// test case 1: integer..</span><br>    Queue&lt;<span class="hljs-keyword">int</span>&gt; que;<br>    <span class="hljs-keyword">int</span> m, n;<br>    cin &gt;&gt; m &gt;&gt; n;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i++) que.<span class="hljs-built_in">push</span>(i + <span class="hljs-number">0.01</span>);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) que.<span class="hljs-built_in">pop</span>();<br>    <span class="hljs-keyword">if</span> (!que.<span class="hljs-built_in">empty</span>()) &#123;<br>        cout &lt;&lt; que.<span class="hljs-built_in">front</span>() &lt;&lt; endl;<br>        cout &lt;&lt; que.<span class="hljs-built_in">back</span>() &lt;&lt; endl;<br>    &#125;<br>    cout &lt;&lt; <span class="hljs-string">&quot;The size is: &quot;</span> &lt;&lt; que.<span class="hljs-built_in">size</span>() &lt;&lt; endl;<br>    <span class="hljs-keyword">if</span> (que.<span class="hljs-built_in">empty</span>()) cout &lt;&lt; <span class="hljs-string">&quot;The queue is empty!&quot;</span> &lt;&lt; endl;<br>    <span class="hljs-keyword">else</span> cout &lt;&lt; <span class="hljs-string">&quot;The queue is NOT empty!&quot;</span> &lt;&lt; endl;<br><br>    <span class="hljs-comment">// test case 2: double..</span><br>    Queue&lt;<span class="hljs-keyword">double</span>&gt; que1;<br>    cin &gt;&gt; m &gt;&gt; n;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i++) que1.<span class="hljs-built_in">push</span>(i + <span class="hljs-number">0.01</span>);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) que1.<span class="hljs-built_in">pop</span>();<br>    <span class="hljs-keyword">if</span> (!que1.<span class="hljs-built_in">empty</span>()) &#123;<br>        cout &lt;&lt; que1.<span class="hljs-built_in">front</span>() &lt;&lt; endl;<br>        cout &lt;&lt; que1.<span class="hljs-built_in">back</span>() &lt;&lt; endl;<br>    &#125;<br>    cout &lt;&lt; <span class="hljs-string">&quot;The size is: &quot;</span> &lt;&lt; que1.<span class="hljs-built_in">size</span>() &lt;&lt; endl;<br>    <span class="hljs-keyword">if</span> (que1.<span class="hljs-built_in">empty</span>()) cout &lt;&lt; <span class="hljs-string">&quot;The queue is empty!&quot;</span> &lt;&lt; endl;<br>    <span class="hljs-keyword">else</span> cout &lt;&lt; <span class="hljs-string">&quot;The queue is NOT empty!&quot;</span> &lt;&lt; endl;<br><br>    <span class="hljs-comment">// test case 3: user defined class..</span><br>    Queue&lt;Job&gt; que2;<br>    cin &gt;&gt; m &gt;&gt; n;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i++) que2.<span class="hljs-built_in">push</span>(<span class="hljs-built_in">Job</span>(i));<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) que2.<span class="hljs-built_in">pop</span>();<br><br>    <span class="hljs-keyword">if</span> (!que2.<span class="hljs-built_in">empty</span>()) &#123;<br>        cout &lt;&lt; que2.<span class="hljs-built_in">front</span>().<span class="hljs-built_in">toString</span>() &lt;&lt; endl;<br>        cout &lt;&lt; que2.<span class="hljs-built_in">back</span>().<span class="hljs-built_in">toString</span>() &lt;&lt; endl;<br>    &#125;<br>    cout &lt;&lt; <span class="hljs-string">&quot;The size is: &quot;</span> &lt;&lt; que2.<span class="hljs-built_in">size</span>() &lt;&lt; endl;<br>    <span class="hljs-keyword">if</span> (que2.<span class="hljs-built_in">empty</span>()) cout &lt;&lt; <span class="hljs-string">&quot;The queue is empty!&quot;</span> &lt;&lt; endl;<br>    <span class="hljs-keyword">else</span> cout &lt;&lt; <span class="hljs-string">&quot;The queue is NOT empty!&quot;</span> &lt;&lt; endl;<br><br>    <span class="hljs-comment">// test case 4: swap function..</span><br>    Queue&lt;<span class="hljs-keyword">int</span>&gt; que3, que4;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i++) que3.<span class="hljs-built_in">push</span>(i);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) que4.<span class="hljs-built_in">push</span>(m - i);<br>    cout &lt;&lt; <span class="hljs-string">&quot;Before Swap....&quot;</span> &lt;&lt; endl;<br>    <span class="hljs-built_in">print</span>(que3);<br>    <span class="hljs-built_in">print</span>(que4);<br><br>    que3.<span class="hljs-built_in">swap</span>(que4);<br>    cout &lt;&lt; <span class="hljs-string">&quot;After Swap....&quot;</span> &lt;&lt; endl;<br>    cout &lt;&lt; endl;<br>    <span class="hljs-built_in">print</span>(que3);<br>    <span class="hljs-built_in">print</span>(que4);<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+<h1 id="queue.h">Queue.h</h1>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> T&gt;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Queue</span>&#123;</span><br>  <span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Queue</span>()&#123;<br>      front_node = <span class="hljs-literal">NULL</span>;<br>      back_node = <span class="hljs-literal">NULL</span>;<br>      node_num = <span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-built_in">Queue</span>(<span class="hljs-keyword">const</span> Queue &amp; another):<span class="hljs-built_in">node_num</span>(<span class="hljs-number">0</span>)&#123;<br>      <span class="hljs-keyword">for</span>(Node* i = another.front_node; i != another.back_node; i = i-&gt;next)&#123;<br>        <span class="hljs-built_in">push</span>(i-&gt;element);<br>      &#125;<br>      <span class="hljs-built_in">push</span>(another.back_node-&gt;element);<br>    &#125;<br>    ~<span class="hljs-built_in">Queue</span>()&#123;<br>      <span class="hljs-keyword">while</span>(front_node)&#123;<br>        Node* temp = front_node;<br>        front_node = front_node-&gt;next;<br>        <span class="hljs-keyword">delete</span> temp;<br>      &#125;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span></span>&#123;<br>      <span class="hljs-keyword">return</span> node_num == <span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span></span>&#123;<br>      <span class="hljs-keyword">return</span> node_num;<br>    &#125;<br>    <span class="hljs-function">T <span class="hljs-title">front</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>&#123;<br>      <span class="hljs-keyword">return</span> front_node-&gt;element;<br>    &#125;<br>    <span class="hljs-function">T <span class="hljs-title">back</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>&#123;<br>      <span class="hljs-keyword">return</span> back_node-&gt;element;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(T element)</span></span>&#123;<br>      <span class="hljs-keyword">if</span>(<span class="hljs-built_in">empty</span>())&#123;<br>        Node* temp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(element);<br>        back_node = temp;<br>        front_node = temp;<br>        node_num = <span class="hljs-number">1</span>;<br>      &#125;<br>      <span class="hljs-keyword">else</span>&#123;<br>        Node* temp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(element);<br>        back_node-&gt;next = temp;<br>        back_node = temp;<br>        ++node_num;<br>      &#125;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span></span>&#123;<br>      <span class="hljs-keyword">if</span>(!<span class="hljs-built_in">empty</span>())&#123;<br>        --node_num;<br>        Node* temp = front_node;<br>        front_node = front_node-&gt;next;<br>        <span class="hljs-keyword">delete</span> temp;<br>      &#125;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(Queue &amp; queue)</span></span>&#123;<br>      Node* temp = front_node;<br>      front_node = queue.front_node;<br>      queue.front_node = temp;<br>      temp = back_node;<br>      back_node = queue.back_node;<br>      queue.back_node = temp;<br>      <span class="hljs-keyword">int</span> temp1 = node_num;<br>      node_num = queue.node_num;<br>      queue.node_num = temp1;<br>    &#125;<br><br>  <span class="hljs-keyword">private</span>:<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> &#123;</span><br>      T element;<br>      Node* next;<br>      <span class="hljs-built_in">Node</span>(T  ele, Node* n = <span class="hljs-literal">NULL</span>) &#123;<br>        element = ele;<br>        next = n;<br>      &#125;<br>    &#125;;<br>    Node* front_node;<br>    Node* back_node;<br>    <span class="hljs-keyword">int</span> node_num;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+<h1 id="queue.h-1">Queue.h</h1>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br> <br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> ElementType&gt;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Queue</span> &#123;</span><br> <span class="hljs-keyword">public</span>:<br>  <span class="hljs-built_in">Queue</span>();<br> <br>  <span class="hljs-built_in">Queue</span>(<span class="hljs-keyword">const</span> Queue&lt;ElementType&gt;&amp; another);<br>  ~<span class="hljs-built_in">Queue</span>();<br>  <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span></span>;<br>  <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span></span>;<br>  <span class="hljs-function">ElementType <span class="hljs-title">front</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<br>  <span class="hljs-function">ElementType <span class="hljs-title">back</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<br>  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(ElementType element)</span></span>;<br>  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span></span>;<br>  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(Queue&lt;ElementType&gt;&amp; queue)</span></span>;<br> <br> <span class="hljs-keyword">private</span>:<br>  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> &#123;</span><br>    ElementType element;<br>    Node* next;<br>    <span class="hljs-built_in">Node</span>(ElementType ele, Node* n = <span class="hljs-literal">NULL</span>) &#123;<br>      element = ele;<br>      next = n;<br>    &#125;<br>  &#125;;<br>  Node* front_node;<br>  Node* back_node;<br>  <span class="hljs-keyword">int</span> node_num;<br>&#125;;<br> <br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> ElementType&gt;<br>Queue&lt;ElementType&gt;::<span class="hljs-built_in">Queue</span>(<span class="hljs-keyword">const</span> Queue&lt;ElementType&gt;&amp; another) &#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span> == &amp;another) <span class="hljs-keyword">return</span>;<br>  front_node = back_node = <span class="hljs-literal">NULL</span>;<br>  node_num = <span class="hljs-number">0</span>;<br>  Node* temp = another.front_node;<br>  <span class="hljs-keyword">while</span> (temp != <span class="hljs-literal">NULL</span>) &#123;<br>    <span class="hljs-built_in">push</span>(temp-&gt;element);<br>    temp = temp-&gt;next;<br>  &#125;<br>&#125;<br> <br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> ElementType&gt;<br>Queue&lt;ElementType&gt;::<span class="hljs-built_in">Queue</span>() &#123;<br>  front_node = back_node = <span class="hljs-literal">NULL</span>;<br>  node_num = <span class="hljs-number">0</span>;<br>&#125;<br> <br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> ElementType&gt;<br>Queue&lt;ElementType&gt;::~<span class="hljs-built_in">Queue</span>() &#123;<br>  <span class="hljs-keyword">while</span> (!<span class="hljs-built_in">empty</span>()) &#123;<br>    <span class="hljs-built_in">pop</span>();<br>  &#125;<br>&#125;<br> <br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> ElementType&gt;<br><span class="hljs-keyword">bool</span> Queue&lt;ElementType&gt;::<span class="hljs-built_in">empty</span>() &#123;<br>  <span class="hljs-keyword">return</span> node_num == <span class="hljs-number">0</span>;<br>&#125;<br> <br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> ElementType&gt;<br><span class="hljs-keyword">int</span> Queue&lt;ElementType&gt;::<span class="hljs-built_in">size</span>() &#123;<br>  <span class="hljs-keyword">return</span> node_num;<br>&#125;<br> <br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> ElementType&gt;<br>ElementType Queue&lt;ElementType&gt;::<span class="hljs-built_in">front</span>() <span class="hljs-keyword">const</span> &#123;<br>  <span class="hljs-keyword">return</span> front_node-&gt;element;<br>&#125;<br> <br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> ElementType&gt;<br>ElementType Queue&lt;ElementType&gt;::<span class="hljs-built_in">back</span>() <span class="hljs-keyword">const</span> &#123;<br>  <span class="hljs-keyword">return</span> back_node-&gt;element;<br>&#125;<br> <br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> ElementType&gt;<br><span class="hljs-keyword">void</span> Queue&lt;ElementType&gt;::<span class="hljs-built_in">push</span>(ElementType element) &#123;<br>  <span class="hljs-keyword">if</span> (front_node == <span class="hljs-literal">NULL</span>) &#123;<br>    front_node = back_node = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(element);<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    back_node-&gt;next = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(element);<br>    back_node = back_node-&gt;next;<br>  &#125;<br>  node_num++;<br>&#125;<br> <br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> ElementType&gt;<br><span class="hljs-keyword">void</span> Queue&lt;ElementType&gt;::<span class="hljs-built_in">pop</span>() &#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">empty</span>()) <span class="hljs-keyword">return</span>;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">size</span>() == <span class="hljs-number">1</span>) &#123;<br>    <span class="hljs-keyword">delete</span> front_node;<br>    front_node = back_node = <span class="hljs-literal">NULL</span>;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    Node* temp = front_node;<br>    front_node = front_node-&gt;next;<br>    <span class="hljs-keyword">delete</span> temp;<br>  &#125;<br>  node_num--;<br>&#125;<br> <br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> ElementType&gt;<br><span class="hljs-keyword">void</span> Queue&lt;ElementType&gt;::<span class="hljs-built_in">swap</span>(Queue&lt;ElementType&gt;&amp; queue) &#123;<br>  <span class="hljs-keyword">int</span> old_size = <span class="hljs-built_in">size</span>();<br>  <span class="hljs-keyword">while</span> (!<span class="hljs-built_in">empty</span>()) &#123;<br>    queue.<span class="hljs-built_in">push</span>(<span class="hljs-built_in">front</span>());<br>    <span class="hljs-built_in">pop</span>();<br>  &#125;<br>  <span class="hljs-keyword">while</span> (queue.<span class="hljs-built_in">size</span>() &gt; old_size) &#123;<br>    <span class="hljs-built_in">push</span>(queue.<span class="hljs-built_in">front</span>());<br>    queue.<span class="hljs-built_in">pop</span>();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/C/">C++</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/C/">C++</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/26/%E7%A8%8B%E8%AE%BE/template%20and%20stack/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">template and stack</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/23/%E7%A8%8B%E8%AE%BE/stack/">
+                        <span class="hidden-mobile">stack(指针gou'jian)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        new Waline(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    <span>访问总量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span>总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+ <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+<script
+  src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+  charset="utf-8"
+></script>
+
+<script>
+  function typing(id, title){
+      var typed = new Typed('#' + id, {
+          strings: [
+            '  ',
+            title + "&nbsp;",
+          ],
+          cursorChar: "_",
+          typeSpeed: 70,
+          loop: false,
+      });
+      typed.stop();
+      $(document).ready(function () {
+          $(".typed-cursor").addClass("h2");
+          typed.start();
+      });
+  }
+
+  
+      typing("subtitle", "template(queue)")  // 打印文章标题
+  
+</script>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->
+
+<!-- typing("hitokoto", data.hitokoto + '<br /> <h5>' + '——' + data.from + '</h5>')
+typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '「' + data.from + '」' + '</h5>') -->
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->

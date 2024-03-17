@@ -1,0 +1,828 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Inverse Design of Grating Coupler (2D) – Ansys Optics 在这个例子中，我们将会使用逆向设计工具箱（lumopt）来设计一个SOI光栅耦合器。相比于粒子群算法（particle swarm optimization，PSO），这种优化算法能够在几次迭代后就能获得最佳结果。最佳设计将被导出到GDS文件中，以进行进一步的模拟或制造。  OV">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Inverse Design of Grating Coupler">
+<meta property="og:url" content="http://example.com/2022/07/08/Lumerical/%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E9%80%86%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Inverse Design of Grating Coupler (2D) – Ansys Optics 在这个例子中，我们将会使用逆向设计工具箱（lumopt）来设计一个SOI光栅耦合器。相比于粒子群算法（particle swarm optimization，PSO），这种优化算法能够在几次迭代后就能获得最佳结果。最佳设计将被导出到GDS文件中，以进行进一步的模拟或制造。  OV">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/07/08/Lumerical/%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E9%80%86%E8%AE%BE%E8%AE%A1/image-20220712154030222.png">
+<meta property="og:image" content="http://example.com/2022/07/08/Lumerical/%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E9%80%86%E8%AE%BE%E8%AE%A1/workflow_-_Inverse_design_of_grating_coupler__2D_.png">
+<meta property="og:image" content="http://example.com/2022/07/08/Lumerical/%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E9%80%86%E8%AE%BE%E8%AE%A1/image-20220713231807189.png">
+<meta property="og:image" content="http://example.com/2022/07/08/Lumerical/%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E9%80%86%E8%AE%BE%E8%AE%A1/image-20220712155120278.png">
+<meta property="og:image" content="http://example.com/2022/07/08/Lumerical/%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E9%80%86%E8%AE%BE%E8%AE%A1/image-20220712155635544.png">
+<meta property="og:image" content="http://example.com/2022/07/08/Lumerical/%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E9%80%86%E8%AE%BE%E8%AE%A1/image-20220712155957584.png">
+<meta property="og:image" content="http://example.com/2022/07/08/Lumerical/%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E9%80%86%E8%AE%BE%E8%AE%A1/image-20220712160224645.png">
+<meta property="article:published_time" content="2022-07-08T09:21:04.277Z">
+<meta property="article:modified_time" content="2022-10-22T12:36:01.053Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Lumerical">
+<meta property="article:tag" content="Grating Coupler">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/07/08/Lumerical/%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E9%80%86%E8%AE%BE%E8%AE%A1/image-20220712154030222.png">
+  
+  
+  <title>Inverse Design of Grating Coupler - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>eyeberry</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talk/">
+                <i class="iconfont icon-kakao-talk-fill"></i>
+                Talk
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+        style="background: url('/img/page.jpg') no-repeat center center;
+          background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Inverse Design of Grating Coupler">
+              
+            </span>
+
+<!-- 添加的代码 -->
+<!-- ========================================================================= -->
+            
+<!-- ========================================================================= -->
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-08 17:21" pubdate>
+        July 8, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      7.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      61 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Inverse Design of Grating Coupler</h1>
+            
+            <div class="markdown-body">
+              <p><a target="_blank" rel="noopener" href="https://optics.ansys.com/hc/en-us/articles/360042800573-Inverse-Design-of-Grating-Coupler-2D-">Inverse
+Design of Grating Coupler (2D) – Ansys Optics</a></p>
+<p>在这个例子中，我们将会使用逆向设计工具箱（lumopt）来设计一个SOI光栅耦合器。相比于粒子群算法（particle
+swarm
+optimization，PSO），这种优化算法能够在几次迭代后就能获得最佳结果。最佳设计将被导出到GDS文件中，以进行进一步的模拟或制造。</p>
+<p><img src="/2022/07/08/Lumerical/%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E9%80%86%E8%AE%BE%E8%AE%A1/image-20220712154030222.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="overview">OVERVIEW</h1>
+<p><img src="/2022/07/08/Lumerical/%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E9%80%86%E8%AE%BE%E8%AE%A1/workflow_-_Inverse_design_of_grating_coupler__2D_.png" srcset="/img/loading.gif" lazyload></p>
+<p>Lumerical的逆设计功能通过将基于梯度的优化例程的强大功能与麦克斯韦方程组基本属性中的效率相结合，提供了无与伦比的优化性能。此示例将演示如何使用逆向设计方法生成具有最大耦合效率的TE绝缘体硅（SOI）光栅耦合器设计。此外，我们将演示如何使用参数修改示例，以便您可以将此方法重用于自己的设计。</p>
+<p>此示例广泛借鉴了 LumOpt 框架：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://support.lumerical.com/hc/en-us/articles/360049853854">Photonic
+Inverse Design Overview - Python API</a></li>
+<li><a target="_blank" rel="noopener" href="https://support.lumerical.com/hc/en-us/articles/360050995394">Getting
+Started with lumopt - python API</a></li>
+<li><a target="_blank" rel="noopener" href="https://support.lumerical.com/hc/en-us/articles/360052044913">Optimizable
+Geometry - Python
+API</a>https://support.lumerical.com/hc/en-us/articles/360052044913)</li>
+</ul>
+<h2 id="步骤一在-mode-中定义初始仿真"><strong>步骤一：在 MODE
+中定义初始仿真</strong></h2>
+<p>这一初始步骤的目标是为优化找到一个良好的起点。使用MODE
+FDE求解器，我们根据优化参数（中心波长，蚀刻深度，光纤角度）确定初始线性趾形光栅。</p>
+<h2 id="步骤二使用2d-fdtd-线性优化切趾光栅"><strong>步骤二：使用2D FDTD
+线性优化切趾光栅</strong></h2>
+<p>第二步是使用一组有限的参数来优化光栅。我们使用步骤 1
+中定义的切趾光栅作为起点。光栅的数量固定在25个，蚀刻深度固定在80nm。从步骤1获得的一组4个参数，作为光栅切趾的函数，用于提取初始参数集以最大化传输/耦合。</p>
+<p>从上一步中找到的初始条件开始，我们现在使用光栅壁的x坐标作为自由参数（2x
+25个参数）来运行优化。</p>
+<h3 id="包括制造约束">包括制造约束</h3>
+<p>我们运行2D优化，设置最小特征尺寸约束（设置为100nm），以确保设备可制造。</p>
+<h2 id="步骤3提取3d设计和gds文件还不太懂">步骤3：提取3D设计和GDS文件（还不太懂）</h2>
+<p>带有弯曲光栅的优化光栅耦合器组件形状将导出为GDS
+II格式，并导出为3D模拟文件，可用于进一步的模拟和/或制造（掩模设计）。我们使用覆盖源区域的圆形光栅来确保收集所有光纤光。我们还使用短<a target="_blank" rel="noopener" href="https://support.lumerical.com/hc/en-us/articles/360042799713-SOI-taper-design-varFDTD-and-FDTD-">线性锥度</a>连接到450nm宽波导。光栅和锥度的几何形状可以由设计人员进一步优化。</p>
+<p><a target="_blank" rel="noopener" href="https://support.lumerical.com/hc/en-us/articles/1500000306621">Photonic
+Inverse Design: Grating Coupler (3D)</a></p>
+<h1 id="运行和结果运行模型的说明和关键结果的讨论">运行和结果(运行模型的说明和关键结果的讨论)</h1>
+<h2 id="步骤1定义基本仿真参数">步骤1：定义基本仿真参数</h2>
+<p>如果要按案例运行，则不需要执行此步骤，但是，根据需要修改初始模拟文件需要执行此步骤。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-number">1</span>.在模式下打开模拟文件 pid_grating_coupler_preliminary_design<span class="hljs-selector-class">.lms</span><br><span class="hljs-number">2</span>.修改所需的基本仿真参数，保存文件。<br><span class="hljs-number">3</span>.打开脚本文件 pid_grating_coupler_preliminary_design<span class="hljs-selector-class">.lsf</span><br><span class="hljs-number">4</span>.修改参数并运行脚本<br></code></pre></td></tr></table></figure>
+<p>对于给定的中心波长<span class="math inline">\(\lambda_{c}\)</span>和给定的刻蚀深度<span class="math inline">\(e\)</span>，我们可以按照参考文献[1]，根据物理参数设计一个切趾光栅。在这里，我们进行简单地推导，更多关于变量的详细信息和精确定义，见参阅参考。</p>
+<p>主要思想是使用切趾光栅的局部有效折射率。对于每一个单元，使用插值法，有效折射率可用下式近似计算：
+<span class="math display">\[
+n_{eff}=F\cdot{n_0}+(1-F)n_E
+\]</span> F是填充分数(占空比),<span class="math inline">\(n_0\)</span>是未刻蚀区域的有效折射率率，<span class="math inline">\(n_E\)</span>是部分刻蚀区域的有效折射率</p>
+<p>为了确定这些有效指数，我们使用 MODE FDE
+求解器。对220nm高度的硅波导进行仿真，使用折射率为3.476683.47668的硅，以及折射率为1.444011.44401的背景材料（SiO2）。</p>
+<p>我们可以写出布拉格条件的公式，用于计算光栅周期 <span class="math display">\[
+Λ=\frac{λ_c}{n_{eff}-n_{bg}sin\theta}
+\]</span> <span class="math inline">\(\theta\)</span>是入射光的入射角度,<span class="math inline">\(\lambda{c}\)</span>是中心波长,<span class="math inline">\(n_{bg}\)</span>是背景折射率</p>
+<p>对于一个线性切趾光栅，填充因子随着波导的位置而改变 <span class="math display">\[
+F(x)=F_0-R \cdot x
+\]</span> R是切趾系数，<span class="math inline">\({F_0}\)</span>是初始的填充因子。在理想情况下，<span class="math inline">\(F_0\)</span>应该是1,因为我们以一个无刻蚀的波导开始,但是我们设置<span class="math inline">\(F_0=0.95\)</span>,目的是为了避免一些很小的间隔(trenches)。</p>
+<p>在插值有效指数中使用线性切趾(Using the linear apodization in the
+interpolated effective index:)： <span class="math display">\[
+n_{eff}(x)=F(x)n_0+(1-F(x))n_E=n_E+F(x)\Delta n
+\]</span></p>
+<p>我们就能得到随着空间变化的光栅周期的函数： <span class="math display">\[
+Λ(x)=\frac{λ_c}{(n_{E}-n_{bg}sin\theta)+F(x)\Delta n}
+\]</span>
+为了找到良好的初始条件,我们对每个周期离散化处理，可以得到每个周期的填充因子<span class="math inline">\(F_i\)</span>以及周期<span class="math inline">\(Λ_i\)</span></p>
+<p>至今，我们还剩唯一一个不知道的参数--<span class="math inline">\(R\)</span>。为了一个更加高效的优化，我们可以引入四个待优化的参数：
+<span class="math display">\[
+p=[x_0,R,a,b]
+\]</span> 相关计算公式如下: <span class="math display">\[
+F_i=F_0-R(x_{i-1}-x_0)
+\]</span></p>
+<p><span class="math display">\[
+Λ_i=\frac{\lambda_c}{a+F_ib}
+\]</span></p>
+<p><span class="math display">\[
+a=n_E-n_{bg}sin\theta
+\]</span></p>
+<p><span class="math display">\[
+b=\Delta n
+\]</span></p>
+<p>b是有效折射率的差值。b = neff_thick - neff_thin</p>
+<figure>
+<img src="/2022/07/08/Lumerical/%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E9%80%86%E8%AE%BE%E8%AE%A1/image-20220713231807189.png" srcset="/img/loading.gif" lazyload alt="光栅耦合器结构">
+<figcaption aria-hidden="true">光栅耦合器结构</figcaption>
+</figure>
+<p>右图的下方的结构是传统的线性变迹光栅，周期是固定的。</p>
+<p>右图的上方的结构是周期不固定的线性变迹</p>
+<p>注意<span class="math inline">\(x_0\)</span>和R将单独定义。我们将<span class="math inline">\(x_0\)</span>设置为<span class="math inline">\(-2.5μm\)</span>，将<span class="math inline">\(R\)</span>设置为<span class="math inline">\(0.03μm^{-1}\)</span>(见参考[1])。如果你更改材料，几何形状，或者偏振（polarization），你应该进行这些参数的扫描，来找到一个合适的初始条件。</p>
+<p>脚本<strong>pid_grating_coupler_preliminary_grating_design.lsf</strong>
+将会计算这些初始参数，并将结果保存在<strong>pid_grating_coupler_initial_params.json</strong>文件中，以便下一步使用。</p>
+<h2 id="步骤二使用2d-fdyd优化切趾光栅">步骤二：使用2D
+FDYD优化切趾光栅</h2>
+<p>我们首先需要找到光纤的最佳位置。</p>
+<ol type="1">
+<li>用FDTD的编译器打开python脚本<strong>pid_grating_coupler_sweep_2D.py</strong></li>
+<li>如果需要的话，可以修改参数。</li>
+<li>运行脚本</li>
+</ol>
+<p>这个脚本会加载步骤一中的初始设计，并且运行光纤最佳位置的扫描，来找到最佳的位置。</p>
+<figure>
+<img src="/2022/07/08/Lumerical/%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E9%80%86%E8%AE%BE%E8%AE%A1/image-20220712155120278.png" srcset="/img/loading.gif" lazyload alt="image-20220712155120278">
+<figcaption aria-hidden="true">image-20220712155120278</figcaption>
+</figure>
+<p>找到的最佳位置为<span class="math inline">\(4.2μm\)</span>，超过百分之60的传输率</p>
+<p>The optimum position is found at 4.2μm, with a transmission over
+60%.</p>
+<ol start="4" type="1">
+<li>用FDTD脚本编辑器,打开python 脚本
+<strong>pid_grating_coupler_2D_apodized.py</strong></li>
+<li>如果需要的话,更新参数,并且运行脚本</li>
+<li>打开脚本<strong>pid_grating_coupler_2D_1etch.py</strong></li>
+<li>运行脚本</li>
+</ol>
+<p>在这一步,我们会使用从1到3的获得的参数,然后提取每个每个壁的x坐标作为自由参数。更加具体地说，参数将会是光栅的起始位置，蚀刻的宽度，以及每个光栅的齿的宽度。</p>
+<p>脚本<strong>pid_grating_coupler_2D_apodized.py</strong>将这些参数保存到<strong>pid_optim_1.json</strong>文件中，这些参数可以用作起点。</p>
+<p>我们在这一步中使用使用最小特征尺寸约束，将min_feature_size=0.1，这将确保，两个光栅的间隔将会大于<span class="math inline">\(100nm\)</span>。</p>
+<figure>
+<img src="/2022/07/08/Lumerical/%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E9%80%86%E8%AE%BE%E8%AE%A1/image-20220712155635544.png" srcset="/img/loading.gif" lazyload alt="resuls_with_min_features_new">
+<figcaption aria-hidden="true">resuls_with_min_features_new</figcaption>
+</figure>
+<figure>
+<img src="/2022/07/08/Lumerical/%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E9%80%86%E8%AE%BE%E8%AE%A1/image-20220712155957584.png" srcset="/img/loading.gif" lazyload alt="optimization">
+<figcaption aria-hidden="true">optimization</figcaption>
+</figure>
+<p>最终的传输率约为60%，现在的光栅耦合器易于制造。优化的光栅参数保存在<strong>pid_optim_final.json</strong>。</p>
+<h2 id="步骤三-提取-3d-设计和-gds">步骤三: 提取 3D 设计和 GDS</h2>
+<ol type="1">
+<li>打开脚本<strong>pid_grating_coupler_3D.py</strong></li>
+<li>如果需要，请修改设置</li>
+<li>运行脚本</li>
+</ol>
+<p>该脚本将加载优化结果，设置相应的3D模拟，并从结构中提取GDS。</p>
+<p><img src="/2022/07/08/Lumerical/%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E9%80%86%E8%AE%BE%E8%AE%A1/image-20220712160224645.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="一些重要的模型设置">一些重要的模型设置</h1>
+<p>优化的主要参数在脚本的初始设置，并且保存在初始模拟文件<strong>pid_grating_coupler_2D_TE_base.fsp</strong>。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-comment"># Optimization global parameters</span><br><span class="hljs-attr">lambda_c</span> = <span class="hljs-number">1.55</span>e-<span class="hljs-number">6</span> <br><span class="hljs-attr">bandwidth_in_nm</span> = <span class="hljs-number">0</span> <span class="hljs-comment">#&lt; Only optimize for center frequency of 1550nm</span><br><span class="hljs-attr">F0</span> = <span class="hljs-number">0.95</span><br><span class="hljs-attr">height</span> = <span class="hljs-number">220</span>e-<span class="hljs-number">9</span><br><span class="hljs-attr">etch_depth</span> = <span class="hljs-number">80</span>e-<span class="hljs-number">9</span><br><span class="hljs-attr">y0</span> = <span class="hljs-number">0</span><br><span class="hljs-attr">x_begin</span> = -<span class="hljs-number">5.1</span>e-<span class="hljs-number">6</span><br><span class="hljs-attr">x_end</span> = <span class="hljs-number">22</span>e-<span class="hljs-number">6</span><br><span class="hljs-attr">n_grates</span> = <span class="hljs-number">25</span><br><br><span class="hljs-attr">indexSi</span> = <span class="hljs-number">3.47668</span><br><span class="hljs-attr">indexSiO2</span> = <span class="hljs-number">1.44401</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><strong>偏振</strong>：所选的折射率值代表SOI芯片制造工艺。由于硅和氧化硅之间的折射率对比度很高，因此集成波导的两种基本模式（TE和TM）的有效折射率之间存在很大差异。因此，SOI光栅耦合器具有很强的偏振选择性。目前的设计主要是TE
+mode，因为这是最常见的选择，不过也可以针对TM模式设置优化。要将极化更改为
+TM 或者higher order mode，需要更改
+<strong><em>pid_grating_coupler_preliminary_design.lsf</em></strong> 和
+<strong><em>pid_grating_coupler</em></strong> python 文件的
+<strong>ModeMatch</strong> 类中的模式编号。此外，还应更改base fsp
+文件中的偏振角。对于 TM 优化，在这个配置中，模式编号为 2，偏振角为 0
+度。</li>
+<li><strong>倾斜角度</strong>
+：耦合效率很大程度上取决于光纤如何与顶部氧化硅包层相遇。在本例中，我们使用高斯光束作为光纤光束输出的近似值。假设光纤的末端以很小的角度抛光，以便光纤在安装在顶部包层上时倾斜。这种倾斜可防止光反射到光纤中。</li>
+<li><strong>蚀刻深度</strong>：耦合效率对光栅的周期、占空比和蚀刻深度高度敏感。为简单起见，这里采用固定的蚀刻深度，但是，如果可用的制造工艺提供了这种自由度，它也可以改变。</li>
+<li><strong>衬底</strong>：如果制造的器件中存在硅衬底，则应将其包含在模拟中。衬底将对光的耦合方式产生明显影响，不能像其他器件设计中经常做的那样省略。</li>
+<li><strong>品质因数</strong>（FOM）：该设计的目的是在所需波长下实现最佳耦合，选择优化品质因数作为通过1550nm处的光栅耦合器传输，优化算法将尝试最大化该值。Lumopt使用mode
+power coupling，当扫描光纤位置时，我们使用功率传输率。</li>
+<li><strong>可优化几何形状的定义：</strong>固定y坐标的多边形，并且可修改的壁的x坐标以获得最佳几何形状。</li>
+<li><strong>场监控器：</strong>场监控器DFT monitor (opt_field)
+被用于光栅中的收集光场的数据，用来计算光场的梯度，梯度被用于优化算法中。因此，场监控器的位置特别重要，因此场监控器应该覆盖全部的优化区域。</li>
+<li><strong>品质因数场监控器</strong>：因为这个场监视器被用于计算优化所需的品质因数，（模式与输出波导的基本TE模式重叠），因此应该位于适当尺寸的光栅耦合器的输出博导中。</li>
+<li><strong>光栅的高度和深度</strong>：几何对象的高度（深度）是根据制造过程选择的。这对于确保正确集合设置的3D仿真尤为重要。这是通过调整脚本中的height和etch_depth来完成的。将结构导出到GDS文件的脚本中需要用到这些值。</li>
+<li><strong>参数边界和初始值</strong>：优化算法改变参数的范围以及这些参数的初始值由initial_params定义，在调用函数时将bounds
+arrays定义为函数 FunctionDefinedPolygonI 的输入参数。</li>
+<li><strong>光谱范围</strong>:优化的光谱范围可以指定为数组“波长”以及优化中考虑的频率点数。请注意，选择大量频率点将使优化速度慢得多，并且在FDTD和Python环境之间传输大量数据时可能会导致问题。建议将此数字保持在尽可能低的水平，特别是对于
+3D 模拟。对于单频率优化，只需选择相同的开始和停止值，并将点数设置为
+1。</li>
+<li><strong>最大迭代次数</strong>
+：虽然算法能够在品质因数的梯度低于某个阈值时停止优化，但用于定义优化算法的“max_iter”变量可用于限制算法能够执行的迭代次数。</li>
+<li><strong>目标 FOM</strong> ：在定义 FOM
+时，可以使用“target_T_fwd”输入参数指定不同波长下 FOM
+的目标值。这应该是一个与波长数据长度相同的数组，并包含每个波长的目标FOM值（正向传输），该值可以小于1。对于所有波长，默认值为
+1。这使用户能够选择在设计光谱范围给出目标的Transmission。</li>
+</ul>
+<h1 id="使用自己的参数更新模型">使用自己的参数更新模型</h1>
+<p><strong>几何：</strong>
+如果您需要为光栅耦合器定义自己的几何图形，包括SOI厚度（光栅高度）和蚀刻深度，则应在基本仿真文件和优化设置Python脚本中进行相应的更改。这可能需要更改基本脚本中的对象范围和位置，即python脚本中多边形的“etch_depth”参数，其值也会传递到脚本的GDS导出部分。源、仿真区域、网格覆盖以及场梯度和
+FOM 监视器的尺寸也应相应地进行调整，以确保它们正确覆盖整个结构。</p>
+<p>在此示例中，我们使用<em>函数 FunctionDefinedPolygon</em>
+将光栅耦合器几何图形设置为多边形。或者，我们可以改用函数<em>ParametrizedGeometry</em>，从而在几何形状的设置方式上提供更大的灵活性。可以通过注释/取消注释来完成<em>FunctionDefinedPolygon</em>到<em>ParametrizedGeometry</em>的转换。</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs nix">def runGratingOptimization(bandwidth_in_nm, etch_depth, n_grates, params, working_dir):<br><br><span class="hljs-attr">bounds</span> = [(-<span class="hljs-number">4</span>,<span class="hljs-number">3</span>), <span class="hljs-comment">#&lt; Starting position (in um)</span><br> (<span class="hljs-number">0</span>,<span class="hljs-number">0.05</span>), <span class="hljs-comment">#&lt; Scaling parameter R</span><br> (<span class="hljs-number">1.5</span>,<span class="hljs-number">3</span>), <span class="hljs-comment">#&lt; Parameter a</span><br> (<span class="hljs-number">0</span>,<span class="hljs-number">2</span>)] <span class="hljs-comment">#&lt; Parameter b</span><br><br> <span class="hljs-comment"># geometry = ParameterizedGeometry(func = etched_grating, </span><br> <span class="hljs-comment"># initial_params = params, </span><br> <span class="hljs-comment"># bounds = bounds, </span><br> <span class="hljs-comment"># dx = 1e-5)</span><br> <br> <span class="hljs-attr">geometry</span> = FunctionDefinedPolygon(<span class="hljs-attr">func</span> = grating_params_pos, <br> <span class="hljs-attr">initial_params</span> = params, <br> <span class="hljs-attr">bounds</span> = bounds, <br> <span class="hljs-attr">z</span> = <span class="hljs-number">0.0</span>, <br> <span class="hljs-attr">depth</span> = <span class="hljs-number">110</span>e-<span class="hljs-number">9</span>, <br> <span class="hljs-attr">eps_out</span> = indexSiO2 ** <span class="hljs-number">2</span>, <br> <span class="hljs-attr">eps_in</span> = indexSi ** <span class="hljs-number">2</span>, <br> <span class="hljs-attr">edge_precision</span> = <span class="hljs-number">5</span>, <br> <span class="hljs-attr">dx</span> = <span class="hljs-number">1</span>e-<span class="hljs-number">5</span>)<br></code></pre></td></tr></table></figure>
+<p><strong>材料</strong>
+：在定义几何体时，通过调用函数DefinedPolygon（此处它们表示为折射率的平方）），模拟文件中中包含的材料（使几何体的材料（core）和围绕其周围的材料（cladding））的介电常数应传递给优化器。波导的折射率（非介电常数）（与可优化的几何体相同）也应在base仿真脚本中定义。</p>
+<p><strong>光栅几何形状</strong>
+：我们使用圆形光栅进行3D模拟和GDS导出。可以使用更复杂的光栅形状，类似于<a target="_blank" rel="noopener" href="https://kx.lumerical.com/t/compact-focusing-grating-couplers-for-silicon-on-insulator-integrated-circuits/6025/2">聚焦光栅耦合器</a>。</p>
+<h1 id="进一步推动模型">进一步推动模型</h1>
+<p>针对想要进一步自定义模型的用户的信息和提示</p>
+<p><strong>锥度优化</strong>
+：3-D耦合器模型使用线性锥度部分连接到光栅开始时的集成波导。通过优化锥度形状，还可以提高耦合效率（参见
+SOI 锥度设计）。</p>
+<p><strong>高效光栅耦合器</strong>
+：使用更复杂的光栅和混合的2-D/3-D优化策略，使用FDTD设计了在大带宽上效率高于90%的耦合器（参见参考文献）</p>
+<h1 id="更多资源">更多资源</h1>
+<p>Additional documentation, examples, and training material</p>
+<h3 id="related-publications">Related publications</h3>
+<ol type="1">
+<li>R. Marchetti, C. Lacava, A. Khokhar, X. Chen, I. Cristiani, D. J.
+Richardson, G. T. Reed, P. Petropoulos and P. Minzioni, “High-efficiency
+grating-couplers: demonstration of a new design strategy,” Scientific
+Reports 7, Article number: 16670, 2017.
+(https://www.nature.com/articles/s41598-017-16505-z);</li>
+<li>Neil V. Sapra et.al, “Inverse design and demonstration of broadband
+grating couplers” IEEE Journal of Selected Topics in Quantum Electronics
+( Volume: 25, Issue: 3, May-June 2019 )</li>
+<li>D. Taillaert, F. Van Laere, M. Ayre, W. Bogaerts, D. Van Thourhout,
+P. Bienstman and R. Baets, “Grating Couplers for Coupling between
+Optical Fibers and Nanophotonic Waveguides,” Japanese Journal of Applied
+Physics, vol. 45, no. 8a, pp. 6071-6077, 2006.</li>
+<li>T. Watanabe, M. Ayata, U. Koch, Y. Fedoryshyn and J. Leuthold,
+“Perpendicular Grating Coupler Based on a Blazed Antiback-Reflection
+Structure,” Journal of Lightwave Technology, vol. 35, no. 21, pp. 4663-
+4669, 2017.</li>
+</ol>
+<ul>
+<li>https://support.lumerical.com/hc/en-us/articles/360036618513)</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Lumerical/">Lumerical</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Lumerical/">Lumerical</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Grating-Coupler/">Grating Coupler</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/13/Lumerical/mode%20%E8%84%9A%E6%9C%AC/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">inverse design of grating coupler -- script learning</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/13/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E7%94%B5%E6%9C%9F%E6%9C%AB/">
+                        <span class="hidden-mobile">期末复习</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        new Waline(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    <span>访问总量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span>总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+ <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+<script
+  src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+  charset="utf-8"
+></script>
+
+<script>
+  function typing(id, title){
+      var typed = new Typed('#' + id, {
+          strings: [
+            '  ',
+            title + "&nbsp;",
+          ],
+          cursorChar: "_",
+          typeSpeed: 70,
+          loop: false,
+      });
+      typed.stop();
+      $(document).ready(function () {
+          $(".typed-cursor").addClass("h2");
+          typed.start();
+      });
+  }
+
+  
+      typing("subtitle", "Inverse Design of Grating Coupler")  // 打印文章标题
+  
+</script>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->
+
+<!-- typing("hitokoto", data.hitokoto + '<br /> <h5>' + '——' + data.from + '</h5>')
+typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '「' + data.from + '」' + '</h5>') -->
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->

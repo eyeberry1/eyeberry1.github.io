@@ -1,0 +1,691 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="文献标题: 硅基光栅耦合器的研究进展 研究背景:  电互连由于电子物理特性的局限,无法适应目前日益膨胀数据传输需求. 光子在传输过程中信号较稳定,传输容量大,硅基光子器件与CMOS工艺兼容、抗辐射多种优点.  概念补充知识: 光传递信号的机理是波阻抗变换: 光耦合结构常用两种耦合方式:  端面水平耦合结构 片上垂直耦合结构  耦合器根据光纤和硅芯片的相对位置，一般可分为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文献阅读(一):硅基光栅耦合器的研究进展">
+<meta property="og:url" content="http://example.com/2022/01/28/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%80%EF%BC%89%E7%A1%85%E5%9F%BA%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E7%A0%94%E7%A9%B6%E8%BF%9B%E5%B1%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="文献标题: 硅基光栅耦合器的研究进展 研究背景:  电互连由于电子物理特性的局限,无法适应目前日益膨胀数据传输需求. 光子在传输过程中信号较稳定,传输容量大,硅基光子器件与CMOS工艺兼容、抗辐射多种优点.  概念补充知识: 光传递信号的机理是波阻抗变换: 光耦合结构常用两种耦合方式:  端面水平耦合结构 片上垂直耦合结构  耦合器根据光纤和硅芯片的相对位置，一般可分为">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/01/28/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%80%EF%BC%89%E7%A1%85%E5%9F%BA%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E7%A0%94%E7%A9%B6%E8%BF%9B%E5%B1%95/image-20220128233206175.png">
+<meta property="og:image" content="http://example.com/2022/01/28/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%80%EF%BC%89%E7%A1%85%E5%9F%BA%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E7%A0%94%E7%A9%B6%E8%BF%9B%E5%B1%95/v2-1bc6c7450bd56b4ba82f7d2deff1feaf_1440w-16445018082512.png">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-784d1fc87b16e6e9b1ef650e8cf59d52_r.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-4acdc49dce0568d8a730eb39bde23dd6_r.jpg">
+<meta property="og:image" content="https://pica.zhimg.com/v2-cf4027c27f3cb78def1f71228e91a262_r.jpg?source=1940ef5c">
+<meta property="article:published_time" content="2022-01-28T15:47:17.000Z">
+<meta property="article:modified_time" content="2022-06-05T14:20:34.180Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="大创">
+<meta property="article:tag" content="文献">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/01/28/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%80%EF%BC%89%E7%A1%85%E5%9F%BA%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E7%A0%94%E7%A9%B6%E8%BF%9B%E5%B1%95/image-20220128233206175.png">
+  
+  
+  <title>文献阅读(一):硅基光栅耦合器的研究进展 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>eyeberry</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talk/">
+                <i class="iconfont icon-kakao-talk-fill"></i>
+                Talk
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+        style="background: url('/img/page.jpg') no-repeat center center;
+          background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="文献阅读(一):硅基光栅耦合器的研究进展">
+              
+            </span>
+
+<!-- 添加的代码 -->
+<!-- ========================================================================= -->
+            
+<!-- ========================================================================= -->
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-28 23:47" pubdate>
+        January 28, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">文献阅读(一):硅基光栅耦合器的研究进展</h1>
+            
+            <div class="markdown-body">
+              <h1 id="文献标题-硅基光栅耦合器的研究进展">文献标题:
+硅基光栅耦合器的研究进展</h1>
+<h2 id="研究背景">研究背景:</h2>
+<ol type="1">
+<li><strong>电互连</strong>由于电子物理特性的局限,无法适应目前日益膨胀数据传输需求.</li>
+<li><strong>光子</strong>在传输过程中信号较稳定,传输容量大,硅基光子器件与CMOS工艺兼容、抗辐射多种优点.</li>
+</ol>
+<h2 id="概念补充知识">概念补充知识:</h2>
+<p>光传递信号的机理是波阻抗变换:</p>
+<p>光耦合结构常用两种耦合方式:</p>
+<ol type="1">
+<li>端面水平耦合结构</li>
+<li>片上垂直耦合结构</li>
+</ol>
+<p>耦合器根据光纤和硅芯片的相对位置，一般可分为两种。一种是平面耦合，也称边缘耦合(Edge
+Coupler)，指光纤和硅芯片位于同一平面，位于芯片的侧面，通过锥形波导等方式进行耦合。另一种是垂直耦合，也就是所讲的光栅耦合(Grating
+Coupler，GC)。</p>
+<h2 id="光栅耦合器的基本原理">光栅耦合器的基本原理</h2>
+<p>入射介值和出射介值折射率分别为<span class="math inline">\(n_1\)</span>,<span class="math inline">\(n_2\)</span></p>
+<p>光栅矢量为<span class="math inline">\(K\)</span>,大小为<span class="math inline">\(K=\frac{2\pi}{p}\)</span>,其中<span class="math inline">\(p\)</span>为光栅的周期</p>
+<p>入射光波矢为<span class="math inline">\(K_{in}\)</span>,大小为<span class="math inline">\(K_{in}=\frac{2\pi n_1}{\lambda}\)</span>,<span class="math inline">\(\lambda\)</span>为光波长</p>
+<p><span class="math inline">\(K_{in}\)</span>在z方向的投影分量为<span class="math inline">\(K_{in,z}\)</span>,大小为<span class="math inline">\(K_{in,z}=K_{in}sinθ\)</span>,</p>
+<p><span class="math inline">\(θ\)</span>为入射光波矢偏离光栅法线的角度</p>
+<p>此时各级衍射光波矢在z方向的投影可以通过<strong>布拉格条件</strong>表示为:
+<span class="math display">\[
+K_{m,z}= K_{in,z}+mK (m = 0;±1;±2;±3;···)
+\]</span></p>
+<p><span class="math inline">\(m\)</span>表示表示衍射级数.
+该公式的<strong>具体含义</strong>为:</p>
+<p>m级衍射波矢在z方向的投影分量等于入射波矢在z方向的投影分量与m倍的光栅矢量之和</p>
+<p>因此通过衍射波矢在z方向的投影分量大小和衍射波矢本身的大小可以求出各级衍射波矢的衍射角度</p>
+<figure>
+<img src="/2022/01/28/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%80%EF%BC%89%E7%A1%85%E5%9F%BA%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E7%A0%94%E7%A9%B6%E8%BF%9B%E5%B1%95/image-20220128233206175.png" srcset="/img/loading.gif" lazyload alt="image-20220128233206175">
+<figcaption aria-hidden="true">image-20220128233206175</figcaption>
+</figure>
+<p>光栅有效折射率<span class="math inline">\(n_{eff}\)</span>的确定</p>
+<p>根据下式: <span class="math display">\[
+n_{eff}=dc*n_{eff1}+(1-dc)*n_{eff2}
+\]</span> <span class="math inline">\(dc\)</span>(duty
+cycl)表示占空比,<span class="math inline">\(n_{eff1}\)</span>表示未刻蚀部分波导的有效折射率,</p>
+<p><span class="math inline">\(n_{eff2}\)</span>表示刻蚀部分波导的有效折射率</p>
+<figure>
+<img src="/2022/01/28/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%80%EF%BC%89%E7%A1%85%E5%9F%BA%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E7%A0%94%E7%A9%B6%E8%BF%9B%E5%B1%95/v2-1bc6c7450bd56b4ba82f7d2deff1feaf_1440w-16445018082512.png" srcset="/img/loading.gif" lazyload alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h2 id="影响光栅耦合器性能的几个因素">影响光栅耦合器性能的几个因素</h2>
+<ul>
+<li><p><strong>光的偏振方向</strong> TM mode和TE
+mode在波导中传输时具有不同的有效折射率，因此光栅只能耦合特定偏振方向的光。</p></li>
+<li><p><strong>光栅周期</strong>
+根据之前公式，光栅周期越大，衍射的中心波长(刚好满足Bragg条件的波长)也越大。</p></li>
+<li><p><strong>占空比</strong>
+占空比越大，有效折射率也越大(宽波导较窄波导，更接近与自由传播，因此有效折射率大)，因此中心波长也越大。</p></li>
+<li><p><strong>刻蚀深度</strong> 刻蚀深度能影响 <span class="math inline">\(n_{eff2}\)</span>，刻蚀越深,<span class="math inline">\(n_{eff2}\)</span> 越小，<span class="math inline">\(n_{eff}\)</span>
+也减小，导致中心波长减小。</p></li>
+<li><p><strong>入射角</strong> 入射角越大，中心波长越小。</p></li>
+</ul>
+<h2 id="复习内容">复习内容:</h2>
+<p><strong>光栅衍射</strong></p>
+<p>光栅常量:<span class="math inline">\(d=a+b\)</span></p>
+<p>光栅方程(明纹):$dsin=k,k=0,1,2... $</p>
+<p>缺级<span class="math inline">\(k=k&#39;\frac{d}{a},k&#39;=1,2,3...\)</span></p>
+<p>缺级原因:</p>
+<p>这是因为光经过光栅时，不仅每个狭缝发生衍射，而且缝与缝之间的衍射光波相遇叠加时还要发生干涉。</p>
+<p><img src="https://pic3.zhimg.com/v2-784d1fc87b16e6e9b1ef650e8cf59d52_r.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>倾斜入射的光栅公式：<span class="math inline">\(d(sin\varphi\pm
+sin\theta)=\pm k \lambda ,k=0,1,2...\)</span></p>
+<p><img src="https://pic3.zhimg.com/v2-4acdc49dce0568d8a730eb39bde23dd6_r.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><strong>布拉格衍射</strong></p>
+<p>布拉格衍射公式:<span class="math inline">\(2dsin\theta=n\lambda\)</span>,其中n是衍射级数，d是不同层之间的间距。</p>
+<p><img src="https://pica.zhimg.com/v2-cf4027c27f3cb78def1f71228e91a262_r.jpg?source=1940ef5c" srcset="/img/loading.gif" lazyload></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%88%9B%E6%96%87%E7%8C%AE/">大创文献</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%88%9B/">大创</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%96%87%E7%8C%AE/">文献</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/01/29/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB-%E4%BA%8C-%E7%A1%85%E5%9F%BA%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">文献阅读(二)硅基光栅耦合器</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/24/%E5%A4%9A%E5%85%83%E5%87%BD%E6%95%B0%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%9E%81%E9%99%90/">
+                        <span class="hidden-mobile">多元函数概念及极限</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        new Waline(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    <span>访问总量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span>总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+ <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+<script
+  src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+  charset="utf-8"
+></script>
+
+<script>
+  function typing(id, title){
+      var typed = new Typed('#' + id, {
+          strings: [
+            '  ',
+            title + "&nbsp;",
+          ],
+          cursorChar: "_",
+          typeSpeed: 70,
+          loop: false,
+      });
+      typed.stop();
+      $(document).ready(function () {
+          $(".typed-cursor").addClass("h2");
+          typed.start();
+      });
+  }
+
+  
+      typing("subtitle", "文献阅读(一):硅基光栅耦合器的研究进展")  // 打印文章标题
+  
+</script>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->
+
+<!-- typing("hitokoto", data.hitokoto + '<br /> <h5>' + '——' + data.from + '</h5>')
+typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '「' + data.from + '」' + '</h5>') -->
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->

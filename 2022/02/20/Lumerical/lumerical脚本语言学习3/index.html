@@ -1,0 +1,666 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="参考文档(61条消息) FDTD快速入门之Lumerical脚本语言Pickup（三）结构(Structure)搭建_ArcSight的博客-CSDN博客 FDTD solution中的仿真模型包含两个核心部分：材料(material)和几何结构(structure)。通常用包含吸收参数的材料的复折射率控制material属性，而用3D模型参数控制structure属性。下面介绍几种常用的s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lumerical脚本语言学习(三)-结构搭建">
+<meta property="og:url" content="http://example.com/2022/02/20/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A03/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="参考文档(61条消息) FDTD快速入门之Lumerical脚本语言Pickup（三）结构(Structure)搭建_ArcSight的博客-CSDN博客 FDTD solution中的仿真模型包含两个核心部分：材料(material)和几何结构(structure)。通常用包含吸收参数的材料的复折射率控制material属性，而用3D模型参数控制structure属性。下面介绍几种常用的s">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/02/20/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A03/image-20220220162011002.png">
+<meta property="article:published_time" content="2022-02-20T08:13:58.028Z">
+<meta property="article:modified_time" content="2022-02-20T09:03:43.612Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Lumerical">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/02/20/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A03/image-20220220162011002.png">
+  
+  
+  <title>Lumerical脚本语言学习(三)-结构搭建 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>eyeberry</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talk/">
+                <i class="iconfont icon-kakao-talk-fill"></i>
+                Talk
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+        style="background: url('/img/page.jpg') no-repeat center center;
+          background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Lumerical脚本语言学习(三)-结构搭建">
+              
+            </span>
+
+<!-- 添加的代码 -->
+<!-- ========================================================================= -->
+            
+<!-- ========================================================================= -->
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-20 16:13" pubdate>
+        February 20, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      34 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Lumerical脚本语言学习(三)-结构搭建</h1>
+            
+            <div class="markdown-body">
+              <p>参考文档<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44224652/article/details/112712634?spm=1001.2014.3001.5502">(61条消息)
+FDTD快速入门之Lumerical脚本语言Pickup（三）结构(Structure)搭建_ArcSight的博客-CSDN博客</a></p>
+<p>FDTD
+solution中的仿真模型包含两个核心部分：材料(material)和几何结构(structure)。通常用<strong>包含吸收参数的材料的复折射率</strong>控制material属性，而用<strong>3D模型参数</strong>控制structure属性。下面介绍几种常用的structure。</p>
+<h1 id="一长方体矩形rectangle">一、（长方体）矩形（Rectangle）</h1>
+<figure class="highlight applescript"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><pre><code class="hljs applescript">addrect;<br><span class="hljs-keyword">set</span>(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;rect&quot;</span>);<span class="hljs-comment">#名称                   </span><br><span class="hljs-keyword">set</span>(<span class="hljs-string">&quot;material&quot;</span>,<span class="hljs-string">&quot;SiO2 (Glass) - Palik&quot;</span>);<span class="hljs-comment">#材料</span><br><span class="hljs-keyword">set</span>(<span class="hljs-string">&quot;render type&quot;</span>,<span class="hljs-string">&quot;wireframe&quot;</span>);   <span class="hljs-comment"># 渲染方式：线框，减小显卡压力</span><br><span class="hljs-keyword">set</span>(<span class="hljs-string">&quot;x&quot;</span>,<span class="hljs-number">0</span>);<span class="hljs-comment">#设置x中心点坐标   </span><br><span class="hljs-keyword">set</span>(<span class="hljs-string">&quot;y&quot;</span>,<span class="hljs-number">0</span>);<span class="hljs-comment">#设置y中心点坐标</span><br><span class="hljs-keyword">set</span>(<span class="hljs-string">&quot;x span&quot;</span>,<span class="hljs-number">1e-6</span>);<span class="hljs-comment">#设置x方向宽度</span><br><span class="hljs-keyword">set</span>(<span class="hljs-string">&quot;y span&quot;</span>,<span class="hljs-number">1e-6</span>);<span class="hljs-comment">#设置y方向宽度</span><br><span class="hljs-keyword">set</span>(<span class="hljs-string">&quot;z max&quot;</span>,<span class="hljs-number">1e-7</span>);<span class="hljs-comment">#设置z方向最大值</span><br><span class="hljs-keyword">set</span>(<span class="hljs-string">&quot;z min&quot;</span>,<span class="hljs-number">-1e-6</span>);<span class="hljs-comment">#设置z方向最小值</span><br><span class="hljs-keyword">set</span>(<span class="hljs-string">&quot;first axis&quot;</span>,<span class="hljs-string">&quot;x&quot;</span>);<span class="hljs-comment">#设置第一转轴</span><br><span class="hljs-keyword">set</span>(<span class="hljs-string">&quot;rotation 1&quot;</span>,<span class="hljs-number">45</span>);<span class="hljs-comment">#设置第一旋转角</span><br><br></code></pre></td></tr></table></figure>
+<figure>
+<img src="/2022/02/20/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A03/image-20220220162011002.png" srcset="/img/loading.gif" lazyload alt="效果展示">
+<figcaption aria-hidden="true">效果展示</figcaption>
+</figure>
+<p>下面详细介绍每段代码的用途：
+addrect：随机生成一个一定大小，材料为一定折射率介电材料的矩形模型。</p>
+<p>set(“name”,“rect”)：名称。设定矩形的名称为“rect”</p>
+<p>set(“material”,“SiO2 (Glass) -
+Palik”)：材料——这里的材料必须是材料库中存在的，且必须按照材料库中原有的名字命名。设定矩形的材料为二氧化硅</p>
+<p>set(“render
+type”,“wireframe”)：渲染方式——有detailed和wireframe两种，系统默认为detailed，如有需要，可改为wireframe。设定矩形的渲染方式为线框</p>
+<p>set(“x”,“0”)：中心坐标(x轴)，类似地还可设置y和z的中心坐标。设定矩形的中心坐标（x轴）为0</p>
+<p>set(“x
+span”,“1e-6”)：x轴向宽度（或范围），类似地还可设置y和z的轴向宽度。设定矩形的x轴向宽度为1e-6，即1微米</p>
+<p>set(“z max”,“1e-7”)：z方向最大值，类似地还有z min、x max、x min、y
+max、y min。设定矩形的z方向最大为1e-7，即100纳米</p>
+<p>set(“first axis”,“x”)：第一转轴。设定矩形的第一转轴(first
+axis)为x轴</p>
+<p>set(“rotation
+1”,45)：绕第一转轴的旋转角。设定矩形绕x轴的转角为45°</p>
+<h1 id="二多边形柱体ploygon">二、多边形柱体（Ploygon）</h1>
+<h2 id="多边形柱">1.多边形柱</h2>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-attribute">um</span>=1e-6;<br><span class="hljs-attribute">nm</span>=1e-9;<br>vtx=[2,0;1,1;-1,1;<br>     -2,0;-1,-1;1,-1]*um;  #向量组<br>addpoly;<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;poly&quot;</span>);#名称<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;index&quot;</span>,1.5);#折射率<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;vertices&quot;</span>,vtx);#控制向量组<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;x&quot;</span>,0.5*um);#中心坐标<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;y&quot;</span>,1*um);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;z&quot;</span>,-0.5*um);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;z span&quot;</span>,0.4*um);#z方向宽度<br></code></pre></td></tr></table></figure>
+<p><strong>addpoly</strong>：添加一个参数随机的多边形结构。</p>
+<p><strong>set(“index”,1.5)</strong>：折射率。多边形材料为介电材料，折射率为1.5</p>
+<p><strong>set(“vertices”,vtx)</strong>：向量组。设置多边形的xy面二维形状，由传入的向量组vtx中的参数控制</p>
+<h2 id="三角形柱">2.三角形柱</h2>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">um</span>=<span class="hljs-number">1</span>e-<span class="hljs-number">6</span>;<br><span class="hljs-attribute">nm</span>=<span class="hljs-number">1</span>e-<span class="hljs-number">9</span>;<br><span class="hljs-attribute">vtx</span>=[<span class="hljs-number">3</span>,<span class="hljs-number">0</span>;<span class="hljs-number">0</span>,<span class="hljs-number">4</span>;-<span class="hljs-number">2</span>,<span class="hljs-number">0</span>]*um;  #向量组<br><span class="hljs-attribute">addtriangle</span>;<br><span class="hljs-attribute">set</span>(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;triangle&quot;</span>);#名称<br><span class="hljs-attribute">set</span>(<span class="hljs-string">&quot;index&quot;</span>,<span class="hljs-number">1</span>.<span class="hljs-number">5</span>);#折射率<br><span class="hljs-attribute">set</span>(<span class="hljs-string">&quot;vertices&quot;</span>,vtx);#控制向量组<br><span class="hljs-attribute">set</span>(<span class="hljs-string">&quot;x&quot;</span>,<span class="hljs-number">0</span>.<span class="hljs-number">5</span>*um);#中心坐标<br><span class="hljs-attribute">set</span>(<span class="hljs-string">&quot;y&quot;</span>,<span class="hljs-number">1</span>*um);<br><span class="hljs-attribute">set</span>(<span class="hljs-string">&quot;z&quot;</span>,-<span class="hljs-number">0</span>.<span class="hljs-number">5</span>*um);<br><span class="hljs-attribute">set</span>(<span class="hljs-string">&quot;z span&quot;</span>,<span class="hljs-number">0</span>.<span class="hljs-number">4</span>*um);#z方向宽度<br><br></code></pre></td></tr></table></figure>
+<h1 id="三椭圆柱体circle">三、（椭）圆柱体（Circle）</h1>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-attribute">um</span>=1e-6;<br><span class="hljs-attribute">nm</span>=1e-9;<br><br>addcircle;<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;circle&quot;</span>);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;material&quot;</span>,<span class="hljs-string">&quot;Au (Gold) - Palik&quot;</span>);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;x&quot;</span>,0);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;y&quot;</span>,0);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;z&quot;</span>,0);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;z span&quot;</span>,400*nm);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;radius&quot;</span>,600*nm);#半径/x轴半径<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;make ellipsoid&quot;</span>,1);#生成椭圆<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;radius 2&quot;</span>,800*nm);#y轴半径<br><br></code></pre></td></tr></table></figure>
+<p>set(“radius”,600<em>nm)：半径/x轴半径。若是圆柱体，radius为圆的半径；若是椭圆柱体，radius为椭圆在x轴方向的半轴长（可能是长半轴或短半轴，由radius和radius的相对大小决定）。这里表示椭圆短半轴为600nm</em></p>
+<p>set(“make ellipsoid”,1)：生成椭圆。“make
+ellipsoid”可取两个值：0和1。其中，0表示生成的为圆柱体，1表示生成椭圆柱体（也可以认为1是enable椭圆参数radius
+2，为0则radius
+2被disable，只生成半径为radius的圆柱）。这里参数为1表示生成一个椭圆柱体。</p>
+<p>set(“radius
+2”,800<em>nm)：y轴半径，椭圆的第二半轴长。生成一个第二半轴长为800</em>nm的椭圆柱体。</p>
+<h1 id="四椭球体sphere">四、（椭）球体（Sphere）</h1>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-attribute">um</span>=1e-6;<br><span class="hljs-attribute">nm</span>=1e-9;<br><br>addsphere;<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;sphere&quot;</span>);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;index&quot;</span>,1.5);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;x&quot;</span>,0);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;y&quot;</span>,0);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;z&quot;</span>,0);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;radius&quot;</span>,200*nm);#半径/x轴半径<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;make ellipsoid&quot;</span>,1);#生成椭球<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;radius 2&quot;</span>,400*nm);#y轴半径<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;radius 3&quot;</span>,2*um);#z轴半径<br><br></code></pre></td></tr></table></figure>
+<p>球体的代码和椭圆柱的代码十分相似，区别仅在于多了一个第三半径（radius
+3）（事实上是控制了z轴方向的大小）</p>
+<h1 id="五圆环体ring">五、圆环（体）（Ring）</h1>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-attribute">um</span>=1e-6;<br><span class="hljs-attribute">nm</span>=1e-9;<br><br>addring;<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;ring&quot;</span>);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;index&quot;</span>,1.5);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;x&quot;</span>,0);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;y&quot;</span>,0);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;z&quot;</span>,0);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;z span&quot;</span>,600*nm);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;outer radius&quot;</span>,400*nm);#外圆半径<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;inner radius&quot;</span>,200*nm);#内圆半径<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;theta start&quot;</span>,0);#起始角<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;theta stop&quot;</span>,135);#终止角<br><br></code></pre></td></tr></table></figure>
+<h1 id="六角椎体pyramid">六、角椎体（Pyramid）</h1>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-attribute">um</span>=1e-6;<br><span class="hljs-attribute">nm</span>=1e-9;<br><br>addpyramid;<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;pyramid&quot;</span>);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;index&quot;</span>,1.5);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;x&quot;</span>,0);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;x span bottom&quot;</span>,600*nm);#梯形下底长（x轴向）<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;x span top&quot;</span>,100*nm);#梯形上底长（x轴向）<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;y&quot;</span>,0);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;y span bottom&quot;</span>,400*nm);#梯形下底长（y轴向）<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;y span top&quot;</span>,200*nm);#梯形上底长（y轴向）<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;z&quot;</span>,0);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;z span&quot;</span>,600*nm);<br><br></code></pre></td></tr></table></figure>
+<p>其中参数"x span bottom"、“y span bottom”、“x span top”、"y span
+top"分别控制该角锥体下、上底面的矩形大小。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Lumerical/">Lumerical</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Lumerical/">Lumerical</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数字电路-introduction concept</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/02/20/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A02/">
+                        <span class="hidden-mobile">Lumerical脚本语言学习(二)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        new Waline(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    <span>访问总量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span>总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+ <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+<script
+  src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+  charset="utf-8"
+></script>
+
+<script>
+  function typing(id, title){
+      var typed = new Typed('#' + id, {
+          strings: [
+            '  ',
+            title + "&nbsp;",
+          ],
+          cursorChar: "_",
+          typeSpeed: 70,
+          loop: false,
+      });
+      typed.stop();
+      $(document).ready(function () {
+          $(".typed-cursor").addClass("h2");
+          typed.start();
+      });
+  }
+
+  
+      typing("subtitle", "Lumerical脚本语言学习(三)-结构搭建")  // 打印文章标题
+  
+</script>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->
+
+<!-- typing("hitokoto", data.hitokoto + '<br /> <h5>' + '——' + data.from + '</h5>')
+typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '「' + data.from + '」' + '</h5>') -->
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->

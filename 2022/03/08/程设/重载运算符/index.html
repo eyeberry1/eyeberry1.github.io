@@ -1,0 +1,672 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="记录一道初学很头疼的题 题目所给代码 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465void g()&amp;#123;  Int a&#x3D;0;  Int b(1);  Int c(2.5);  Int d &#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程设记录(二)--一道很全面的重载题目">
+<meta property="og:url" content="http://example.com/2022/03/08/%E7%A8%8B%E8%AE%BE/%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="记录一道初学很头疼的题 题目所给代码 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465void g()&amp;#123;  Int a&#x3D;0;  Int b(1);  Int c(2.5);  Int d &#x3D;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-08T05:54:37.232Z">
+<meta property="article:modified_time" content="2022-03-23T11:38:17.397Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>程设记录(二)--一道很全面的重载题目 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>eyeberry</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talk/">
+                <i class="iconfont icon-kakao-talk-fill"></i>
+                Talk
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+        style="background: url('/img/page.jpg') no-repeat center center;
+          background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="程设记录(二)--一道很全面的重载题目">
+              
+            </span>
+
+<!-- 添加的代码 -->
+<!-- ========================================================================= -->
+            
+<!-- ========================================================================= -->
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-08 13:54" pubdate>
+        March 8, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      67 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">程设记录(二)--一道很全面的重载题目</h1>
+            
+            <div class="markdown-body">
+              <p>记录一道初学很头疼的题</p>
+<h1 id="题目所给代码">题目所给代码</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">g</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>  Int a=<span class="hljs-number">0</span>;<br>  <span class="hljs-function">Int <span class="hljs-title">b</span><span class="hljs-params">(<span class="hljs-number">1</span>)</span></span>;<br>  <span class="hljs-function">Int <span class="hljs-title">c</span><span class="hljs-params">(<span class="hljs-number">2.5</span>)</span></span>;<br>  Int d = <span class="hljs-number">99.5</span>;<br><br>  cout &lt;&lt;  a &lt;&lt; endl;<br>  cout &lt;&lt;  b &lt;&lt; endl;<br>  cout &lt;&lt; b.<span class="hljs-built_in">getI</span>() &lt;&lt; endl;  <br>  cout &lt;&lt;  c &lt;&lt; endl;<br>  cout &lt;&lt;  d &lt;&lt; endl;<br>  <br>  d += <span class="hljs-number">1</span>;<br>  d += <span class="hljs-number">1.5</span>;<br>  cout &lt;&lt;  c+d &lt;&lt; endl;<br>  cout &lt;&lt;  <span class="hljs-number">1</span>+c &lt;&lt; endl;<br>  cout &lt;&lt;  c+<span class="hljs-number">1</span> &lt;&lt; endl;<br>  cout &lt;&lt;  <span class="hljs-number">1.5</span>+c &lt;&lt; endl;<br>  cout &lt;&lt;  c+<span class="hljs-number">1.5</span> &lt;&lt; endl;<br><br>  cout &lt;&lt;  a + b + c + d &lt;&lt; endl;<br><br>  d -= <span class="hljs-number">1</span>;<br>  d -= <span class="hljs-number">1.5</span>;<br>  cout &lt;&lt;  c-d &lt;&lt; endl;<br>  cout &lt;&lt;  <span class="hljs-number">1</span>-c &lt;&lt; endl;<br>  cout &lt;&lt;  c<span class="hljs-number">-1</span> &lt;&lt; endl;<br>  cout &lt;&lt;  <span class="hljs-number">1.5</span>-c &lt;&lt; endl;<br>  cout &lt;&lt;  c<span class="hljs-number">-1.5</span> &lt;&lt; endl;<br><br>  d *= <span class="hljs-number">1</span>;<br>  d *= <span class="hljs-number">1.5</span>;<br>  cout &lt;&lt;  c*d &lt;&lt; endl;<br>  cout &lt;&lt;  <span class="hljs-number">9</span>*c &lt;&lt; endl;<br>  cout &lt;&lt;  c*<span class="hljs-number">9</span> &lt;&lt; endl;<br>  cout &lt;&lt;  <span class="hljs-number">19.4</span>*c &lt;&lt; endl;<br>  cout &lt;&lt;  c*<span class="hljs-number">19.4</span> &lt;&lt; endl;<br>  d /= <span class="hljs-number">2</span>;<br>  d /= <span class="hljs-number">2.5</span>;<br>  cout &lt;&lt;  d/c &lt;&lt; endl;<br>  cout &lt;&lt;  <span class="hljs-number">2</span>/c &lt;&lt; endl;<br>  cout &lt;&lt;  c/<span class="hljs-number">2</span> &lt;&lt; endl;<br>  cout &lt;&lt;  <span class="hljs-number">2.5</span>/c &lt;&lt; endl;<br>  cout &lt;&lt;  c/<span class="hljs-number">2.5</span> &lt;&lt; endl;<br><br>  cout &lt;&lt;  b%c &lt;&lt; endl;<br>  cout &lt;&lt;  <span class="hljs-number">5</span>%c &lt;&lt; endl;<br>  cout &lt;&lt;  c%<span class="hljs-number">2</span> &lt;&lt; endl;<br><br>  cout &lt;&lt;  c++ &lt;&lt; endl;<br>  cout &lt;&lt;  ++c &lt;&lt; endl;<br>  cout &lt;&lt;  c-- &lt;&lt; endl;<br>  cout &lt;&lt;  --c &lt;&lt; endl;    <br>  cout &lt;&lt;  -c &lt;&lt; endl;<br>  <br>  <span class="hljs-keyword">int</span> c1 = c;<br>  cout &lt;&lt; c1 &lt;&lt; endl;<br>  c1 = c;  <br>  cout &lt;&lt; c1 &lt;&lt; endl;  <br><br>  cin &gt;&gt; d;<br>  cout &lt;&lt;  d &lt;&lt; endl;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h1 id="任小狗的代码">任小狗的代码(:)</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iomanip&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Int</span></span><br><span class="hljs-class">&#123;</span><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">int</span> i;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getI</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>&#123; <span class="hljs-keyword">return</span> i; &#125;<br>    <span class="hljs-built_in">Int</span>(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ii):<span class="hljs-built_in">i</span>(ii)&#123;&#125;<br>    <span class="hljs-built_in">Int</span>(<span class="hljs-keyword">const</span> Int&amp; ii):<span class="hljs-built_in">i</span>(ii.<span class="hljs-built_in">getI</span>())&#123;&#125;<br>    Int <span class="hljs-keyword">operator</span>+=(<span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> ii)&#123;<br>        i +=ii;<br>        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>    &#125;<br>    Int <span class="hljs-keyword">operator</span>-=(<span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> ii)&#123;<br>        i -=ii;<br>        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>    &#125;<br>    Int <span class="hljs-keyword">operator</span>*=(<span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> ii)&#123;<br>        i *=ii;<br>        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>    &#125;<br>    Int <span class="hljs-keyword">operator</span>/=(<span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> ii)&#123;<br>        i /=ii;<br>        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">operator</span> <span class="hljs-title">int</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">int</span>)  i;<br>    &#125;<br><br>    <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ii)&#123;<br>        <span class="hljs-keyword">return</span> i + ii;       <br>    &#125;<br>    <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> Int ii)&#123;<br>        <span class="hljs-keyword">return</span> i + ii.<span class="hljs-built_in">getI</span>();       <br>    &#125;<br>    <span class="hljs-keyword">double</span> <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> ii)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in"><span class="hljs-keyword">double</span></span>(i) + ii;       <br>    &#125;<br>    <br>    <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>-(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ii)&#123;<br>        <span class="hljs-keyword">return</span> i - ii;       <br>    &#125;<br>    <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>-(<span class="hljs-keyword">const</span> Int ii)&#123;<br>        <span class="hljs-keyword">return</span> i - ii.<span class="hljs-built_in">getI</span>();       <br>    &#125;<br>    <span class="hljs-keyword">double</span> <span class="hljs-keyword">operator</span>-(<span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> ii)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in"><span class="hljs-keyword">double</span></span>(i) - ii;       <br>    &#125;<br>    <br>    <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>*(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ii)&#123;<br>        <span class="hljs-keyword">return</span> i * ii;       <br>    &#125;<br>    <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>*(<span class="hljs-keyword">const</span> Int ii)&#123;<br>        <span class="hljs-keyword">return</span> i * ii.<span class="hljs-built_in">getI</span>();       <br>    &#125;<br>    <span class="hljs-keyword">double</span> <span class="hljs-keyword">operator</span>*(<span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> ii)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in"><span class="hljs-keyword">double</span></span>(i) * ii;       <br>    &#125;<br><br>    <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>/(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ii)&#123;<br>        <span class="hljs-keyword">return</span> i / ii;       <br>    &#125;<br>    <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>/(<span class="hljs-keyword">const</span> Int ii)&#123;<br>        <span class="hljs-keyword">return</span> i / ii.<span class="hljs-built_in">getI</span>();       <br>    &#125;<br>    <span class="hljs-keyword">double</span> <span class="hljs-keyword">operator</span>/(<span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> ii)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in"><span class="hljs-keyword">double</span></span>(i) / ii;       <br>    &#125;<br>    <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>%(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ii)&#123;<br>        <span class="hljs-keyword">return</span> i % ii;       <br>    &#125;<br>    <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>%(<span class="hljs-keyword">const</span> Int ii)&#123;<br>        <span class="hljs-keyword">return</span> i % ii.<span class="hljs-built_in">getI</span>();       <br>    &#125;<br>    <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>++()&#123;<br>        i++;<br>        <span class="hljs-keyword">return</span> i;<br>    &#125;<br>    <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>++(<span class="hljs-keyword">int</span>)&#123;<br>        i++;<br>        <span class="hljs-keyword">return</span> i - <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>--()&#123;<br>        i--;<br>        <span class="hljs-keyword">return</span> i;<br>    &#125;<br>    <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>--(<span class="hljs-keyword">int</span>)&#123;<br>        i--;<br>        <span class="hljs-keyword">return</span> i + <span class="hljs-number">1</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">friend</span> ostream&amp; <span class="hljs-keyword">operator</span>&lt;&lt;( ostream&amp; output, <span class="hljs-keyword">const</span> Int &amp; number)&#123;<br>    output &lt;&lt; number.<span class="hljs-built_in">getI</span>();<br>    <span class="hljs-keyword">return</span> output;<br>    &#125;<br><br>    <span class="hljs-keyword">friend</span> istream&amp; <span class="hljs-keyword">operator</span>&gt;&gt;( istream&amp; input,Int &amp; number)&#123;<br>        input &gt;&gt; number.i;<br>        <span class="hljs-keyword">return</span> input;<br>    &#125;<br><br>    <span class="hljs-keyword">friend</span> <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ii, <span class="hljs-keyword">const</span> Int&amp; num )&#123;<br>        <span class="hljs-keyword">return</span> ii + num.<span class="hljs-built_in">getI</span>();<br>    &#125;<br><br>    <span class="hljs-keyword">friend</span> <span class="hljs-keyword">double</span> <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> ii, <span class="hljs-keyword">const</span> Int&amp; num )&#123;<br>        <span class="hljs-keyword">return</span> ii + (<span class="hljs-keyword">double</span>)num.<span class="hljs-built_in">getI</span>();<br>    &#125;<br><br>    <span class="hljs-keyword">friend</span> <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>-(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ii, <span class="hljs-keyword">const</span> Int&amp; num )&#123;<br>        <span class="hljs-keyword">return</span> ii -num.<span class="hljs-built_in">getI</span>();<br>    &#125;<br><br>    <span class="hljs-keyword">friend</span> <span class="hljs-keyword">double</span> <span class="hljs-keyword">operator</span>-(<span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> ii, <span class="hljs-keyword">const</span> Int&amp; num )&#123;<br>        <span class="hljs-keyword">return</span> ii - (<span class="hljs-keyword">double</span>)num.<span class="hljs-built_in">getI</span>();<br>    &#125;<br><br>    <span class="hljs-keyword">friend</span> <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>*(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ii, <span class="hljs-keyword">const</span> Int&amp; num )&#123;<br>        <span class="hljs-keyword">return</span> ii * num.<span class="hljs-built_in">getI</span>();<br>    &#125;<br><br>    <span class="hljs-keyword">friend</span> <span class="hljs-keyword">double</span> <span class="hljs-keyword">operator</span>*(<span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> ii, <span class="hljs-keyword">const</span> Int&amp; num )&#123;<br>        <span class="hljs-keyword">return</span> ii * (<span class="hljs-keyword">double</span>)num.<span class="hljs-built_in">getI</span>();<br>    &#125;<br><br>    <span class="hljs-keyword">friend</span> <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>/(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ii, <span class="hljs-keyword">const</span> Int&amp; num )&#123;<br>        <span class="hljs-keyword">return</span> ii / num.<span class="hljs-built_in">getI</span>();<br>    &#125;<br><br>    <span class="hljs-keyword">friend</span> <span class="hljs-keyword">double</span> <span class="hljs-keyword">operator</span>/(<span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> ii, <span class="hljs-keyword">const</span> Int&amp; num )&#123;<br>        <span class="hljs-keyword">return</span> ii / (<span class="hljs-keyword">double</span>)num.<span class="hljs-built_in">getI</span>();<br>    &#125;<br><br>    <span class="hljs-keyword">friend</span> <span class="hljs-keyword">int</span> <span class="hljs-keyword">operator</span>%(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ii, <span class="hljs-keyword">const</span> Int&amp; num )&#123;<br>        <span class="hljs-keyword">return</span> ii % num.<span class="hljs-built_in">getI</span>();<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h1 id="参考答案">参考答案</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><code class="hljs c++"> <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Int</span></span><br><span class="hljs-class">&#123;</span><br>  <span class="hljs-keyword">int</span> i;<br><span class="hljs-keyword">public</span>:<br>  <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getI</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> i; &#125;<br>  <span class="hljs-comment">//constructor</span><br>  <span class="hljs-built_in">Int</span>(<span class="hljs-keyword">int</span> a):<span class="hljs-built_in">i</span>(a)&#123;&#125;;<br>  <span class="hljs-built_in">Int</span>(<span class="hljs-keyword">double</span> a)&#123;i = a;&#125;;<br><br>  <span class="hljs-comment">//type transform</span><br>  <span class="hljs-function"><span class="hljs-keyword">operator</span> <span class="hljs-title">int</span><span class="hljs-params">()</span></span><br><span class="hljs-function">  </span>&#123;<br>    <span class="hljs-keyword">return</span> i;<br>  &#125;<br><br>  <span class="hljs-comment">//ostream &amp;&amp; istream</span><br>  <span class="hljs-keyword">friend</span> ostream&amp; <span class="hljs-keyword">operator</span>&lt;&lt;(ostream&amp; out, <span class="hljs-keyword">const</span> Int&amp; a)<br>  &#123;<br>    out &lt;&lt; a.i;<br>    <span class="hljs-keyword">return</span> out;<br>  &#125;<br><br>  <span class="hljs-keyword">friend</span> istream&amp; <span class="hljs-keyword">operator</span>&gt;&gt;(istream&amp; in, Int&amp; a)<br>  &#123;<br>    in &gt;&gt; a.i;<br>    <span class="hljs-keyword">return</span> in;<br>  &#125;<br><br>  <span class="hljs-comment">//operator +=</span><br>  Int <span class="hljs-keyword">operator</span> +=(<span class="hljs-keyword">int</span> a)<br>  &#123;<br>    <span class="hljs-keyword">this</span>-&gt;i += a;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>  &#125;<br>  Int <span class="hljs-keyword">operator</span> +=(<span class="hljs-keyword">double</span> a)<br>  &#123;<br>    <span class="hljs-keyword">this</span>-&gt;i += a;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>  &#125;<br>  <br>  <span class="hljs-comment">//operator -=  </span><br>  Int <span class="hljs-keyword">operator</span> -=(<span class="hljs-keyword">int</span> a)<br>  &#123;<br>    <span class="hljs-keyword">this</span>-&gt;i -= a;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>  &#125;<br>  Int <span class="hljs-keyword">operator</span> -=(<span class="hljs-keyword">double</span> a)<br>  &#123;<br>    <span class="hljs-keyword">this</span>-&gt;i -= a;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>  &#125;<br>  <br>  <span class="hljs-comment">//operator *=</span><br>  Int <span class="hljs-keyword">operator</span> *=(<span class="hljs-keyword">int</span> a)<br>  &#123;<br>    <span class="hljs-keyword">this</span>-&gt;i *= a;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>  &#125;<br>  Int <span class="hljs-keyword">operator</span> *=(<span class="hljs-keyword">double</span> a)<br>  &#123;<br>    <span class="hljs-keyword">this</span>-&gt;i *= a;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>  &#125;<br>  <br>  <span class="hljs-comment">//operator /</span><br>  Int <span class="hljs-keyword">operator</span> /=(<span class="hljs-keyword">int</span> a)<br>  &#123;<br>    <span class="hljs-keyword">this</span>-&gt;i /= a;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>  &#125;<br>  Int <span class="hljs-keyword">operator</span> /=(<span class="hljs-keyword">double</span> a)<br>  &#123;<br>    <span class="hljs-keyword">this</span>-&gt;i /= a;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>  &#125;<br>  <br>  <span class="hljs-comment">//operator ++</span><br>  Int&amp; <span class="hljs-keyword">operator</span> ++()<br>  &#123;<br>    ++<span class="hljs-keyword">this</span>-&gt;i;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>  &#125;<br>  Int <span class="hljs-keyword">operator</span> ++(<span class="hljs-keyword">int</span> a)<br>  &#123;<br>    Int temp = *<span class="hljs-keyword">this</span>;<br>    ++<span class="hljs-keyword">this</span>-&gt;i;<br>    <span class="hljs-keyword">return</span> temp;<br>  &#125;<br>  <br>  <span class="hljs-comment">//operator --</span><br>   Int&amp; <span class="hljs-keyword">operator</span> --()<br>  &#123;<br>    --<span class="hljs-keyword">this</span>-&gt;i;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>  &#125;<br>  Int <span class="hljs-keyword">operator</span> --(<span class="hljs-keyword">int</span> a)<br>  &#123;<br>    Int temp = *<span class="hljs-keyword">this</span>;<br>    --<span class="hljs-keyword">this</span>-&gt;i;<br>    <span class="hljs-keyword">return</span> temp;<br>  &#125;<br><br>  <span class="hljs-comment">//operator =</span><br>  Int <span class="hljs-keyword">operator</span> =(<span class="hljs-keyword">int</span> a)<br>  &#123;<br>    <span class="hljs-keyword">this</span>-&gt;i = a;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>  &#125;<br>  Int <span class="hljs-keyword">operator</span> =(<span class="hljs-keyword">double</span> a)<br>  &#123;<br>    <span class="hljs-keyword">this</span>-&gt;i = a;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>  &#125;<br>  <span class="hljs-comment">//add any member function needed here</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+<h1 id="知识点">知识点</h1>
+<h2 id="第一">第一</h2>
+<p>加减乘除重载运算符的基本操作</p>
+<h2 id="第二">第二</h2>
+<p>二元运算符涉及顺序时需要使用友元函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">friend</span> <span class="hljs-keyword">double</span> <span class="hljs-keyword">operator</span>-(<span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> ii, <span class="hljs-keyword">const</span> Int&amp; num )&#123;<br>    <span class="hljs-keyword">return</span> ii - (<span class="hljs-keyword">double</span>)num.<span class="hljs-built_in">getI</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="第三">第三</h2>
+<p>什么时候return this指针</p>
+<p>+=,-=这种的时候return this指针会比较方便</p>
+<h2 id="重载">重载&lt;<和>&gt;</和></h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">friend</span> ostream&amp; <span class="hljs-keyword">operator</span>&lt;&lt;( ostream&amp; output, <span class="hljs-keyword">const</span> Int &amp; number)&#123;<br>output &lt;&lt; number.<span class="hljs-built_in">getI</span>();<br><span class="hljs-keyword">return</span> output;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="自增运算和自减运算">自增运算和自减运算</h2>
+<p>递增和递减分为前置和后置情况，a = ++b;(前置)， a =
+b++;(后置)。因为符号一样，所以给后置版本加一个int</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++">ca <span class="hljs-keyword">operator</span>++()&#123;<br>    pos++;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br><span class="hljs-comment">//后置递增就是增加当前对象的pos的值，并且返回增加pos之前的该对象</span><br>ca <span class="hljs-keyword">operator</span>++(<span class="hljs-keyword">int</span>)&#123;<br>    ca ret = *<span class="hljs-keyword">this</span>;<br>    ++*<span class="hljs-keyword">this</span>;        <span class="hljs-comment">//这个会调用上面的函数，其实这里可以换成pos++;</span><br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>++ 在前面叫做前自增（例如
+++a）。前自增先进行自增运算，再进行其他操作。</li>
+<li>++ 在后面叫做后自增（例如
+a++）。后自增先进行其他操作，再进行自增运算。</li>
+</ul>
+<h2 id="转换函数">转换函数</h2>
+<p>原文链接：https://blog.csdn.net/liyazhen2011/article/details/86349255</p>
+<p>设计一个类Fraction表示分数，包含分子和分母。我们希望它能自动转换为double类型，并参与运算。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Fraction</span></span><br><span class="hljs-class">&#123;</span><br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-built_in">Fraction</span>(<span class="hljs-keyword">int</span> numerator, <span class="hljs-keyword">int</span> denominator = <span class="hljs-number">1</span>)<br>		:<span class="hljs-built_in">m_numerator</span>(numerator), <span class="hljs-built_in">m_denominator</span>(denominator)<br>	&#123;<br>	&#125;<br>	<span class="hljs-comment">//转换函数</span><br>	<span class="hljs-function"><span class="hljs-keyword">operator</span> <span class="hljs-title">double</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span><br><span class="hljs-function">	</span>&#123;<br>		<span class="hljs-keyword">return</span> (<span class="hljs-keyword">double</span>)m_numerator / m_denominator;<br>	&#125;<br> <br><span class="hljs-keyword">private</span>:<br>	<span class="hljs-keyword">int</span> m_numerator;        <span class="hljs-comment">//分子</span><br>	<span class="hljs-keyword">int</span> m_denominator;      <span class="hljs-comment">//分母</span><br>&#125;;<br> <br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-function">Fraction <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-number">3</span>,<span class="hljs-number">5</span>)</span></span>;<br>	<span class="hljs-keyword">double</span> sum = <span class="hljs-number">4</span> + f;<br>	std::cout &lt;&lt; <span class="hljs-string">&quot;sum = &quot;</span> &lt;&lt; sum &lt;&lt; std::endl;   <span class="hljs-comment">//sum = 4.6</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//测试代码</span><br><span class="hljs-keyword">double</span> sum = <span class="hljs-number">4</span> + f;<br></code></pre></td></tr></table></figure>
+<p>首先，它会寻找+操作符是否有重载了参数为double和Fraction的函数。很明显，我们并没有为刚刚新建的类Fraction重载+操作符，编译器的该次尝试以失败告终。</p>
+<p>接着，不轻言放弃的编译器发现操作符+可以接收两个double类型的参数，那么是否可以将Fraction转换为double，从而调用该版本的函数呢？这次编译器成功了，因为我们刚刚实现了转换为double的函数。</p>
+<p>最终，编译器成功实现了求和操作，输出了结果4.6。</p>
+<p>**可以发现
+参考答案中,并没有重载+-*/,因为通过转换函数,也能实现想要的输出**</p>
+<h2 id="我自己的疑惑">我自己的疑惑</h2>
+<p>为什么任小狗的代码没有重载=号,编译器也不报错</p>
+<p>参考答案中重载了=号</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">Int a=<span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
+<p>这个是怎么完成赋值的呢?</p>
+<p>原来这个是隐式类型转换函数.如果在构造函数种使用了explict关键词,这种隐式类型转换就会报错</p>
+<h1 id="补充">2022.3.23补充</h1>
+<p>学了一些知识之后我就懂了,这个等号会自动调用构造函数,前提是在声明变量的时候初始化会调用,而不是调用重载等号的函数.</p>
+<p>而且c++会有一个隐式类型转换</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-keyword">int</span> x, y;<br>    <span class="hljs-built_in">Point</span>(<span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span>, <span class="hljs-keyword">int</span> y = <span class="hljs-number">0</span>)<br>        : <span class="hljs-built_in">x</span>(x), <span class="hljs-built_in">y</span>(y) &#123;&#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">displayPoint</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Point&amp; p)</span> </span><br><span class="hljs-function"></span>&#123;<br>    cout &lt;&lt; <span class="hljs-string">&quot;(&quot;</span> &lt;&lt; p.x &lt;&lt; <span class="hljs-string">&quot;,&quot;</span> <br>         &lt;&lt; p.y &lt;&lt; <span class="hljs-string">&quot;)&quot;</span> &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">displayPoint</span>(<span class="hljs-number">1</span>);<br>    Point p = <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>我们定义了一个再简单不过的<code>Point</code>类,
+它的构造函数使用了默认参数.
+这时主函数里的两句话都会触发该构造函数的隐式调用.
+(如果构造函数不使用默认参数, 会在编译时报错)</p>
+<p>显然,
+函数<code>displayPoint</code>需要的是<code>Point</code>类型的参数,
+而我们传入的是一个<code>int</code>, 这个程序却能成功运行,
+就是因为这隐式调用. 另外说一句, 在对象刚刚定义时,
+即使你使用的是赋值操作符<code>=</code>, 也是会调用构造函数,
+而不是重载的<code>operator=</code>运算符.</p>
+<p>这样悄悄发生的事情, 有时可以带来便利, 而有时却会带来意想不到的后果.
+<code>explicit</code>关键字用来避免这样的情况发生.</p>
+<p><strong>explicit关键字</strong></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/C/">C++</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/C/">C++</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/08/%E7%A8%8B%E8%AE%BE/%E9%87%8D%E8%BD%BD%E6%93%8D%E4%BD%9C%E7%AC%A6()/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">程设记录(三)--随便记记简单题</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/07/%E7%A8%8B%E8%AE%BE/meow/">
+                        <span class="hidden-mobile">程设记录(一)-meow</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        new Waline(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    <span>访问总量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span>总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+ <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+<script
+  src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+  charset="utf-8"
+></script>
+
+<script>
+  function typing(id, title){
+      var typed = new Typed('#' + id, {
+          strings: [
+            '  ',
+            title + "&nbsp;",
+          ],
+          cursorChar: "_",
+          typeSpeed: 70,
+          loop: false,
+      });
+      typed.stop();
+      $(document).ready(function () {
+          $(".typed-cursor").addClass("h2");
+          typed.start();
+      });
+  }
+
+  
+      typing("subtitle", "程设记录(二)--一道很全面的重载题目")  // 打印文章标题
+  
+</script>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->
+
+<!-- typing("hitokoto", data.hitokoto + '<br /> <h5>' + '——' + data.from + '</h5>')
+typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '「' + data.from + '」' + '</h5>') -->
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->

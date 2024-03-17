@@ -1,0 +1,699 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Key terms: Analog 模拟 Digital 数字 Inverter: 逆变器? Pulse: 脉冲 Duty cycle: 占空比 Integrated circuit(IC) 集成电路 Fixed-function logic 固定功能逻辑 Timing diagram 时序图 Troubleshooting 故障 排除 Serial 串行 Parallel并行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数字电路-introduction concept">
+<meta property="og:url" content="http://example.com/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Key terms: Analog 模拟 Digital 数字 Inverter: 逆变器? Pulse: 脉冲 Duty cycle: 占空比 Integrated circuit(IC) 集成电路 Fixed-function logic 固定功能逻辑 Timing diagram 时序图 Troubleshooting 故障 排除 Serial 串行 Parallel并行">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221172223526.png">
+<meta property="og:image" content="http://example.com/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221172539872.png">
+<meta property="og:image" content="http://example.com/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221172639206.png">
+<meta property="og:image" content="http://example.com/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221172940668.png">
+<meta property="og:image" content="http://example.com/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221173050567.png">
+<meta property="og:image" content="http://example.com/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221173914930.png">
+<meta property="og:image" content="http://example.com/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221174141615.png">
+<meta property="og:image" content="http://example.com/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221174429117.png">
+<meta property="og:image" content="http://example.com/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221175827593.png">
+<meta property="og:image" content="http://example.com/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221175845207.png">
+<meta property="og:image" content="http://example.com/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221175857158-16454375545001.png">
+<meta property="og:image" content="http://example.com/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221175915683.png">
+<meta property="article:published_time" content="2022-02-21T08:18:33.708Z">
+<meta property="article:modified_time" content="2022-02-21T10:08:15.670Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数字电路">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221172223526.png">
+  
+  
+  <title>数字电路-introduction concept - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>eyeberry</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talk/">
+                <i class="iconfont icon-kakao-talk-fill"></i>
+                Talk
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+        style="background: url('/img/page.jpg') no-repeat center center;
+          background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="数字电路-introduction concept">
+              
+            </span>
+
+<!-- 添加的代码 -->
+<!-- ========================================================================= -->
+            
+<!-- ========================================================================= -->
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-21 16:18" pubdate>
+        February 21, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      9 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数字电路-introduction concept</h1>
+            
+            <div class="markdown-body">
+              <p>Key terms:</p>
+<p>Analog 模拟 Digital 数字</p>
+<p>Inverter: 逆变器?</p>
+<p>Pulse: 脉冲</p>
+<p>Duty cycle: 占空比</p>
+<p>Integrated circuit(IC) 集成电路</p>
+<p>Fixed-function logic 固定功能逻辑</p>
+<p>Timing diagram 时序图</p>
+<p>Troubleshooting 故障 排除</p>
+<p>Serial 串行 Parallel并行</p>
+<p>SPLD ( Simple Programmable Logic Device) 简单可编程逻辑器件</p>
+<p>CPLD (Complex Programming logic device) 复杂可编程逻辑器件</p>
+<p>FPGA （Field-Programmable Gate Array） 现场可编程逻辑门阵列</p>
+<p>Compiler 编译器</p>
+<hr>
+<h1 id="digital-and-analogy-quantities">1.1 digital and analogy
+quantities</h1>
+<h2 id="definition">definition</h2>
+<p>模拟量具有连续的数值，数字量具有离散的数值。</p>
+<h2 id="the-digital-advantage数字量优点">the digital
+advantage(数字量优点)</h2>
+<p>数字量的优点
+在电学应用方面，数字量表示法和模拟量表示法相比有一定的优势。</p>
+<ol type="1">
+<li>数字数据和模拟数据相比，前者在处理和传输方面更有效、更可靠。</li>
+<li>数字数据在需要保存时，更显示了它的优越性。例如，转换成数字形式的音乐，要比相对应的模拟形式更简洁，复制时更精确、更清晰。噪声（不需要的电压波动）几乎不会影响数字数据，但会影响模拟信号。</li>
+</ol>
+<h1 id="binary-digitslogic-levelsand-digital-waveforms二进制数逻辑电平和数字波形">1.2
+binary digits,logic levels,and digital
+waveforms(二进制数、逻辑电平和数字波形)</h1>
+<h2 id="binary-digits">1.2.1 binary digits</h2>
+<p>positive logic (正逻辑): HIGH=1,LOW=0</p>
+<h2 id="logic-levels">1.2.2 logic levels</h2>
+<p><img src="/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221172223526.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="digital-waveforms">1.2.3 digital waveforms</h2>
+<figure>
+<img src="/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221172539872.png" srcset="/img/loading.gif" lazyload alt="理想脉冲">
+<figcaption aria-hidden="true">理想脉冲</figcaption>
+</figure>
+<p>The Pulse A pulse has two edges: a <strong>leading edge</strong> that
+occurs first at time to and a <strong>trailing edge</strong> that occurs
+last at time</p>
+<figure>
+<img src="/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221172639206.png" srcset="/img/loading.gif" lazyload alt="非理想脉冲">
+<figcaption aria-hidden="true">非理想脉冲</figcaption>
+</figure>
+<p><img src="/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221172940668.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221173050567.png" srcset="/img/loading.gif" lazyload> <span class="math display">\[
+f=\frac{1}{T}\\
+duty cycle(占空比)=(\frac{t_w}{T})\times100\%
+\]</span></p>
+<h2 id="a-digital-waveform-carries-binary-information数字波形携带二进制信息">1.2.4
+A Digital Waveform Carries Binary
+Information(数字波形携带二进制信息)</h2>
+<figure>
+<img src="/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221173914930.png" srcset="/img/loading.gif" lazyload alt="例子">
+<figcaption aria-hidden="true">例子</figcaption>
+</figure>
+<p>timing diagram</p>
+<p><img src="/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221174141615.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="data-transfer数据转换">1.2.5 data transfer(数据转换)</h2>
+<p>两种方式:serial and parallel(串行和并行)</p>
+<p><img src="/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221174429117.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="basic-logic-operations基本逻辑操作">1.3 basic logic
+operations(基本逻辑操作)</h1>
+<figure>
+<img src="/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221175827593.png" srcset="/img/loading.gif" lazyload alt="image-20220221175827593">
+<figcaption aria-hidden="true">image-20220221175827593</figcaption>
+</figure>
+<figure>
+<img src="/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221175845207.png" srcset="/img/loading.gif" lazyload alt="image-20220221175845207">
+<figcaption aria-hidden="true">image-20220221175845207</figcaption>
+</figure>
+<p><img src="/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221175857158-16454375545001.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221175915683.png" srcset="/img/loading.gif" lazyload></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/02/23/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A04/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Lumerical脚本语言学习( 四)-Simulation region</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/02/20/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A03/">
+                        <span class="hidden-mobile">Lumerical脚本语言学习(三)-结构搭建</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        new Waline(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    <span>访问总量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span>总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+ <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+<script
+  src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+  charset="utf-8"
+></script>
+
+<script>
+  function typing(id, title){
+      var typed = new Typed('#' + id, {
+          strings: [
+            '  ',
+            title + "&nbsp;",
+          ],
+          cursorChar: "_",
+          typeSpeed: 70,
+          loop: false,
+      });
+      typed.stop();
+      $(document).ready(function () {
+          $(".typed-cursor").addClass("h2");
+          typed.start();
+      });
+  }
+
+  
+      typing("subtitle", "数字电路-introduction concept")  // 打印文章标题
+  
+</script>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->
+
+<!-- typing("hitokoto", data.hitokoto + '<br /> <h5>' + '——' + data.from + '</h5>')
+typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '「' + data.from + '」' + '</h5>') -->
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->

@@ -1,0 +1,647 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Description SDCS will organize students to participate in the seminar。curr_ people off campus mysterious guests and organizers have confirmed their participation. Meanwhile, they have been waiting">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程设记录--[Static Member] Seminar Logger2">
+<meta property="og:url" content="http://example.com/2022/04/19/%E7%A8%8B%E8%AE%BE/static%20member2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Description SDCS will organize students to participate in the seminar。curr_ people off campus mysterious guests and organizers have confirmed their participation. Meanwhile, they have been waiting">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-19T11:36:03.752Z">
+<meta property="article:modified_time" content="2022-04-19T12:04:10.967Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>程设记录--[Static Member] Seminar Logger2 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>eyeberry</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talk/">
+                <i class="iconfont icon-kakao-talk-fill"></i>
+                Talk
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+        style="background: url('/img/page.jpg') no-repeat center center;
+          background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="程设记录--[Static Member] Seminar Logger2">
+              
+            </span>
+
+<!-- 添加的代码 -->
+<!-- ========================================================================= -->
+            
+<!-- ========================================================================= -->
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-19 19:36" pubdate>
+        April 19, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      35 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">程设记录--[Static Member] Seminar Logger2</h1>
+            
+            <div class="markdown-body">
+              <h1 id="description">Description</h1>
+<p>SDCS will organize students to participate in the
+seminar。<code>curr_ people</code> off campus mysterious guests and
+organizers have confirmed their participation. Meanwhile, they have been
+waiting in the venue. There are <code>student_ num</code> students
+participated, and each student has to introduce himself. At the end of
+the event, the students will leave in the order of admission, and the
+guests and the organizer will leave after the final discussion.</p>
+<p>Use the <code>Student</code> class to record the students. Please
+complete the <code>Student.cpp</code> so as to make the program achieve
+the corresponding record results.</p>
+<p>SDCS将组织学生参加讨论会，已经有<code>curr_people</code>个校外神秘嘉宾以及举办方确定参与，同时他们已经在会场中等待。共有<code>student_num</code>个学生参加，每一个学生到场后都要进行一次自我介绍。活动结束后，学生按照入场的顺序依次退场，嘉宾以及举办方在最终商讨后最后离场。</p>
+<p>用<code>Student</code>类来记录参加的学生，请完成<code>Student.cpp</code>文件的编写，使得程序能够达成对应的记录结果。</p>
+<h1 id="sample-input">Sample Input</h1>
+<p>In the first line, there are two numeric inputs, which are the number
+of organizers and guests (<code>curr_ people</code>), and the number of
+students in SDCS(<code>student_ num</code>).</p>
+<p>In next <code>student_num</code> lines, each line has two inputs. The
+first input is indicate the gender of the student: if the student is a
+boy, it will be 1, otherwise, it's 0. The second input is a string,
+which indicates the name of the student</p>
+<p>第一行有两个数字输入，分别为举办方与嘉宾的数目<code>curr_people</code>，以及SDCS中学生的数量<code>student_num</code>。</p>
+<p>此后的<code>person_num</code>行中，每行都有2个输入，第一个int输入表示参与者的性别，如果是男生则为1，否则为0；第二个string输入表示参与者的姓名。</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">7 </span><span class="hljs-number">7</span><br><span class="hljs-symbol">1 </span>Jack<br><span class="hljs-symbol">0 </span>Lisa<br><span class="hljs-symbol">1 </span>Jackson<br><span class="hljs-symbol">0 </span>Rose<br><span class="hljs-symbol">0 </span>Jisoo<br><span class="hljs-symbol">1 </span>Jack<br><span class="hljs-symbol">0 </span>Jennie<br></code></pre></td></tr></table></figure>
+<h1 id="sample-output">Sample Output</h1>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs xquery">Hi! My<span class="hljs-built_in"> name</span> <span class="hljs-literal">is</span> Jack. I have no classmates here.<br>Hi! My<span class="hljs-built_in"> name</span> <span class="hljs-literal">is</span> Lisa. I have <span class="hljs-keyword">only</span> <span class="hljs-number">1</span> classmate here.<br>Hi! My<span class="hljs-built_in"> name</span> <span class="hljs-literal">is</span> Jackson. I have <span class="hljs-number">2</span> classmates here.<br>Hi! My<span class="hljs-built_in"> name</span> <span class="hljs-literal">is</span> Rose. I have <span class="hljs-number">3</span> classmates here.<br>Hi! My<span class="hljs-built_in"> name</span> <span class="hljs-literal">is</span> Jisoo. I have <span class="hljs-number">4</span> classmates here.<br>Hi! My<span class="hljs-built_in"> name</span> <span class="hljs-literal">is</span> Jack. I have <span class="hljs-number">5</span> classmates here.<br>Hi! My<span class="hljs-built_in"> name</span> <span class="hljs-literal">is</span> Jennie. I have <span class="hljs-number">6</span> classmates here.<br>The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> people <span class="hljs-literal">is</span> <span class="hljs-number">14</span>. The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> students <span class="hljs-literal">is</span> <span class="hljs-number">7</span>. The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> girls <span class="hljs-literal">is</span> <span class="hljs-number">4</span>. The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> boys <span class="hljs-literal">is</span> <span class="hljs-number">3</span>.<br><br>The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> people <span class="hljs-literal">is</span> <span class="hljs-number">13</span>. The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> students <span class="hljs-literal">is</span> <span class="hljs-number">6</span>. The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> girls <span class="hljs-literal">is</span> <span class="hljs-number">4</span>. The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> boys <span class="hljs-literal">is</span> <span class="hljs-number">2</span>.<br>The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> people <span class="hljs-literal">is</span> <span class="hljs-number">12</span>. The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> students <span class="hljs-literal">is</span> <span class="hljs-number">5</span>. The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> girls <span class="hljs-literal">is</span> <span class="hljs-number">3</span>. The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> boys <span class="hljs-literal">is</span> <span class="hljs-number">2</span>.<br>The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> people <span class="hljs-literal">is</span> <span class="hljs-number">11</span>. The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> students <span class="hljs-literal">is</span> <span class="hljs-number">4</span>. The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> girls <span class="hljs-literal">is</span> <span class="hljs-number">3</span>. The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> boys <span class="hljs-literal">is</span> <span class="hljs-number">1</span>.<br>The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> people <span class="hljs-literal">is</span> <span class="hljs-number">10</span>. The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> students <span class="hljs-literal">is</span> <span class="hljs-number">3</span>. The<span class="hljs-built_in"> number</span> <span class="hljs-keyword">of</span> girls <span class="hljs-literal">is</span> <span class="hljs-number">2</span>. <br></code></pre></td></tr></table></figure>
+<h1 id="main.cpplock">main.cpp(lock)</h1>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;Student.h&quot;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">clear</span><span class="hljs-params">()</span></span>&#123;<br>	Student::person_num = <span class="hljs-number">0</span>;<br>	<span class="hljs-built_in">total</span>();<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-keyword">int</span> curr_people = <span class="hljs-number">0</span>, student_num = <span class="hljs-number">0</span>;<br>	cin &gt;&gt; curr_people &gt;&gt; student_num;<br>	Student* student_list[student_num];<br>	Student::person_num += curr_people;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; student_num; ++i)&#123;<br>		string name = <span class="hljs-string">&quot;&quot;</span>;<br>		<span class="hljs-keyword">int</span> isBoy = <span class="hljs-number">0</span>;<br>		cin &gt;&gt; isBoy &gt;&gt; name;<br>		student_list[i] = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Student</span>(isBoy, name);<br>		student_list[i]-&gt;<span class="hljs-built_in">sayHi</span>();<br>	&#125;<br>	<span class="hljs-built_in">total</span>();<br>	<span class="hljs-comment">// 学生退场</span><br>	cout &lt;&lt; endl;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; student_num; ++i)&#123;<br>		<span class="hljs-keyword">delete</span> student_list[i];<br>		<span class="hljs-built_in">total</span>();<br>	&#125;<br>	<span class="hljs-built_in">clear</span>(); <span class="hljs-comment">// 嘉宾以及举办方离场</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="student.hlock">student.h(lock)</h1>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> STUDENT_H</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> STUDENT_H</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span>&#123;</span><br>	<span class="hljs-keyword">public</span>:<br>		<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> girl_num;<br>		<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> boy_num;<br>		<span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> person_num;<br>		<span class="hljs-built_in">Student</span>(<span class="hljs-keyword">int</span> gender, string name);<br>		~<span class="hljs-built_in">Student</span>();<br>		<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sayHi</span><span class="hljs-params">()</span></span>;<br>	<span class="hljs-keyword">private</span>:<br>		string name;<br>		<span class="hljs-keyword">int</span> gender;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">total</span><span class="hljs-params">()</span></span>;<br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br></code></pre></td></tr></table></figure>
+<h1 id="student.cpp">student.cpp</h1>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> Student:: girl_num=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">int</span> Student:: boy_num=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">int</span> Student:: person_num=<span class="hljs-number">0</span>;<br><br>Student::<span class="hljs-built_in">Student</span>(<span class="hljs-keyword">int</span> g,string n):<span class="hljs-built_in">gender</span>(g),<span class="hljs-built_in">name</span>(n)&#123;<br>    <span class="hljs-keyword">if</span>(g ==<span class="hljs-number">1</span>)&#123;<br>        boy_num++;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        girl_num++;<br>    &#125;<br>    person_num++;<br>&#125;<br><br>Student::~<span class="hljs-built_in">Student</span>()&#123;<br>    <span class="hljs-keyword">if</span>(gender ==<span class="hljs-number">1</span>)&#123;<br>        boy_num--;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        girl_num--;<br>    &#125;<br>    person_num--;<br>&#125;<br><span class="hljs-keyword">void</span> Student:: <span class="hljs-built_in">sayHi</span>()&#123;<br>    cout&lt;&lt;<span class="hljs-string">&quot;Hi! My name is &quot;</span>&lt;&lt;name&lt;&lt;<span class="hljs-string">&quot;. I have &quot;</span>;<br>    <span class="hljs-keyword">if</span>(boy_num+girl_num==<span class="hljs-number">2</span>) cout&lt;&lt;<span class="hljs-string">&quot;only 1 classmate here.&quot;</span>&lt;&lt;endl;<br>    <span class="hljs-keyword">if</span>(boy_num+girl_num==<span class="hljs-number">1</span>) cout&lt;&lt;<span class="hljs-string">&quot;no classmates here.&quot;</span>&lt;&lt;endl;<br>    <span class="hljs-keyword">if</span>(boy_num+girl_num&gt;<span class="hljs-number">2</span>) cout&lt;&lt;boy_num+girl_num<span class="hljs-number">-1</span>&lt;&lt;<span class="hljs-string">&quot; classmates here.&quot;</span>&lt;&lt;endl;<br><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">total</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(Student::person_num==<span class="hljs-number">0</span>) cout&lt;&lt;<span class="hljs-string">&quot;There is nobody here.&quot;</span>&lt;&lt;endl;<br>    cout&lt;&lt;<span class="hljs-string">&quot;The number of people is &quot;</span>&lt;&lt;Student::person_num&lt;&lt;<span class="hljs-string">&quot;. The number of students is &quot;</span>&lt;&lt;Student::boy_num+Student::girl_num&lt;&lt;<span class="hljs-string">&quot;. The number of girls is &quot;</span>&lt;&lt;Student::girl_num&lt;&lt;<span class="hljs-string">&quot;. The number of boys is &quot;</span>&lt;&lt;Student::boy_num&lt;&lt;<span class="hljs-string">&quot;.&quot;</span>&lt;&lt;endl;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h1 id="注意">注意</h1>
+<p>全局函数在使用静态变量时,需要在前面加一个Student::</p>
+<p>如何初始化静态变量</p>
+<p>int student:: girl_num=0;</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/C/">C++</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/C/">C++</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/20/%E7%A8%8B%E8%AE%BE/matrix%E7%BB%83%E4%B9%A0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">程设记录--matrix(运算练习)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/16/%E7%A8%8B%E8%AE%BE/inservice/">
+                        <span class="hidden-mobile">程设记录--inservice(虚继承)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        new Waline(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    <span>访问总量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span>总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+ <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+<script
+  src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+  charset="utf-8"
+></script>
+
+<script>
+  function typing(id, title){
+      var typed = new Typed('#' + id, {
+          strings: [
+            '  ',
+            title + "&nbsp;",
+          ],
+          cursorChar: "_",
+          typeSpeed: 70,
+          loop: false,
+      });
+      typed.stop();
+      $(document).ready(function () {
+          $(".typed-cursor").addClass("h2");
+          typed.start();
+      });
+  }
+
+  
+      typing("subtitle", "程设记录--[Static Member] Seminar Logger2")  // 打印文章标题
+  
+</script>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->
+
+<!-- typing("hitokoto", data.hitokoto + '<br /> <h5>' + '——' + data.from + '</h5>')
+typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '「' + data.from + '」' + '</h5>') -->
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->

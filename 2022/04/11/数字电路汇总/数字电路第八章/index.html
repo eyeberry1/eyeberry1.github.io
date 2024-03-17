@@ -1,0 +1,808 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="异步计数器计算(Asynchronous) 2位异步计数器   3位异步计数器  传输延迟 异步计数器被称为行波计数器,存在传输延迟 ****异步触发可能导致多级延迟（最长延迟必须小于 时钟周期）、错误的暂态   异步译码计数器 计数器可以有\(2^{n}\)个状态,n是触发器个数   模10截断  异步清0导致毛刺 74LS93 （CTR DIV n代表n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第八章- COUNTER(计数器)">
+<meta property="og:url" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="异步计数器计算(Asynchronous) 2位异步计数器   3位异步计数器  传输延迟 异步计数器被称为行波计数器,存在传输延迟 ****异步触发可能导致多级延迟（最长延迟必须小于 时钟周期）、错误的暂态   异步译码计数器 计数器可以有\(2^{n}\)个状态,n是触发器个数   模10截断  异步清0导致毛刺 74LS93 （CTR DIV n代表n">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220509162802191.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510122752244.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510122915050.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510123142423.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510123200909.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510123426852.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510123534526.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510123622956.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510123835249.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510125346424.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510125403829.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510125549346.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510124713319.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510125658130.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510125947138.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510131622738.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510131921336.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510132044512.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510132240188.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510132319107.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510133701242.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140058339.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140251843.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140307580.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140320971.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140525741.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140546038.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140603795.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140845290.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140901731.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510141621917.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510141718965.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510141831860.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510142359694.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143306798.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143346575.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143417074.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143632250.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143715919.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143732046.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143830011.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143911842.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143939914.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510144541842.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510130827612.png">
+<meta property="og:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220531220223922.png">
+<meta property="article:published_time" content="2022-04-11T07:36:39.536Z">
+<meta property="article:modified_time" content="2022-07-21T07:27:26.818Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数字电路">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220509162802191.png">
+  
+  
+  <title>第八章- COUNTER(计数器) - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>eyeberry</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talk/">
+                <i class="iconfont icon-kakao-talk-fill"></i>
+                Talk
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+        style="background: url('/img/page.jpg') no-repeat center center;
+          background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="第八章- COUNTER(计数器)">
+              
+            </span>
+
+<!-- 添加的代码 -->
+<!-- ========================================================================= -->
+            
+<!-- ========================================================================= -->
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-11 15:36" pubdate>
+        April 11, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">第八章- COUNTER(计数器)</h1>
+            
+            <div class="markdown-body">
+              <h1 id="异步计数器计算asynchronous">异步计数器计算(Asynchronous)</h1>
+<h2 id="位异步计数器">2位异步计数器</h2>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220509162802191.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510122752244.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="位异步计数器-1">3位异步计数器</h2>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510122915050.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="传输延迟">传输延迟</h2>
+<p>异步计数器被称为行波计数器,存在传输延迟</p>
+<p>****异步触发可能导致多级延迟（最长延迟必须小于<strong>
+时钟周期）、错误的暂态</strong></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510123142423.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510123200909.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="异步译码计数器">异步译码计数器</h2>
+<p>计数器可以有<span class="math inline">\(2^{n}\)</span>个状态,n是触发器个数</p>
+<figure>
+<img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510123426852.png" srcset="/img/loading.gif" lazyload alt="模10截断">
+<figcaption aria-hidden="true">模10截断</figcaption>
+</figure>
+<p><strong>异步清0导致毛刺</strong></p>
+<h2 id="ls93">74LS93</h2>
+<p><strong>（CTR DIV n代表n个状态的计数器）</strong></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510123534526.png" srcset="/img/loading.gif" lazyload></p>
+<p>74LS93可以做模10或者模16的计数器</p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510123622956.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510123835249.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="同步计数器计算synchronous">同步计数器计算(Synchronous)</h1>
+<h2 id="位同步二进制计数器">2位同步二进制计数器</h2>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510125346424.png" srcset="/img/loading.gif" lazyload></p>
+<figure>
+<img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510125403829.png" srcset="/img/loading.gif" lazyload alt="传输延迟">
+<figcaption aria-hidden="true">传输延迟</figcaption>
+</figure>
+<figure>
+<img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510125549346.png" srcset="/img/loading.gif" lazyload alt="时序图">
+<figcaption aria-hidden="true">时序图</figcaption>
+</figure>
+<h2 id="位同步二进制计数器-1">3位同步二进制计数器</h2>
+<p>信号重用</p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510124713319.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="位同步二进制计数器-2">4位同步二进制计数器</h2>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510125658130.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="如何做一个模10的">如何做一个模10的</h3>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510125947138.png" srcset="/img/loading.gif" lazyload></p>
+<p>需要求得每个JK触发器的逻辑输入公式</p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510131622738.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="hc163-4位同步二进制计数器">74HC163 4位同步二进制计数器</h2>
+<ol type="1">
+<li>同步置数，同步清零</li>
+<li>计数使能条件：ENT和ENP同为1</li>
+<li>末端计数TC=15时进位输出RCO=1</li>
+</ol>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510131921336.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510132044512.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510132240188.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="加减同步计数器双向计数器">加减同步计数器(双向计数器)</h1>
+<p>对于<span class="math inline">\(J_1\)</span>和<span class="math inline">\(K_1\)</span></p>
+<p>对于加（UP）时序，<span class="math inline">\(Q_1\)</span>在<span class="math inline">\(Q_0=1\)</span>的下一个时钟脉冲到来时改变状态。对于减（DOWN）时序，<span class="math inline">\(Q_1\)</span>在<span class="math inline">\(Q_0=0\)</span>的下一个时钟脉冲到来时改变状态。</p>
+<p>对于<span class="math inline">\(J_2\)</span>和<span class="math inline">\(K_2\)</span></p>
+<p>对于加时序来说，<span class="math inline">\(Q2\)</span>在<span class="math inline">\(Q_0＝Q_1＝1\)</span>的下一个时钟脉冲到来时改变状态。对于减时序来说，<span class="math inline">\(Q_2\)</span>在<span class="math inline">\(Q_0＝Q_1＝0\)</span>的下一个时钟脉冲到来时改变状态。因此，在下面的等式所表达的条件下，FF2的<span class="math inline">\(J_2\)</span>和<span class="math inline">\(K_2\)</span>输入必须等于1：</p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510132319107.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="hc190-加减十进制计数器">74HC190 加减十进制计数器</h2>
+<p><span class="math inline">\(D/\bar{U}\)</span>表示DOWN/UP,加减控制输入</p>
+<p><span class="math inline">\(\overline{CTEN}\)</span>表示计数使能端(count
+enable)</p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510133701242.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="同步计数器的设计重点">同步计数器的设计(重点)</h1>
+<p>时序逻辑电路的一般模型：状态机 •输入：<span class="math inline">\((I_0,I_1,…,I_m)；\)</span>输出：<span class="math inline">\((O_0,O_1,…,O_m)；\)</span></p>
+<p>激励：<span class="math inline">\((Y_0,Y_1,…,Y_p)；\)</span>状态：<span class="math inline">\((Q_0,Q_1,…,Q_x)\)</span>
+•Moore型：输出仅与当前状态相关，<span class="math inline">\(O=F(Q)\)</span>
+•Mealy型：输出与当前状态和输入相关，<span class="math inline">\(O=F(I,Q)\)</span>
+•同步：所有触发器用同一个时钟信号,状态变化同时发生
+•异步：触发器没有统一的时钟信号,状态变化时间有先后</p>
+<p>时序逻辑电路设计步骤</p>
+<ol type="1">
+<li>准备：画状态图，作次态表、触发器的转换表。</li>
+<li>化简：作卡诺图，求触发器的输入逻辑表达式。</li>
+<li>设计：作电路逻辑图。</li>
+</ol>
+<h2 id="以设计格雷码为例">以设计格雷码为例</h2>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140058339.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140251843.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140307580.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140320971.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="section"></h2>
+<h2 id="用j-k触发器设计同步3位双向格雷码计数器">用J-K触发器设计同步3位双向格雷码计数器</h2>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140525741.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140546038.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140603795.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="级联计数器cascaded-counters">级联计数器Cascaded counters</h1>
+<p>目的：级联多个计数器来扩大计数器的模</p>
+<h2 id="异步级联">异步级联</h2>
+<p>总的模为32;表现为32分频计数器</p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140845290.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="同步级联">同步级联</h2>
+<p>级联信号：计数使能CTEN，末端计数TC</p>
+<p><strong>低位片的TC作为高位片的计数使能信号</strong></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510140901731.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>多个级联的同步计数器构成递减计数链</strong>
+<strong>•计数器的模等于各级计数器的模的乘积</strong>
+<strong>•从低位到高位的TC信号频率等于时钟频率依次除以各级计数器的模</strong></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510141621917.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510141718965.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510141831860.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="用4片74hc161设计模为40000的计数器-截断时序的级联计数器">用4片74HC161设计模为40000的计数器
+(截断时序的级联计数器)</h2>
+<ol type="1">
+<li>思路：先把4片74HC161级联为一个模65536的计数器，再改造为模40000的计数器</li>
+<li>65536-40000=25536（十六进制为<span class="math inline">\(63C0_{16}\)</span>），计数序列：25536~65535</li>
+<li>计数到达65535，最高位片RCO=1，计数器状态设为25536</li>
+</ol>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510142359694.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="计数器状态译码">计数器状态译码</h1>
+<p>目的：检测计数器的特定状态来输出有效信号，例子：TC</p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143306798.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143346575.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143417074.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="计数器应用">计数器应用</h1>
+<h2 id="显示时分秒的数字钟系统">显示“时：分：秒”的数字钟系统</h2>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143632250.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143715919.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143732046.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="停车场出入控制系统">停车场出入控制系统</h2>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143830011.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="并行串行数据转换系统">并行—串行数据转换系统</h2>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143911842.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510143939914.png" srcset="/img/loading.gif" lazyload></p>
+<p>交通信号灯控制系统</p>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510144541842.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="小结">小结</h1>
+<ol type="1">
+<li><p>异步计数器中的异步指的是什么?</p></li>
+<li><p>一个模14计数器有多少状态？需要至少多少个触发器来实现它？</p></li>
+<li><p>一个同步计数器和一个异步计时器的区别是什么？</p></li>
+<li><p>解释计数器的预置位功能，例如74HC163。</p>
+<figure>
+<img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220510130827612.png" srcset="/img/loading.gif" lazyload alt="74HC163">
+<figcaption aria-hidden="true">74HC163</figcaption>
+</figure></li>
+<li><p>解释74HC163计数器的输入ENP、ENT和输出RCO的用途。</p></li>
+<li><p>一个4位加／减计数器处于减模式，并且为1010状态。下一个时钟脉冲到来时，计数器的状态是什么？</p></li>
+<li><p>处在加模式的4位加／减计时器的最后一个状态是什么？当处于减模式时，下一个状态是什么？</p></li>
+<li><p>完成一个1000分频的计数器需要多少个十进制计数器?10000分频的呢?</p></li>
+<li><p>给出如何获取如下分频的一般框图.使用触发器、十进制计数器、4位二进制计数器或他们的组合：</p>
+<p>（a） 20分频（b） 32分频（c） 160分频（d） 320分频</p></li>
+<li><p>4位二进制异步计数器状态变化如下,可能发生的瞬间状态是什么?</p>
+<p>(a)2-3 (b)3-4 (c)10-11 (d)15-0</p></li>
+<li><p>关联标记,字母C、M、G表示什么</p></li>
+<li><p>哪个字母表示数据存储?</p></li>
+</ol>
+<p><img src="/2022/04/11/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AB%E7%AB%A0/image-20220531220223922.png" srcset="/img/loading.gif" lazyload></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/12/%E7%A8%8B%E8%AE%BE/%E6%A0%BC%E5%BC%8F%E6%8E%A7%E5%88%B6/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">程设记录(十五)--格式控制</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/06/%E7%A8%8B%E8%AE%BE/figure(%E8%99%9A%E5%87%BD%E6%95%B0)/">
+                        <span class="hidden-mobile">程设记录--多态(虚函数)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        new Waline(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    <span>访问总量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span>总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+ <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+<script
+  src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+  charset="utf-8"
+></script>
+
+<script>
+  function typing(id, title){
+      var typed = new Typed('#' + id, {
+          strings: [
+            '  ',
+            title + "&nbsp;",
+          ],
+          cursorChar: "_",
+          typeSpeed: 70,
+          loop: false,
+      });
+      typed.stop();
+      $(document).ready(function () {
+          $(".typed-cursor").addClass("h2");
+          typed.start();
+      });
+  }
+
+  
+      typing("subtitle", "第八章- COUNTER(计数器)")  // 打印文章标题
+  
+</script>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->
+
+<!-- typing("hitokoto", data.hitokoto + '<br /> <h5>' + '——' + data.from + '</h5>')
+typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '「' + data.from + '」' + '</h5>') -->
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->

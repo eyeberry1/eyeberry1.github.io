@@ -1,0 +1,693 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Session management - Python API – Ansys Optics 本文将演示Lumerical工具与Python集成开发以完成复杂的自动化工作流程，并且执行高级数据处理以及绘画。 使用Python API可以实现互联，Python API是一个称为\(lumapi\)的Python库。 建议将Lumerical和Python的文件放在统一文件夹 启用Lumer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python api -- script learning">
+<meta property="og:url" content="http://example.com/2022/07/15/Lumerical/python%20api%E7%9A%84%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Session management - Python API – Ansys Optics 本文将演示Lumerical工具与Python集成开发以完成复杂的自动化工作流程，并且执行高级数据处理以及绘画。 使用Python API可以实现互联，Python API是一个称为\(lumapi\)的Python库。 建议将Lumerical和Python的文件放在统一文件夹 启用Lumer">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-15T09:49:03.330Z">
+<meta property="article:modified_time" content="2022-07-21T13:18:02.784Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Lumerical">
+<meta property="article:tag" content="script">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>python api -- script learning - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>eyeberry</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talk/">
+                <i class="iconfont icon-kakao-talk-fill"></i>
+                Talk
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+        style="background: url('/img/page.jpg') no-repeat center center;
+          background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="python api -- script learning">
+              
+            </span>
+
+<!-- 添加的代码 -->
+<!-- ========================================================================= -->
+            
+<!-- ========================================================================= -->
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-15 17:49" pubdate>
+        July 15, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      50 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">python api -- script learning</h1>
+            
+            <div class="markdown-body">
+              <p><a target="_blank" rel="noopener" href="https://optics.ansys.com/hc/en-us/articles/360041873053#h_2e805670-cfdb-4612-802e-aa06cae2685c">Session
+management - Python API – Ansys Optics</a></p>
+<p>本文将演示Lumerical工具与Python集成开发以完成复杂的自动化工作流程，并且执行高级数据处理以及绘画。</p>
+<p>使用Python API可以实现互联，Python API是一个称为<span class="math inline">\(lumapi\)</span>的Python库。</p>
+<p>建议将Lumerical和Python的文件放在统一文件夹</p>
+<p>启用Lumerical-Python API关键需要连接lumapi.py文件的连接。</p>
+<p>使用脚本命令和传递数据,可以参考<a target="_blank" rel="noopener" href="https://optics.ansys.com/hc/en-us/articles/360041579954">Script
+commands as methods - Python API,</a>和<a target="_blank" rel="noopener" href="https://optics.ansys.com/hc/en-us/articles/360041401434">Passing
+Data - Python API.</a></p>
+<h1 id="import-module">import module</h1>
+<h2 id="导入lumapi">导入lumapi</h2>
+<p>lumerical的solver已经附带了Python3发行版。</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs elm"><span class="hljs-keyword">import</span> lumapi<br></code></pre></td></tr></table></figure>
+<h2 id="导入前先导入python">导入前先导入python</h2>
+<p>使用<span class="math inline">\(sys.path.append()\)</span>方法将<span class="math inline">\(lumapi\)</span>目录临时添加到路径中。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys, os<br>sys.path.append(<span class="hljs-string">&quot;C:\\Program Files\\Lumerical\\v222\\api\\python\\&quot;</span>) <span class="hljs-comment">#Default windows lumapi path</span><br>sys.path.append(<span class="hljs-string">&quot;/opt/lumerical/v222/api/python/lumapi.py&quot;</span>) <span class="hljs-comment">#Default linux lumapi path</span><br>sys.path.append(os.path.dirname(__file__)) <span class="hljs-comment">#Current directory</span><br></code></pre></td></tr></table></figure>
+<h1 id="starting-a-session">starting a session</h1>
+<p>调用构造函数</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">fdtd</span> = lumapi.FDTD()<br></code></pre></td></tr></table></figure>
+<p>You can create multiple sessions of the same product and different
+products at once, as long as they all have unique names.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">mode1</span> = lumapi.MODE()<br><span class="hljs-attr">mode2</span> = lumapi.MODE()<br><span class="hljs-attr">device</span> = lumapi.DEVICE()<br></code></pre></td></tr></table></figure>
+<p>构造函数支持以下可选参数：</p>
+<ul>
+<li>hide（默认为False）：在启动的时候显示或者隐藏lumeric GUI/CAD
+环境</li>
+<li>filename(默认为空)：如果新的应用程序时空的，则启动这个应用程序，如果提供lsf文件，则运行脚本。如果提供了项目文件名，将尝试加载项目</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment"># loads and runs script.lsf while hiding the application window</span><br>inc = lumapi.INTERCONNECT(<span class="hljs-attribute">filename</span>=<span class="hljs-string">&quot;script.lsf&quot;</span>, <span class="hljs-attribute">hide</span>=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="import-methods">Import Methods</h3>
+<p>除了在Python中定义函数，用户还可以使用lumapi的自动同步函数功能，并且导入Lumerical脚本文件中预定义的函数。使用“eval”命令执行脚本后，可以在
+lumapi 中将这些方法称为预定义的方法。</p>
+<p>下面是从脚本文件“testScript.lsf”和script format
+string导入函数的示例。</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs delphi">fdtd = lumapi.FDTD()<br><br># import <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">defined</span> <span class="hljs-title">in</span> <span class="hljs-title">script</span> <span class="hljs-title">format</span> <span class="hljs-title">string</span></span><br><span class="hljs-function"><span class="hljs-title">fdtd</span> .<span class="hljs-title">eval</span><span class="hljs-params">(&quot;<span class="hljs-keyword">function</span> helloWorld()</span> <span class="hljs-comment">&#123; return \&quot;hello world\&quot;; &#125;</span>\<span class="hljs-title">nfunction</span> <span class="hljs-title">returnFloat</span><span class="hljs-params">()</span> <span class="hljs-comment">&#123; return 1.; &#125;</span>\<span class="hljs-title">nfunction</span> <span class="hljs-title">addTest</span><span class="hljs-params">(a, b)</span><span class="hljs-comment">&#123; return a*b; &#125;</span>&quot;)</span><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(fdtd .helloWorld()</span>)</span><br><span class="hljs-function"></span><br><span class="hljs-function"># <span class="hljs-title">import</span> <span class="hljs-title">function</span> <span class="hljs-title">defined</span> <span class="hljs-title">in</span> <span class="hljs-title">the</span> <span class="hljs-title">script</span> <span class="hljs-title">file</span> &quot;<span class="hljs-title">testScript</span>.<span class="hljs-title">lsf</span>&quot;</span><br><span class="hljs-function"><span class="hljs-title">code</span> = <span class="hljs-title">open</span><span class="hljs-params">(<span class="hljs-string">&#x27;C:/XXX/testScript.lsf&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>)</span>.<span class="hljs-title">read</span><span class="hljs-params">()</span></span><br><span class="hljs-function"><span class="hljs-title">fdtd</span> .<span class="hljs-title">eval</span><span class="hljs-params">(code)</span></span><br></code></pre></td></tr></table></figure>
+<p>该脚本还可以作为构造函数中的参数传递，以定义方法：</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">def test<span class="hljs-constructor">AddingMethodsFromConstructor(<span class="hljs-params">self</span>)</span>:<br>app = self.app<span class="hljs-constructor">Constructor(<span class="hljs-params">script</span>=<span class="hljs-string">&quot;any_product_script_workspace_functions_available_in_python_test.lsf&quot;</span>)</span><br>expectedMethods = &#123;&#x27;helloWorld&#x27;&#125;<br>expectedResults = <span class="hljs-literal">[&#x27;<span class="hljs-identifier">hello</span> <span class="hljs-identifier">world</span> <span class="hljs-identifier">from</span> <span class="hljs-identifier">script</span> <span class="hljs-identifier">file</span>&#x27;]</span><br>results = <span class="hljs-literal">[]</span><br>results.append(app.hello<span class="hljs-constructor">World()</span>)<br>self.<span class="hljs-keyword">assert</span><span class="hljs-constructor">Equal(<span class="hljs-params">results</span>, <span class="hljs-params">expectedResults</span>)</span><br>app.close<span class="hljs-literal">()</span><br></code></pre></td></tr></table></figure>
+<h1 id="advanced-session-management">Advanced session management</h1>
+<p>当变量超过了作用域之后，他们将会被自动删除，当所有指向它的变量引用被删除时，Lumerical
+会话将自动关闭。</p>
+<h3 id="wrapping-the-session-in-a-function">Wrapping the session in a
+function</h3>
+<p>在Python中，如果需要运行大量类似的实例，可以使用函数；比如，在扫描一些可选的参数的时候，有关如何返回重要结果，请参阅<a target="_blank" rel="noopener" href="https://optics.ansys.com/hc/en-us/articles/360041401434">passing
+data - Python API</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">def <span class="hljs-title">myFunction</span><span class="hljs-params">(someOptionalParameter)</span>:</span><br><span class="hljs-function">    fdtd =</span> lumapi.<span class="hljs-built_in">FDTD</span>()<br>    ...<br>    <span class="hljs-keyword">return</span> importantResult<br></code></pre></td></tr></table></figure>
+<h3 id="using-the-with-context-manager">Using the "with" context
+manager</h3>
+<p>我们可以通过Python中的"with"语句，来给出一个良好的entrance and exit
+behavior 来打开Lumerical
+session。在"with"语句块中,有任何的错误，这会话依旧可以被成功地关闭。任何平常在Lumerical
+script environment能看到的报错，会将在Python的环境中显示出来。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">with</span> lumapi.FDTD(hide=<span class="hljs-literal">True</span>) <span class="hljs-keyword">as</span> fdtd:<br>    fdtd.addfdtd()<br>    fdtd.setnamed(<span class="hljs-string">&quot;bad name&quot;</span>) <span class="hljs-comment">## you will see </span><br>LumApiError: <span class="hljs-string">&quot;in setnamed, no items matching the name &#x27;bad name&#x27; can be found.&quot;</span><br>    ...<br><span class="hljs-comment">## fdtd still successfully closes</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>hide (default to False): Shows or hides the lumerical GUI/CAD
+environment on startup</li>
+<li>filename (default empty): Launches a new application if it is empty,
+and will run the script if an lsf file is provided. If a project
+filename is provided; it will try and load the project if it can be
+found in the path. See the section setting the python path before
+importing to add folder or use the full path to load files from other
+directories.</li>
+</ul>
+<p>此示例演示如何从优化中访问数据。</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs makefile">m=<span class="hljs-string">&quot;thickness_optimization&quot;</span>;<br>?getsweepdata(m);<br>genVec = getsweepdata(m,<span class="hljs-string">&quot;genVec&quot;</span>);       <span class="hljs-comment"># Generation vector (1D vector, Ng)</span><br>memberVec = getsweepdata(m,<span class="hljs-string">&quot;memberVec&quot;</span>);    <span class="hljs-comment"># Generation member vector (1D vector, Nm)</span><br>fomTrend = getsweepdata(m,<span class="hljs-string">&quot;fomTrend&quot;</span>);     <span class="hljs-comment"># Best of each generation, same as shown in Opt. GUI window (1D vector, Ng)</span><br>paramsTrend = getsweepdata(m,<span class="hljs-string">&quot;paramsTrend&quot;</span>);  <span class="hljs-comment"># Parameters corresponding to FOM trend (3D matrix, 1 x Np x Ng)</span><br>bestFom = getsweepdata(m,<span class="hljs-string">&quot;bestFom&quot;</span>);      <span class="hljs-comment"># Global best FOM</span><br>bestParams = getsweepdata(m,<span class="hljs-string">&quot;bestParams&quot;</span>);   <span class="hljs-comment"># Parameters corresponding to global best FOM (1D vector, Np)</span><br>fomHistory = getsweepdata(m,<span class="hljs-string">&quot;fomHistory&quot;</span>);   <span class="hljs-comment"># Every FOM calculated in optimization (2D maxtrix, Nm x Ng)</span><br>paramHistory = getsweepdata(m,<span class="hljs-string">&quot;paramHistory&quot;</span>); <span class="hljs-comment"># Every parameter set used in optimization (3D maxtrix, Np x Nm x Ng)</span><br>plot(genVec,fomTrend,<span class="hljs-string">&quot;generation number&quot;</span>,<span class="hljs-string">&quot;fom Trend&quot;</span>,<span class="hljs-string">&quot;best FOM of each generation&quot;</span>); <br>?<span class="hljs-string">&quot;Best FOM: &quot;</span>+num2str(bestFom);<br>?<span class="hljs-string">&quot;Best Params: &quot;</span>+num2str(bestParams);<br>?<span class="hljs-string">&quot;Total number of simulations run: &quot;</span>+num2str(length(genVec)*length(memberVec));<br>image(memberVec,genVec,fomHistory,<span class="hljs-string">&quot;member&quot;</span>,<span class="hljs-string">&quot;generation&quot;</span>,<span class="hljs-string">&quot;All FOM&#x27;s obtained&quot;</span>);<br>&gt; genVec<br>&gt; memberVec<br>&gt; paramsTrend<br>&gt; fomTrend<br>&gt; paramHistory<br>&gt; fomHistory<br>&gt; bestParams<br>&gt; bestFom<br>&gt; Best FOM: 0.00187328<br>&gt; Best Params: 5.96041e-008<br>&gt; Total number of simulations run: 50<br></code></pre></td></tr></table></figure>
+<h1 id="simulation-objects">Simulation Objects</h1>
+<p>添加对象时，其构造函数可用于在创建时设置属性的值。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">fdtd</span>.addfdtd(dimension=<span class="hljs-string">&quot;2D&quot;</span>, x=<span class="hljs-number">0</span>.<span class="hljs-number">0</span>e-<span class="hljs-number">9</span>, y=<span class="hljs-number">0</span>.<span class="hljs-number">0</span>e-<span class="hljs-number">9</span>, x_span=<span class="hljs-number">3</span>.<span class="hljs-number">0</span>e-<span class="hljs-number">6</span>, y_span=<span class="hljs-number">1</span>.<span class="hljs-number">0</span>e-<span class="hljs-number">6</span>)<br></code></pre></td></tr></table></figure>
+<p>在Python中，字典排序不能保证，因此，如果存在依赖于其他属性的属性，则需要有序字典。例如，在Python的以下行中，“覆盖全局监视器设置”必须为true，然后才能设置“frequency
+points”。</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs maxima"><span class="hljs-built_in">props</span> = OrderedDict([(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;power&quot;</span>),(<span class="hljs-string">&quot;override global monitor settings&quot;</span>, True),(<span class="hljs-string">&quot;x&quot;</span>, <span class="hljs-number">0</span>.),(<span class="hljs-string">&quot;y&quot;</span>, <span class="hljs-number">0.4e-6</span>),<br>                     (<span class="hljs-string">&quot;monitor type&quot;</span>, <span class="hljs-string">&quot;linear x&quot;</span>),(<span class="hljs-string">&quot;frequency points&quot;</span>, <span class="hljs-number">10.0</span>)])<br>fdtd.addpower(<span class="hljs-built_in">properties</span>=<span class="hljs-built_in">props</span>)<br></code></pre></td></tr></table></figure>
+<p>如果您没有具有依赖项的属性，则可以使用常规的Python字典。</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ada">props = &#123;<span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;power&quot;</span>,<br>         <span class="hljs-string">&quot;x&quot;</span> : &quot;0.0&quot;,<br>         <span class="hljs-string">&quot;y&quot;</span> : 0.4<span class="hljs-type">e</span>-<span class="hljs-number">6</span><span class="hljs-string">&quot;,</span><br><span class="hljs-string">          &quot;</span>monitor <span class="hljs-keyword">type</span><span class="hljs-string">&quot; : &quot;</span>linear x<span class="hljs-string">&quot;&#125;</span><br><span class="hljs-string">fdtd.addpower(properties=props)</span><br></code></pre></td></tr></table></figure>
+<h3 id="simulation-objection">simulation objection</h3>
+<p>将新对象添加到 Lumerical 文件时，将返回一个representative Python
+对象。此对象可用于对 Lumerical 产品中的相应对象进行更改。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">rectangle</span> = fdtd.addrect(x = <span class="hljs-number">2</span>e-<span class="hljs-number">6</span>, y = <span class="hljs-number">0</span>.<span class="hljs-number">0</span>, z = <span class="hljs-number">0</span>.<span class="hljs-number">0</span>)<br><span class="hljs-attribute">rectangle</span>.x = -<span class="hljs-number">1</span>e-<span class="hljs-number">6</span><br><span class="hljs-attribute">rectangle</span>.x_span = <span class="hljs-number">10</span>e-<span class="hljs-number">6</span><br></code></pre></td></tr></table></figure>
+<p><strong>Parent and children access</strong></p>
+<p>The tree of objects可以使用对象的父类或子项进行遍历</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs routeros">device.addstructuregroup(<span class="hljs-attribute">name</span>=<span class="hljs-string">&quot;A&quot;</span>)<br>device.addrect(<span class="hljs-attribute">name</span>=<span class="hljs-string">&quot;in A&quot;</span>)<br>device.addtogroup(<span class="hljs-string">&quot;A&quot;</span>)<br>device.addstructuregroup(<span class="hljs-attribute">name</span>=<span class="hljs-string">&quot;B&quot;</span>)<br>device.addtogroup(<span class="hljs-string">&quot;A&quot;</span>)<br>bRect = device.addrect(<span class="hljs-attribute">name</span>=<span class="hljs-string">&quot;in B&quot;</span>)<br>device.addtogroup(<span class="hljs-string">&quot;A::B&quot;</span>)<br><br><span class="hljs-comment"># Go up two parents from the rectangle in &quot;B&quot; group</span><br>aGroup = bRect.getParent().getParent()<br><br><span class="hljs-comment"># Print the names of all members of &quot;A&quot; group</span><br><span class="hljs-keyword">for</span> child <span class="hljs-keyword">in</span> aGroup.getChildren():<br>    <span class="hljs-builtin-name">print</span> child[<span class="hljs-string">&quot;name&quot;</span>]<br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Lumerical/">Lumerical</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Lumerical/">Lumerical</a>
+                    
+                      <a class="hover-with-bg" href="/tags/script/">script</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/02/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E8%BF%90%E7%AE%97/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">复变函数--基本运算</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/14/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB-%E4%B8%89-%E5%8F%8D%E5%90%91%E8%AE%BE%E8%AE%A1/">
+                        <span class="hidden-mobile">High-effciency grating-couplers:demonstration of a new design  strategy</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        new Waline(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    <span>访问总量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span>总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+ <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+<script
+  src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+  charset="utf-8"
+></script>
+
+<script>
+  function typing(id, title){
+      var typed = new Typed('#' + id, {
+          strings: [
+            '  ',
+            title + "&nbsp;",
+          ],
+          cursorChar: "_",
+          typeSpeed: 70,
+          loop: false,
+      });
+      typed.stop();
+      $(document).ready(function () {
+          $(".typed-cursor").addClass("h2");
+          typed.start();
+      });
+  }
+
+  
+      typing("subtitle", "python api -- script learning")  // 打印文章标题
+  
+</script>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->
+
+<!-- typing("hitokoto", data.hitokoto + '<br /> <h5>' + '——' + data.from + '</h5>')
+typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '「' + data.from + '」' + '</h5>') -->
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->

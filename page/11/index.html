@@ -1,0 +1,893 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/11/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>eyeberry</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talk/">
+                <i class="iconfont icon-kakao-talk-fill"></i>
+                Talk
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+        style="background: url('/img/page.jpg') no-repeat center center;
+          background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="星光不负赶路人!">
+              
+            </span>
+
+<!-- 添加的代码 -->
+<!-- ========================================================================= -->
+            
+              
+                  <br>
+                  <span class="h2" id="jinrishici">
+                  
+                  </span>
+              
+          
+<!-- ========================================================================= -->
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/24/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E4%BA%8C%E7%AB%A0/" target="_self">
+          数字电路-数字系统\运算\编码
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/02/24/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E4%BA%8C%E7%AB%A0/" target="_self">
+          
+          十进制数 二进制数 十进制转换二进制   image-20220224215626755  二进制算术 加法   image-20220224215818222  与十进制列竖式同理 减法  借位 乘法  除法  二进制的反码和补码 无符号二进制 反码   01转换  补码   反码加一  另一种方法: 改变最低有效1左边的全部位
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-24 21:18" pubdate>
+              2022-02-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/23/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A04/" target="_self">
+          Lumerical脚本语言学习( 四)-Simulation region
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/02/23/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A04/" target="_self">
+          
+          参考了csdn的文章,属于转载 自动精度 12345678910111213addfdtd;set(&quot;dimension&quot;,2);#三维仿真区域(重点)set(&quot;x&quot;,0);set(&quot;y&quot;,0);set(&quot;z min&quot;,-10*nm);set(&quot;z max&quot;,2*um);set(&quot;x
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-23 20:27" pubdate>
+              2022-02-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Lumerical/">Lumerical</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Lumerical/">Lumerical</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/" target="_self">
+          数字电路-introduction concept
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/02/21/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/" target="_self">
+          
+          Key terms: Analog 模拟 Digital 数字 Inverter: 逆变器? Pulse: 脉冲 Duty cycle: 占空比 Integrated circuit(IC) 集成电路 Fixed-function logic 固定功能逻辑 Timing diagram 时序图 Troubleshooting 故障 排除 Serial 串行 Parallel并行
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-21 16:18" pubdate>
+              2022-02-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/20/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A03/" target="_self">
+          Lumerical脚本语言学习(三)-结构搭建
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/02/20/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A03/" target="_self">
+          
+          参考文档(61条消息) FDTD快速入门之Lumerical脚本语言Pickup（三）结构(Structure)搭建_ArcSight的博客-CSDN博客 FDTD solution中的仿真模型包含两个核心部分：材料(material)和几何结构(structure)。通常用包含吸收参数的材料的复折射率控制material属性，而用3D模型参数控制structure属性。下面介绍几种常用的s
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-20 16:13" pubdate>
+              2022-02-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Lumerical/">Lumerical</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Lumerical/">Lumerical</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/20/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A02/" target="_self">
+          Lumerical脚本语言学习(二)
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/02/20/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A02/" target="_self">
+          
+          参考了(61条消息) FDTD快速入门之Lumerical脚本语言Pickup（二）实用技巧_ArcSight的博客-CSDN博客_fdtd脚本 技巧和习惯  FDTD没有专门的长度单位常量，默认的长度单位是米(m)，所以一般用1e-6和1e-9分别表示微米(um)和纳米(nm)。 注释符号：# 运行脚本快捷键：F5 运行选中代码段快捷键：F9 注释快捷键：Ctrl+R 取消注释
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-20 16:06" pubdate>
+              2022-02-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Lumerical/">Lumerical</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Lumerical/">Lumerical</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/20/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A01/" target="_self">
+          Lumerical脚本语言学习(一)
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/02/20/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A01/" target="_self">
+          
+          这是一段用于验证光从光疏介质入射到光密介质时，反射波中存在半波损失的完整仿真代码。它包含了以下几个部分：  仿真结构(structure) 仿真区域(FDTD) 光源(source) 监视器（monitor） 仿真结果分析(Analysis)  123456789101112131415161718192021222324252627282930313233343536373839
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-20 15:51" pubdate>
+              2022-02-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Lumerical/">Lumerical</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Lumerical/">Lumerical</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/31/Lumerical/Lumerical%E4%BB%BF%E7%9C%9F%E5%AE%9E%E4%BE%8B(%E4%B8%80)-%E5%BE%AE%E7%8E%AF%E8%B0%83%E5%88%B6%E5%99%A8/" target="_self">
+          Lumerical仿真实例(一)-微环调制器
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/01/31/Lumerical/Lumerical%E4%BB%BF%E7%9C%9F%E5%AE%9E%E4%BE%8B(%E4%B8%80)-%E5%BE%AE%E7%8E%AF%E8%B0%83%E5%88%B6%E5%99%A8/" target="_self">
+          
+          复现论文结果 论文标题: Ultra-low voltage, ultra-small mode volume silicon microring modulator 几个重要参数   微环调制器示意图  微环半径: 2.5 µm 微环宽度: 500nm 直波导宽度: 350nm 微环和直波导高度: 50nm 外层材料为:\(SIO_2\)   image-2022
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-31 16:03" pubdate>
+              2022-01-31
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Lumerical/">Lumerical</a>
+            
+              <a href="/categories/Lumerical/%E4%BB%BF%E7%9C%9F%E5%AE%9E%E4%BE%8B/">仿真实例</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Lumerical/">Lumerical</a>
+            
+              <a href="/tags/%E4%BB%BF%E7%9C%9F%E5%AE%9E%E4%BE%8B/">仿真实例</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/29/Lumerical/Lumerical%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0(%E4%B8%80)/" target="_self">
+          Lumerical 软件学习(一)-FDTD
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/01/29/Lumerical/Lumerical%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0(%E4%B8%80)/" target="_self">
+          
+          Theory of Lumerical Solvers-FDTD commonly used software  FDTD solutions MODE solutions CHARGE solutions HEAT solutions INTERCONNECT etc  FDTD: finite-difference time -domain method Maxwel
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-29 21:29" pubdate>
+              2022-01-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Lumerical/">Lumerical</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Lumerical/">Lumerical</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/29/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB-%E4%BA%8C-%E7%A1%85%E5%9F%BA%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8/" target="_self">
+          文献阅读(二)硅基光栅耦合器
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/01/29/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB-%E4%BA%8C-%E7%A1%85%E5%9F%BA%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8/" target="_self">
+          
+          光栅耦合器主要性能指标和优点 (个人理解) 1）耦合效率(coupling efficiency)(表示能量损耗) 2）带宽(bandwidth)(表示信息传输的能力) 3）偏振依赖性(polarization dependency) (偏振依赖损耗（PDL）是指具有偏振特性的光信号，在光纤、光器件或由它们组成的网络传输过程中，由于光的偏振特性变化而引起的光功率变化) 4）对准容差(a
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-29 20:20" pubdate>
+              2022-01-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%A4%A7%E5%88%9B%E6%96%87%E7%8C%AE/">大创文献</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%A4%A7%E5%88%9B/">大创</a>
+            
+              <a href="/tags/%E6%96%87%E7%8C%AE/">文献</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/28/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%80%EF%BC%89%E7%A1%85%E5%9F%BA%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E7%A0%94%E7%A9%B6%E8%BF%9B%E5%B1%95/" target="_self">
+          文献阅读(一):硅基光栅耦合器的研究进展
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2022/01/28/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%EF%BC%88%E4%B8%80%EF%BC%89%E7%A1%85%E5%9F%BA%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E7%A0%94%E7%A9%B6%E8%BF%9B%E5%B1%95/" target="_self">
+          
+          文献标题: 硅基光栅耦合器的研究进展 研究背景:  电互连由于电子物理特性的局限,无法适应目前日益膨胀数据传输需求. 光子在传输过程中信号较稳定,传输容量大,硅基光子器件与CMOS工艺兼容、抗辐射多种优点.  概念补充知识: 光传递信号的机理是波阻抗变换: 光耦合结构常用两种耦合方式:  端面水平耦合结构 片上垂直耦合结构  耦合器根据光纤和硅芯片的相对位置，一般可分为
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-28 23:47" pubdate>
+              2022-01-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%A4%A7%E5%88%9B%E6%96%87%E7%8C%AE/">大创文献</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%A4%A7%E5%88%9B/">大创</a>
+            
+              <a href="/tags/%E6%96%87%E7%8C%AE/">文献</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/10/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/#board">9</a><a class="page-number" href="/page/10/#board">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/#board">12</a><a class="extend next" rel="next" href="/page/12/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    <span>访问总量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span>总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+ <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+<script
+  src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+  charset="utf-8"
+></script>
+
+<script>
+  function typing(id, title){
+      var typed = new Typed('#' + id, {
+          strings: [
+            '  ',
+            title + "&nbsp;",
+          ],
+          cursorChar: "_",
+          typeSpeed: 70,
+          loop: false,
+      });
+      typed.stop();
+      $(document).ready(function () {
+          $(".typed-cursor").addClass("h2");
+          typed.start();
+      });
+  }
+
+  
+      jinrishici.load(function(result) {
+          typing("jinrishici", result.data.content + '<br/> <h6>' + '——' + '【' + result.data.origin.dynasty + '】' + result.data.origin.author + '《' + result.data.origin.title + '》'+ '</h6>')
+      });
+  
+</script>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->
+
+<!-- typing("hitokoto", data.hitokoto + '<br /> <h5>' + '——' + data.from + '</h5>')
+typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '「' + data.from + '」' + '</h5>') -->
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->

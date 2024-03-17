@@ -1,0 +1,663 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Description Recently, Xiao Ming is developing a music player, which requires model the SongList. He want to implement a simple SongList object. But in the versions he implemented before, the doubl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程设记录(二十)--songlist(拷贝)">
+<meta property="og:url" content="http://example.com/2022/04/12/%E7%A8%8B%E8%AE%BE/songlist/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Description Recently, Xiao Ming is developing a music player, which requires model the SongList. He want to implement a simple SongList object. But in the versions he implemented before, the doubl">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-12T06:17:55.001Z">
+<meta property="article:modified_time" content="2022-04-12T06:20:28.725Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>程设记录(二十)--songlist(拷贝) - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>eyeberry</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talk/">
+                <i class="iconfont icon-kakao-talk-fill"></i>
+                Talk
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+        style="background: url('/img/page.jpg') no-repeat center center;
+          background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="程设记录(二十)--songlist(拷贝)">
+              
+            </span>
+
+<!-- 添加的代码 -->
+<!-- ========================================================================= -->
+            
+<!-- ========================================================================= -->
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-12 14:17" pubdate>
+        April 12, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      47 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">程设记录(二十)--songlist(拷贝)</h1>
+            
+            <div class="markdown-body">
+              <h1 id="description">Description</h1>
+<p>Recently, Xiao Ming is developing a music player, which requires
+model the <strong>SongList</strong>. He want to implement a simple
+<strong>SongList</strong> object. But in the versions he implemented
+before, the <code>double free</code> or <code>memory leak</code> mistake
+always show up. As you are excellent C++ developer, he try to ask help
+from you. He has already written down the declaration of the functions
+in <code>songList.h</code>. You only need to accomplish the
+<code>songList.cpp</code>.
+小明最近在开发一个音乐播放器，需要对<strong>歌单</strong>进行建模。他希望实现一个简单的<strong>歌单</strong>类，但是在之前他自己实现的版本中，总是出现<code>double
+free</code>或者<code>memory
+leak</code>的错误，他听闻你C++学得不错，向你求助来了。他在<code>songList.h</code>头文件中已经写好了函数的声明，希望你能在<code>songList.cpp</code>中将定义完善。</p>
+<h1 id="sample-input">Sample Input</h1>
+<p>The first line is an <code>int</code> variable <code>numSongs</code>,
+which indicates the number of songList1. And the next
+<code>numSongs</code> line are the songs' name.
+第一行是一个整型变量<code>numSongs</code>，记录第一个歌单的个数，接下来的<code>numSongs</code>行分别是歌曲名字。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><pre><code class="hljs css"><span class="hljs-number">2</span><br>We Choose <span class="hljs-selector-tag">To</span> Go <span class="hljs-selector-tag">To</span> The Moon<br><span class="hljs-selector-tag">A</span> Lovely Wedding - Snowand Sky<br></code></pre></td></tr></table></figure>
+<h1 id="sample-output">Sample Output</h1>
+<p>The output will show
+<code>songList1</code>、<code>songList2</code>、<code>songList3</code>,
+the <code>songList1</code>will be initiated by the songs in the input
+and add <code>toAddAndRemoved</code> twice, but the songList should do
+the elimination so it should be store once. <code>songList2</code> is
+copied from <code>songList1</code> and will remove
+<code>toAddAndRemoved</code>, <code>songList3</code> is initiated from
+<code>songList2</code> but clear it songs after that, so it shoule be
+empty.
+输出会显示三个歌单，<code>songList1</code>通过输出的歌曲初始化，并添加两次歌曲<code>toAddAndRemoved</code>（Lights
+Frightened The
+Captain），但因为去重的原因实际只添加一次。<code>songList2</code>通过<code>songList1</code>拷贝得到，并删除<code>toAddAndRemoved</code>。<code>songList3</code>通过<code>songList2</code>初始化，并清空歌单。</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs vbnet"><span class="hljs-symbol">owner:</span>MakaBaka<br><span class="hljs-symbol">Songs:</span><br>We Choose <span class="hljs-keyword">To</span> Go <span class="hljs-keyword">To</span> The Moon<br>A Lovely Wedding - Snowand Sky<br>Lights Frightened The Captain<br><br><span class="hljs-symbol">owner:</span>MakaBaka<br><span class="hljs-symbol">Songs:</span><br>We Choose <span class="hljs-keyword">To</span> Go <span class="hljs-keyword">To</span> The Moon<br>A Lovely Wedding - Snowand Sky<br><br>MakaBaka<span class="hljs-comment">&#x27;s SongList is Empty.</span><br></code></pre></td></tr></table></figure>
+<h2 id="note">Note</h2>
+<p>输出运算符重载：</p>
+<ul>
+<li>如果歌单为空，则输出<code>&lt;owner&gt;'s SongList is
+Empty.</code>，其中<code>owner</code>是歌单类的成员变量。</li>
+<li>如果歌单不为空，则输出</li>
+</ul>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">owner:</span><span class="hljs-params">&lt;owner&gt;</span><br><span class="hljs-symbol">Songs:</span><br><span class="hljs-params">&lt;song1&gt;</span><br><span class="hljs-params">&lt;song2&gt;</span><br>...<br></code></pre></td></tr></table></figure>
+<h2 id="hint">Hint</h2>
+<ol type="1">
+<li>清空歌曲是否需要真的把歌曲删除？</li>
+<li>拷贝函数需要考虑什么？</li>
+<li>赋值拷贝函数需要考虑哪三件事？</li>
+</ol>
+<h1 id="songlist.cpp">songlist.cpp</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><code class="hljs c++"><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;songList.h&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><br>SongList:: <span class="hljs-built_in">SongList</span>(<span class="hljs-keyword">const</span> std::string _owner, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> _size, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> _capacity, std::string *_songs)<br>&#123;<br>    owner=_owner;<br>    size=_size;<br>    capacity=_capacity;<br>    songs=<span class="hljs-keyword">new</span> string[capacity];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;size;i++)&#123;<br>        songs[i]=_songs[i];<br>    &#125;<br>&#125;<br><br>SongList:: <span class="hljs-built_in">SongList</span>(<span class="hljs-keyword">const</span> SongList &amp;a)&#123;<br>    owner=a.owner;<br>    size=a.size;<br>    capacity=a.capacity;<br>    songs=<span class="hljs-keyword">new</span> string[capacity];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;size;i++)&#123;<br>        songs[i]=a.songs[i];<br>    &#125;<br>&#125;<br><br><br><span class="hljs-keyword">void</span> SongList:: <span class="hljs-built_in">addSong</span>(<span class="hljs-keyword">const</span> std::string &amp;song)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;size;i++)&#123;<br>        <span class="hljs-keyword">if</span>(song==songs[i]) <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(size==capacity)&#123;<br>        string *newsongs=<span class="hljs-keyword">new</span> string [capacity+<span class="hljs-number">1</span>];<br>        <span class="hljs-keyword">int</span> i;<br>        <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;size;i++)&#123;<br>            newsongs[i]=songs[i];<br>        &#125;<br>        newsongs[i]=song;<br>        <span class="hljs-keyword">delete</span> [] songs;<br>        songs=<span class="hljs-keyword">new</span> string [capacity+<span class="hljs-number">1</span>];<br>        <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;size+<span class="hljs-number">1</span>;i++)&#123;<br>            songs[i]=newsongs[i];<br>        &#125;<br>        <span class="hljs-keyword">delete</span> [] newsongs;<br>        size++;<br>        capacity++;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        songs[size]=song;<br>        size++;<br>    &#125;<br>&#125;<br><br>    <span class="hljs-comment">// 删除指定歌曲，歌曲不存在则无动作</span><br><span class="hljs-keyword">void</span> SongList:: <span class="hljs-built_in">removeSong</span>(<span class="hljs-keyword">const</span> std::string &amp;song)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;size;i++)&#123;<br>        <span class="hljs-keyword">if</span>(songs[i]==song)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i;j&lt;size<span class="hljs-number">-1</span>;j++)&#123;<br>                songs[j]=song[j+<span class="hljs-number">1</span>];<br>            &#125;<br>            size--;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>    &#125;<br>&#125;<br><br><br><br>    <span class="hljs-comment">// 清空歌曲</span><br><span class="hljs-keyword">void</span> SongList:: <span class="hljs-built_in">clearSong</span>()&#123;<br>    size=<span class="hljs-number">0</span>;<br>&#125;<br><br>SongList &amp; SongList::<span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> SongList &amp;a)&#123;<br>    <span class="hljs-keyword">if</span> (&amp;a != <span class="hljs-keyword">this</span>) &#123;<br>        *<span class="hljs-keyword">this</span>=<span class="hljs-built_in">SongList</span>(a);<br>    &#125;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br>ostream &amp;<span class="hljs-keyword">operator</span>&lt;&lt;(ostream &amp;os, <span class="hljs-keyword">const</span> SongList &amp;a)&#123;<br>    <span class="hljs-keyword">if</span>(a.size==<span class="hljs-number">0</span>)&#123;<br>        os&lt;&lt;a.owner&lt;&lt;<span class="hljs-string">&quot;&#x27;s SongList is Empty.&quot;</span>&lt;&lt;endl;<br>        <span class="hljs-keyword">return</span> os;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        os&lt;&lt;<span class="hljs-string">&quot;owner:&quot;</span>&lt;&lt;a.owner&lt;&lt;endl;<br>        os&lt;&lt;<span class="hljs-string">&quot;Songs:&quot;</span>&lt;&lt;endl;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;a.size;i++)&#123;<br>            os&lt;&lt;a.songs[i]&lt;&lt;endl;<br>        &#125;<br>        <span class="hljs-keyword">return</span> os;<br>    &#125;<br>&#125;<br><br>SongList:: ~<span class="hljs-built_in">SongList</span>()&#123;<br>    <span class="hljs-keyword">delete</span> [] songs;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="songlist.hlock">songlist.h(lock)</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> SONGLIST_H</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SONGLIST_H</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SongList</span> &#123;</span><br>    std::string owner;          <span class="hljs-comment">// 歌单拥有者</span><br>    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> size;         <span class="hljs-comment">// 歌单中有效歌曲的数量</span><br>    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> capacity;          <span class="hljs-comment">// 歌单的最大容量</span><br>    std::string *songs;         <span class="hljs-comment">// 歌曲列表，一个string数组</span><br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">// 初始化的歌曲列表中会保证没有重复歌曲</span><br>    <span class="hljs-built_in">SongList</span>(<span class="hljs-keyword">const</span> std::string _owner, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> _size, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> _capacity, std::string *_songs);<br><br>    <span class="hljs-built_in">SongList</span>(<span class="hljs-keyword">const</span> SongList &amp;songList);<br><br>    <span class="hljs-comment">// 添加歌曲，请考虑去重的情况（如果歌曲已经存在则不添加）、歌单已经满了需要扩容的情况，扩容方案自选</span><br>    <span class="hljs-comment">// 扩容方案1：原地扩容，C语言中有个realloc函数可以实现</span><br>    <span class="hljs-comment">// 扩容方案2：重新开辟一个更大容量songs歌曲列表，并将当前的数据迁移过去</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addSong</span><span class="hljs-params">(<span class="hljs-keyword">const</span> std::string &amp;song)</span></span>;<br><br>    <span class="hljs-comment">// 删除指定歌曲，歌曲不存在则无动作</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">removeSong</span><span class="hljs-params">(<span class="hljs-keyword">const</span> std::string &amp;song)</span></span>;<br><br>    <span class="hljs-comment">// 清空歌曲</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">clearSong</span><span class="hljs-params">()</span></span>;<br><br>    SongList &amp;<span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> SongList &amp;songList);<br><br>    <span class="hljs-keyword">friend</span> ostream &amp;<span class="hljs-keyword">operator</span>&lt;&lt;(ostream &amp;os, <span class="hljs-keyword">const</span> SongList &amp;songList);<br><br>    ~<span class="hljs-built_in">SongList</span>();<br>&#125;;<br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> <span class="hljs-comment">//SONGLIST_H</span></span><br><br></code></pre></td></tr></table></figure>
+<h1 id="framework.cpp">framework.cpp</h1>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;songList.h&quot;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> numSongs;<br>    cin &gt;&gt; numSongs;<br>    <span class="hljs-built_in">getchar</span>();                  <span class="hljs-comment">//读取换行符</span><br>    string name2 = <span class="hljs-string">&quot;MakaBaka&quot;</span>;<br>    string *songs = <span class="hljs-keyword">new</span> string[numSongs];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numSongs; ++i) &#123;<br>        <span class="hljs-built_in">getline</span>(cin, songs[i]);<br>    &#125;<br>    string toAddAndRemoved = <span class="hljs-string">&quot;Lights Frightened The Captain&quot;</span>;<br><br>    <span class="hljs-function">SongList <span class="hljs-title">songList1</span><span class="hljs-params">(name2, numSongs, numSongs, songs)</span></span>;<br>    songList1.<span class="hljs-built_in">addSong</span>(toAddAndRemoved);<br>    songList1.<span class="hljs-built_in">addSong</span>(toAddAndRemoved);<br>    <span class="hljs-keyword">delete</span> []songs;<br>    <span class="hljs-function">SongList <span class="hljs-title">songList2</span><span class="hljs-params">(songList1)</span></span>;<br>    songList2 = songList2;<br>    songList2.<span class="hljs-built_in">removeSong</span>(toAddAndRemoved);<br><br>    SongList songList3 = songList2;<br>    songList3.<span class="hljs-built_in">clearSong</span>();<br><br><br>    cout &lt;&lt; songList1 &lt;&lt; endl;<br>    cout &lt;&lt; songList2 &lt;&lt; endl;<br>    cout &lt;&lt; songList3 &lt;&lt; endl;<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * 示例输入：</span><br><span class="hljs-comment"> * 2</span><br><span class="hljs-comment"> * We Choose To Go To The Moon</span><br><span class="hljs-comment"> * A Lovely Wedding - Snowand Sky</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * 示例输出：</span><br><span class="hljs-comment"> * owner:MakaBaka</span><br><span class="hljs-comment"> * Songs:</span><br><span class="hljs-comment"> * We Choose To Go To The Moon</span><br><span class="hljs-comment"> * A Lovely Wedding - Snowand Sky</span><br><span class="hljs-comment"> * Lights Frightened The Captain</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * owner:MakaBaka</span><br><span class="hljs-comment"> * Songs:</span><br><span class="hljs-comment"> * We Choose To Go To The Moon</span><br><span class="hljs-comment"> * A Lovely Wedding - Snowand Sky</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * MakaBaka&#x27;s SongList is Empty.</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/C/">C++</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/C/">C++</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/12/%E7%A8%8B%E8%AE%BE/account/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">程设记录(二十一)--account and vip</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/12/%E7%A8%8B%E8%AE%BE/make%20list/">
+                        <span class="hidden-mobile">程设记录(十九)--make list</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        new Waline(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    <span>访问总量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span>总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+ <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+<script
+  src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+  charset="utf-8"
+></script>
+
+<script>
+  function typing(id, title){
+      var typed = new Typed('#' + id, {
+          strings: [
+            '  ',
+            title + "&nbsp;",
+          ],
+          cursorChar: "_",
+          typeSpeed: 70,
+          loop: false,
+      });
+      typed.stop();
+      $(document).ready(function () {
+          $(".typed-cursor").addClass("h2");
+          typed.start();
+      });
+  }
+
+  
+      typing("subtitle", "程设记录(二十)--songlist(拷贝)")  // 打印文章标题
+  
+</script>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->
+
+<!-- typing("hitokoto", data.hitokoto + '<br /> <h5>' + '——' + data.from + '</h5>')
+typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '「' + data.from + '」' + '</h5>') -->
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->

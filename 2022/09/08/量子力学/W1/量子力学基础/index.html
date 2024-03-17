@@ -1,0 +1,761 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="普朗克黑体辐射定律 研究内容 辐射与周围物质处于平衡时能量分布规律。 黑体：能够全部吸收而不反射投射其上面的辐射称为绝对黑体，简称黑体。 黑体辐射： 由这样的空腔小孔发出的辐射就称为黑体辐射 平衡辐射的性质 平衡辐射：单位面积上，单位时间内辐射与吸收的能量相等。 平衡辐射时，辐射能量只与黑体的绝对温度有关。 两个假定 （1）原子的性能和谐振子一样，以给定的频率 v 振荡； （2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="量子力学基础">
+<meta property="og:url" content="http://example.com/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="普朗克黑体辐射定律 研究内容 辐射与周围物质处于平衡时能量分布规律。 黑体：能够全部吸收而不反射投射其上面的辐射称为绝对黑体，简称黑体。 黑体辐射： 由这样的空腔小孔发出的辐射就称为黑体辐射 平衡辐射的性质 平衡辐射：单位面积上，单位时间内辐射与吸收的能量相等。 平衡辐射时，辐射能量只与黑体的绝对温度有关。 两个假定 （1）原子的性能和谐振子一样，以给定的频率 v 振荡； （2">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220908184643327.png">
+<meta property="og:image" content="http://example.com/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220908185425176.png">
+<meta property="og:image" content="http://example.com/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220908185602073.png">
+<meta property="og:image" content="http://example.com/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220908200309264.png">
+<meta property="og:image" content="http://example.com/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220908200504330.png">
+<meta property="og:image" content="http://example.com/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220908200603773.png">
+<meta property="og:image" content="http://example.com/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220908200858883.png">
+<meta property="og:image" content="http://example.com/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/test2.png">
+<meta property="og:image" content="http://example.com/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220908210820317.png">
+<meta property="article:published_time" content="2022-09-08T10:38:01.531Z">
+<meta property="article:modified_time" content="2022-09-10T13:51:22.873Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="黑体辐射\光电效应\康普顿散射">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220908184643327.png">
+  
+  
+  <title>量子力学基础 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>eyeberry</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talk/">
+                <i class="iconfont icon-kakao-talk-fill"></i>
+                Talk
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+        style="background: url('/img/page.jpg') no-repeat center center;
+          background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="量子力学基础">
+              
+            </span>
+
+<!-- 添加的代码 -->
+<!-- ========================================================================= -->
+            
+<!-- ========================================================================= -->
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-09-08 18:38" pubdate>
+        September 8, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">量子力学基础</h1>
+            
+            <div class="markdown-body">
+              <h1 id="普朗克黑体辐射定律">普朗克黑体辐射定律</h1>
+<h2 id="研究内容">研究内容</h2>
+<p>辐射与周围物质处于平衡时能量分布规律。</p>
+<p>黑体：能够全部吸收而不反射投射其上面的辐射称为绝对黑体，简称黑体。</p>
+<p>黑体辐射： 由这样的空腔小孔发出的辐射就称为黑体辐射</p>
+<p>平衡辐射的性质</p>
+<p>平衡辐射：单位面积上，单位时间内辐射与吸收的能量相等。</p>
+<p>平衡辐射时，辐射能量只与黑体的绝对温度有关。</p>
+<h2 id="两个假定">两个假定</h2>
+<p>（1）原子的性能和谐振子一样，以给定的频率 v 振荡；</p>
+<p>（2）黑体只能以 E = hv 为能量单位不连续的发射和吸收辐射能量
+，而不是像经典理论所要求的那样可以连续的发射和吸收辐射能量</p>
+<p><img src="/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220908184643327.png" srcset="/img/loading.gif" lazyload> <span class="math display">\[
+\rho =\frac{8\pi hv^3}{C^3}(\frac {1}{e^{\frac {hv}{KT}}-1})
+\]</span></p>
+<h2 id="三点讨论">三点讨论</h2>
+<p>当频率很大时，普朗克定律转化为维恩（Wien）公式。</p>
+<p><img src="/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220908185425176.png" srcset="/img/loading.gif" lazyload></p>
+<p>当频率很小时，普朗克定律转化为瑞利-金斯公式</p>
+<p><img src="/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220908185602073.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="光量子和光电效应理论">光量子和光电效应理论</h1>
+<h2 id="光子概念">光子概念</h2>
+<p>光不仅是是电磁波，而且还是由一个个粒子组成。</p>
+<p>由相对论光的动量与能量关系$
+P=E/C=hv/C=h/λ$提出了光子动量P与辐射波长的关系。</p>
+<h2 id="光电效应理论">光电效应理论</h2>
+<p><span class="math display">\[
+\frac{1}{2}\mu V^2=hv-A
+\]</span></p>
+<p>两个典型特点</p>
+<ol type="1">
+<li>临界频率<span class="math inline">\(v_0\)</span></li>
+<li>光电子动能只决定于光子的频率,光的强度只决定光子的数目,从而决定光电子的数目</li>
+</ol>
+<h2 id="光子动量">光子动量</h2>
+<p><span class="math inline">\(m_0\)</span>和<span class="math inline">\(\mu_0\)</span>都是粒子质量</p>
+<p>速度为V运动的粒子的能量: <span class="math display">\[
+E=\frac{\mu_0C^2}{\sqrt{1-\frac{V^2}{C^2}}} (1)
+\]</span> <span class="math inline">\(\mu_0\)</span>是粒子的静止质量</p>
+<p><span class="math inline">\(m_e=\frac{m_0}{\sqrt{1-\frac{V^2}{C^2}}}\)</span>，静止质量和运动时的质量的关系</p>
+<p>相对论中能量动量关系式： <span class="math display">\[
+E_e^2=m_0^2C^4+P_e^2C^2(2)
+\]</span>
+对于光子，速度为光速，为了使（1）式有意义，光子的静止质量为0</p>
+<p>因此<strong>光子的能动量关系</strong>： <span class="math display">\[
+E=pC
+\]</span></p>
+<p><img src="/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220908200309264.png" srcset="/img/loading.gif" lazyload></p>
+<p>光子能量、动量关系式： <span class="math display">\[
+\left\{  
+             \begin{array}{**lr**}  
+             E=hv=\hbar\omega\\
+             \vec p=\frac{E}{c}\vec n=\frac{hv}{c}\vec
+n=\frac{h}{\lambda}\vec n=\frac{\hbar}{\bar\lambda}\vec n=\hbar\vec k
+             \end{array}  
+\right.
+\]</span></p>
+<p><span class="math display">\[
+\hbar=\frac{h}{2\pi}
+\]</span></p>
+<p><span class="math display">\[
+\bar \lambda=\frac{\lambda}{2\pi}
+\]</span></p>
+<p><span class="math display">\[
+波矢\vec k=\frac{\vec n}{\bar \lambda}
+\]</span></p>
+<h1 id="相对论中的动能公式和经典力学的公式的统一">相对论中的动能公式和经典力学的公式的统一</h1>
+<p><img src="/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220908200504330.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220908200603773.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="康普顿效应">康普顿效应</h1>
+<p>X射线被轻元素如白蜡、石墨中的电子散射后出现的效应。该效应 有如下 2
+个特点：</p>
+<ol type="1">
+<li>散射光中，除了原来X光的波长λ外，增加了一个新的波长为<span class="math inline">\(λ&#39;\)</span>的X光，且<span class="math inline">\(λ&#39; &gt;λ\)</span>；</li>
+<li>波长增量 $Δλ=λ’ –λ
+$随散射角增大而增大。这一现象称为康普顿效应。</li>
+</ol>
+<p>把 X射线被电子散射的过程看成是光子与电子的碰撞过程</p>
+<p><img src="/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220908200858883.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="康普顿效应证明">康普顿效应证明</h2>
+<p>证明:</p>
+<figure>
+<img src="/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/test2.png" srcset="/img/loading.gif" lazyload alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
+<p><span class="math display">\[
+\Delta \lambda = \lambda − \lambda_0 = 2\lambda_𝒄 \sin^2 {\frac{𝝋}{2} }
+\]</span></p>
+<p><span class="math display">\[
+\lambda_0:光子入射波长
+\]</span></p>
+<p><span class="math display">\[
+\lambda:光子散射波长
+\]</span></p>
+<p><span class="math display">\[
+\lambda_c:电子的康普顿波长
+\]</span></p>
+<p><span class="math display">\[
+φ:光子的散射角
+\]</span></p>
+<p>根据能量守恒定律: <span class="math display">\[
+h(v_0-v)+m_0c^2=m_ec^2\tag{1}
+\]</span> <span class="math inline">\(m_0\)</span> :
+电子的绝对静止质量；<span class="math inline">\(m_e\)</span>:
+电子和光子碰撞后的电子质量；</p>
+<p><span class="math inline">\(v_0\)</span>是光子入射频率;<span class="math inline">\(v\)</span>是光子散射频率</p>
+<p>根据动量守恒定律:(余弦定理) <span class="math display">\[
+\vec P_e=\vec P_0-\vec P\tag{2}
+\]</span> 电子的能动量关系(用到了质能方程) <span class="math display">\[
+(m_ec^2)^2=(m_0c^2)^2+(\vec P_ec)^2 \tag{3}
+\]</span> 由<span class="math inline">\((2)\)</span>式可以推得:</p>
+<p><img src="/2022/09/08/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/image-20220908210820317.png" srcset="/img/loading.gif" lazyload> <span class="math display">\[
+P_e^2=P_0^2+P^2-2P_0P\cos \varphi\tag{4}
+\]</span> 根据光子的能动量关系 <span class="math display">\[
+Pc=E=hv\tag{5}
+\]</span> 将<span class="math inline">\((5)\)</span>式代入<span class="math inline">\((4)\)</span>式中得到 <span class="math display">\[
+P_e^2=(\frac{hv_0}{c})^2+(\frac{hv}{c})^2-2(\frac{hv_0}{c})(\frac{hv}{c})\cos
+\varphi\tag{6}
+\]</span> 将(6)式和(1)式代入(3)式得到 <span class="math display">\[
+(h(v_0-v)+m_0c^2)^2=(m_0c^2)^2+\\((\frac{hv_0}{c})^2+(\frac{hv}{c})^2-2(\frac{hv_0}{c})(\frac{hv}{c})\cos
+\varphi)c^2
+\]</span> 展开化简可得 <span class="math display">\[
+(\frac{1}{v}-\frac{1}{v_0})=\frac{h}{m_0c^2}(1-\cos \varphi)
+\]</span></p>
+<p><span class="math display">\[
+\lambda-\lambda_0=\frac{2h}{m_0c}\sin^2 {\frac{\varphi}{2}}
+\]</span></p>
+<p><strong>证毕</strong></p>
+<h2 id="总结">总结</h2>
+<p><span class="math display">\[
+\Delta \lambda = \lambda − \lambda_0 = 2\lambda_𝒄 \sin^2 {\frac{𝝋}{2} }
+\]</span></p>
+<p>电子的康普顿波长 <span class="math display">\[
+\lambda_c=\frac{h}{m_0c}=\frac{2\pi\hbar }{m_0c}
+\]</span> 其中 <span class="math display">\[
+\hbar=\frac{h}{2\pi}
+\]</span></p>
+<p><span class="math display">\[
+\bar \lambda=\frac{\lambda}{2\pi}
+\]</span></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/">量子力学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%BB%91%E4%BD%93%E8%BE%90%E5%B0%84-%E5%85%89%E7%94%B5%E6%95%88%E5%BA%94-%E5%BA%B7%E6%99%AE%E9%A1%BF%E6%95%A3%E5%B0%84/">黑体辐射\光电效应\康普顿散射</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/10/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6/W1/%E5%8E%9F%E5%AD%90%E7%BB%93%E6%9E%84%E7%9A%84%E7%8E%BB%E5%B0%94%E7%90%86%E8%AE%BA/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">玻尔理论</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/07/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/">
+                        <span class="hidden-mobile">复变函数--解析函数</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        new Waline(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    <span>访问总量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span>总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+ <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+<script
+  src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+  charset="utf-8"
+></script>
+
+<script>
+  function typing(id, title){
+      var typed = new Typed('#' + id, {
+          strings: [
+            '  ',
+            title + "&nbsp;",
+          ],
+          cursorChar: "_",
+          typeSpeed: 70,
+          loop: false,
+      });
+      typed.stop();
+      $(document).ready(function () {
+          $(".typed-cursor").addClass("h2");
+          typed.start();
+      });
+  }
+
+  
+      typing("subtitle", "量子力学基础")  // 打印文章标题
+  
+</script>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->
+
+<!-- typing("hitokoto", data.hitokoto + '<br /> <h5>' + '——' + data.from + '</h5>')
+typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '「' + data.from + '」' + '</h5>') -->
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->
