@@ -1,0 +1,1132 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="步骤1：定义基本仿真参数  在mode下打开模拟文件 pid_grating_coupler_preliminary_design.lms 修改所需的基本仿真参数，保存文件。 打开脚本文件 pid_grating_coupler_preliminary_design.lsf 修改参数并运行脚本     结果展示  第一个是所需的中心波长 第二个是\(X_0\)，光栅的起始">
+<meta property="og:type" content="article">
+<meta property="og:title" content="inverse design of grating coupler -- process presentation">
+<meta property="og:url" content="http://example.com/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="步骤1：定义基本仿真参数  在mode下打开模拟文件 pid_grating_coupler_preliminary_design.lms 修改所需的基本仿真参数，保存文件。 打开脚本文件 pid_grating_coupler_preliminary_design.lsf 修改参数并运行脚本     结果展示  第一个是所需的中心波长 第二个是\(X_0\)，光栅的起始">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220713185123368.png">
+<meta property="og:image" content="http://example.com/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220713185358211.png">
+<meta property="og:image" content="http://example.com/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220715200533891.png">
+<meta property="og:image" content="http://example.com/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220722204019512.png">
+<meta property="og:image" content="http://example.com/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220720182721687.png">
+<meta property="og:image" content="http://example.com/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220722204110420.png">
+<meta property="og:image" content="http://example.com/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220721153833886.png">
+<meta property="article:published_time" content="2022-07-13T10:46:09.671Z">
+<meta property="article:modified_time" content="2022-10-02T16:39:42.871Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Lumerical">
+<meta property="article:tag" content="inverse design">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220713185123368.png">
+  
+  
+  <title>inverse design of grating coupler -- process presentation - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>eyeberry</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talk/">
+                <i class="iconfont icon-kakao-talk-fill"></i>
+                Talk
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+        style="background: url('/img/page.jpg') no-repeat center center;
+          background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="inverse design of grating coupler -- process presentation">
+              
+            </span>
+
+<!-- 添加的代码 -->
+<!-- ========================================================================= -->
+            
+<!-- ========================================================================= -->
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-07-13 18:46" pubdate>
+        July 13, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      27k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      222 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">inverse design of grating coupler -- process presentation</h1>
+            
+            <div class="markdown-body">
+              <h1 id="步骤1定义基本仿真参数">步骤1：定义基本仿真参数</h1>
+<ol type="1">
+<li>在mode下打开模拟文件 pid_grating_coupler_preliminary_design.lms</li>
+<li>修改所需的基本仿真参数，保存文件。</li>
+<li>打开脚本文件 pid_grating_coupler_preliminary_design.lsf</li>
+<li>修改参数并运行脚本</li>
+</ol>
+<p><img src="/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220713185123368.png" srcset="/img/loading.gif" lazyload></p>
+<figure>
+<img src="/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220713185358211.png" srcset="/img/loading.gif" lazyload alt="结果展示">
+<figcaption aria-hidden="true">结果展示</figcaption>
+</figure>
+<p>第一个是所需的中心波长</p>
+<p>第二个是<span class="math inline">\(X_0\)</span>，光栅的起始点</p>
+<p>第三个是切趾系数R</p>
+<p>第四个是 neff_thin -
+index_SiO2*sin(theta)(具体叫什么我也不太清楚)</p>
+<p>第五个是有效折射率的差值(neff_thick - neff_thin)</p>
+<p>脚本<strong>pid_grating_coupler_preliminary_grating_design.lsf</strong>
+将会计算这些初始参数，并将结果保存在<strong>pid_grating_coupler_initial_params.json</strong>文件中，以便下一步使用。</p>
+<h1 id="步骤二使用2d-fdyd优化切趾光栅">步骤二：使用2D
+FDYD优化切趾光栅</h1>
+<p>我们首先需要找到光纤的最佳位置。</p>
+<ol type="1">
+<li>用FDTD的编译器打开python脚本<strong>pid_grating_coupler_sweep_2D.py</strong></li>
+<li>如果需要的话，可以修改参数。</li>
+<li>运行脚本</li>
+</ol>
+<p>这个脚本会进行一个光源位置的扫描</p>
+<h1 id="pid_grating_coupler_sweep_2d.py">pid_grating_coupler_sweep_2D.py</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></div></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    Copyright (c) 2020 Ansys Inc. &quot;&quot;&quot;</span><br>    <br><span class="hljs-comment">######## IMPORTS ########</span><br><span class="hljs-comment"># General purpose imports</span><br><span class="hljs-keyword">import</span> os,sys<br>sys.path.append(<span class="hljs-string">&quot;C:\\Program Files\\Lumerical\\v211\\api\\python\\&quot;</span>)<br><span class="hljs-keyword">import</span> scipy <span class="hljs-keyword">as</span> sp<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">from</span> lumjson <span class="hljs-keyword">import</span> LumEncoder, LumDecoder<br><br><span class="hljs-keyword">import</span> lumapi<br><br><span class="hljs-comment">######## OPTIMIZABLE GEOMETRY ########</span><br>lambda_c = <span class="hljs-number">1.55e-6</span> <br>bandwidth_in_nm = <span class="hljs-number">0</span>     <span class="hljs-comment">#&lt; Only optimize for center frequency of 1550nm</span><br>F0 = <span class="hljs-number">0.95</span><br>height = <span class="hljs-number">220e-9</span><br>etch_depth = <span class="hljs-number">80e-9</span><br>y0 = <span class="hljs-number">0</span><br>x_begin = -<span class="hljs-number">5.1e-6</span><br>x_end = <span class="hljs-number">22e-6</span><br>n_grates = <span class="hljs-number">25</span><br><br>indexSi = <span class="hljs-number">3.47668</span><br>indexSiO2 = <span class="hljs-number">1.44401</span><br><br>data_file = <span class="hljs-string">&quot;pid_grating_coupler_initial_params.json&quot;</span><br>base_file = <span class="hljs-string">&quot;pid_grating_coupler_2D_TE_base.fsp&quot;</span><br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">grating_params_pos</span>(<span class="hljs-params">params, n_grates</span>):</span><br>    y0      = <span class="hljs-number">0</span><br><br>    y3 = y0+height<br>    y1 = y3-etch_depth<br><br>    x_start = params[<span class="hljs-number">0</span>]*<span class="hljs-number">1e-6</span>  <span class="hljs-comment">#&lt; First parameter is the starting position</span><br>    R  = params[<span class="hljs-number">1</span>]*<span class="hljs-number">1e6</span>        <span class="hljs-comment">#&lt; second parameter (unit is 1/um)</span><br>    a  = params[<span class="hljs-number">2</span>]            <span class="hljs-comment">#&lt; Third parameter (dim-less)</span><br>    b  = params[<span class="hljs-number">3</span>]            <span class="hljs-comment">#&lt; Fourth parameter (dim-less)</span><br><br>    x0 = x_start<br>  <br>    verts = np.array( [[x_begin,y0],[x_begin,y3],[x0,y3],[x0,y1]] )<br>    <br>    <span class="hljs-comment">## Iterate over all but the last tooth</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n_grates-<span class="hljs-number">1</span>):<br>        F = F0-R*(x0-x_start)<br>        Lambda = lambda_c / (a+F*b)<br>        x1 = x0 + (<span class="hljs-number">1</span>-F)*Lambda    <span class="hljs-comment">#&lt; Width of the etched region</span><br>        x2 = x0 + Lambda          <span class="hljs-comment">#&lt; Rest of cell</span><br>        verts = np.concatenate((verts,np.array([[x1,y1],[x1,y3],[x2,y3],[x2,y1]])),axis=<span class="hljs-number">0</span>)<br>        x0 = x2<br><br>    <span class="hljs-comment">## Last tooth is special</span><br>    F = F0-R*(x0-x_start)<br>    Lambda = lambda_c / (a+F*b)<br>    x1 = x0 + (<span class="hljs-number">1</span>-F)*Lambda        <span class="hljs-comment">#&lt; Width of the etched region</span><br>    verts = np.concatenate((verts,np.array([[x1,y1],[x1,y3],[x_end,y3],[x_end,y0]])),axis=<span class="hljs-number">0</span>) <br><br>    <span class="hljs-keyword">return</span> verts<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(data_file) <span class="hljs-keyword">as</span> fh:<br>        initial_params = json.load(fh, cls=LumDecoder)[<span class="hljs-string">&quot;initial_params&quot;</span>][<span class="hljs-number">0</span>]<br>                <br>    <span class="hljs-comment"># Alternate starting point</span><br>    <span class="hljs-comment"># initial_params = [ -2.5, 0.03, 2.4, 0.5369]</span><br><br>    vtx = grating_params_pos(initial_params, <span class="hljs-number">25</span>)<br><br>    <span class="hljs-keyword">if</span> os.path.exists(base_file):<br>        <span class="hljs-keyword">with</span> lumapi.FDTD(filename=base_file) <span class="hljs-keyword">as</span> fdtd:<br>            fdtd.addpoly()<br>            fdtd.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot;vertices&quot;</span>, vtx)<br>            fdtd.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot;x&quot;</span>, <span class="hljs-number">0</span>)<br>            fdtd.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot;y&quot;</span>, <span class="hljs-number">0</span>)<br>            fdtd.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot;index&quot;</span>, indexSi)<br>            fdtd.setglobalsource(<span class="hljs-string">&quot;center wavelength&quot;</span>, lambda_c)<br>            fdtd.setglobalsource(<span class="hljs-string">&quot;wavelength span&quot;</span>, <span class="hljs-number">0</span>)<br>            fdtd.save()<br>            fdtd.runsweep(<span class="hljs-string">&quot;sweep source position&quot;</span>)<br>            sweep_pos = fdtd.getsweepdata(<span class="hljs-string">&quot;sweep source position&quot;</span>, <span class="hljs-string">&quot;x&quot;</span>)<br>            sweep_T = fdtd.getsweepdata(<span class="hljs-string">&quot;sweep source position&quot;</span>, <span class="hljs-string">&quot;T&quot;</span>)<br>            <br>            Tmax = np.amax(sweep_T)<br>            Tpos = sweep_pos[np.where(sweep_T == np.amax(sweep_T))[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]][<span class="hljs-number">0</span>]<br>            <br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Max transmission:&quot;</span>, Tmax*<span class="hljs-number">100</span>, <span class="hljs-string">&quot;%&quot;</span>)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Position&quot;</span>, Tpos*<span class="hljs-number">1e6</span>, <span class="hljs-string">&quot;um&quot;</span>)<br>            <br>            fdtd.setnamed(<span class="hljs-string">&quot;source&quot;</span>, <span class="hljs-string">&quot;x&quot;</span>, Tpos)<br>            <br>            fdtd.select(<span class="hljs-string">&quot;polygon&quot;</span>)<br>            fdtd.delete()<br>            fdtd.save()            <br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;base file doesn&#x27;t exist...&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+<figure>
+<img src="/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220715200533891.png" srcset="/img/loading.gif" lazyload alt="运行扫描">
+<figcaption aria-hidden="true">运行扫描</figcaption>
+</figure>
+<h2 id="导入的标准库">导入的标准库</h2>
+<p>import os,sys 是导入标准库os和sys</p>
+<p><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.7/library/os.html">os ---
+操作系统接口模块 — Python 3.7.13 文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/import.html">5.
+import sys — Python 3.10.5 文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.numpy.org.cn/article/basics/python_numpy_tutorial.html">Python、Numpy
+教程 | NumPy 中文</a></p>
+<h2 id="sys.path.append">sys.path.append</h2>
+<p>Adding the Python Before Importing To temporarily add the lumapi
+directory to your path, you can use the sys.path.append() method. This
+is the case if you have not yet added lumapi to your search path, and it
+is also useful when adding directories of other helpful lsf, fsp, py
+files. The following code adds the lumapi folder and current file
+directory.</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs dos">import sys, os<br>sys.<span class="hljs-built_in">path</span>.<span class="hljs-built_in">append</span>(&quot;C:\\Program Files\\Lumerical\\v222\\api\\python\\&quot;) #Default windows lumapi <span class="hljs-built_in">path</span><br>sys.<span class="hljs-built_in">path</span>.<span class="hljs-built_in">append</span>(&quot;/opt/lumerical/v222/api/python/lumapi.py&quot;) #Default linux lumapi <span class="hljs-built_in">path</span><br>sys.<span class="hljs-built_in">path</span>.<span class="hljs-built_in">append</span>(os.<span class="hljs-built_in">path</span>.dirname(__file__)) #Current directoryimport sys  <br>sys.<span class="hljs-built_in">path</span>.<span class="hljs-built_in">append</span>(’需要引用模块的地址&#x27;)<br># sys.<span class="hljs-built_in">path</span>.<span class="hljs-built_in">append</span>(&quot;..&quot;)   # 这代表添加当前路径的上一级目录<br></code></pre></td></tr></table></figure>
+<h2 id="np.concentrate">np.concentrate</h2>
+<p>拼接功能</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shueixue/p/10953699.html">python中numpy.concatenate()函数的使用
+- shufeixue - 博客园 (cnblogs.com)</a></p>
+<h2 id="open-with-as">open with as</h2>
+<p>进行文件操作</p>
+<p><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/4817.html">Python with
+as用法详解 (biancheng.net)</a></p>
+<h2 id="name__">__name__</h2>
+<p>内置变量</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/157439994">【Python】<strong>name</strong>
+是什么？ - 知乎 (zhihu.com)</a></p>
+<h2 id="json.load">json.load</h2>
+<p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/json.html">json — JSON
+编码器和解码器 — Python 3.10.5 文档</a></p>
+<p><code>json.``load</code>(<em>fp</em>， <strong><em>，
+</em>cls=None<em>， </em>object_hook=None<em>，
+</em>parse_float=None<em>， </em>parse_int=None<em>，
+</em>parse_constant=None<em>， </em>object_pairs_hook=None<em>，
+</em></strong>kw*)<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/json.html#json.load">¶</a></p>
+<h2 id="addpoly">addpoly</h2>
+<p>将多边形添加到模拟文件中。多边形对象使用一组x，y坐标（顶点）在xy平面中定义一个多边形，然后在z方向上拉伸该多边形以创建3D几何图形。</p>
+<table>
+<colgroup>
+<col style="width: 14%">
+<col style="width: 85%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Syntax</strong></th>
+<th style="text-align: left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">addpoly;</td>
+<td style="text-align: left;">Adds a polygon primitive to the simulation
+environment.This function does not return any data.</td>
+</tr>
+</tbody>
+</table>
+<p>样例</p>
+<p>以下的脚本创建一个2D矩阵来存储多边形的顶点，并且使用它来创建多边形基元</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs routeros">vtx = [1,0;2,2;4,2;4,1;3,1]<span class="hljs-number">*1e</span>-6;  # microns<br>addpoly;<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;random_polygon&quot;</span>);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;vertices&quot;</span>,vtx);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;z span&quot;</span>,2e-6);<br></code></pre></td></tr></table></figure>
+<h2 id="setglobalsource">setglobalsource</h2>
+<p>设置全局光源的属性。这个命令将返回analysis mode的error</p>
+<table>
+<colgroup>
+<col style="width: 36%">
+<col style="width: 63%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Syntax</strong></th>
+<th style="text-align: left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">?setglobalsource;</td>
+<td style="text-align: left;">Returns a list of the global source
+properties</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">setglobalsource("property",value);</td>
+<td style="text-align: left;">Set the global source property named
+"property" to a value.This function does not return any data.</td>
+</tr>
+</tbody>
+</table>
+<p>样例</p>
+<p>将全局的起始波长设置400nm，然后确定值是否正确</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">setglobalsource</span>(<span class="hljs-string">&quot;wavelength start&quot;</span>,<span class="hljs-number">400</span>e-<span class="hljs-number">9</span>);<br>?<span class="hljs-selector-tag">getglobalsource</span>(<span class="hljs-string">&quot;wavelength start&quot;</span>);<br><span class="hljs-selector-tag">result</span>: <br><span class="hljs-selector-tag">4e-007</span> <br></code></pre></td></tr></table></figure>
+<h2 id="save">save</h2>
+<p>保存项目文件。如果模拟已经运行，则该文件还将包含模拟结果，例如扫描和优化数据。</p>
+<table>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 80%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Syntax</strong></th>
+<th style="text-align: left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">save;</td>
+<td style="text-align: left;">Open a file browser to save the file.This
+function does not return any data.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">save(filename);</td>
+<td style="text-align: left;">Save with the specified name to the
+current working directory. A path can be specified.</td>
+</tr>
+</tbody>
+</table>
+<p>例子</p>
+<p>保存当前的文件</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs applescript">save(<span class="hljs-string">&quot;project_name&quot;</span>); <span class="hljs-comment"># saves the file in the current working directory</span><br>save(<span class="hljs-string">&quot;C:\Downloads\project_name.fsp&quot;</span>) <span class="hljs-comment"># saves the file in a path specified</span><br></code></pre></td></tr></table></figure>
+<h2 id="getsweepdata">getsweepdata</h2>
+<p>Gets raw data from a parameter sweep/optimization/Monte Carlo
+analysis.</p>
+<p>在大多数情况下，使用getsweeoresult获取完整的数据集比getsweeodata获取单个数据元素更方便。</p>
+<table>
+<colgroup>
+<col style="width: 40%">
+<col style="width: 59%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Syntax</strong></th>
+<th style="text-align: left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">?getsweepdata;</td>
+<td style="text-align: left;">Returns names of all sweep, optimization,
+and Monte Carlo analysis objects.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">?getsweepdata("sweep_name");</td>
+<td style="text-align: left;">Returns all the names of the available
+data which is stored in the sweep, optimization, or Monte Carlo analysis
+object.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">out = getsweepdata("sweep_name",
+"data");</td>
+<td style="text-align: left;">Returns parameter sweep, optimization, or
+Monte Carlo analysis data.The following data can be obtained from an
+optimization:fomTrend - Figure of merit as a function of
+generationfomHistory - Figure of merit history (for each generation
+there will be generation size number)bestFom - Best figure of merit
+obtained during sweepbestParameter - Parameter which corresponds to
+bestFomparamHistory - Parameter historyFor a parameter sweep and Monte
+Carlo analysis, this command returns both parameters and results.</td>
+</tr>
+</tbody>
+</table>
+<p>例子</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-attribute">m</span>=<span class="hljs-string">&quot;thickness_sweep&quot;</span>;<br>?getsweepdata(m);<br>th = getsweepdata(m,<span class="hljs-string">&quot;thickness&quot;</span>); # <span class="hljs-builtin-name">get</span> parameter <span class="hljs-keyword">from</span> sweep<br>R = getsweepdata(m,<span class="hljs-string">&quot;R&quot;</span>);# <span class="hljs-builtin-name">get</span> result <span class="hljs-keyword">from</span> sweep<br>plot(th<span class="hljs-number">*1e6</span>,R,<span class="hljs-string">&quot;thickness (microns)&quot;</span>,<span class="hljs-string">&quot;Reflection&quot;</span>);<br>&gt; R<br>&gt; T<br>&gt; thickness <br></code></pre></td></tr></table></figure>
+<h2 id="setnamed">setnamed</h2>
+<table>
+<colgroup>
+<col style="width: 44%">
+<col style="width: 55%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Syntax</strong></th>
+<th style="text-align: left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">?setnamed("name");</td>
+<td style="text-align: left;">Returns a list of the properties of the
+objects called name.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">setnamed("name", "property", value);</td>
+<td style="text-align: left;">The same as set, but acts on objects with
+a specific name, instead of selected objects.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">setnamed("name", struct);</td>
+<td style="text-align: left;">A struct can be accepted in place of
+"property"-value pair of arguments.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">setnamed("name", "property",
+value,i);</td>
+<td style="text-align: left;">This form can be used to set the property
+of the ith named object when multiple objects have the same name.The
+objects are ordered by their location in the object tree. The uppermost
+selected object is given the index 1, and the index numbers increase as
+you go down the tree.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">setnamed("groupname::name", "property",
+value);</td>
+<td style="text-align: left;">The same as set, but acts on objects
+within the group named "groupname" that are named "name", instead of
+selected objects.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">setnamed("groupname::name", "property",
+value,i);</td>
+<td style="text-align: left;">This form can be used to set the property
+of the ith object with the name "name" in the group "groupname" when
+multiple objects have the same name.The objects are ordered by their
+location in the object tree. The uppermost selected object is given the
+index 1, and the index numbers increase as you go down the tree.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Examples</strong></p>
+<p>Set the radius of the object called "circle" to 10nm:</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">setnamed</span>(<span class="hljs-string">&quot;circle&quot;</span>,<span class="hljs-string">&quot;radius&quot;</span>,<span class="hljs-number">10</span>e-<span class="hljs-number">9</span>); <br></code></pre></td></tr></table></figure>
+<ol start="4" type="1">
+<li>用FDTD脚本编辑器,打开python 脚本
+<strong>pid_grating_coupler_2D_apodized.py</strong></li>
+<li>如果需要的话,更新参数,并且运行脚本</li>
+<li>打开脚本<strong>pid_grating_coupler_2D_1etch.py</strong></li>
+<li>运行脚本</li>
+</ol>
+<h1 id="pid_grating_coupler_2d_apodized.py">pid_grating_coupler_2D_apodized.py</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">##&quot;&quot;&quot;</span><br> <span class="hljs-comment">##   Copyright (c) 2020 Ansys Inc. &quot;&quot;&quot;</span><br><br><span class="hljs-comment">######## IMPORTS ########</span><br><span class="hljs-comment"># General purpose imports</span><br><span class="hljs-keyword">import</span> os,sys<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> scipy <span class="hljs-keyword">as</span> sp<br><span class="hljs-keyword">import</span> json<br>sys.path.append(<span class="hljs-string">&quot;C:\\Program Files\\Lumerical\\v211\\api\\python\\&quot;</span>)<br><span class="hljs-keyword">from</span> lumjson <span class="hljs-keyword">import</span> LumEncoder, LumDecoder<br><br><br><span class="hljs-comment"># Optimization specific imports</span><br><span class="hljs-keyword">from</span> lumopt.utilities.load_lumerical_scripts <span class="hljs-keyword">import</span> load_from_lsf<br><span class="hljs-keyword">from</span> lumopt.utilities.wavelengths <span class="hljs-keyword">import</span> Wavelengths<br><span class="hljs-keyword">from</span> lumopt.geometries.parameterized_geometry <span class="hljs-keyword">import</span> ParameterizedGeometry<br><span class="hljs-keyword">from</span> lumopt.geometries.polygon <span class="hljs-keyword">import</span> FunctionDefinedPolygon<br><span class="hljs-keyword">from</span> lumopt.figures_of_merit.modematch <span class="hljs-keyword">import</span> ModeMatch<br><span class="hljs-keyword">from</span> lumopt.optimizers.generic_optimizers <span class="hljs-keyword">import</span> ScipyOptimizers<br><span class="hljs-keyword">from</span> lumopt.optimization <span class="hljs-keyword">import</span> Optimization<br><span class="hljs-keyword">from</span> lumopt.utilities.materials <span class="hljs-keyword">import</span> Material<br><br><span class="hljs-keyword">import</span> lumapi<br><br>cur_path = os.path.dirname(os.path.realpath(__file__))<br><br><br><span class="hljs-comment"># Optimization global parameters</span><br>lambda_c = <span class="hljs-number">1.55e-6</span> <br>bandwidth_in_nm = <span class="hljs-number">0</span>     <span class="hljs-comment">#&lt; Only optimize for center frequency of 1550nm</span><br>F0 = <span class="hljs-number">0.95</span><br>height = <span class="hljs-number">220e-9</span><br>etch_depth = <span class="hljs-number">80e-9</span><br>y0 = <span class="hljs-number">0</span><br>x_begin = -<span class="hljs-number">5.1e-6</span><br>x_end = <span class="hljs-number">22e-6</span><br>n_grates = <span class="hljs-number">25</span><br><br>indexSi = <span class="hljs-number">3.47668</span><br>indexSiO2 = <span class="hljs-number">1.44401</span><br><br>params_file = <span class="hljs-string">&quot;pid_grating_coupler_initial_params.json&quot;</span><br>base_sim_2d = <span class="hljs-string">&quot;pid_grating_coupler_2D_TE_base.fsp&quot;</span><br>base_sim_apodized_2d = <span class="hljs-string">&quot;pid_grating_coupler_2D_TE_base_apodized.fsp&quot;</span><br>base_script_2d = <span class="hljs-string">&#x27;pid_grating_coupler_2D_TE_base.lsf&#x27;</span><br>params_file_apod = <span class="hljs-string">&quot;pid_optim_1.json&quot;</span><br><br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">grating_params_pos</span>(<span class="hljs-params">params</span>):</span><br>    y3 = y0+height<br>    y1 = y3-etch_depth<br><br>    x_start = params[<span class="hljs-number">0</span>]*<span class="hljs-number">1e-6</span>  <span class="hljs-comment">#&lt; First parameter is the starting position</span><br>    R  = params[<span class="hljs-number">1</span>]*<span class="hljs-number">1e6</span>        <span class="hljs-comment">#&lt; second parameter (unit is 1/um)</span><br>    a  = params[<span class="hljs-number">2</span>]            <span class="hljs-comment">#&lt; Third parameter (dim-less)</span><br>    b  = params[<span class="hljs-number">3</span>]            <span class="hljs-comment">#&lt; Fourth parameter (dim-less)</span><br><br>    x0 = x_start<br>  <br>    verts = np.array( [[x_begin,y0],[x_begin,y3],[x0,y3],[x0,y1]] )       <br><br>    <span class="hljs-comment">## Iterate over all but the last tooth</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n_grates-<span class="hljs-number">1</span>):<br>        F = F0-R*(x0-x_start)<br>        Lambda = lambda_c / (a+F*b)<br>        x1 = x0 + (<span class="hljs-number">1</span>-F)*Lambda    <span class="hljs-comment">#&lt; Width of the etched region</span><br>        x2 = x0 + Lambda          <span class="hljs-comment">#&lt; Rest of cell</span><br>        verts = np.concatenate((verts,np.array([[x1,y1],[x1,y3],[x2,y3],[x2,y1]])),axis=<span class="hljs-number">0</span>)<br>        x0 = x2<br><br>    <span class="hljs-comment">## Last tooth is special</span><br>    F = F0-R*(x0-x_start)<br>    Lambda = lambda_c / (a+F*b)<br>    x1 = x0 + (<span class="hljs-number">1</span>-F)*Lambda        <span class="hljs-comment">#&lt; Width of the etched region</span><br>    verts = np.concatenate((verts,np.array([[x1,y1],[x1,y3],[x_end,y3],[x_end,y0]])),axis=<span class="hljs-number">0</span>) <br><br>    <span class="hljs-keyword">return</span> verts<br>    <br>    <br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_vertices_from_distances</span>(<span class="hljs-params">self, x_start, distances</span>):</span><br>        <span class="hljs-comment">#x_start = params[0]*1e-6  #&lt; First parameter is the starting position</span><br>        <span class="hljs-comment">#R  = params[1]*1e6        #&lt; second parameter (unit is 1/um)</span><br>        <span class="hljs-comment">#a  = params[2]            #&lt; Third parameter (dim-less)</span><br>        <span class="hljs-comment">#b  = params[3]            #&lt; Fourth parameter (dim-less)</span><br>        <br>        x_begin = self.x_min-<span class="hljs-number">2e-6</span><br>        x = np.cumsum(np.concatenate(([x_start],distances)))        <br><br>        y0 = <span class="hljs-number">0</span><br>        y3 = y0+self.wg_height<br>        y1 = y3-self.etch_depth<br>    <br>        verts = np.array( [[x_begin,y0],[x_begin,y3],[x[<span class="hljs-number">0</span>],y3]] )       <br>    <br>        <span class="hljs-comment">## Iterate over all but the last tooth</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-built_in">len</span>(x),<span class="hljs-number">2</span>):<br>            verts = np.concatenate((verts,np.array([[x[i-<span class="hljs-number">1</span>],y1],[x[i],y1],[x[i],y3],[x[i+<span class="hljs-number">1</span>],y3]])),axis=<span class="hljs-number">0</span>)<br>    <br>        <span class="hljs-comment">## Close off the polygon</span><br>        verts = np.concatenate((verts,np.array([[x[-<span class="hljs-number">1</span>],y0]])),axis=<span class="hljs-number">0</span>) <br>        <span class="hljs-keyword">return</span> verts<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:   <br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(os.path.join(cur_path, params_file)) <span class="hljs-keyword">as</span> fh:<br>        initial_params = json.load(fh, cls=LumDecoder)[<span class="hljs-string">&quot;initial_params&quot;</span>][<span class="hljs-number">0</span>]<br>        <br>    <span class="hljs-keyword">with</span> lumapi.FDTD(filename = os.path.join(cur_path, base_sim_2d), hide = <span class="hljs-literal">True</span>) <span class="hljs-keyword">as</span> fdtd:<br>        vtx = grating_params_pos(initial_params)<br>        fdtd.addpoly()<br>        fdtd.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot;vertices&quot;</span>, vtx)<br>        fdtd.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot;x&quot;</span>, <span class="hljs-number">0</span>)<br>        fdtd.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot;y&quot;</span>, <span class="hljs-number">0</span>)<br>        fdtd.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot;index&quot;</span>, indexSi)<br>        fdtd.save(os.path.join(cur_path, base_sim_apodized_2d))<br>        <span class="hljs-comment"># extracting the distsnces from vertices</span><br>        vx=np.array(vtx)<br>        vertsx=vx[<span class="hljs-number">2</span>:(<span class="hljs-built_in">len</span>(vx)-<span class="hljs-number">2</span>):<span class="hljs-number">2</span>,<span class="hljs-number">0</span>]<br>        vert_x = np.concatenate(([np.array(vx[<span class="hljs-number">2</span>,<span class="hljs-number">0</span>])],(vertsx[<span class="hljs-number">1</span>:]-vertsx[<span class="hljs-number">0</span>:<span class="hljs-built_in">len</span>(vertsx)-<span class="hljs-number">1</span>]))) <br>        vert_x = vert_x *<span class="hljs-number">1e6</span><br>               <br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(os.path.join(cur_path, params_file_apod), <span class="hljs-string">&quot;w&quot;</span>) <span class="hljs-keyword">as</span> fh:<br>        json.dump(&#123; <span class="hljs-string">&quot;initial_params&quot;</span>: vert_x &#125;, fh, cls=LumEncoder, indent = <span class="hljs-number">4</span>)<br></code></pre></td></tr></table></figure>
+<h2 id="os.path.dirname">os.path.dirname</h2>
+<p>语法：os.path.dirname(path) 功能：去掉文件名，返回目录</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-built_in">print</span>(<span class="hljs-built_in">os</span>.<span class="hljs-built_in">path</span>.dirname(<span class="hljs-string">&quot;E:/Read_File/read_yaml.py&quot;</span>))<br>#结果：<br>E:/Read_File<br></code></pre></td></tr></table></figure>
+<p>os.path.dirname(__file__)</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">print(__file__)<br><span class="hljs-comment">#结果</span><br>E:<span class="hljs-regexp">/Read_File/</span>read_yaml.py<br></code></pre></td></tr></table></figure>
+<p>可以看出__file__表示了当前文件的path</p>
+<p>那么就可以了解到os.path.dirname((__file__)和os.path.dirname(“E:/Read_File/read_yaml.py”)是一个意思
+再根据os.path.dirname(path)的用法，得出os.path.dirname((__file__)就是得到当前文件的绝对路径</p>
+<figure class="highlight hsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs hsp"><span class="hljs-keyword">print</span>(os.path.dirname(<span class="hljs-keyword">__file__</span>))<br><span class="hljs-meta">#结果：</span><br>E:/Read_File<br></code></pre></td></tr></table></figure>
+<h2 id="set">set</h2>
+<p>设置当前选中对象的属性</p>
+<p>当求解器处于分析模式时,无法修改</p>
+<table>
+<colgroup>
+<col style="width: 28%">
+<col style="width: 71%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Syntax</strong></th>
+<th style="text-align: left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">?set;</td>
+<td style="text-align: left;">Returns a list of the properties of the
+selected object(s).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">set("property",value);</td>
+<td style="text-align: left;">This will set the properties of a
+currently selected object, including pull-downs and check boxes. It
+cannot be used to set the value of a selected object in a group.Value
+can be a number or string. This function does not return any data.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">set(struct);</td>
+<td style="text-align: left;">A struct can be accepted in place of
+"property"-value pair of arguments.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">set("property",value,i);</td>
+<td style="text-align: left;">This form can be used to set the property
+of the ith selected object when multiple objects are selected. It cannot
+be used to set the value of a selected object in a group.The objects are
+ordered by their location in the object tree. The uppermost selected
+object is given the index 1, and the index numbers increase as you go
+down the tree.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="多边形的搭建">多边形的搭建</h2>
+<p>一个典型的多边形结构可以由如下代码生成：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-attribute">um</span>=1e-6;<br><span class="hljs-attribute">nm</span>=1e-9;<br>vtx=[2,0;1,1;-1,1;<br>     -2,0;-1,-1;1,-1]*um;  #向量组<br>addpoly;<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;name&quot;</span>,<span class="hljs-string">&quot;poly&quot;</span>);#名称<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;index&quot;</span>,1.5);#折射率<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;vertices&quot;</span>,vtx);#控制向量组<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;x&quot;</span>,0.5*um);#中心坐标<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;y&quot;</span>,1*um);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;z&quot;</span>,-0.5*um);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;z span&quot;</span>,0.4*um);#z方向宽度<br></code></pre></td></tr></table></figure>
+<p>addpoly：添加一个参数随机的多边形结构。
+set(“index”,1.5)：折射率。多边形材料为介电材料，折射率为1.5
+set(“vertices”,vtx)：向量组。设置多边形的xy面二维形状，由传入的向量组vtx中的参数控制</p>
+<p>关于vtx中的参数解释：
+vtx是一个n*2的矩阵，每一行都是多边形上一个顶点的相对坐标，以设置的"x",“y”,"z"参数作为相对坐标原点，按在矩阵中的顺序顺次连接成多边形。</p>
+<h2 id="os.path.join">os.path.join</h2>
+<p><strong>os.path.join()函数用于路径拼接文件路径，可以传入多个路径</strong></p>
+<p><strong>如果不存在以‘’/’开始的参数，则函数会自动加上</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> os<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(os.path.join(<span class="hljs-string">&#x27;path&#x27;</span>,<span class="hljs-string">&#x27;abc&#x27;</span>,<span class="hljs-string">&#x27;yyy&#x27;</span>))<br>path\abc\yyy<br></code></pre></td></tr></table></figure>
+<p>存在以‘’/’’开始的参数，从最后一个以”/”开头的参数开始拼接，之前的参数全部丢弃。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;1&#x27;</span>,os.path.join(<span class="hljs-string">&#x27;aaa&#x27;</span>,<span class="hljs-string">&#x27;/bbb&#x27;</span>,<span class="hljs-string">&#x27;ccc.txt&#x27;</span>))<br><span class="hljs-number">1</span> /bbb\ccc.txt<br> <br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;1&#x27;</span>,os.path.join(<span class="hljs-string">&#x27;/aaa&#x27;</span>,<span class="hljs-string">&#x27;/bbb&#x27;</span>,<span class="hljs-string">&#x27;ccc.txt&#x27;</span>))<br><span class="hljs-number">1</span> /bbb\ccc.txt<br> <br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;1&#x27;</span>,os.path.join(<span class="hljs-string">&#x27;/aaa&#x27;</span>,<span class="hljs-string">&#x27;/bbb&#x27;</span>,<span class="hljs-string">&#x27;/ccc.txt&#x27;</span>))<br><span class="hljs-number">1</span> /ccc.txt<br> <br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;1&#x27;</span>,os.path.join(<span class="hljs-string">&#x27;/aaa&#x27;</span>,<span class="hljs-string">&#x27;bbb&#x27;</span>,<span class="hljs-string">&#x27;ccc.txt&#x27;</span>))<br><span class="hljs-number">1</span> /aaa\bbb\ccc.txt<br> <br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;1&#x27;</span>,os.path.join(<span class="hljs-string">&#x27;/aaa&#x27;</span>,<span class="hljs-string">&#x27;bbb&#x27;</span>,<span class="hljs-string">&#x27;/ccc.txt&#x27;</span>))<br><span class="hljs-number">1</span> /ccc.txt<br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/swan777/article/details/89040802">(106条消息)
+os.path.join()函数用法详解_swan777的博客-CSDN博客_os.path.join函数</a></p>
+<h2 id="os.path.realpath__file__">os.path.realpath(__file__)</h2>
+<p>获得当前脚本的绝对路径</p>
+<h2 id="np.array">np.array</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hl1hl/article/details/86570046">(106条消息)
+numpy.array函数详解_双木青橙的博客-CSDN博客_numpy.array</a></p>
+<h2 id="python-数组操作">python 数组操作</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Flag_ing/article/details/122850653">(106条消息)
+numpy
+对二维数组的常用操作_地球被支点撬走啦的博客-CSDN博客_numpy二维数组</a></p>
+<p>py的切片索引是start : end : step</p>
+<p>python数组切片</p>
+<p>[(106条消息) python中 x<a target="_blank" rel="noopener" href="https://blog.csdn.net/u014159143/article/details/80307717">:,0]和x[:,1]
+理解和实例解析_jobschu的博客-CSDN博客_x[:,0]</a></p>
+<p>x[m,n]是通过numpy库引用数组或矩阵中的某一段数据集的一种写法</p>
+<h2 id="json.dump">json.dump</h2>
+<p><code>json</code>Python模块中的模块提供了一种称为<code>dump()</code>它将Python对象转换为适当的json对象。它是<code>dumps()</code>方法。</p>
+<p>dump()及其参数</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">用法： json.dump(d, <span class="hljs-attribute">skipkeys</span>=<span class="hljs-literal">False</span>, <span class="hljs-attribute">ensure_ascii</span>=<span class="hljs-literal">True</span>, <span class="hljs-attribute">check_circular</span>=<span class="hljs-literal">True</span>, <span class="hljs-attribute">allow_nan</span>=<span class="hljs-literal">True</span>, <span class="hljs-attribute">cls</span>=None, <span class="hljs-attribute">indent</span>=None, <span class="hljs-attribute">separators</span>=None)<br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://vimsky.com/examples/usage/json-dump-in-python.html">Python
+json.dump()用法及代码示例 - 纯净天空 (vimsky.com)</a></p>
+<h2 id="np.cumsum">np.cumsum</h2>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e84c0344fa2b">Numpy.cumsum（）
+用法 ( np.cumsum) - 简书 (jianshu.com)</a></p>
+<p>累加</p>
+<h1 id="pid_grating_coupler_2d_1etch.py">pid_grating_coupler_2D_1etch.py</h1>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-comment">#&quot;&quot;&quot;</span><br><span class="hljs-comment">#Copyright (c) 2020 Ansys Inc. &quot;&quot;&quot;</span><br><br><span class="hljs-comment">######## IMPORTS ########</span><br><span class="hljs-comment"># General purpose imports</span><br><span class="hljs-built_in">import</span> os,sys<br><span class="hljs-built_in">import</span> numpy as np<br><span class="hljs-built_in">import</span> scipy as sp<br><span class="hljs-built_in">import</span> json<br>sys.path.append(<span class="hljs-string">&quot;C:\\Program Files\\Lumerical\\v211\\api\\python\\&quot;</span>)<br>from lumjson <span class="hljs-built_in">import</span> LumEncoder, LumDecoder<br><br><br><span class="hljs-comment"># Optimization specific imports</span><br>from lumopt.utilities.load_lumerical_scripts <span class="hljs-built_in">import</span> load_from_lsf<br>from lumopt.utilities.wavelengths <span class="hljs-built_in">import</span> Wavelengths<br>from lumopt.geometries.parameterized_geometry <span class="hljs-built_in">import</span> ParameterizedGeometry<br>from lumopt.geometries.polygon <span class="hljs-built_in">import</span> FunctionDefinedPolygon<br>from lumopt.figures_of_merit.modematch <span class="hljs-built_in">import</span> ModeMatch<br>from lumopt.optimizers.generic_optimizers <span class="hljs-built_in">import</span> ScipyOptimizers<br>from lumopt.optimization <span class="hljs-built_in">import</span> Optimization<br>from lumopt.utilities.materials <span class="hljs-built_in">import</span> Material<br><br><span class="hljs-built_in">import</span> lumapi<br><br><span class="hljs-attr">cur_path</span> = os.path.dirname(os.path.realpath(__file__))<br><br><span class="hljs-comment"># Optimization global parameters</span><br><span class="hljs-attr">lambda_c</span> = <span class="hljs-number">1.55</span>e-<span class="hljs-number">6</span><br><span class="hljs-attr">bandwidth_in_nm</span> = <span class="hljs-number">0</span>     <span class="hljs-comment">#&lt; Only optimize for center frequency of 1550nm</span><br><span class="hljs-attr">F0</span> = <span class="hljs-number">0.95</span><br><span class="hljs-attr">height</span> = <span class="hljs-number">220</span>e-<span class="hljs-number">9</span><br><span class="hljs-attr">etch_depth</span> = <span class="hljs-number">80</span>e-<span class="hljs-number">9</span><br><span class="hljs-attr">y0</span> = <span class="hljs-number">0</span><br><span class="hljs-attr">x_begin</span> = -<span class="hljs-number">5.1</span>e-<span class="hljs-number">6</span><br><span class="hljs-attr">x_end</span> = <span class="hljs-number">22</span>e-<span class="hljs-number">6</span><br><span class="hljs-attr">n_grates</span> = <span class="hljs-number">25</span><br><br><span class="hljs-attr">indexSi</span> = <span class="hljs-number">3.47668</span><br><span class="hljs-attr">indexSiO2</span> = <span class="hljs-number">1.44401</span><br><br><span class="hljs-attr">params_file_apod</span> = <span class="hljs-string">&quot;pid_optim_1.json&quot;</span><br><span class="hljs-attr">params_final</span> = <span class="hljs-string">&quot;pid_optim_final.json&quot;</span><br><span class="hljs-attr">base_sim_2d</span> = <span class="hljs-string">&quot;pid_grating_coupler_2D_TE_base.fsp&quot;</span><br><span class="hljs-attr">base_sim_apodized_2d</span> = <span class="hljs-string">&quot;pid_grating_coupler_2D_TE_base_apodized.fsp&quot;</span><br><span class="hljs-attr">base_script_2d</span> = &#x27;pid_grating_coupler_2D_TE_base.lsf&#x27;<br><span class="hljs-attr">sim_2d_final</span> = <span class="hljs-string">&quot;pid_grating_coupler_2D_final.fsp&quot;</span><br><br><br><span class="hljs-comment"># Minimal feature size in um. Set to 0.1 to enforce 100nm min features size!</span><br><span class="hljs-attr">min_feature_size</span> = <span class="hljs-number">0.1</span><br><br>def etched_grating(params, fdtd, <span class="hljs-attr">update_only</span> = False):<br>    <span class="hljs-attr">verts</span> = grating_params_pos(params)<br><br>    <span class="hljs-keyword">if</span> not update_only:<br>        fdtd.addpoly()<br>        fdtd.set(<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;grating_poly&quot;</span>)<br>        fdtd.setnamed(<span class="hljs-string">&quot;grating_poly&quot;</span>, <span class="hljs-string">&quot;vertices&quot;</span>, verts)<br>        fdtd.setnamed(<span class="hljs-string">&quot;grating_poly&quot;</span>, <span class="hljs-string">&quot;x&quot;</span>, <span class="hljs-number">0</span>)<br>        fdtd.setnamed(<span class="hljs-string">&quot;grating_poly&quot;</span>, <span class="hljs-string">&quot;y&quot;</span>, y0)<br>        fdtd.setnamed(<span class="hljs-string">&quot;grating_poly&quot;</span>, <span class="hljs-string">&quot;index&quot;</span>, indexSi)<br><br>def grating_params_pos(params, <span class="hljs-attr">output_waveguide_length</span> = <span class="hljs-number">0.5</span>e-<span class="hljs-number">6</span>):<br>    <span class="hljs-attr">y3</span> = y0+height<br>    <span class="hljs-attr">y1</span> = y3-etch_depth<br><br>    <span class="hljs-attr">x0</span> = params[<span class="hljs-number">0</span>]*<span class="hljs-number">1</span>e-<span class="hljs-number">6</span>     <span class="hljs-comment">#&lt; First parameter is the starting position</span><br><br>    <span class="hljs-attr">verts</span> = np.array( [ [x_begin,y0],[x_begin,y3],[x0,y3],[x0,y1] ] )<br><br>    <span class="hljs-comment">## Iterate over all but the last</span><br>    for i <span class="hljs-keyword">in</span> range(n_grates-<span class="hljs-number">1</span>):<br>        <span class="hljs-attr">x1</span> = x0 + params[i*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>]*<span class="hljs-number">1</span>e-<span class="hljs-number">6</span>    <span class="hljs-comment">#&lt; Width of the etch</span><br>        <span class="hljs-attr">x2</span> = x1 + params[i*<span class="hljs-number">2</span>+<span class="hljs-number">2</span>]*<span class="hljs-number">1</span>e-<span class="hljs-number">6</span>    <span class="hljs-comment">#&lt; Width up</span><br>        <span class="hljs-attr">verts</span> = np.concatenate((verts,np.array([[x1,y1],[x1,y3],[x2,y3],[x2,y1]])),<span class="hljs-attr">axis=0)</span><br>        <span class="hljs-attr">x0</span> = x2<br><br>    <span class="hljs-attr">x1</span> = x0 + params[(n_grates-<span class="hljs-number">1</span>)*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>]*<span class="hljs-number">1</span>e-<span class="hljs-number">6</span>    <span class="hljs-comment">#&lt; Width of the etch</span><br>    <span class="hljs-comment"># x_end   = x1+output_waveguide_length</span><br>    <span class="hljs-attr">verts</span> = np.concatenate((verts,np.array([[x1,y1],[x1,y3],[x_end,y3],[x_end,y0]])),<span class="hljs-attr">axis=0)</span><br><br>    return verts<br><br><br>def runGratingOptimization(bandwidth_in_nm, etch_depth, n_grates, initial_params, min_feature_size, working_dir):<br><span class="hljs-comment">### Yet another parametrization which allows to enforce minimum feature size when the optimizer only supports box constraints</span><br><span class="hljs-comment">### params = [x0, a1, b1, ..., aN]</span><br>    <span class="hljs-keyword">if</span> initial_params is None:<br>        <span class="hljs-attr">params</span> = np.zeros(<span class="hljs-number">2</span>*n_grates)<br><br>        for i <span class="hljs-keyword">in</span> range(n_grates):<br>            params[i*<span class="hljs-number">2</span>]   = <span class="hljs-number">0.2</span>     <span class="hljs-comment">#&lt; Width up</span><br>            params[i*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>] = <span class="hljs-number">0.4</span>*((i+<span class="hljs-number">1</span>)/(n_grates+<span class="hljs-number">1</span>))     <span class="hljs-comment">#&lt; Width of the deep etch</span><br><br>            params[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>      <span class="hljs-comment">#&lt; Overwrite the first since it has a special meaning: Start of the grating at x=0</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-attr">params</span> = initial_params<br><br>    <span class="hljs-attr">bounds</span> = [(min_feature_size, <span class="hljs-number">1</span>)]*(<span class="hljs-number">2</span>*n_grates)<br>    bounds[<span class="hljs-number">0</span>] = (-<span class="hljs-number">3</span>,<span class="hljs-number">3</span>)      <span class="hljs-comment">#&lt; Bounds for the stating position</span><br><br><span class="hljs-comment"># geometry = ParameterizedGeometry(func = etched_grating,</span><br><span class="hljs-comment">#                                   initial_params = params,</span><br><span class="hljs-comment">#                                   bounds = bounds,</span><br><span class="hljs-comment">#                                   dx = 1e-5)</span><br><br>    <span class="hljs-attr">geometry</span> = FunctionDefinedPolygon(<span class="hljs-attr">func</span> = grating_params_pos,<br>    <span class="hljs-attr">initial_params</span> = params,<br>    <span class="hljs-attr">bounds</span> = bounds,<br>    <span class="hljs-attr">z</span> = <span class="hljs-number">0.0</span>,<br>    <span class="hljs-attr">depth</span> = height,<br>    <span class="hljs-attr">eps_out</span> = indexSiO2 ** <span class="hljs-number">2</span>,<br>    <span class="hljs-attr">eps_in</span> = indexSi ** <span class="hljs-number">2</span>,<br>    <span class="hljs-attr">edge_precision</span> = <span class="hljs-number">5</span>,<br>    <span class="hljs-attr">dx</span> = <span class="hljs-number">1</span>e-<span class="hljs-number">5</span>)<br><br><span class="hljs-comment">######## DEFINE FIGURE OF MERIT ########</span><br>    <span class="hljs-attr">fom</span> = ModeMatch(<span class="hljs-attr">monitor_name</span> = &#x27;fom&#x27;,<br>    <span class="hljs-attr">mode_number</span> = <span class="hljs-number">1</span>,<br>    <span class="hljs-attr">direction</span> = &#x27;Backward&#x27;,<br>    <span class="hljs-attr">target_T_fwd</span> = lambda wl: np.ones(wl.size),<br>    <span class="hljs-attr">norm_p</span> = <span class="hljs-number">1</span>)<br><br>    <span class="hljs-comment">######## DEFINE OPTIMIZATION ALGORITHM ########</span><br>    <span class="hljs-attr">optimizer</span> = ScipyOptimizers(<span class="hljs-attr">max_iter</span> = <span class="hljs-number">250</span>,<br>    <span class="hljs-attr">method</span> = &#x27;L-BFGS-B&#x27;,<br>    <span class="hljs-attr">scaling_factor</span> = <span class="hljs-number">1</span>,<br>    <span class="hljs-attr">pgtol</span> = <span class="hljs-number">1</span>e-<span class="hljs-number">6</span>)<br><br>    <span class="hljs-comment">######## DEFINE BASE SIMULATION ########</span><br>    <span class="hljs-attr">base_script</span> = load_from_lsf(os.path.join(os.path.dirname(__file__), base_script_2d))<br><br><span class="hljs-comment">######## PUT EVERYTHING TOGETHER ########</span><br>    <span class="hljs-attr">lambda_start</span> = lambda_c*<span class="hljs-number">1</span>e9 - bandwidth_in_nm/<span class="hljs-number">2</span><br>    <span class="hljs-attr">lambda_end</span>   = lambda_c*<span class="hljs-number">1</span>e9 + bandwidth_in_nm/<span class="hljs-number">2</span><br>    <span class="hljs-attr">lambda_pts</span>   = int(bandwidth_in_nm/<span class="hljs-number">10</span>)+<span class="hljs-number">1</span><br>    <span class="hljs-attr">wavelengths</span> = Wavelengths(<span class="hljs-attr">start</span> = lambda_start*<span class="hljs-number">1</span>e-<span class="hljs-number">9</span>, <span class="hljs-attr">stop</span> = lambda_end*<span class="hljs-number">1</span>e-<span class="hljs-number">9</span>, <span class="hljs-attr">points</span> = lambda_pts)<br>    <span class="hljs-attr">opt</span> = Optimization(<span class="hljs-attr">base_script</span> = base_script,<br>    <span class="hljs-attr">wavelengths</span> = wavelengths,<br>    <span class="hljs-attr">fom</span> = fom,<br>    <span class="hljs-attr">geometry</span> = geometry,<br>    <span class="hljs-attr">optimizer</span> = optimizer,<br>    <span class="hljs-attr">use_var_fdtd</span> = False,<br>    <span class="hljs-attr">hide_fdtd_cad</span> = False,<br>    <span class="hljs-attr">use_deps</span> = True,<br>    <span class="hljs-attr">plot_history</span> = True,<br>    <span class="hljs-attr">store_all_simulations</span> = True,<br>    <span class="hljs-attr">save_global_index</span> = False,<br>    <span class="hljs-attr">label</span> = None)<br><br><span class="hljs-comment">######## RUN THE OPTIMIZER ########</span><br>    <span class="hljs-attr">result</span> = opt.run(<span class="hljs-attr">working_dir=working_dir)</span><br><br>    return result<br><br><span class="hljs-keyword">if</span> <span class="hljs-attr">__name__</span> == <span class="hljs-string">&quot;__main__&quot;</span>:<br><br>    <span class="hljs-attr">params_file</span> = params_file_apod<br>    <span class="hljs-attr">result_file</span> = params_final<br>    <span class="hljs-attr">sim_file</span> = sim_2d_final<br><br><span class="hljs-keyword">with</span> open(os.path.join(cur_path, params_file)) as fh:<br>    <span class="hljs-attr">initial_params</span> = json.load(fh, <span class="hljs-attr">cls=LumDecoder)[&quot;initial_params&quot;]</span><br><br><span class="hljs-attr">cur_path</span> = os.path.dirname(os.path.realpath(__file__))<br><span class="hljs-attr">working_dir</span> = os.path.join(cur_path,&#x27;FreeGrating_1etch&#x27;)<br><br><span class="hljs-attr">opt_result_2D</span> = runGratingOptimization(<span class="hljs-attr">bandwidth_in_nm=bandwidth_in_nm,</span><br><span class="hljs-attr">etch_depth=etch_depth,</span><br><span class="hljs-attr">n_grates</span> = n_grates,<br><span class="hljs-attr">initial_params=initial_params,</span><br><span class="hljs-attr">min_feature_size=min_feature_size,</span><br><span class="hljs-attr">working_dir=working_dir)</span><br><br><span class="hljs-attr">opt_params_2D</span> = opt_result_2D[<span class="hljs-number">1</span>]<br><br><span class="hljs-keyword">with</span> open(os.path.join(cur_path, result_file), <span class="hljs-string">&quot;w&quot;</span>) as fh:<br>    json.dump(&#123; <span class="hljs-string">&quot;initial_params&quot;</span>: opt_params_2D &#125;, fh, <span class="hljs-attr">cls=LumEncoder,</span> <span class="hljs-attr">indent</span> = <span class="hljs-number">4</span>)<br><br>np.savetxt(os.path.join(cur_path, <span class="hljs-string">&quot;apod_2D_params.txt&quot;</span>), opt_params_2D)<br><br><span class="hljs-comment">######## 2-D SIMULATION WITH OPTIMIZED STRUCTURE ########</span><br><span class="hljs-keyword">with</span> lumapi.FDTD(<span class="hljs-attr">filename</span> = os.path.join(cur_path, base_sim_2d), <span class="hljs-attr">hide</span> = True) as fdtd:<br>    <span class="hljs-attr">vtx</span> = grating_params_pos(opt_params_2D)<br>    fdtd.addpoly()<br>    fdtd.set(<span class="hljs-string">&quot;vertices&quot;</span>, vtx)<br>    fdtd.set(<span class="hljs-string">&quot;x&quot;</span>, <span class="hljs-number">0</span>)<br>    fdtd.set(<span class="hljs-string">&quot;y&quot;</span>, <span class="hljs-number">0</span>)<br>    fdtd.set(<span class="hljs-string">&quot;index&quot;</span>, indexSi)<br>    fdtd.save(os.path.join(cur_path, sim_file))<br><br></code></pre></td></tr></table></figure>
+<p><img src="/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220722204019512.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220720182721687.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220722204110420.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/image-20220721153833886.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="np.zero">np.zero</h2>
+<p>用法：zeros(<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=shape&amp;spm=1001.2101.3001.7020">shape</a>,
+dtype=float, order='C')</p>
+<p>返回：返回来一个给定形状和类型的用0填充的<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=数组&amp;spm=1001.2101.3001.7020">数组</a>；</p>
+<p>参数：shape:形状</p>
+<p>​ dtype:数据类型，可选参数，默认numpy.float64</p>
+<p>​ dtype类型：t ,位域,如t4代表4位</p>
+<p>​ b,布尔值，true or false</p>
+<p>​ i,整数,如i8(64位）</p>
+<p>​ u,无符号整数，u8(64位）</p>
+<p>​ f,浮点数，f8（64位）</p>
+<p>​ c,浮点负数，</p>
+<p>​ o,对象，</p>
+<p>​ s,a，字符串，s24</p>
+<p>​ u,unicode,u24</p>
+<p>​ order:可选参数，c代表与c语言类似，行优先；F代表列优先</p>
+<p>例子</p>
+<p>np.zeros(5) array([ 0., 0., 0., 0., 0.])</p>
+<h2 id="geometry">geometry</h2>
+<h3 id="parameterizedgeometry">parameterizedGeometry</h3>
+<p>在此示例中，我们使用<em>函数 FunctionDefinedPolygon</em>
+将光栅耦合器几何图形设置为多边形。或者，我们可以改用函数<em>ParametrizedGeometry</em>，从而在几何形状的设置方式上提供更大的灵活性。</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">bounds </span>= [(min_feature_size, <span class="hljs-number">1</span>)]*(<span class="hljs-number">2</span>*n_grates)<br><span class="hljs-keyword">bounds[0] </span>= (-<span class="hljs-number">3</span>,<span class="hljs-number">3</span>)      <span class="hljs-comment">#&lt; Bounds for the stating position</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vala"><span class="hljs-meta"># geometry = ParameterizedGeometry(func = etched_grating,</span><br><span class="hljs-meta">#                                   initial_params = params,</span><br><span class="hljs-meta">#                                   bounds = bounds,</span><br><span class="hljs-meta">#                                   dx = 1e-5)</span><br></code></pre></td></tr></table></figure>
+<h3 id="functiondefinedpolygon">FunctionDefinedPolygon</h3>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">geometry</span> = FunctionDefinedPolygon(func = grating_params_pos,<br><span class="hljs-attr">initial_params</span> = params,<br><span class="hljs-attr">bounds</span> = bounds,<br><span class="hljs-attr">z</span> = <span class="hljs-number">0.0</span>,<br><span class="hljs-attr">depth</span> = height,<br><span class="hljs-attr">eps_out</span> = indexSiO2 ** <span class="hljs-number">2</span>,<br><span class="hljs-attr">eps_in</span> = indexSi ** <span class="hljs-number">2</span>,<br><span class="hljs-attr">edge_precision</span> = <span class="hljs-number">5</span>,<br><span class="hljs-attr">dx</span> = <span class="hljs-number">1</span>e-<span class="hljs-number">5</span>)<br></code></pre></td></tr></table></figure>
+<p>dx 是最小网格</p>
+<p>bounds是每个参数的取值范围。</p>
+<div class="code-wrapper"><pre><code class="hljs">eps_out = indexSiO2 ** 2,
+eps_in = indexSi ** 2,
+# 有效折射率的平方</code></pre></div>
+<p>: <strong>eps_in</strong>: float 多边形材料的介电常数。</p>
+<p>: <strong>eps_out</strong>: float 多边形周围材料的介电常数。</p>
+<table>
+<caption>d<strong>x</strong>: float &gt; 0.0 使用介电常数扰动计算 FOM
+梯度的步长。 Default = 1e-5</caption>
+<thead>
+<tr class="header">
+<th>**</th>
+<th>幂 - 返回x的y次幂</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="edge_precision-int"><strong>: edge_precision:</strong>
+<em>int</em></h3>
+<p>Number of quadrature(正交) points along each edge for computing the
+FOM gradient using the shape derivative approximation method.</p>
+<p>不太知道为什么是5</p>
+<p>沿每条边的正交点数，用于使用形状导数近似方法计算 FOM 梯度。</p>
+<h2 id="fom设置">fom设置</h2>
+<p><a target="_blank" rel="noopener" href="https://www.it610.com/article/1558271422034415616.htm">Lumerical
+Python API学习（七）——可视化几何 - it610.com</a></p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">from</span> lumopt.figures_of_merit.modematch <span class="hljs-keyword">import</span> ModeMatch<br><span class="hljs-keyword">class</span> <span class="hljs-symbol">ModeMatch</span>(<span class="hljs-symbol">monitor_name,</span><br><span class="hljs-symbol">                <span class="hljs-symbol">mode_number</span>,</span><br><span class="hljs-symbol">                <span class="hljs-symbol">direction</span>,</span><br><span class="hljs-symbol">                <span class="hljs-symbol">target_T_fwd</span>,</span><br><span class="hljs-symbol">                <span class="hljs-symbol">norm_p</span>,</span><br><span class="hljs-symbol">                <span class="hljs-symbol">target_fom</span></span>)<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">fom</span> = ModeMatch(monitor_name = <span class="hljs-string">&#x27;fom&#x27;</span>,<br><span class="hljs-attr">mode_number</span> = <span class="hljs-number">1</span>,<br><span class="hljs-attr">direction</span> = <span class="hljs-string">&#x27;Backward&#x27;</span>,<br><span class="hljs-attr">target_T_fwd</span> = lambda wl: np.<span class="hljs-literal">on</span>es(wl.size),<br><span class="hljs-attr">norm_p</span> = <span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+<p>mode_number = 1 意味着TE mode</p>
+<dl>
+<dt>direction = backward 方向</dt>
+<dd>
+<p>monitor_name: str 文件中 FOM 监视器的名称。</p>
+</dd>
+<dd>
+<p>mode_number : str or int</p>
+</dd>
+</dl>
+<p>用于指定模式。</p>
+<p>如果使用 varFDTD 求解器：</p>
+<p>• ‘fundamental mode’ • int - 用户选择模式号</p>
+<p>If the FDTD solver is used:</p>
+<p>• ‘fundamental mode’ • ‘fundamental TE mode’ • ‘fundamental TM mode’
+• int - user select mode number</p>
+<p>: direction : str</p>
+<p>方向由FDTD坐标确定；
+对于在正方向传播的模式，方向是向前（forward）的。</p>
+<p>• ‘Backward’ • ‘Forward’</p>
+<p>: multi_freq_source: boolean（布尔值）, optional 只能由高级用户启用.
+See frequency Frequency dependent mode profile for more info. Default =
+False</p>
+<p>: target_T_fwd: float or function
+一个函数，它将获取波长点的数量并返回值 [0,1]。 通常作为 lambda
+函数（lambda function）或单波长 FOM 的单个浮点值传递。
+要指定更高级的频谱，可以定义一个函数，使用 numpy
+windows作为模板可能会有所帮助。</p>
+<p>: norm_p: float 是 FOM 计算中使用的广义 p 范数（generalized
+p-norm）。 p 范数（p≥1）允许用户增加误差的权重。 由于 p=1
+提供了此函数的下限，因此更高的 p 数将增加误差项的权重。 默认 p =1.0</p>
+<p>: target_fom: float</p>
+<p>品质因数的目标值。 这只会改变打印和绘图的行为。
+如果启用此功能，则通过设置 0.0 以外的值，将给出当前 FOM 的距离。 默认 =
+0.0</p>
+<h3 id="target_t_fwd-float-or-function"><strong>target_T_fwd:</strong>
+<em>float or function</em></h3>
+<p>A function which will take the number of Wavelengths points and
+return values [0,1]. Usually passed as a <a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/controlflow.html#lambda-expressions">lambda
+function</a> or a single float value for single wavelength FOM. To
+specify a more advanced spectrum one can define a function, it may be
+helpful to use, <a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/routines.window.html">numpy
+windows</a> as a template.</p>
+<h3 id="norm_p-float"><strong>: norm_p:</strong> <em>float</em></h3>
+<p>Is the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Norm_(mathematics)">generalized
+p-norm</a> used in the FOM calculation. The p-norm, with p≥1p≥1 allows
+the user to increase the weight of the error. Since p=1p=1 provides a
+lower bound on this function, a higher p-number will increase the weight
+of the error term. Default p =1.0</p>
+<h3 id="numpy.ones">numpy.ones（）</h3>
+<p>函数参数 (numpy.ones() function arguments)</p>
+<p>numpy.ones（）函数的语法为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">ones(shape, dtype<span class="hljs-operator">=</span><span class="hljs-keyword">None</span>, <span class="hljs-keyword">order</span><span class="hljs-operator">=</span><span class="hljs-string">&#x27;C&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p>1.shape：一个整数类型或者一个整数元组，用于定义数组的大小。如果仅指定一个整数类型变量，则返回一维数组。如果指定的是整数元组，则返回给定形状的数组。
+2.dtype：可选参数，默认值为float。用于指定数组的数据类型。
+3.order：指定内存重以行优先(‘C’)还是列优先(‘F’)顺序存储多维数组。</p>
+<h3 id="lambda-函数">lambda 函数</h3>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/80960485">细说Python的lambda函数用法，建议收藏
+- 知乎 (zhihu.com)</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">lambda argument_list:expersion<br></code></pre></td></tr></table></figure>
+<h2 id="optimizer">optimizer</h2>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">optimizer = ScipyOptimizers(max_iter = <span class="hljs-number">250</span>,<br><span class="hljs-function"><span class="hljs-keyword">method</span> = &#x27;<span class="hljs-title">L</span>-<span class="hljs-title">BFGS</span>-<span class="hljs-title">B</span>&#x27;,</span><br><span class="hljs-function"><span class="hljs-title">scaling_factor</span> = 1,</span><br><span class="hljs-function"><span class="hljs-title">pgtol</span> = 1<span class="hljs-title">e</span>-6)</span><br></code></pre></td></tr></table></figure>
+<p><strong>: method:</strong> <em>str</em></p>
+<p>Chosen minimization algorithm; experimenting with this option should
+only be done by advanced users. Default = ‘L-BFGS-B'</p>
+<p><strong>: scaling_factor:</strong> <em>none,</em> <em>float,
+np.array</em></p>
+<p>None, scalar or a vector the same length as the optimization
+parameters. This is used to scale the optimization parameters. As of
+2021R1.1, the default behavior in shape optimization is to automatically
+map the parameters the range [0,1] within the optimization routines;
+which was always the case in topology. The <a target="_blank" rel="noopener" href="https://support.lumerical.com/hc/en-us/articles/360052044913">bounds</a>,
+defined in the geometry class, or eps_min/eps_max are used for this.
+Default = None</p>
+<p><strong>: pgtol:</strong> <em>float</em></p>
+<p>The iteration will stop when max(|proj gi| i = 1, ...,
+n)&lt;=pgtol|max(|proj gi| i = 1, ..., n)&lt;=pgtol| where gigi is the
+i-th component of the projected gradient. Default = 1.0e-5</p>
+<h2 id="仿真设置">仿真设置</h2>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">base_script = load<span class="hljs-constructor">_from_lsf(<span class="hljs-params">os</span>.<span class="hljs-params">path</span>.<span class="hljs-params">join</span>(<span class="hljs-params">os</span>.<span class="hljs-params">path</span>.<span class="hljs-params">dirname</span>(<span class="hljs-params">__file__</span>)</span>, base_script_2d))<br></code></pre></td></tr></table></figure>
+<h2 id="合并">合并</h2>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-comment">######## PUT EVERYTHING TOGETHER ########</span><br>    <span class="hljs-attr">lambda_start</span> = lambda_c*<span class="hljs-number">1</span>e9 - bandwidth_in_nm/<span class="hljs-number">2</span><br>    <span class="hljs-attr">lambda_end</span>   = lambda_c*<span class="hljs-number">1</span>e9 + bandwidth_in_nm/<span class="hljs-number">2</span><br>    <span class="hljs-attr">lambda_pts</span>   = int(bandwidth_in_nm/<span class="hljs-number">10</span>)+<span class="hljs-number">1</span><br>    <span class="hljs-attr">wavelengths</span> = Wavelengths(start = lambda_start*<span class="hljs-number">1</span>e-<span class="hljs-number">9</span>, stop = lambda_end*<span class="hljs-number">1</span>e-<span class="hljs-number">9</span>, points = lambda_pts)<br>    <span class="hljs-attr">opt</span> = Optimization(base_script = base_script,<br>    <span class="hljs-attr">wavelengths</span> = wavelengths,<br>    <span class="hljs-attr">fom</span> = fom,<br>    <span class="hljs-attr">geometry</span> = geometry,<br>    <span class="hljs-attr">optimizer</span> = optimizer,<br>    <span class="hljs-attr">use_var_fdtd</span> = <span class="hljs-literal">False</span>,<br>    <span class="hljs-attr">hide_fdtd_cad</span> = <span class="hljs-literal">False</span>,<br>    <span class="hljs-attr">use_deps</span> = <span class="hljs-literal">True</span>,<br>    <span class="hljs-attr">plot_history</span> = <span class="hljs-literal">True</span>,<br>    <span class="hljs-attr">store_all_simulations</span> = <span class="hljs-literal">True</span>,<br>    <span class="hljs-attr">save_global_index</span> = <span class="hljs-literal">False</span>,<br>    <span class="hljs-attr">label</span> = None)<br></code></pre></td></tr></table></figure>
+<h2 id="运行">运行</h2>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs clean">######## RUN THE OPTIMIZER ########<br>    result = opt.run(working_dir=working_dir)<br><br>    return result<br></code></pre></td></tr></table></figure>
+<h1 id="主函数">主函数</h1>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br><br>    params_file = params_file_apod<br>    result_file = params_final<br>    sim_file = sim_2d_final<br><br>with open(os.path.join(cur_path, params_file)) as fh:<br>    initial_params = json.load(fh, <span class="hljs-attribute">cls</span>=LumDecoder)[<span class="hljs-string">&quot;initial_params&quot;</span>]<br><br>cur_path = os.path.dirname(os.path.realpath(__file__))<br>working_dir = os.path.join(cur_path,<span class="hljs-string">&#x27;FreeGrating_1etch&#x27;</span>)<br><br>opt_result_2D = runGratingOptimization(<span class="hljs-attribute">bandwidth_in_nm</span>=bandwidth_in_nm,<br><span class="hljs-attribute">etch_depth</span>=etch_depth,<br>n_grates = n_grates,<br><span class="hljs-attribute">initial_params</span>=initial_params,<br><span class="hljs-attribute">min_feature_size</span>=min_feature_size,<br><span class="hljs-attribute">working_dir</span>=working_dir)<br><br>opt_params_2D = opt_result_2D[1]<br><br>with open(os.path.join(cur_path, result_file), <span class="hljs-string">&quot;w&quot;</span>) as fh:<br>    json.dump(&#123; <span class="hljs-string">&quot;initial_params&quot;</span>: opt_params_2D &#125;, fh, <span class="hljs-attribute">cls</span>=LumEncoder, indent = 4)<br><br>np.savetxt(os.path.join(cur_path, <span class="hljs-string">&quot;apod_2D_params.txt&quot;</span>), opt_params_2D)<br><br><span class="hljs-comment">######## 2-D SIMULATION WITH OPTIMIZED STRUCTURE ########</span><br>with lumapi.FDTD(filename = os.path.join(cur_path, base_sim_2d), hide = <span class="hljs-literal">True</span>) as fdtd:<br>    vtx = grating_params_pos(opt_params_2D)<br>    fdtd.addpoly()<br>    fdtd.<span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;vertices&quot;</span>, vtx)<br>    fdtd.<span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;x&quot;</span>, 0)<br>    fdtd.<span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;y&quot;</span>, 0)<br>    fdtd.<span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;index&quot;</span>, indexSi)<br>    fdtd.save(os.path.join(cur_path, sim_file))<br><br></code></pre></td></tr></table></figure>
+<h2 id="np.savetxt">np.savetxt</h2>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lindaxin/p/8392956.html">np.savetxt()——将array保存到txt文件，并保持原格式
+- 深度学习1 - 博客园 (cnblogs.com)</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Lumerical/">Lumerical</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Lumerical/">Lumerical</a>
+                    
+                      <a class="hover-with-bg" href="/tags/inverse-design/">inverse design</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/14/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB-%E4%B8%89-%E5%8F%8D%E5%90%91%E8%AE%BE%E8%AE%A1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">High-effciency grating-couplers:demonstration of a new design  strategy</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/13/Lumerical/mode%20%E8%84%9A%E6%9C%AC/">
+                        <span class="hidden-mobile">inverse design of grating coupler -- script learning</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        new Waline(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    <span>访问总量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span>总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+ <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+<script
+  src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+  charset="utf-8"
+></script>
+
+<script>
+  function typing(id, title){
+      var typed = new Typed('#' + id, {
+          strings: [
+            '  ',
+            title + "&nbsp;",
+          ],
+          cursorChar: "_",
+          typeSpeed: 70,
+          loop: false,
+      });
+      typed.stop();
+      $(document).ready(function () {
+          $(".typed-cursor").addClass("h2");
+          typed.start();
+      });
+  }
+
+  
+      typing("subtitle", "inverse design of grating coupler -- process presentation")  // 打印文章标题
+  
+</script>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->
+
+<!-- typing("hitokoto", data.hitokoto + '<br /> <h5>' + '——' + data.from + '</h5>')
+typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '「' + data.from + '」' + '</h5>') -->
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->

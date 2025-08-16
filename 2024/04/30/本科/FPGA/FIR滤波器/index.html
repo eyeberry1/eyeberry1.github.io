@@ -1,0 +1,695 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="title: FPGA并行编程 math: true categories: FPGA tags:  FPGA FIR滤波器  原理 N-阶FIR滤波器的系数h[j]与输入信号x[i]的卷积可由差分方程表示：   image-20240430045610020  注意，要计算一个N-阶滤波器的输出值，需要N个乘法和N-1个加法。 滑动均值滤波器 是低通FIR滤波器的一种简">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2024/04/30/%E6%9C%AC%E7%A7%91/FPGA/FIR%E6%BB%A4%E6%B3%A2%E5%99%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title: FPGA并行编程 math: true categories: FPGA tags:  FPGA FIR滤波器  原理 N-阶FIR滤波器的系数h[j]与输入信号x[i]的卷积可由差分方程表示：   image-20240430045610020  注意，要计算一个N-阶滤波器的输出值，需要N个乘法和N-1个加法。 滑动均值滤波器 是低通FIR滤波器的一种简">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2024/04/30/%E6%9C%AC%E7%A7%91/FPGA/FIR%E6%BB%A4%E6%B3%A2%E5%99%A8/image-20240430045610020.png">
+<meta property="og:image" content="http://example.com/2024/04/30/%E6%9C%AC%E7%A7%91/FPGA/FIR%E6%BB%A4%E6%B3%A2%E5%99%A8/image%20(3).jpg">
+<meta property="article:published_time" content="2024-04-29T19:12:52.588Z">
+<meta property="article:modified_time" content="2024-05-01T12:34:26.945Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/04/30/%E6%9C%AC%E7%A7%91/FPGA/FIR%E6%BB%A4%E6%B3%A2%E5%99%A8/image-20240430045610020.png">
+  
+  
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>eyeberry</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talk/">
+                <i class="iconfont icon-kakao-talk-fill"></i>
+                Talk
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+        style="background: url('/img/page.jpg') no-repeat center center;
+          background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="">
+              
+            </span>
+
+<!-- 添加的代码 -->
+<!-- ========================================================================= -->
+            
+<!-- ========================================================================= -->
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2024-04-30 03:12" pubdate>
+        April 30, 2024 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.7k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      48 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+            <div class="markdown-body">
+              <p>title: FPGA并行编程 math: true categories: FPGA tags:</p>
+<ul>
+<li>FPGA</li>
+<li>FIR滤波器</li>
+</ul>
+<h1 id="原理">原理</h1>
+<p>N-阶FIR滤波器的系数h[j]与输入信号x[i]的卷积可由差分方程表示：</p>
+<figure>
+<img src="/2024/04/30/%E6%9C%AC%E7%A7%91/FPGA/FIR%E6%BB%A4%E6%B3%A2%E5%99%A8/image-20240430045610020.png" srcset="/img/loading.gif" lazyload alt="image-20240430045610020">
+<figcaption aria-hidden="true">image-20240430045610020</figcaption>
+</figure>
+<p>注意，要计算一个N-阶滤波器的输出值，需要N个乘法和N-1个加法。</p>
+<p><em>滑动均值滤波器</em>
+是低通FIR滤波器的一种简单形式，其所有系数都是相同的且和为1。例如3点滑动滤波器，其系数h
+=[1/3, 1/3,
+1/3]。同时由于它卷积核的形状特点，它也被称为矩形滤波器。或者你可以想象一个滑动均值滤波器，它将输入信号的几个相邻样本相加并求平均值。在上面卷积方程中，用1/N代替h[j]并对公式重新排布整理，达到对N个元素求平均值相似的效果:</p>
+<p>当N = 3时，我们这样运算来计算y[12]: <span class="math display">\[
+y[12]=1/3(y[12]+y[11]+y[10])
+\]</span>
+滑动均值滤波器可以用来平滑信号，例如去除随机(大部分是高频)噪声。随着N的阶数越高，我们会平均更多的样本，相应的我们必须进行更多的计算。对于滑动均值滤波器，N值的增大等效于减小输出信号带宽。根本上讲，它就像一个低通滤波器(虽然不是非常理想)。直觉上，这样解释是有意义的。当我们对越来越多的样本进行平均时，我们消除了输入信号中更高的频率分量。也就是说，“平滑”等同于降低高频分量。滑动滤波器是最优的减少白噪声且同时保持最陡峭阶跃响应的滤波器，即在给定边缘锐度的情况下把噪声压到最低。</p>
+<h1 id="正常的代码未优化">正常的代码(未优化)</h1>
+<figure class="highlight c"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> N 11</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;ap_int.h&quot;</span>  </span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> <span class="hljs-keyword">coef_t</span>;<br><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> <span class="hljs-keyword">data_t</span>;<br><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> <span class="hljs-keyword">acc_t</span>;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fir</span><span class="hljs-params">(<span class="hljs-keyword">data_t</span> *y,<span class="hljs-keyword">data_t</span> x)</span></span>&#123;<br>    <span class="hljs-keyword">coef_t</span> C[N] = &#123;<br>        <span class="hljs-number">53</span>,<span class="hljs-number">0</span>,<span class="hljs-number">-91</span>,<span class="hljs-number">0</span>,<span class="hljs-number">313</span>,<span class="hljs-number">500</span>,<span class="hljs-number">313</span>,<span class="hljs-number">0</span>,<span class="hljs-number">-91</span>,<span class="hljs-number">0</span>,<span class="hljs-number">53</span><br>    &#125;;<br>    <span class="hljs-keyword">static</span><br>    <span class="hljs-keyword">data_t</span> shift_reg[N];<br>    <span class="hljs-keyword">acc_t</span> acc;<br>    <span class="hljs-keyword">int</span> i;<br>    acc = <span class="hljs-number">0</span>;<br>    Shift_Accum_Loop:<br>    <span class="hljs-keyword">for</span>(i = N - <span class="hljs-number">1</span>;i &gt;= <span class="hljs-number">0</span>;i--)&#123;<br>        <span class="hljs-keyword">if</span>(i == <span class="hljs-number">0</span>)&#123;<br>            acc += x * C[<span class="hljs-number">0</span>];<br>            shift_reg[<span class="hljs-number">0</span>] = X;<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>            shift_reg[i] = shift_reg[i - <span class="hljs-number">1</span>];<br>            acc += shift_reg[i] * C[i];<br>        &#125;<br>    &#125;<br>    * y = acc;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>该代码功能正确但完全没有优化。</p>
+<p>每次 <strong>for</strong>
+循环有两个基本运算。首先，它对输入数据执行乘累加操作(当前输入数据x和存储在shift_reg[]中之前输入的数据)。每次循环执行一个常量与一个输入数据的乘法，并将求和结果存储在变量acc中。同时该循环通过shift_array来实现数值移动，它的操作行为像FIFO。它存储输入数据x到shift_reg[0]中，并通过shift_reg将之前的元素“向前”移动:</p>
+<h1 id="计算性能">计算性能</h1>
+<p>高级语言综合工具以时钟周期数和时钟频率为评价单位。</p>
+<p>频率与时钟周期成反比。</p>
+<p>虽然更高频率在通常情况下是能达到更高性能的关键，但对于整个系统来说提高时钟频率并不一定是在整个系统中最优的优化方式。较低的时钟频率为工具在单个周期中组合多个相关操作提供了更多的时间余量，这个过程叫做
+<em>操作链接</em>
+。在这个过程中，有些情况下可以通过提高逻辑综合优化效果和增加适配器件的代码规模来提高性能。改进的操作链接可以提高(或者降低)流水处理数据输入间隔。一般来说，提供一个频率约束但该频率值不超过实际运行时钟频率。将时钟周期约束在5−10ns的范围内通常是一个好的开始。一旦你开始优化设计，你可以改变时钟周期并观察优化结果。我们将在下一节中详细介绍操作链接。</p>
+<p>因为Vivado
+HLS处理的是时钟频率估计值，在估计中它确实包含了一些可能使估算出错的余量。这个余量是保证在生成RTL电路时有足够的时序余量可以成功完成布局布线。这个余量可以使用set_clock_uncertainty
+的TCL脚本进行直接设置。注意此指令只影响HLS生成RTL，与RTL级时序约束中时钟不确定性不同。由Vivado
+HLS生成的对RTL实现流程的时序约束完全是基于目标时钟周期的约束。</p>
+<h1 id="operation-chaining">Operation Chaining</h1>
+<p><em>操作链接</em> 是Vivado
+HLS为了优化最终设计而进行地一项重要优化。尽管设计人员没有太多控制权，但设计人员要明白它的工作原理尤其是在性能方面的影响，这是尤为重要的。考虑FIR滤波器在各阶运算中做的是乘法累加操作。假设加法运算需要2个ns，乘法运算需要3个ns。如果我们把时钟周期设为1ns（或者等效时钟频率1Ghz），那么它要花费5个时钟周期来完成乘累加操作。如图2.2
+a所示。乘法操作需要3个周期，加法操作需要两个周期。乘累加操作总时间为5个时钟周期×1ns
+= 5ns。因此我们处理性能为1/5ns = 2亿次乘累加/秒。</p>
+<figure>
+<img src="/2024/04/30/%E6%9C%AC%E7%A7%91/FPGA/FIR%E6%BB%A4%E6%B3%A2%E5%99%A8/image%20(3).jpg" srcset="/img/loading.gif" lazyload alt="image (3)">
+<figcaption aria-hidden="true">image (3)</figcaption>
+</figure>
+<p>图2.2:随着时钟周期的延长，乘累加操作的性能也会发生变化。假设乘法运算需要3个ns，加法运算需要2个ns。图a)时钟周期为1ns时，一个乘累加操作需要5个周期，因此处理性能是2亿次乘累加/秒。图b)时钟周期为2ns，乘累加运算需要3个时钟周期，因此处理性能约1.67亿次乘累加/秒。图c)时钟周期个5ns。通过使用操作链接，乘累加操作需要一个时钟周期，因此处理性能是2亿次乘累加/秒。</p>
+<p>如果我们将时钟周期增加到2ns，乘法运算用时将超过两个周期，那么加法操作必须等到第3周期才开始，它可以在一个周期内完成。因此乘累加操作需要3个周期，所以总共需要6ns。这时处理性能大约为1.67次乘累加操作
+/秒。这个结果比之前1ns时钟周期的要低。这个可以用第2个时钟周期中没有执行任何操作的“死时间”来解释。</p>
+<p>然而增加时钟周期并不是在所有情况下都会导致更糟糕的结果。例如，如果我们将时钟周期设为5ns，我们可以使用操作链接将乘法和加法在同一个时钟周期内执行。如图2.2
+c所示，因此乘累加操作在5ns的时钟周期下只需要1个时钟周期，因此我们可以执行2亿次乘累加
+/秒。这与图2.2 a时钟周期更快（1ns）的处理性能相同。</p>
+<p>到目前为止，我们可以在一个时钟周期内只执行两个操作。可以在一个时钟周期内链接多个操作。例如，如果时钟周期是10ns，我们可以按顺序执行5个加法操作，或者我们可以实现两个连续乘累加操作。</p>
+<p>显而易见，时钟周期在Vivado
+HLS优化设计的过程中起着重要作用。时钟周期与Vivado
+HLS其他优化方式一起使用，使时钟周期对设计优化的影响变得更加复杂。完全理解Vivado
+HLS整个优化过程并不重要，这个观点是很明确的，因为每个新版本都在不断改进提升这个工具的性能。然而，重要的是要了解这个工具是如何工作的。这更有利于你更好地理解优化结果，甚至使你编写的代码更加优化。</p>
+<p>将for循环中条件语句删除，可以实现更有效的硬件结构。</p>
+<p>本章项目中，我们建议将时钟周期设为10ns，并将重点放在理解不同优化手段(例如流水处理)如何用于创建不同的处理架构。100Mhz时钟频率是相对容易实现的，而且它提供了良好的初始结果。当然可以创建更快时钟频率的设计。200Mhz以及更快的频率是有可能设计的，但这时经常需要在时钟频率和其他优化策略之间进行更好的权衡。你可以通过更改时钟周期来观察处理性能上的差异。不幸的是，并没有好的准则来选择最佳频率。</p>
+<h1 id="代码提升">代码提升</h1>
+<p>for循环内部的if/else语句效率很低。在代码中每个控制结构，Vivado
+HLS会生成硬件逻辑电路来检查条件是否满足，这个检查在每个循环中都执行。此外，这种条件结构限制了if或else分支中语句的执行;这些语句只有在解决了if条件语句之后才能执行。</p>
+<p>当x==0时if语句进行检查，这个只发生在最后一次迭代中。因此if分支中的语句可以从循环中“升起”。也就是说，我们可以在循环结束后执行这些语句，然后在循环中删除if/else控制流。最后我们必须改变执行“第0次”迭代的循环边界。这个转换如图2.3所示。这显示了for循环所需要的更改。</p>
+<h2 id="删除if-else-循环">删除if-else 循环</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c">Shift_Accum_Loop:<br><span class="hljs-keyword">for</span>(i = N<span class="hljs-number">-1</span>;i &gt; <span class="hljs-number">0</span>;i--)&#123;<br>   shift_reg[i] = shift_reg[i<span class="hljs-number">-1</span>];<br>   acc += shift_reg[i] * c[i];<br>&#125;<br><br>acc += x * c[<span class="hljs-number">0</span>];<br>shift_reg[<span class="hljs-number">0</span>] = x;<br></code></pre></td></tr></table></figure>
+<h2 id="拆分循环">拆分循环</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c">TDL:<br><span class="hljs-keyword">for</span>(i = N - <span class="hljs-number">1</span>;i &gt; <span class="hljs-number">0</span>;i--)&#123;<br>    shift_reg[i] = shift_reg[i - <span class="hljs-number">1</span>];<br>&#125;<br>shift_reg[<span class="hljs-number">0</span>] = x;<br><br>acc = <span class="hljs-number">0</span>;<br>MAC:<br><span class="hljs-keyword">for</span>(i = N<span class="hljs-number">-1</span>;i &gt;= <span class="hljs-number">0</span>;i--)<br>&#123;<br>    acc += shift_reg[i] * c[i];<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>我们在for循环中执行两个基本操作。第一个是通过shift_reg数组进行数据移位。第二个是进行乘累加运算来计算输出样本。循环分裂是分别在两个循环中实现各自操作。虽然这样做看起来不像是一个好主意，但是这样做允许我们在每个循环上分别进行优化。这可能是有利的，尤其是在对不同循环进行不同优化策略的情况下。</p>
+<p>图2.4中代码显示了手动循环拆分优化结果。代码片段将图2.3的循环分割成两个循环。注意两个循环的标签名称，第一个是TDL
+第二个是MAC。延时线(TDL)是数字信号处理中FIFO操作的术语;MAC是“乘累加”的缩写。</p>
+<h2 id="循环展开">循环展开</h2>
+<p>每个循环单独拆分往往不能提高硬件实现效率，但是它可以实现每个循环独立地进行优化，这可能比优化原始的整体for循环更可能得到好结果。反之亦然;将两个(或多个)循环合并到一个循环中也可能会产生最好的结果。对大多数优化来说，这高度依赖于应用场景。一般来说对于如何优化代码没有“最优法则”。优化思路不一样导致优化过程也会有差异。因此重要的是要有很多可以使用的技巧，更好的是对优化工作原理有深入的了解。只有这样，你才能是得到最好的硬件算法实现。让我们继续学习一些额外的技巧……</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-symbol">TDL:</span><br>for(i = N - <span class="hljs-number">1</span><span class="hljs-comment">;i &gt; 1;i = i - 2)&#123;</span><br>    <span class="hljs-keyword">shift_reg[i] </span>= <span class="hljs-keyword">shift_reg[i </span>- <span class="hljs-number">1</span>];<br>    <span class="hljs-keyword">shift_reg[i </span>- <span class="hljs-number">1</span>] = <span class="hljs-keyword">shift_reg[i </span>- <span class="hljs-number">2</span>];   <br>&#125;<br>if(i == <span class="hljs-number">1</span>)&#123;<br>    <span class="hljs-keyword">shift_reg[1] </span>= <span class="hljs-keyword">shift_reg[0];</span><br><span class="hljs-keyword"></span>&#125;<br><span class="hljs-keyword">shift_reg[0] </span>= x;<br></code></pre></td></tr></table></figure>
+<p>手动展开fir11函数中TDL循环。</p>
+<p>默认情况下Vivado HLS
+将循环综合成顺序执行方式。该工具创建了一个数据路径，该路径实现了循环体中语句的执行。数据路径顺序执行每次循环迭代运算。这就创建了一个有效的区域架构;但是它限制了在循环迭代中可能出现的并行运算。</p>
+<p>循环展开会通过循环次数(称为因子)来复制循环的主体。每次循环迭代循环次数减少相同因子。在最好情况下，当循环中没有任何语句依赖于前一次迭代生成的任何数据时，这时循环主体大大增加并行性，从而使系统运行速度更快。</p>
+<p>图2.4中的第一个for循环(带有标签TDL)通过shift_reg数组进行数据移位。循环迭代从最大值(N−1)到最小值(i
+=
+1)。通过展开这个循环,我们可以创建一个并行执行的数据路径进行移位操作。</p>
+<p>图2.5显示了以因子2将循环展开后的结果。此代码重复循环主体两次。每次循环迭代都执行两个移位操作。因此我们迭代次数变为原来的一半。</p>
+<p>请注意，在for循环之后还有一个if条件判断。当循环次数为奇数时，这个判断是必需的。在这种情况下，我们必须自己执行最后一次“半”迭代。if语句中的代码执行最后的“半”迭代，即将数据从shift_reg[0]移动到shift_reg[1]。</p>
+<p>还要注意for循环展开开头的结果。减量操作从i--变为i =
+i-2。这是因为我们在每次迭代中都做了两次“工作”，因此我们应该减少2而不是1。</p>
+<p>最后，终止for循环的条件从i &gt; 0变为i &gt;
+1。我们应该确保“最后一次”迭代能够完成而不引发错误。如果最后的迭代循环执行i=
+1,那么第二个语句会试图读取shift_reg[−1]。我们为了不执行这个非法操作，所以在for循环之后的if语句中进行最后的移位操作。</p>
+<h3 id="注意事项">注意事项</h3>
+<p>循环展开可以提高总体性能，前提是我们可以并行执行一些(或全部)语句。在展开代码中，每次迭代要求我们从shift_reg数组中读取两个值;而且我们还要在同一个数组上写两个值。因此如果我们希望并行地执行这两个语句，我们必须能够在相同的周期内对shift_reg数组执行两个读操作和两个写操作。</p>
+<p>假设我们将shift_reg数组存储在一个BRAM中，BRAM有两个读端口和一个写端口。因此，我们可以在一个循环中可以执行两个读操作，但我们只能在两个周期内顺序进行写操作。</p>
+<p>有一些方法可以在一个循环中执行这两个语句。例如，我们可以将所有shift_reg数组的值存储在独立寄存器中。每个周期都可以对每个寄存器进行读写。在这种情况下，我们可以在一个循环中执行这两条的语句。你可以使用指令#pragma
+HLS array_parition variable=shift_reg complete设置Vivado HLS
+,使其将所有放在shift_reg数组中的值，放到寄存器中。这是一个重要的优化，因此稍后我们将详细讨论
+array_partition 指令。</p>
+<p>用户可以使用unroll指令告诉Vivado
+HLS自动循环展开。为了自动实现图2.5中手动完成的循环展开，我们应该将指令#pragma
+HLS unroll
+factor=2放入代码的主体中，具体位置为for循环后面。虽然我们一直可以手动执行循环展开，但是允许工具为我们执行循环展开实现起来更容易，它使代码更易阅读;而且可以减少编码错误。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/05/07/%E6%9C%AC%E7%A7%91/FPGA/Lab1_matrixmul/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Lab1_matrixmul</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/29/%E6%9C%AC%E7%A7%91/FPGA/FPGA%E7%AE%80%E4%BB%8B/">
+                        <span class="hidden-mobile">FPGA并行编程</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        new Waline(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    <span>访问总量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span>总访客<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+ <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+<script
+  src="https://sdk.jinrishici.com/v2/browser/jinrishici.js"
+  charset="utf-8"
+></script>
+
+<script>
+  function typing(id, title){
+      var typed = new Typed('#' + id, {
+          strings: [
+            '  ',
+            title + "&nbsp;",
+          ],
+          cursorChar: "_",
+          typeSpeed: 70,
+          loop: false,
+      });
+      typed.stop();
+      $(document).ready(function () {
+          $(".typed-cursor").addClass("h2");
+          typed.start();
+      });
+  }
+
+  
+      typing("subtitle", "")  // 打印文章标题
+  
+</script>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->
+
+<!-- typing("hitokoto", data.hitokoto + '<br /> <h5>' + '——' + data.from + '</h5>')
+typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '「' + data.from + '」' + '</h5>') -->
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
+
+<!-- 注意，不能用代码格式化插件格式化代码 -->
