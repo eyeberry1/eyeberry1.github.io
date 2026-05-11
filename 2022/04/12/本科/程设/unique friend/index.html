@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Unique friend Given information about the friend of each person. Print friends that are unique to exactly one person ordered by their name. In the given friend list, each line starts with a person">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="程设记录--unique friend(map)">
 <meta property="og:url" content="http://example.com/2022/04/12/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/unique%20friend/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Unique friend Given information about the friend of each person. Print friends that are unique to exactly one person ordered by their name. In the given friend list, each line starts with a person">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-12T06:47:54.011Z">
 <meta property="article:modified_time" content="2022-04-19T11:36:58.230Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,121 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">程设记录--unique friend(map)</h1>
             
-            <div class="markdown-body">
-              <h1 id="unique-friend">Unique friend</h1>
-<p>Given information about the friend of each person. Print friends that
-are unique to exactly one person ordered by their name. In the given
-friend list, each line starts with a person name, followed by the names
-of the friends of the person. There are 10 persons, and each person has
-10 friends. In this problem, you need to write a class
-FriendsFinder3.</p>
-<h1 id="exmaple-input">Exmaple input</h1>
-<p>Collins Smith Perez Allen Brown Carter Jackson Rodriguez Young Evans
-Lopez Wilson Martin Williams Hall Lee Thompson Baker Campbell Evans
-Brown King Jones Jackson Lee Martinez Williams Thomas Moore Carter
-Thompson Hernandez Lopez Turner Roberts Miller Robinson Taylor Anderson
-Rodriguez Hernandez Wright Adams Phillips Lewis Hall Young Garcia
-Jackson Lopez Williams Miller Taylor White Johnson Evans Allen Miller
-White Smith Parker Phillips Brown Carter Collins Mitchell Adams King
-Smith Davis Gonzalez Clark Miller Martin Jones Martinez Walker Scott
-Nelson Garcia Collins Anderson Hall Adams Walker Hill Allen Moore Baker
-Harris Collins Miller Mitchell Hill Lee Rodriguez Nelson Lewis Wilson
-Miller Anderson Hall Clark Evans Wright Young Lee Walker Allen
-Johnson</p>
-<h1 id="exmaple-output">Exmaple output</h1>
-<p>Baker Campbell Davis Gonzalez Harris Jones Lewis Parker Perez Roberts
-Robinson Thomas Wilson</p>
-<h1 id="hint">Hint</h1>
-<p>输出仅为某一个人的朋友的人的名字，注意名字按字典序输出。</p>
-<h1 id="main.cpplock">main.cpp(lock)</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;head.h&quot;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	string persons[<span class="hljs-number">10</span>]; <span class="hljs-comment">// persons</span><br>	string friends[<span class="hljs-number">10</span>][<span class="hljs-number">10</span>]; <span class="hljs-comment">// friends per person</span><br>	string name;<br>	<span class="hljs-comment">// input persons and friends</span><br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; ++ i)  &#123; <span class="hljs-comment">// for each of the 10 person</span><br>		cin &gt;&gt; name;<br>		persons[i] = name;<br>		<span class="hljs-comment">// input 10 friends per person</span><br>		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; ++ j)  &#123;<br>			cin &gt;&gt; name;<br>			friends[i][j] = name;<br>		&#125;<br>	&#125;<br>	<span class="hljs-function">FriendsFinder3 <span class="hljs-title">ff</span><span class="hljs-params">(persons, friends)</span></span>;<br>	<span class="hljs-built_in">ff</span>();<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-<h1 id="head.h">head.h</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;map&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><br><br><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FriendsFinder3</span>&#123;</span><br><span class="hljs-keyword">private</span>:<br>    string per[<span class="hljs-number">10</span>];<br>    string fri[<span class="hljs-number">10</span>][<span class="hljs-number">10</span>];<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-built_in">FriendsFinder3</span>();<br>    <span class="hljs-built_in">FriendsFinder3</span>( string a[<span class="hljs-number">10</span>],string b[<span class="hljs-number">10</span>][<span class="hljs-number">10</span>])&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++)&#123;<br>            per[i]=a[i];<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">10</span>;j++)&#123;<br>                fri[i][j]=b[i][j];<br>            &#125;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">()</span></span>&#123;<br>		map&lt; string, <span class="hljs-keyword">int</span> &gt; p;<br>		<br>		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++)&#123;<br>			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">10</span>;j++)&#123;<br>				p[ fri[i][j] ] +=<span class="hljs-number">1</span>;<br>			&#125;<br>		&#125;<br>		<br>		map&lt;string,<span class="hljs-keyword">int</span>&gt;::iterator it;<br>		<span class="hljs-keyword">for</span>(it=p.<span class="hljs-built_in">begin</span>();it!=p.<span class="hljs-built_in">end</span>();it++)&#123;<br>			<br>			<span class="hljs-keyword">if</span>(it-&gt;second==<span class="hljs-number">1</span>)<br>				cout&lt;&lt;it-&gt;first&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>		&#125;<br>		<br>	&#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/04/12/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/set%20%E7%9A%84%E4%BD%BF%E7%94%A8/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">set的使用</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/04/12/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%5BSet%20&amp;%20Map%5D%20Conference%20Room%20Manager/">
-                        <span class="hidden-mobile">程设记录--[Set & Map] Conference Room Manager</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -634,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

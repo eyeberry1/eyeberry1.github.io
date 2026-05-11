@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Description Implement the 3 functions: 12345template &lt;typename T&gt;void demoFunc(const T v1, const T v2)template &lt;typename T&gt;void demoFunc(const T v)void demoFunc(const int v1, const int v">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="template(func)">
 <meta property="og:url" content="http://example.com/2022/05/23/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/template(func)/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description Implement the 3 functions: 12345template &lt;typename T&gt;void demoFunc(const T v1, const T v2)template &lt;typename T&gt;void demoFunc(const T v)void demoFunc(const int v1, const int v">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-23T13:33:37.854Z">
 <meta property="article:modified_time" content="2022-05-23T13:34:54.344Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,101 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">template(func)</h1>
             
-            <div class="markdown-body">
-              <h1 id="description">Description</h1>
-<p>Implement the 3 functions:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">demoFunc</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T v1, <span class="hljs-keyword">const</span> T v2)</span></span><br><span class="hljs-function"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">demoFunc</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T v)</span></span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">demoFunc</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> v1, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> v2)</span></span><br></code></pre></td></tr></table></figure>
-<h1 id="sample-output">Sample Output</h1>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-keyword">the</span> <span class="hljs-keyword">first</span> generic <span class="hljs-built_in">version</span> <span class="hljs-keyword">of</span> demoFunc()<br><span class="hljs-keyword">the</span> arguments: <span class="hljs-number">2.8</span> <span class="hljs-number">8.5</span><br><span class="hljs-keyword">the</span> <span class="hljs-keyword">second</span> generic <span class="hljs-built_in">version</span> <span class="hljs-keyword">of</span> demoFunc()<br><span class="hljs-keyword">the</span> argument: <span class="hljs-number">3</span><br><span class="hljs-keyword">the</span> ordinary <span class="hljs-built_in">version</span> <span class="hljs-keyword">of</span> demoFunc()<br><span class="hljs-keyword">the</span> arguments: <span class="hljs-number">3</span> <span class="hljs-number">5</span><br><span class="hljs-keyword">the</span> ordinary <span class="hljs-built_in">version</span> <span class="hljs-keyword">of</span> demoFunc()<br><span class="hljs-keyword">the</span> arguments: <span class="hljs-number">65</span> <span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
-<h1 id="main.cpplock">main.cpp(lock)</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;demo.hpp&quot;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">char</span> ch1 = <span class="hljs-string">&#x27;A&#x27;</span>, ch2 = <span class="hljs-string">&#x27;B&#x27;</span>;<br>    <span class="hljs-keyword">int</span> iv1 = <span class="hljs-number">3</span>, iv2 = <span class="hljs-number">5</span>;<br>    <span class="hljs-keyword">double</span> dv1 = <span class="hljs-number">2.8</span>, dv2 = <span class="hljs-number">8.5</span>;<br><br>    <span class="hljs-comment">// 调用第一个函数模板的实例</span><br>    <span class="hljs-built_in">demoFunc</span>(dv1, dv2);<br><br>    <span class="hljs-comment">// 调用第二个函数模板的实例</span><br>    <span class="hljs-built_in">demoFunc</span>(iv1);<br><br>    <span class="hljs-comment">// 调用非模板函数demoFunc(int, int)</span><br>    <span class="hljs-built_in">demoFunc</span>(iv1, iv2);<br><br>    <span class="hljs-comment">// 调用非模板函数demoFunc(int, int)（进行隐式类型转换）</span><br>    <span class="hljs-built_in">demoFunc</span>(ch1, iv2);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-<h1 id="demo.h">demo.h</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">demoFunc</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T v1, <span class="hljs-keyword">const</span> T v2)</span></span>&#123;<br>    cout &lt;&lt; <span class="hljs-string">&quot;the first generic version of demoFunc()&quot;</span> &lt;&lt; endl &lt;&lt; <span class="hljs-string">&quot;the arguments: &quot;</span> &lt;&lt; v1 &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span> &lt;&lt; v2 &lt;&lt; endl; <br>&#125;<br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">demoFunc</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T v)</span></span>&#123;<br>    cout &lt;&lt; <span class="hljs-string">&quot;the second generic version of demoFunc()&quot;</span> &lt;&lt; endl &lt;&lt; <span class="hljs-string">&quot;the argument: &quot;</span> &lt;&lt; v  &lt;&lt; endl; <br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">demoFunc</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> v1, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> v2)</span></span>&#123;<br>    cout &lt;&lt; <span class="hljs-string">&quot;the ordinary version of demoFunc()&quot;</span> &lt;&lt; endl &lt;&lt; <span class="hljs-string">&quot;the arguments: &quot;</span> &lt;&lt; v1 &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span> &lt;&lt; v2 &lt;&lt; endl; <br>&#125;<br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/05/23/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/stack/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">stack(指针gou'jian)</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/05/23/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/template(class)/">
-                        <span class="hidden-mobile">template(class)</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -614,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

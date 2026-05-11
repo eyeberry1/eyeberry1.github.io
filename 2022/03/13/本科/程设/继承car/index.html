@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="sample output 123456789101112131415&#x2F;&#x2F;--- build car ---Construct a car&#x2F;&#x2F;--- build wheel ---Construct a wheel&#x2F;&#x2F;--- build red car ---Construct a carConstruct a wheelConstruct a wheelConstruct a wheelCon">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="程设记录(八)--继承 red car">
 <meta property="og:url" content="http://example.com/2022/03/13/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E7%BB%A7%E6%89%BFcar/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="sample output 123456789101112131415&#x2F;&#x2F;--- build car ---Construct a car&#x2F;&#x2F;--- build wheel ---Construct a wheel&#x2F;&#x2F;--- build red car ---Construct a carConstruct a wheelConstruct a wheelConstruct a wheelCon">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-13T06:42:18.853Z">
 <meta property="article:modified_time" content="2022-03-13T07:28:23.206Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,96 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">程设记录(八)--继承 red car</h1>
             
-            <div class="markdown-body">
-              <h1 id="sample-output">sample output</h1>
-<figure class="highlight less"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><pre><code class="hljs less"><span class="hljs-comment">//--- build car ---</span><br><span class="hljs-selector-tag">Construct</span> <span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">car</span><br><br><span class="hljs-comment">//--- build wheel ---</span><br><span class="hljs-selector-tag">Construct</span> <span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">wheel</span><br><br><span class="hljs-comment">//--- build red car ---</span><br><span class="hljs-selector-tag">Construct</span> <span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">car</span><br><span class="hljs-selector-tag">Construct</span> <span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">wheel</span><br><span class="hljs-selector-tag">Construct</span> <span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">wheel</span><br><span class="hljs-selector-tag">Construct</span> <span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">wheel</span><br><span class="hljs-selector-tag">Construct</span> <span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">wheel</span><br><span class="hljs-selector-tag">Construct</span> <span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">red</span> <span class="hljs-selector-tag">car</span><br><br><br></code></pre></td></tr></table></figure>
-<h1 id="red-car">Red Car</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span>&#123;</span><br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-built_in">Car</span>()&#123;<br>		cout&lt;&lt;<span class="hljs-string">&quot;Construct a car&quot;</span>&lt;&lt;endl;<br>	&#125;<br>&#125;; <br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Wheel</span>&#123;</span><br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-built_in">Wheel</span>()&#123;<br>		cout&lt;&lt;<span class="hljs-string">&quot;Construct a wheel&quot;</span>&lt;&lt;endl;<br>	&#125;<br>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RedCar</span>:</span> <span class="hljs-keyword">public</span> Car&#123;<br>	Wheel a,s,d,f;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-built_in">RedCar</span>():<span class="hljs-built_in">Car</span>()&#123;<br>		cout&lt;&lt;<span class="hljs-string">&quot;Construct a red car&quot;</span>&lt;&lt;endl;<br>	&#125;<br>&#125;;<br><br><br><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>  cout &lt;&lt; <span class="hljs-string">&quot;--- build car ---&quot;</span> &lt;&lt; endl;<br>  Car car;<br>  cout &lt;&lt; endl;<br><br>  cout &lt;&lt; <span class="hljs-string">&quot;--- build wheel ---&quot;</span> &lt;&lt; endl;<br>  Wheel wheel;<br>  cout &lt;&lt; endl;<br><br>  cout &lt;&lt; <span class="hljs-string">&quot;--- build red car ---&quot;</span> &lt;&lt; endl;<br>  RedCar redcar;<br><br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/03/13/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/animal%20and%20human/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">程设记录(九)--animal and human</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/03/13/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%9B%9B%E7%AB%A0(%E4%BA%8C)/">
-                        <span class="hidden-mobile">第四章-Boolean Algebra and Logic Simplification  (二)</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -609,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

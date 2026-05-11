@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Description There are 4 classes, Figure is the base class, both Triangle, Rectangle and Circle are all inherited from it. Figure class is like following: 1234567class FIGURE &amp;#123;public:	void se">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="polymorphism多态(一个接口，多种方法)">
 <meta property="og:url" content="http://example.com/2022/05/08/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/vitual%20class(%E5%A4%9A%E6%80%81)/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description There are 4 classes, Figure is the base class, both Triangle, Rectangle and Circle are all inherited from it. Figure class is like following: 1234567class FIGURE &amp;#123;public:	void se">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-08T08:30:04.373Z">
 <meta property="article:modified_time" content="2022-05-08T08:39:39.587Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,114 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">polymorphism多态(一个接口，多种方法)</h1>
             
-            <div class="markdown-body">
-              <h1 id="description">Description</h1>
-<p>There are 4 classes, <code>Figure</code> is the base class, both
-<code>Triangle</code>, <code>Rectangle</code> and <code>Circle</code>
-are all inherited from it.</p>
-<p><code>Figure</code> class is like following:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FIGURE</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">set_size</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x, <span class="hljs-keyword">double</span> y = <span class="hljs-number">0</span>)</span></span>;<br>	<span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">double</span> <span class="hljs-title">get_area</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;	<span class="hljs-comment">// get_area()被声明为纯虚函数</span><br><span class="hljs-keyword">protected</span>:<br>	<span class="hljs-keyword">double</span> x_size, y_size;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p>You should implement <code>Figure</code>, <code>Triangle</code>,
-<code>Rectange</code>, <code>Circle</code> class.</p>
-<h1 id="sample-output">Sample Output</h1>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs maxima">Area of <span class="hljs-built_in">triangle</span> <span class="hljs-built_in">is</span> <span class="hljs-number">60</span><br>Area of <span class="hljs-built_in">rectangle</span> <span class="hljs-built_in">is</span> <span class="hljs-number">120</span><br>Area of circle <span class="hljs-built_in">is</span> <span class="hljs-number">706.858</span><br></code></pre></td></tr></table></figure>
-<h1 id="figure.hlock">Figure.h(lock)</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> FIGURE_H</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> FIGURE_H</span><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> PI = <span class="hljs-number">3.14159</span>; <span class="hljs-comment">// 圆周率常量</span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FIGURE</span></span><br><span class="hljs-class">&#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">set_size</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x, <span class="hljs-keyword">double</span> y = <span class="hljs-number">0</span>)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">double</span> <span class="hljs-title">get_area</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>; <span class="hljs-comment">// get_area()被声明为纯虚函数</span><br><span class="hljs-keyword">protected</span>:<br>    <span class="hljs-keyword">double</span> x_size, y_size;<br>&#125;;<br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br><br></code></pre></td></tr></table></figure>
-<h1 id="main.cpplock">main.cpp(lock)</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;Figure.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;Triangle.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;Rectangel.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;Circle.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>       TRIANGLE triangle;	 <br>       RECTANGLE rectangle;		<br>       CIRCLE circle;			<br><br>        <span class="hljs-comment">// 处理三角形</span><br>        triangle.<span class="hljs-built_in">set_size</span>(<span class="hljs-number">15</span>, <span class="hljs-number">8</span>);	<span class="hljs-comment">// 设置三角形的底和高</span><br>        cout &lt;&lt; <span class="hljs-string">&quot;Area of triangle is &quot;</span> &lt;&lt; triangle.<span class="hljs-built_in">get_area</span>() &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>	<br>        <span class="hljs-comment">// 处理矩形</span><br>        rectangle.<span class="hljs-built_in">set_size</span>(<span class="hljs-number">15</span>, <span class="hljs-number">8</span>);	<span class="hljs-comment">// 设置矩形的长和宽</span><br>        cout &lt;&lt; <span class="hljs-string">&quot;Area of rectangle is &quot;</span> &lt;&lt; rectangle.<span class="hljs-built_in">get_area</span>() &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>	<br>        <span class="hljs-comment">// 处理圆</span><br>        circle.<span class="hljs-built_in">set_size</span>(<span class="hljs-number">15</span>);		<span class="hljs-comment">// 设置圆的半径</span><br>        cout &lt;&lt; <span class="hljs-string">&quot;Area of circle is &quot;</span> &lt;&lt; circle.<span class="hljs-built_in">get_area</span>() &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>	<br>       <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="figure.cpp">Figure.cpp</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&quot;Figure.h&quot;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std; <br><br><br><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">FIGURE::get_area</span><span class="hljs-params">()</span></span>&#123;<br><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">FIGURE::set_size</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x, <span class="hljs-keyword">double</span> y)</span></span>&#123;<br>    x_size = x;<br>    y_size = y;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-<h1 id="triangle.h">Triangle.h</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&quot;Figure.h&quot;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TRIANGLE</span>:</span><span class="hljs-keyword">public</span> FIGURE&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">set_size</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x, <span class="hljs-keyword">double</span> y = <span class="hljs-number">0</span>)</span></span>&#123;<br>        x_size = x;<br>        y_size = y;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">get_area</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">return</span> x_size * y_size / <span class="hljs-number">2</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h1 id="rectangle.h">Rectangle.h</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&quot;Figure.h&quot;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RECTANGLE</span>:</span><span class="hljs-keyword">public</span> FIGURE&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">set_size</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x, <span class="hljs-keyword">double</span> y = <span class="hljs-number">0</span>)</span></span>&#123;<br>        x_size = x;<br>        y_size = y;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">get_area</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">return</span> x_size * y_size ;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h1 id="circle.h">Circle.h</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&quot;Figure.h&quot;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CIRCLE</span>:</span><span class="hljs-keyword">public</span> FIGURE&#123;<br><span class="hljs-keyword">public</span>:<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">set_size</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x, <span class="hljs-keyword">double</span> y = <span class="hljs-number">0</span>)</span></span>&#123;<br>        x_size = x;<br>        y_size = y;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">get_area</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">return</span> x_size * x_size * PI;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/05/14/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/destructor/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">虚函数(virtual destructor)</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/05/08/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/simple%20complex%20class/">
-                        <span class="hidden-mobile">Complex class(重载、格式控制)</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -627,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

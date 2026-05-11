@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Problem Description Matrix can be stored in a one-dimensional vector in a row-first way, inheriting from the Vector class. According to Vector.h and Matrix.h, complete the implementation of Vector">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="程设记录--matrix and vector">
 <meta property="og:url" content="http://example.com/2022/04/16/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/matrix%20and%20vector/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Problem Description Matrix can be stored in a one-dimensional vector in a row-first way, inheriting from the Vector class. According to Vector.h and Matrix.h, complete the implementation of Vector">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-16T09:17:05.200Z">
 <meta property="article:modified_time" content="2022-04-19T11:37:13.800Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,125 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">程设记录--matrix and vector</h1>
             
-            <div class="markdown-body">
-              <h1 id="problem-description">Problem Description</h1>
-<p>Matrix can be stored in a one-dimensional vector in a row-first way,
-inheriting from the Vector class. According to Vector.h and Matrix.h,
-complete the implementation of Vector class and Matrix class. Function
-description: Vector::getModule() gets the modulus length of the vector,
-Matrix::Symmetric() judges whether the matrix is a symmetric matrix.
-矩阵可以以行优先的方式存储在一维向量中,
-继承于Vector类。根据Vector.h和Matrix.h完成Vector类和Matrix类的实现。
-函数说明：Vector::getModule()求得向量的模长，
-Matrix::Symmetric()判断矩阵是不是对称矩阵。</p>
-<h2 id="hint">HINT</h2>
-<p>向量的模长就是向量的长度（或称模）。</p>
-<h2 id="输入">输入</h2>
-<p>向量长度n 向量n个元素的值</p>
-<p>矩阵行row 矩阵列col 矩阵元素</p>
-<h2 id="输出">输出</h2>
-<p>向量模长 矩阵元素个数 矩阵是否为对称矩阵</p>
-<h2 id="sample-input1">[Sample Input1]</h2>
-<p>3 0 0 0</p>
-<p>3 3 1 0 0 0 1 0 0 0 1</p>
-<h2 id="sample-output1">[Sample Output1]</h2>
-<p>Vector Module: 0 Total Elements in Matrix: 9 Symmetric matrix: 1</p>
-<h2 id="sample-input2">[Sample Input2]</h2>
-<p>3 3 4 0</p>
-<p>3 3 3 0 1 0 4 0 1 0 5</p>
-<h2 id="sample-output2">[Sample Output2]</h2>
-<p>Vector Module: 5 Total Elements in Matrix: 9 Symmetric matrix: 1</p>
-<h1 id="framwork.cpplock">framwork.cpp(lock)</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&quot;vector_matrix.h&quot;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> vector_dimension;<br>    cin &gt;&gt; vector_dimension;<br><br>    <span class="hljs-keyword">int</span>* vector_elements = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[vector_dimension];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;vector_dimension;i++)<br>        cin &gt;&gt; vector_elements[i];<br>    <br>    <span class="hljs-keyword">int</span> row, col;<br>    cin &gt;&gt; row &gt;&gt; col;<br>    <span class="hljs-keyword">int</span>* matrix_elements = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[row*col];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;row;i++)<br>    &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;col;j++)<br>            cin &gt;&gt; matrix_elements[i*row+j];<br>    &#125;<br><br>    <span class="hljs-function">Vector <span class="hljs-title">v</span><span class="hljs-params">(row,vector_elements)</span></span>;<br>    cout&lt;&lt;<span class="hljs-string">&quot;Vector Module: &quot;</span>&lt;&lt;v.<span class="hljs-built_in">getModule</span>()&lt;&lt;endl;<br><br>    <span class="hljs-function">Matrix <span class="hljs-title">m</span><span class="hljs-params">(row,col,matrix_elements)</span></span>;<br>    cout&lt;&lt; <span class="hljs-string">&quot;Total Elements in Matrix: &quot;</span> &lt;&lt; m.<span class="hljs-built_in">getDimension</span>()&lt;&lt;endl;<br>    cout&lt;&lt; <span class="hljs-string">&quot;Symmetric matrix: &quot;</span>&lt;&lt;m.<span class="hljs-built_in">Symmetric</span>()&lt;&lt;endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="vector_matrix.hlock">vector_matrix.h(lock)</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> VECTOR_MATRIX_H</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> VECTOR_MATRIX_H</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vector</span>&#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Vector</span>();<br>    <span class="hljs-built_in">Vector</span>(<span class="hljs-keyword">int</span> dim, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span>* elements_);<br>    ~<span class="hljs-built_in">Vector</span>();<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getDimension</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> *<span class="hljs-title">getElements</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">getModule</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;                             <span class="hljs-comment">//求向量的模长</span><br>    <br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">int</span> dimension;                                  <span class="hljs-comment">//向量的维度</span><br>    <span class="hljs-keyword">int</span> *elements;                                  <span class="hljs-comment">//存储向量元素的数组</span><br>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Matrix</span>:</span> <span class="hljs-keyword">public</span> Vector&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Matrix</span>();<br>    <span class="hljs-built_in">Matrix</span>(<span class="hljs-keyword">int</span> row, <span class="hljs-keyword">int</span> col, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span>* elements_);      <span class="hljs-comment">//矩阵的行列以及矩阵元素（行优先方式存储在一维数组中）</span><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">Symmetric</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;                              <span class="hljs-comment">//判断是否为对称矩阵</span><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">int</span> row;                                       <span class="hljs-comment">//矩阵的行</span><br>&#125;;<br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br></code></pre></td></tr></table></figure>
-<h1 id="vector_matrix.cpp">vector_matrix.cpp</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><br><br>Vector:: <span class="hljs-built_in">Vector</span>()&#123;<br>    dimension=<span class="hljs-number">0</span>;<br>    elements=<span class="hljs-literal">NULL</span>;<br>&#125;<br>Vector:: <span class="hljs-built_in">Vector</span>(<span class="hljs-keyword">int</span> dim, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span>* elements_)&#123;<br>    dimension=dim;<br>    elements=<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span> [dim];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;dim;i++)&#123;<br>        elements[i]=elements_[i];<br>    &#125;<br>&#125;<br>Vector:: ~<span class="hljs-built_in">Vector</span>()&#123;<br>    <span class="hljs-keyword">if</span>(elements!=<span class="hljs-literal">NULL</span>)&#123;<br>        <span class="hljs-keyword">delete</span> [] elements;<br>    &#125;<br>&#125;<br>    <br><span class="hljs-keyword">int</span> Vector:: <span class="hljs-built_in">getDimension</span>() <span class="hljs-keyword">const</span>&#123;<br>    <span class="hljs-keyword">return</span>  dimension;<br>&#125;<br><span class="hljs-keyword">int</span>* Vector:: <span class="hljs-built_in">getElements</span>() <span class="hljs-keyword">const</span>&#123;<br>    <span class="hljs-keyword">return</span> elements;<br>&#125;<br><span class="hljs-keyword">double</span> Vector:: <span class="hljs-built_in">getModule</span>() <span class="hljs-keyword">const</span>&#123;<br>    <span class="hljs-keyword">double</span> sum=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;dimension;i++)&#123;<br>        sum+=elements[i]*elements[i];<br>    &#125;<br>    sum= <span class="hljs-built_in">sqrt</span>(sum);<br>    <span class="hljs-keyword">return</span> sum;<br>&#125;<br><br><br><br>Matrix:: <span class="hljs-built_in">Matrix</span>()&#123;<br>    row=<span class="hljs-number">0</span>;<br>&#125;<br>Matrix:: <span class="hljs-built_in">Matrix</span>(<span class="hljs-keyword">int</span> row, <span class="hljs-keyword">int</span> col, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span>* elements_):<span class="hljs-built_in">Vector</span>(row*col,elements_)&#123;<br>    <span class="hljs-keyword">this</span>-&gt;row=row;<br>&#125;      <span class="hljs-comment">//矩阵的行列以及矩阵元素（行优先方式存储在一维数组中）</span><br><span class="hljs-keyword">bool</span> Matrix::  <span class="hljs-built_in">Symmetric</span>() <span class="hljs-keyword">const</span>&#123;<br>    <span class="hljs-keyword">int</span> col=<span class="hljs-built_in">getDimension</span>()/row;<br>    <span class="hljs-keyword">if</span>(col!=row) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-comment">//int temp [row][col];</span><br>    <span class="hljs-keyword">int</span> **temp=<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>* [row];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;row;i++)&#123;<br>    	temp[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span> [col];<br>	&#125;<br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;row;i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;col;j++)&#123;<br>            temp[i][j]=<span class="hljs-built_in">getElements</span>()[col*i+j];<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;row;i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;col;j++)&#123;<br>            <span class="hljs-keyword">if</span>(temp[i][j]!=temp[j][i]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;row;i++)&#123;<br>		<span class="hljs-keyword">delete</span> [] temp[i];<br>	&#125;<br>	<span class="hljs-keyword">delete</span> [] temp;<br>	<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;                              <span class="hljs-comment">//判断是否为对称矩阵</span><br><br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/04/16/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/inservice/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">程设记录--inservice(虚继承)</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/04/12/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/set%20%E7%9A%84%E4%BD%BF%E7%94%A8/">
-                        <span class="hidden-mobile">set的使用</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -638,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="单连通区域    复连通区域   例题   无界区域内的柯西公式  高阶导数  例题">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="柯西公式">
 <meta property="og:url" content="http://example.com/2022/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="单连通区域    复连通区域   例题   无界区域内的柯西公式  高阶导数  例题">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/image-20221005165641315.png">
 <meta property="og:image" content="http://example.com/2022/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/image-20221005170033447.png">
@@ -85,7 +85,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -276,111 +290,18 @@
             <!-- SEO header -->
             <h1 style="display: none">柯西公式</h1>
             
-            <div class="markdown-body">
-              <h1 id="单连通区域">单连通区域</h1>
-<p><img src="/2022/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/image-20221005165641315.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2022/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/image-20221005170033447.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2022/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/image-20221005170047759.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="复连通区域">复连通区域</h1>
-<img src="/2022/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/image-20221005170208384.png" srcset="/img/loading.gif" lazyload class title="image-20221005170208384">
-<p><img src="/2022/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/image-20221005170243172.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="例题">例题</h1>
-<p><img src="/2022/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/image-20221005170306124.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2022/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/image-20221005170323448.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="无界区域内的柯西公式">无界区域内的柯西公式</h1>
-<p><img src="/2022/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/image-20221005171259908.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="高阶导数">高阶导数</h1>
-<p><img src="/2022/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/image-20221005171357924.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="例题-1">例题</h1>
-<p><img src="/2022/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/image-20221005171426167.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2022/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/image-20221005171437970.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2022/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/image-20221005171543539.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2022/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/image-20221005171554442.png" srcset="/img/loading.gif" lazyload></p>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/">数学物理方法</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%9F%AF%E8%A5%BF%E5%85%AC%E5%BC%8F/">柯西公式</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/10/20/Lumerical/inverse%20design%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA(%E8%AF%A6%E7%BB%86)/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">inverse design of grating coupler -- process presentation</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/10/05/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E6%96%B9%E6%B3%95/%E4%B8%8D%E5%AE%9A%E7%A7%AF%E5%88%86/">
-                        <span class="hidden-mobile">不定积分</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -638,6 +559,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Description Task 完善 Matrix 类的定义，实现简单的Matrix运算，类的定义，main函数已给出，你需要编写Matrix.cpp文件实现具体函数，记得包含类的定义。 Input m n represent the row and col of matrix a and b(They have the same shape) For next m rows, in">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="程设记录--matrix(运算练习)">
 <meta property="og:url" content="http://example.com/2022/04/20/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/matrix%E7%BB%83%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description Task 完善 Matrix 类的定义，实现简单的Matrix运算，类的定义，main函数已给出，你需要编写Matrix.cpp文件实现具体函数，记得包含类的定义。 Input m n represent the row and col of matrix a and b(They have the same shape) For next m rows, in">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-19T16:20:08.292Z">
 <meta property="article:modified_time" content="2022-04-19T16:21:47.250Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,119 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">程设记录--matrix(运算练习)</h1>
             
-            <div class="markdown-body">
-              <h1 id="description">Description</h1>
-<h2 id="task">Task</h2>
-<p>完善 <code>Matrix</code>
-类的定义，实现简单的Matrix运算，类的定义，<code>main</code>函数已给出，你需要编写Matrix.cpp文件实现具体函数，记得包含类的定义。</p>
-<h1 id="input">Input</h1>
-<p><code>m n</code> represent the row and col of matrix a and b(They
-have the same shape) For next m rows, input the elements in matrix a For
-next m+1~2m rows, input the elements in matrix b</p>
-<h1 id="output">Output</h1>
-<p>Print Matrix a, b Print Matrix a+b Print Matrix d(The transpose of
-a)</p>
-<h1 id="sample-input-1">Sample Input 1</h1>
-<figure class="highlight basic"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">2 </span><span class="hljs-number">3</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">2</span> <span class="hljs-number">3</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">2</span> <span class="hljs-number">3</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">2</span> <span class="hljs-number">3</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">2</span> <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
-<h1 id="sample-output-1">Sample Output 1</h1>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Matrix</span> a:<br><span class="hljs-attribute">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span><br><span class="hljs-attribute">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span><br><br><span class="hljs-attribute">Matrix</span> b:<br><span class="hljs-attribute">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span><br><span class="hljs-attribute">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span><br><br><span class="hljs-attribute">Matrix</span> c = Matrix a + Matrix b :<br><span class="hljs-attribute">2</span> <span class="hljs-number">4</span> <span class="hljs-number">6</span><br><span class="hljs-attribute">2</span> <span class="hljs-number">4</span> <span class="hljs-number">6</span><br><br><span class="hljs-attribute">Matrix</span> a transpose to Matrix d:<br><span class="hljs-attribute">1</span> <span class="hljs-number">1</span><br><span class="hljs-attribute">2</span> <span class="hljs-number">2</span><br><span class="hljs-attribute">3</span> <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
-<h1 id="sample-input-2">Sample Input 2</h1>
-<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">2 </span><span class="hljs-number">2</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">2</span><br><span class="hljs-symbol">3 </span><span class="hljs-number">4</span><br><span class="hljs-symbol">4 </span><span class="hljs-number">3</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
-<h1 id="sample-ouput-2">Sample Ouput 2</h1>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Matrix</span> a:<br><span class="hljs-attribute">1</span> <span class="hljs-number">2</span><br><span class="hljs-attribute">3</span> <span class="hljs-number">4</span><br><br><span class="hljs-attribute">Matrix</span> b:<br><span class="hljs-attribute">4</span> <span class="hljs-number">3</span><br><span class="hljs-attribute">2</span> <span class="hljs-number">1</span><br><br><span class="hljs-attribute">Matrix</span> c = Matrix a + Matrix b :<br><span class="hljs-attribute">5</span> <span class="hljs-number">5</span><br><span class="hljs-attribute">5</span> <span class="hljs-number">5</span><br><br><span class="hljs-attribute">Matrix</span> a transpose to Matrix d:<br><span class="hljs-attribute">1</span> <span class="hljs-number">3</span><br><span class="hljs-attribute">2</span> <span class="hljs-number">4</span><br></code></pre></td></tr></table></figure>
-<h1 id="hint">Hint</h1>
-<p>类的构造函数与析构函数，运算符重载，<code>new</code>与<code>delete</code></p>
-<h1 id="main.cpplock">main.cpp(lock)</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&quot;Matrix.h&quot;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> row, col;<br>    cout &lt;&lt; <span class="hljs-string">&quot;input the row and the col for Matrix a, b&quot;</span> &lt;&lt; endl;<br>    cin &gt;&gt; row &gt;&gt; col;<br><br>    <span class="hljs-keyword">int</span> **mat_a_arr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>*[row];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; row; i++) &#123;<br>        mat_a_arr[i] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[col];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; col; j++) &#123;<br>            cin &gt;&gt; mat_a_arr[i][j];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">int</span> **mat_b_arr = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>*[row];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; row; i++) &#123;<br>        mat_b_arr[i] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[col];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; col; j++) &#123;<br>            cin &gt;&gt; mat_b_arr[i][j];<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function">Matrix <span class="hljs-title">a</span><span class="hljs-params">(row, col, mat_a_arr)</span>, <span class="hljs-title">b</span><span class="hljs-params">(row, col, mat_b_arr)</span>, <span class="hljs-title">c</span><span class="hljs-params">(a)</span>, d</span>;<br>    cout &lt;&lt; endl &lt;&lt; <span class="hljs-string">&quot;Matrix a:&quot;</span> &lt;&lt; endl;<br>    a.<span class="hljs-built_in">display</span>();<br>    cout &lt;&lt; endl &lt;&lt; <span class="hljs-string">&quot;Matrix b:&quot;</span> &lt;&lt; endl;<br>    b.<span class="hljs-built_in">display</span>();<br>    c = a + b;<span class="hljs-comment">//用重载运算符“+”实现两个矩阵相加 </span><br>    cout &lt;&lt; endl &lt;&lt; <span class="hljs-string">&quot;Matrix c = Matrix a + Matrix b :&quot;</span> &lt;&lt; endl;<br>    c.<span class="hljs-built_in">display</span>();<br>    cout &lt;&lt; endl &lt;&lt; <span class="hljs-string">&quot;Matrix a transpose to Matrix d:&quot;</span> &lt;&lt; endl;<br>    d = a.<span class="hljs-built_in">transpose</span>();<br>    d.<span class="hljs-built_in">display</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; row; i++) &#123;<br>        <span class="hljs-keyword">delete</span>[]mat_a_arr[i];<br>    &#125;<br>    <span class="hljs-keyword">delete</span>[]mat_a_arr;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; row; i++) &#123;<br>        <span class="hljs-keyword">delete</span>[]mat_b_arr[i];<br>    &#125;<br>    <span class="hljs-keyword">delete</span>[]mat_b_arr;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-<h1 id="matrix.h">matrix.h</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> MATRIX_H</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MATRIX_H</span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Matrix</span></span><br><span class="hljs-class">&#123;</span><br><span class="hljs-keyword">public</span>:<br>   <span class="hljs-built_in">Matrix</span>();                                           <span class="hljs-comment">//默认构造函数</span><br>   ~<span class="hljs-built_in">Matrix</span>();                                          <span class="hljs-comment">//析构函数</span><br>   <span class="hljs-built_in">Matrix</span>(<span class="hljs-keyword">const</span> Matrix &amp;);                             <span class="hljs-comment">//拷贝构造函数</span><br>   <span class="hljs-built_in">Matrix</span>(<span class="hljs-keyword">int</span> row, <span class="hljs-keyword">int</span> col, <span class="hljs-keyword">int</span>** elements);           <span class="hljs-comment">//普通构造函数  </span><br>   Matrix <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> Matrix &amp;)<span class="hljs-keyword">const</span>;              <span class="hljs-comment">//重载运算符“+”</span><br>   Matrix <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> Matrix &amp;);                   <span class="hljs-comment">//重载运算符“=”</span><br>   <span class="hljs-function">Matrix <span class="hljs-title">transpose</span><span class="hljs-params">()</span><span class="hljs-keyword">const</span></span>;                            <span class="hljs-comment">//矩阵的转置</span><br>   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">display</span><span class="hljs-params">()</span><span class="hljs-keyword">const</span></span>;                                <span class="hljs-comment">//输出数据函数   </span><br><span class="hljs-keyword">private</span>:<br>   <span class="hljs-keyword">int</span> row;                                            <span class="hljs-comment">//矩阵的行</span><br>   <span class="hljs-keyword">int</span> col;                                            <span class="hljs-comment">//矩阵的列</span><br>   <span class="hljs-keyword">int</span>** mat;                                          <span class="hljs-comment">//用于储存矩阵</span><br>&#125;;<br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br><br></code></pre></td></tr></table></figure>
-<h1 id="matrix.cpp">matrix.cpp</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstring&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&quot;Matrix.h&quot;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br>Matrix::<span class="hljs-built_in">Matrix</span>()&#123;<br>    mat = <span class="hljs-literal">NULL</span>;<br>&#125;                                        <span class="hljs-comment">//构造函数</span><br>Matrix::~<span class="hljs-built_in">Matrix</span>()&#123;<br>    <span class="hljs-keyword">int</span> i;<br>    <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; row; i++)&#123;<br>        <span class="hljs-keyword">delete</span>[] mat[i];<br>    &#125;<br>    <span class="hljs-keyword">delete</span> [] mat;<br>&#125;                                     <span class="hljs-comment">//析构函数</span><br>Matrix::<span class="hljs-built_in">Matrix</span>(<span class="hljs-keyword">const</span> Matrix &amp; other)&#123;<br>    row = other.row;<br>    col = other.col;<br>    mat = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>*[row];<br>    <span class="hljs-keyword">int</span> i;<br>    <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; row; i++)&#123;<br>        mat[i] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[col + <span class="hljs-number">1</span>];<br>        <span class="hljs-built_in">memcpy</span>(mat[i], other.mat[i], col);<br>    &#125;<br>&#125;                             <span class="hljs-comment">//拷贝构造函数</span><br>Matrix::<span class="hljs-built_in">Matrix</span>(<span class="hljs-keyword">int</span> row, <span class="hljs-keyword">int</span> col, <span class="hljs-keyword">int</span>** elements)&#123;<br>    <span class="hljs-keyword">this</span>-&gt;row = row;<br>    <span class="hljs-keyword">this</span>-&gt;col = col;<br>    mat = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>*[row];<br>    <span class="hljs-keyword">int</span> j, i;<br>    <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; row; i++)&#123;<br>        mat[i] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[col];<br>        <span class="hljs-keyword">for</span>(j = <span class="hljs-number">0</span>; j &lt; col; j++)&#123;<br>            mat[i][j] = elements[i][j];<br>        &#125;<br>    &#125;<br>&#125;           <span class="hljs-comment">//默认构造函数  </span><br>Matrix Matrix::<span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> Matrix &amp; other)<span class="hljs-keyword">const</span>&#123;<br>    Matrix temp;<br>    temp.row = <span class="hljs-keyword">this</span>-&gt;row;<br>    temp.col = <span class="hljs-keyword">this</span>-&gt;col;<br>    temp.mat = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>*[row];<br>    <span class="hljs-keyword">int</span> i, j;<br>    <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; row; i++)&#123;<br>        temp.mat[i] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[col];<br>        <span class="hljs-keyword">for</span>(j = <span class="hljs-number">0</span>; j &lt; col; j++)&#123;<br>            temp.mat[i][j] = <span class="hljs-keyword">this</span>-&gt;mat[i][j] + other.mat[i][j];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> temp;<br>&#125;            <span class="hljs-comment">//重载运算符“+”</span><br>Matrix Matrix::<span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> Matrix &amp; other)&#123;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>-&gt; mat != <span class="hljs-literal">NULL</span>)&#123;<br>        <span class="hljs-keyword">int</span> i;<br>        <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; row; i++)&#123;<br>            <span class="hljs-keyword">delete</span>[] mat[i];<br>        &#125;<br>        <span class="hljs-keyword">delete</span> [] mat;<br>    &#125;<br>    <span class="hljs-keyword">this</span>-&gt; row = other.row;<br>    <span class="hljs-keyword">this</span>-&gt; col = other.col;<br>    <span class="hljs-keyword">this</span>-&gt; mat = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>*[row];<br>    <span class="hljs-keyword">int</span> i, j;<br>    <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; row; i++)&#123;<br>        <span class="hljs-keyword">this</span>-&gt;mat[i] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[col];<br>        <span class="hljs-keyword">for</span>(j = <span class="hljs-number">0</span>; j &lt; col; j++)&#123;    <br>            <span class="hljs-keyword">this</span>-&gt;mat[i][j] = other.mat[i][j];<br>            <span class="hljs-comment">//cout &lt;&lt; other.mat[i][j] &lt;&lt; &#x27; &#x27;;</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;                <span class="hljs-comment">//重载运算符“=”</span><br><span class="hljs-function">Matrix <span class="hljs-title">Matrix::transpose</span><span class="hljs-params">()</span><span class="hljs-keyword">const</span></span>&#123;<br>    Matrix temp;<br>    temp.row = <span class="hljs-keyword">this</span>-&gt;col;<br>    temp.col = <span class="hljs-keyword">this</span>-&gt;row;<br>    temp.mat = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>*[col];<br>    <span class="hljs-keyword">int</span> i, j;<br>    <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; temp.row; i++)&#123;<br>        temp.mat[i] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[row];<br>        <span class="hljs-keyword">for</span>(j = <span class="hljs-number">0</span>; j &lt; temp.col; j++)&#123;<br>            temp.mat[i][j] = <span class="hljs-keyword">this</span>-&gt;mat[j][i];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> temp;<br>&#125;                            <span class="hljs-comment">//矩阵的转置</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Matrix::display</span><span class="hljs-params">()</span><span class="hljs-keyword">const</span></span>&#123;<br>    <span class="hljs-keyword">int</span> i, j;<br>    <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; row; i++)&#123;<br>        <span class="hljs-keyword">for</span>(j = <span class="hljs-number">0</span>; j &lt; col - <span class="hljs-number">1</span>; j++)&#123;<br>            cout &lt;&lt; <span class="hljs-keyword">this</span>-&gt;mat[i][j] &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span>;<br>        &#125;<br>        cout &lt;&lt; <span class="hljs-keyword">this</span>-&gt;mat[i][j] &lt;&lt; endl;<br>    &#125;<br>&#125; <br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/04/25/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%9C%9F%E4%B8%AD%E8%80%83%E5%8D%B7%E6%80%BB%E7%BB%93/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">期中考卷分析</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/04/19/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/static%20member2/">
-                        <span class="hidden-mobile">程设记录--[Static Member] Seminar Logger2</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -632,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

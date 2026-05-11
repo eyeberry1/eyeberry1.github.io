@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="自然推理系统的推理规则    例题   附加前提法 验证该公式的有效性? \[ p \wedge q \rightarrow s \vee r, q \rightarrow p, r \rightarrow s \Rightarrow q \rightarrow s \] 验证结论为蕴涵式的推理的有效性需要使用附加前提法 将结论中的蕴涵式的前件作为附加的前提一起来">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="离散数学--命题逻辑的推理理论">
 <meta property="og:url" content="http://example.com/2022/03/19/%E6%9C%AC%E7%A7%91/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E6%8E%A8%E7%90%86%E7%90%86%E8%AE%BA/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="自然推理系统的推理规则    例题   附加前提法 验证该公式的有效性? \[ p \wedge q \rightarrow s \vee r, q \rightarrow p, r \rightarrow s \Rightarrow q \rightarrow s \] 验证结论为蕴涵式的推理的有效性需要使用附加前提法 将结论中的蕴涵式的前件作为附加的前提一起来">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/03/19/%E6%9C%AC%E7%A7%91/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E6%8E%A8%E7%90%86%E7%90%86%E8%AE%BA/image-20220319222558984.png">
 <meta property="og:image" content="http://example.com/2022/03/19/%E6%9C%AC%E7%A7%91/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E6%8E%A8%E7%90%86%E7%90%86%E8%AE%BA/image-20220319222721642.png">
@@ -77,7 +77,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -268,115 +282,18 @@
             <!-- SEO header -->
             <h1 style="display: none">离散数学--命题逻辑的推理理论</h1>
             
-            <div class="markdown-body">
-              <figure>
-<img src="/2022/03/19/%E6%9C%AC%E7%A7%91/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E6%8E%A8%E7%90%86%E7%90%86%E8%AE%BA/image-20220319222558984.png" srcset="/img/loading.gif" lazyload alt="自然推理系统的推理规则">
-<figcaption aria-hidden="true">自然推理系统的推理规则</figcaption>
-</figure>
-<figure>
-<img src="/2022/03/19/%E6%9C%AC%E7%A7%91/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E6%8E%A8%E7%90%86%E7%90%86%E8%AE%BA/image-20220319222721642.png" srcset="/img/loading.gif" lazyload alt="例题">
-<figcaption aria-hidden="true">例题</figcaption>
-</figure>
-<p><img src="/2022/03/19/%E6%9C%AC%E7%A7%91/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E6%8E%A8%E7%90%86%E7%90%86%E8%AE%BA/image-20220319222737488.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="附加前提法">附加前提法</h1>
-<p>验证该公式的有效性? <span class="math display">\[
-p \wedge q \rightarrow s \vee r, q \rightarrow p, r \rightarrow s
-\Rightarrow q \rightarrow s
-\]</span></p>
-<p><strong>验证结论为蕴涵式的推理的有效性需要使用</strong>附加前提法</p>
-<p><strong>将结论中的蕴涵式的前件作为附加的前提一起来推出它的后件</strong></p>
-<p>即 将q也作为附加前提,与其他条件结合,共同推出条件s</p>
-<h1 id="反证法">反证法</h1>
-<p><img src="/2022/03/19/%E6%9C%AC%E7%A7%91/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E6%8E%A8%E7%90%86%E7%90%86%E8%AE%BA/image-20220319223621441.png" srcset="/img/loading.gif" lazyload></p>
-<figure>
-<img src="/2022/03/19/%E6%9C%AC%E7%A7%91/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E6%8E%A8%E7%90%86%E7%90%86%E8%AE%BA/image-20220319223824435.png" srcset="/img/loading.gif" lazyload alt="例题">
-<figcaption aria-hidden="true">例题</figcaption>
-</figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">离散数学</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">离散数学</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/03/19/%E6%9C%AC%E7%A7%91/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E5%BA%94%E7%94%A8/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">离散数学--命题逻辑的应用</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/03/16/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/Virtual%20World/">
-                        <span class="hidden-mobile">程设记录(十一)--Virtual World</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -634,6 +551,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

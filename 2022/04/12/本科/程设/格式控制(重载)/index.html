@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Description My books want to have different kinds of formats of a booklist. To improve the reuseability of the code, we should use the object-oriented thought. I design the class Book as below: 12">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="程设记录(十七)--格式控制(重载)">
 <meta property="og:url" content="http://example.com/2022/04/12/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E6%A0%BC%E5%BC%8F%E6%8E%A7%E5%88%B6(%E9%87%8D%E8%BD%BD)/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description My books want to have different kinds of formats of a booklist. To improve the reuseability of the code, we should use the object-oriented thought. I design the class Book as below: 12">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-12T06:08:54.657Z">
 <meta property="article:modified_time" content="2022-04-12T06:10:44.884Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,145 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">程设记录(十七)--格式控制(重载)</h1>
             
-            <div class="markdown-body">
-              <h1 id="description">Description</h1>
-<p>My books want to have different kinds of formats of a booklist. To
-improve the reuseability of the code, we should use the object-oriented
-thought. I design the class <code>Book</code> as below:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Book</span></span><br><span class="hljs-class">&#123;</span><br> string name;<br> string code;<br>  <span class="hljs-keyword">double</span> cost;<br><span class="hljs-keyword">public</span>:<br> <span class="hljs-built_in">Book</span>(string s,string c,<span class="hljs-keyword">double</span> co):<span class="hljs-built_in">name</span>(s),<span class="hljs-built_in">code</span>(c),<span class="hljs-built_in">cost</span>(co)&#123;&#125;<br><br>&#125;;<br></code></pre></td></tr></table></figure>
-<p>The default output format of a <code>Book</code> object requires</p>
-<ul>
-<li>Each field being <strong>right-justified</strong></li>
-<li>Each field having the same <strong>field width: 15</strong></li>
-<li>Each number (<code>double</code>) having a <strong>forced 6
-digits</strong> after the decimal dot.</li>
-</ul>
-<p>The <code>leftform</code> output format of a <code>Book</code> object
-requires</p>
-<ul>
-<li>Each field being <strong>left-justified</strong></li>
-<li>Each field having the same <strong>field width: 15</strong></li>
-<li>Each number (<code>double</code>) having a <strong>forced 2
-digits</strong> after the decimal dot.</li>
-</ul>
-<p>The <code>rightform</code> output format of a <code>Book</code>
-object requires</p>
-<ul>
-<li>Each field being <strong>right-justified</strong></li>
-<li>Each field having the same <strong>field width: 15</strong></li>
-<li>Each number (<code>double</code>) having a <strong>forced 2
-digits</strong> after the decimal dot.</li>
-</ul>
-<p>The main function is :</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> N;<br>    string name;<br>    string code;<br>    <span class="hljs-keyword">double</span> cost;<br>    cin &gt;&gt; N;<br>    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;<br>    Book *books[N];<br>     <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;N;i++)&#123;<br>        cin &gt;&gt; name &gt;&gt; code &gt;&gt; cost;<br>        books[i] = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Book</span>(name, code, cost);<br>    &#125;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;N;i++)&#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;-----:&quot;</span> &lt;&lt; *books[i];<br>    &#125;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;N;i++)&#123;<br>        cout &lt;&lt; leftform &lt;&lt; *books[i];<br>    &#125;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;N;i++)&#123;<br>        cout &lt;&lt; rightform &lt;&lt; *books[i];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="input">Input</h1>
-<p>First line is the integer <code>N</code> followed by <em>N</em>
-lines. Each line contains the name, code and cost.</p>
-<p><strong>The input has been handled by the test
-framework.</strong></p>
-<h1 id="output">Output</h1>
-<p>Please refer to the <code>main</code> function and the sample
-output.</p>
-<p><strong>The output has been handled by the test
-framework.</strong></p>
-<h1 id="sample-input">Sample Input</h1>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">3</span><br><span class="hljs-attribute">book1</span> <span class="hljs-number">123456</span> <span class="hljs-number">342</span>.<span class="hljs-number">13</span><br><span class="hljs-attribute">book2</span> <span class="hljs-number">456789</span> <span class="hljs-number">23</span><br><span class="hljs-attribute">book3</span> <span class="hljs-number">789123</span> <span class="hljs-number">1</span>.<span class="hljs-number">2321</span><br></code></pre></td></tr></table></figure>
-<h1 id="sample-output">Sample Output</h1>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">-----:          <span class="hljs-keyword">book1 </span>        <span class="hljs-number">123456</span>     <span class="hljs-number">342</span>.<span class="hljs-number">130000</span><br>-----:          <span class="hljs-keyword">book2 </span>        <span class="hljs-number">456789</span>      <span class="hljs-number">23</span>.<span class="hljs-number">000000</span><br>-----:          <span class="hljs-keyword">book3 </span>        <span class="hljs-number">789123</span>       <span class="hljs-number">1</span>.<span class="hljs-number">232100</span><br>left :<span class="hljs-keyword">book1 </span>         <span class="hljs-number">123456</span>         <span class="hljs-number">342</span>.<span class="hljs-number">13</span>         <br>left :<span class="hljs-keyword">book2 </span>         <span class="hljs-number">456789</span>         <span class="hljs-number">23</span>.<span class="hljs-number">00</span>          <br>left :<span class="hljs-keyword">book3 </span>         <span class="hljs-number">789123</span>         <span class="hljs-number">1</span>.<span class="hljs-number">23</span>           <br><span class="hljs-symbol">right:</span>          <span class="hljs-keyword">book1 </span>        <span class="hljs-number">123456</span>         <span class="hljs-number">342</span>.<span class="hljs-number">13</span><br><span class="hljs-symbol">right:</span>          <span class="hljs-keyword">book2 </span>        <span class="hljs-number">456789</span>          <span class="hljs-number">23</span>.<span class="hljs-number">00</span><br><span class="hljs-symbol">right:</span>          <span class="hljs-keyword">book3 </span>        <span class="hljs-number">789123</span>           <span class="hljs-number">1</span>.<span class="hljs-number">23</span><br></code></pre></td></tr></table></figure>
-<h1 id="hint">Hint</h1>
-<p>为了实现<code>cout&lt;&lt;*book[i];</code>你需要在类声明处实现这样一个函数</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Book</span>&#123;</span><br><span class="hljs-comment">//...其他成员</span><br><span class="hljs-keyword">public</span>:<br><span class="hljs-keyword">friend</span> ostream &amp; <span class="hljs-keyword">operator</span> &lt;&lt; (ostream &amp; os, <span class="hljs-keyword">const</span> Book &amp; b) &#123;<br><span class="hljs-comment">//像下面这个语句来写</span><br><span class="hljs-comment">//os&lt;&lt; &quot;something&quot;;</span><br>   <span class="hljs-keyword">return</span> os;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>另外，为了实现<code>cout&lt;&lt;leftform;</code>你需要实现一个这样的函数（在最外部，不在类里面）</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs awk">ostream &amp; leftform(ostream&amp; strm) &#123;<br><span class="hljs-regexp">//</span>像下面这样写<br><span class="hljs-regexp">//</span>strm &lt;&lt; <span class="hljs-string">&quot;right:&quot;</span>;<br><span class="hljs-regexp">//</span>strm &lt;&lt; setw(<span class="hljs-number">15</span>);<br>return strm;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="framwork.cpp">framwork.cpp</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;source.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iomanip&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-comment">//freopen(&quot;2.in&quot;,&quot;r&quot;,stdin);</span><br>	<span class="hljs-comment">//freopen(&quot;2.out&quot;,&quot;w&quot;,stdout);</span><br>	<span class="hljs-keyword">int</span> N, M;<br>	string name;<br>	string code;<br>	<span class="hljs-keyword">double</span> cost;<br>	cin &gt;&gt; N;<br>	M = N;<br>	<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;<br>	Book *books[N];<br>	<span class="hljs-keyword">while</span> (i++ &lt; N) &#123;<br>		cin &gt;&gt; name &gt;&gt; code &gt;&gt; cost;<br>		books[i] = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Book</span>(name, code, cost);<br>	&#125;<br>	i = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">while</span> (i++ &lt; M) &#123;<br><br>		cout &lt;&lt; <span class="hljs-string">&quot;-----:&quot;</span> &lt;&lt; *books[i];<br><br>	&#125;<br>	i = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">while</span> (i++ &lt; M) &#123;<br><br>		cout &lt;&lt; leftform &lt;&lt; *books[i];<br><br>	&#125;<br>	i = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">while</span> (i++ &lt; M) &#123;<br><br>		cout &lt;&lt; rightform &lt;&lt; *books[i];<br><br>	&#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
-<h1 id="source.h">source.h</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs c++"><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iomanip&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Book</span></span><br><span class="hljs-class">&#123;</span><br>    string name;<br>    string code;<br>    <span class="hljs-keyword">double</span> cost;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Book</span>(string s,string c,<span class="hljs-keyword">double</span> co):<span class="hljs-built_in">name</span>(s),<span class="hljs-built_in">code</span>(c),<span class="hljs-built_in">cost</span>(co)&#123;&#125;<br>    <span class="hljs-keyword">friend</span> ostream &amp; <span class="hljs-keyword">operator</span> &lt;&lt; (ostream &amp; os, <span class="hljs-keyword">const</span> Book &amp; b) &#123;<br>    <br><br>    <span class="hljs-comment">//os&lt;&lt; &quot;something&quot;;</span><br>    <span class="hljs-keyword">return</span> os&lt;&lt;<span class="hljs-built_in">setw</span>(<span class="hljs-number">15</span>)&lt;&lt;b.name&lt;&lt;<span class="hljs-built_in">setw</span>(<span class="hljs-number">15</span>)&lt;&lt;b.code&lt;&lt;<span class="hljs-built_in">setw</span>(<span class="hljs-number">15</span>)&lt;&lt;<span class="hljs-built_in">setiosflags</span>(ios::fixed)&lt;&lt;b.cost&lt;&lt;endl;<br>    &#125;<br>&#125;;<br><br><span class="hljs-function">ostream &amp; <span class="hljs-title">leftform</span><span class="hljs-params">(ostream&amp; strm)</span> </span>&#123;<br><span class="hljs-comment">//像下面这样写</span><br><span class="hljs-comment">//strm &lt;&lt; &quot;right:&quot;;</span><br><span class="hljs-comment">//strm &lt;&lt; setw(15);</span><br>strm &lt;&lt; <span class="hljs-string">&quot;left :&quot;</span>;<br>strm &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">15</span>)&lt;&lt;left;<br>strm &lt;&lt; fixed&lt;&lt;<span class="hljs-built_in">setprecision</span>(<span class="hljs-number">2</span>);<br><span class="hljs-keyword">return</span> strm;<br>&#125;<br><br><span class="hljs-function">ostream &amp; <span class="hljs-title">rightform</span><span class="hljs-params">(ostream&amp; strm)</span> </span>&#123;<br><span class="hljs-comment">//像下面这样写</span><br><span class="hljs-comment">//strm &lt;&lt; &quot;right:&quot;;</span><br><span class="hljs-comment">//strm &lt;&lt; setw(15);</span><br>strm &lt;&lt; <span class="hljs-string">&quot;right:&quot;</span>;<br>strm &lt;&lt; <span class="hljs-built_in">setw</span>(<span class="hljs-number">15</span>)&lt;&lt;right;<br>strm &lt;&lt; fixed&lt;&lt;<span class="hljs-built_in">setprecision</span>(<span class="hljs-number">2</span>);<br><span class="hljs-keyword">return</span> strm;<br>&#125;<br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/04/12/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/cat%20and%20catfamily/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">程设记录(十八)--cat and catfamily</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/04/12/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E6%A0%BC%E5%BC%8F%E6%8E%A7%E5%88%B62/">
-                        <span class="hidden-mobile">程设记录(十六)--格式控制</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -658,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="最后这些类的关系变成了一个圈 vitural的应用 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="程设记录(十三)--virtual class">
 <meta property="og:url" content="http://example.com/2022/03/23/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/virtual%20class/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="最后这些类的关系变成了一个圈 vitural的应用 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-23T12:18:35.991Z">
 <meta property="article:modified_time" content="2022-03-23T12:40:54.109Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,95 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">程设记录(十三)--virtual class</h1>
             
-            <div class="markdown-body">
-              <p>最后这些类的关系变成了一个圈</p>
-<p>vitural的应用</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstring&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;fstream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;source.h&quot;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-comment">//freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);</span><br>	<span class="hljs-comment">//freopen(&quot;out.txt&quot;, &quot;w&quot;, stdout);</span><br>	<span class="hljs-keyword">int</span> n;<br>	cin&gt;&gt;n;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>	&#123;<br>		<span class="hljs-keyword">char</span> name[<span class="hljs-number">20</span>],job[<span class="hljs-number">20</span>],dep[<span class="hljs-number">20</span>],major[<span class="hljs-number">20</span>],prof[<span class="hljs-number">20</span>];<br>    	<span class="hljs-keyword">int</span> age;<br>		cin&gt;&gt;name&gt;&gt;age&gt;&gt;job&gt;&gt;dep&gt;&gt;major&gt;&gt;prof;<br>		chairman man;<br>		man.<span class="hljs-built_in">setname</span>(name);<br>		man.<span class="hljs-built_in">setage</span>(age);<br>		man.<span class="hljs-built_in">setjob</span>(job);<br>		man.<span class="hljs-built_in">setdep</span>(dep);<br>		man.<span class="hljs-built_in">setmajor</span>(major);<br>		man.<span class="hljs-built_in">setprof</span>(prof);<br>		<br>		cout&lt;&lt;<span class="hljs-string">&quot;name: &quot;</span>&lt;&lt;man.<span class="hljs-built_in">getname</span>()&lt;&lt;<span class="hljs-string">&quot; age: &quot;</span>&lt;&lt;man.<span class="hljs-built_in">getage</span>()&lt;&lt;<span class="hljs-string">&quot; dep: &quot;</span>&lt;&lt;man.<span class="hljs-built_in">getdep</span>()<br>			&lt;&lt;<span class="hljs-string">&quot; job: &quot;</span>&lt;&lt;man.<span class="hljs-built_in">getjob</span>()&lt;&lt;endl;<br>		cout&lt;&lt;<span class="hljs-string">&quot;prof: &quot;</span>&lt;&lt;man.<span class="hljs-built_in">getprof</span>()&lt;&lt;<span class="hljs-string">&quot; major: &quot;</span>&lt;&lt;man.<span class="hljs-built_in">getmajor</span>()&lt;&lt;endl;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><br><span class="hljs-comment">//所需完成的代码</span><br><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">base</span> &#123;</span><br>		<span class="hljs-keyword">char</span> name[<span class="hljs-number">20</span>];<br>		<span class="hljs-keyword">int</span> age;<br>	<span class="hljs-keyword">public</span>:<br>		<span class="hljs-built_in">base</span>() &#123;&#125;<br>		<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setname</span><span class="hljs-params">(<span class="hljs-keyword">char</span> arr[])</span> </span>&#123;<br>			<span class="hljs-built_in">strcpy</span>(name, arr);<br>		&#125;;<br>		<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setage</span><span class="hljs-params">(<span class="hljs-keyword">int</span> age)</span> </span>&#123;<br>			<span class="hljs-keyword">this</span>-&gt;age = age;<br>		&#125;;<br>		<span class="hljs-function"><span class="hljs-keyword">char</span>* <span class="hljs-title">getname</span><span class="hljs-params">()</span> </span>&#123;<br>			<span class="hljs-keyword">return</span> name;<br>		&#125;;<br>		<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getage</span><span class="hljs-params">()</span> </span>&#123;<br>			<span class="hljs-keyword">return</span> age;<br>		&#125;;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">leader</span>:</span> <span class="hljs-keyword">virtual</span> <span class="hljs-keyword">public</span> base &#123;<br>	<span class="hljs-keyword">private</span>:<br>		<span class="hljs-keyword">char</span> job[<span class="hljs-number">20</span>];<br>		<span class="hljs-keyword">char</span> department[<span class="hljs-number">20</span>];<br>	<span class="hljs-keyword">public</span>:<br>		<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setjob</span><span class="hljs-params">(<span class="hljs-keyword">char</span> arr[])</span> </span>&#123;<br>			<span class="hljs-built_in">strcpy</span>(job, arr);<br>		&#125;;<br>		<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setdep</span><span class="hljs-params">(<span class="hljs-keyword">char</span> arr[])</span> </span>&#123;<br>			<span class="hljs-built_in">strcpy</span>(department, arr);<br>		&#125;;<br>		<span class="hljs-function"><span class="hljs-keyword">char</span> * <span class="hljs-title">getjob</span><span class="hljs-params">()</span> </span>&#123;<br>			<span class="hljs-keyword">return</span> job;<br>		&#125;<br>		<span class="hljs-function"><span class="hljs-keyword">char</span> * <span class="hljs-title">getdep</span><span class="hljs-params">()</span> </span>&#123;<br>			<span class="hljs-keyword">return</span> department;<br>		&#125;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">engineer</span>:</span> <span class="hljs-keyword">virtual</span> <span class="hljs-keyword">public</span> base &#123;<br>	<span class="hljs-keyword">private</span>:<br>		<span class="hljs-keyword">char</span> major[<span class="hljs-number">20</span>];<br>		<span class="hljs-keyword">char</span> profession[<span class="hljs-number">20</span>];<br>	<span class="hljs-keyword">public</span>:<br>		<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setmajor</span><span class="hljs-params">(<span class="hljs-keyword">char</span> arr[])</span> </span>&#123;<br>			<span class="hljs-built_in">strcpy</span>(major, arr);<br>		&#125;;<br>		<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setprof</span><span class="hljs-params">(<span class="hljs-keyword">char</span> arr[])</span> </span>&#123;<br>			<span class="hljs-built_in">strcpy</span>(profession, arr);<br>		&#125;;<br>		<span class="hljs-function"><span class="hljs-keyword">char</span> * <span class="hljs-title">getmajor</span><span class="hljs-params">()</span> </span>&#123;<br>			<span class="hljs-keyword">return</span> major;<br>		&#125;<br>		<span class="hljs-function"><span class="hljs-keyword">char</span> * <span class="hljs-title">getprof</span><span class="hljs-params">()</span> </span>&#123;<br>			<span class="hljs-keyword">return</span> profession;<br>		&#125;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">chairman</span>:</span> <span class="hljs-keyword">public</span> leader, <span class="hljs-keyword">public</span> engineer &#123;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/03/23/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/Overload%20simple%20clock/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">程设记录(十四)--Overload simple clock</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/03/23/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E5%A4%9A%E7%BB%A7%E6%89%BF/">
-                        <span class="hidden-mobile">程设记录(十二)--多继承</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -608,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

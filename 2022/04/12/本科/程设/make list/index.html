@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Description Input multiple lines of numbers from the console, please to allocate arrays of double variable to store these lines. Then, use a pointer array to store the addresses of these double arr">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="程设记录(十九)--make list">
 <meta property="og:url" content="http://example.com/2022/04/12/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/make%20list/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description Input multiple lines of numbers from the console, please to allocate arrays of double variable to store these lines. Then, use a pointer array to store the addresses of these double arr">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-12T06:14:03.981Z">
 <meta property="article:modified_time" content="2022-05-08T08:25:22.000Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,111 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">程设记录(十九)--make list</h1>
             
-            <div class="markdown-body">
-              <h1 id="description">Description</h1>
-<p>Input multiple lines of numbers from the console, please to allocate
-arrays of double variable to store these lines. Then, use a pointer
-array to store the addresses of these double arrays. You need to
-implement the two functions: <code>double** make_list(double data[], int
-sizes[])</code> and <code>void free_lists(double* lists[])</code> .</p>
-<h1 id="input-format">Input format</h1>
-<p>There are N lines input and each line contains no more than M double
-number( 1&lt;=N&lt;=20, 1&lt;=M&lt;=10).</p>
-<h1 id="output-format">Output format</h1>
-<p>The same numbers as input.</p>
-<h1 id="example-input">Example input</h1>
-<figure class="highlight apache"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">0</span>.<span class="hljs-number">288</span> <span class="hljs-number">0</span>.<span class="hljs-number">919</span> <span class="hljs-number">0</span>.<span class="hljs-number">130</span> <span class="hljs-number">0</span>.<span class="hljs-number">610</span> <span class="hljs-number">0</span>.<span class="hljs-number">696</span> <span class="hljs-number">0</span>.<span class="hljs-number">616</span> <span class="hljs-number">0</span>.<span class="hljs-number">779</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">949</span> <span class="hljs-number">0</span>.<span class="hljs-number">982</span> <span class="hljs-number">0</span>.<span class="hljs-number">861</span> <span class="hljs-number">0</span>.<span class="hljs-number">608</span> <span class="hljs-number">0</span>.<span class="hljs-number">156</span> <span class="hljs-number">0</span>.<span class="hljs-number">617</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">294</span> <span class="hljs-number">0</span>.<span class="hljs-number">384</span> <span class="hljs-number">0</span>.<span class="hljs-number">980</span> <span class="hljs-number">0</span>.<span class="hljs-number">203</span> <span class="hljs-number">0</span>.<span class="hljs-number">502</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">286</span> <span class="hljs-number">0</span>.<span class="hljs-number">157</span> <span class="hljs-number">0</span>.<span class="hljs-number">866</span> <span class="hljs-number">0</span>.<span class="hljs-number">329</span> <span class="hljs-number">0</span>.<span class="hljs-number">733</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">269</span> <span class="hljs-number">0</span>.<span class="hljs-number">370</span> <span class="hljs-number">0</span>.<span class="hljs-number">669</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">473</span> <span class="hljs-number">0</span>.<span class="hljs-number">829</span> <span class="hljs-number">0</span>.<span class="hljs-number">509</span> <span class="hljs-number">0</span>.<span class="hljs-number">714</span><br></code></pre></td></tr></table></figure>
-<h1 id="example-output">Example output</h1>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">0</span>.<span class="hljs-number">288</span> <span class="hljs-number">0</span>.<span class="hljs-number">919</span> <span class="hljs-number">0</span>.<span class="hljs-number">130</span> <span class="hljs-number">0</span>.<span class="hljs-number">610</span> <span class="hljs-number">0</span>.<span class="hljs-number">696</span> <span class="hljs-number">0</span>.<span class="hljs-number">616</span> <span class="hljs-number">0</span>.<span class="hljs-number">779</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">949</span> <span class="hljs-number">0</span>.<span class="hljs-number">982</span> <span class="hljs-number">0</span>.<span class="hljs-number">861</span> <span class="hljs-number">0</span>.<span class="hljs-number">608</span> <span class="hljs-number">0</span>.<span class="hljs-number">156</span> <span class="hljs-number">0</span>.<span class="hljs-number">617</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">294</span> <span class="hljs-number">0</span>.<span class="hljs-number">384</span> <span class="hljs-number">0</span>.<span class="hljs-number">980</span> <span class="hljs-number">0</span>.<span class="hljs-number">203</span> <span class="hljs-number">0</span>.<span class="hljs-number">502</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">286</span> <span class="hljs-number">0</span>.<span class="hljs-number">157</span> <span class="hljs-number">0</span>.<span class="hljs-number">866</span> <span class="hljs-number">0</span>.<span class="hljs-number">329</span> <span class="hljs-number">0</span>.<span class="hljs-number">733</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">269</span> <span class="hljs-number">0</span>.<span class="hljs-number">370</span> <span class="hljs-number">0</span>.<span class="hljs-number">669</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">473</span> <span class="hljs-number">0</span>.<span class="hljs-number">829</span> <span class="hljs-number">0</span>.<span class="hljs-number">509</span> <span class="hljs-number">0</span>.<span class="hljs-number">714</span><br></code></pre></td></tr></table></figure>
-<h1 id="source.h">source.h</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><br><span class="hljs-function"><span class="hljs-keyword">double</span>** <span class="hljs-title">make_list</span><span class="hljs-params">(<span class="hljs-keyword">double</span> data[], <span class="hljs-keyword">int</span> sizes[])</span></span>&#123;<br>    <span class="hljs-keyword">double</span>** a=<span class="hljs-literal">NULL</span>;<br>    <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>,num=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;sizes[i]!=<span class="hljs-number">0</span>;i++)&#123;&#125;<br>    a=<span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span>*[i+<span class="hljs-number">1</span>];<br>    a[i]=<span class="hljs-literal">NULL</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;sizes[j]!=<span class="hljs-number">0</span>;j++)&#123;<br>        a[j]= <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span>[sizes[j]]; <br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> m=<span class="hljs-number">0</span>;m&lt;i;m++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> n=<span class="hljs-number">0</span>;n&lt;sizes[m];n++)&#123;<br>            a[m][n]=data[num++];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> a; <br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">free_lists</span><span class="hljs-params">(<span class="hljs-keyword">double</span>* lists[])</span></span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;lists[i]!=<span class="hljs-literal">NULL</span>;i++)&#123;<br>        <span class="hljs-keyword">delete</span> [] lists[i];<br>    &#125;<br>    <span class="hljs-keyword">delete</span> [] lists;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="main.cpp">main.cpp</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;source.h&quot;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print_list</span><span class="hljs-params">(<span class="hljs-keyword">double</span> list[], <span class="hljs-keyword">int</span> size)</span> </span>&#123;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; size; ++ i) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%.3lf &quot;</span>, list[i]);<br>	<span class="hljs-built_in">putchar</span>(<span class="hljs-string">&#x27;\n&#x27;</span>);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print_lists</span><span class="hljs-params">(<span class="hljs-keyword">double</span> * lists[], <span class="hljs-keyword">int</span> sizes[])</span> </span>&#123;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; ; ++ i) &#123;<br>		<span class="hljs-keyword">if</span> (lists[i] == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">break</span>;<br>		<span class="hljs-built_in">print_list</span>(lists[i], sizes[i]);<br>	&#125;<br>&#125;<br><br><span class="hljs-comment">// read a number of double data in a signle line, returns the number of data red</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">read_data_line</span><span class="hljs-params">(<span class="hljs-keyword">double</span> data[])</span> </span>&#123;<br>	<span class="hljs-keyword">char</span> line[<span class="hljs-number">1000</span>];<br>	<span class="hljs-keyword">if</span> (<span class="hljs-built_in">fgets</span>(line, <span class="hljs-number">1000</span>, stdin) == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">return</span> <span class="hljs-built_in">sscanf</span>(line, <span class="hljs-string">&quot;%lf%lf%lf%lf%lf%lf%lf%lf%lf%lf&quot;</span>, <br>		data, data+<span class="hljs-number">1</span>, data+<span class="hljs-number">2</span>, data+<span class="hljs-number">3</span>, data+<span class="hljs-number">4</span>, data+<span class="hljs-number">5</span>, data+<span class="hljs-number">6</span>, data+<span class="hljs-number">7</span>, data+<span class="hljs-number">8</span>, data+<span class="hljs-number">9</span>);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">double</span> data[<span class="hljs-number">1000</span>];<br>	<span class="hljs-keyword">int</span> num_data_per_line[<span class="hljs-number">20</span>] = &#123;<span class="hljs-number">0</span>&#125;;<br>	<span class="hljs-keyword">int</span> total = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; ++ i) &#123;<br>		<span class="hljs-keyword">int</span> num_data = <span class="hljs-built_in">read_data_line</span>(data + total);<br>		<span class="hljs-keyword">if</span> (num_data &lt;= <span class="hljs-number">0</span>) num_data = <span class="hljs-number">0</span>;<br>		total += num_data;<br>		num_data_per_line[i] = num_data;<br>		<span class="hljs-keyword">if</span> (num_data == <span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;<br>	&#125;<br>	<span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> allocate a list of pointers to allocated lists of doubles</span><br>	<span class="hljs-keyword">double</span> ** lists = <span class="hljs-built_in">make_list</span>(data, num_data_per_line); <br>	<span class="hljs-built_in">print_lists</span>(lists, num_data_per_line);<br>	<span class="hljs-built_in">free_lists</span>(lists);<br>&#125;<br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/04/12/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/songlist/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">程设记录(二十)--songlist(拷贝)</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/04/12/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/cat%20and%20catfamily/">
-                        <span class="hidden-mobile">程设记录(十八)--cat and catfamily</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -624,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

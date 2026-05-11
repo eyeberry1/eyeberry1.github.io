@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Description You need to define a class named complex which has private two members, one is real which represents the real part of the complex, and another is imag which represents the imaginary par">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Complex class(重载、格式控制)">
 <meta property="og:url" content="http://example.com/2022/05/08/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/simple%20complex%20class/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description You need to define a class named complex which has private two members, one is real which represents the real part of the complex, and another is imag which represents the imaginary par">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-08T08:07:51.421Z">
 <meta property="article:modified_time" content="2022-05-08T08:07:51.421Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,111 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">Complex class(重载、格式控制)</h1>
             
-            <div class="markdown-body">
-              <h1 id="description">Description</h1>
-<p>You need to define a class named <code>complex</code> which has
-private two members, one is real which represents the real part of the
-complex, and another is imag which represents the imaginary part of the
-complex, both of them are integer;</p>
-<p>The class has some member functions:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">display</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<br><span class="hljs-comment">//print the complex with this form like 3 + 4i, if the real part and the imaginary part both are 0, you need to print 0;</span><br><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">getModuli</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<br><span class="hljs-comment">//like the function&#x27;s name, you need to return the moduli of the complex;</span><br></code></pre></td></tr></table></figure>
-<p>What's more, you need to finish two friend function, overload "+" and
-"-", the rule follow the rules of the complex.</p>
-<h1 id="sample-input">Sample Input</h1>
-<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">0 </span>-<span class="hljs-number">3</span><br><span class="hljs-symbol">5 </span><span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
-<h1 id="sample-output">Sample Output</h1>
-<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs subunit"><span class="hljs-string">-3</span>i<br>5<span class="hljs-string">+2</span>i<br>5.09902 7.07107<br>5<span class="hljs-string">-1</span>i<br><span class="hljs-string">-5</span><span class="hljs-string">-5</span>i<br></code></pre></td></tr></table></figure>
-<h1 id="complex.hpplock">complex.hpp(lock)</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cmath&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iomanip&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">complex</span>&#123;</span><br>    <span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">complex</span>(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b);<br>    complex <span class="hljs-keyword">operator</span>=(complex&amp; other);<br>    complex <span class="hljs-keyword">operator</span>+(complex&amp; other);<br>    complex <span class="hljs-keyword">operator</span>-(complex&amp; other);<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">display</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">getModuli</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;<br>    <span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">int</span> real;<br>    <span class="hljs-keyword">int</span> imag;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
-<h1 id="main.cpplock">main.cpp(lock)</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;complex.hpp&quot;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>  <span class="hljs-keyword">int</span> real, imag;<br>  cin &gt;&gt; real &gt;&gt; imag;<br>  <span class="hljs-function">complex <span class="hljs-title">a</span><span class="hljs-params">(real, imag)</span></span>;<br>  a.<span class="hljs-built_in">display</span>();<br>  cout &lt;&lt; endl;<br>  cin &gt;&gt; real &gt;&gt; imag;<br>  <span class="hljs-function">complex <span class="hljs-title">b</span><span class="hljs-params">(real, imag)</span></span>;<br>  b.<span class="hljs-built_in">display</span>();<br>  cout &lt;&lt; endl;<br>  complex c = a + b;<br>  complex d = a - b;<br>  cout &lt;&lt; c.<span class="hljs-built_in">getModuli</span>() &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; d.<span class="hljs-built_in">getModuli</span>() &lt;&lt; endl;<br>  c.<span class="hljs-built_in">display</span>();<br>  cout &lt;&lt; endl;<br>  d.<span class="hljs-built_in">display</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="complex.cpp">complex.cpp</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&quot;complex.hpp&quot;</span></span><br>complex::<span class="hljs-built_in">complex</span>(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)&#123;<br>    real = a;<br>    imag = b;<br>&#125;<br>complex complex::<span class="hljs-keyword">operator</span>=(complex&amp; other)&#123;<br>    <span class="hljs-keyword">this</span>-&gt;real = other.real;<br>    <span class="hljs-keyword">this</span>-&gt;imag = other.imag;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br>complex complex::<span class="hljs-keyword">operator</span>+(complex&amp; other)&#123;<br>    <span class="hljs-function">complex <span class="hljs-title">temp</span><span class="hljs-params">(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</span></span>;<br>    temp.real = <span class="hljs-keyword">this</span>-&gt;real + other.real;<br>    temp.imag = <span class="hljs-keyword">this</span>-&gt;imag + other.imag;<br>    <span class="hljs-keyword">return</span> temp;<br>&#125;<br>complex complex::<span class="hljs-keyword">operator</span> - (complex&amp; other)&#123;<br>    <span class="hljs-function">complex <span class="hljs-title">temp</span><span class="hljs-params">(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</span></span>;<br>    temp.real = <span class="hljs-keyword">this</span>-&gt;real - other.real;<br>    temp.imag = <span class="hljs-keyword">this</span>-&gt;imag - other.imag;<br>    <span class="hljs-keyword">return</span> temp;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">complex::display</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(!real &amp;&amp; !imag ) cout &lt;&lt; <span class="hljs-number">0</span> &lt;&lt; endl;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(!real) cout &lt;&lt; noshowpos &lt;&lt; imag &lt;&lt; <span class="hljs-string">&#x27;i&#x27;</span>;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( !imag) cout&lt;&lt; noshowpos&lt;&lt; real;<br>    <span class="hljs-keyword">else</span> cout &lt;&lt; noshowpos&lt;&lt; real &lt;&lt;showpos &lt;&lt; imag &lt;&lt; <span class="hljs-string">&#x27;i&#x27;</span>;<br>    cout &lt;&lt; noshowpos;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">complex::getModuli</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">sqrt</span>(real * real + imag * imag);<br>&#125;<br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/05/08/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/vitual%20class(%E5%A4%9A%E6%80%81)/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">polymorphism多态(一个接口，多种方法)</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/05/08/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/point%20class3(%E7%BB%A7%E6%89%BF)/">
-                        <span class="hidden-mobile">point class 3（继承）</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -624,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

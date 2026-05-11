@@ -51,13 +51,38 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
   <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
+
+<section class="protect-panel protect-site-panel" data-site-protect-gate>
+  <h2 class="protect-title">Protected blog</h2>
+  <p class="protect-copy">Unlock to read post content.</p>
+  <form class="protect-form" data-site-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-site-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-site-protect-status></p>
+</section>
+
     <a class="navbar-brand" href="/">
       <strong>eyeberry</strong>
     </a>
@@ -220,12 +245,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/05/08/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/point%20class3(%E7%BB%A7%E6%89%BF)/" target="_self">
-          
-          题目描述 在先前Point Class 2的题目中，使用的方法是用三维的ThreeDPoint继承二维的TwoDPoint，我们可以发现，将二维点作为基类其实是不具有继承意义的。 为了实现一个具有真实继承意义的Point基类，我们在基类Point中让点的维度作为一个变量存在，这样多维度的点我们只需要继承基类就可以得到了，同时避免了Distance方法的重写。 请在 derivedPoin
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -267,12 +287,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/05/08/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/point%20class2(%E7%BB%A7%E6%89%BF)/" target="_self">
-          
-          Description Recall the &quot;Point&quot; class before, we want to create TwoDPoint class to model a point in a two-dimensional space.(Default value (0,0), int). It has functions to get its coordinates getX(
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -314,12 +329,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/05/08/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/simple%20complex%20class(%E5%A4%8D%E4%B9%A0)/" target="_self">
-          
-          Description You need to define a class named complex which has private two members, one is real which represents the real part of the complex, and another is imag which represents the imaginary par
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -361,12 +371,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/05/08/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/static%20member/" target="_self">
-          
-          Description 完成类Int，可以加入你觉得需要的member value or function. 123456class Int&amp;#123;	int data;public:	Int(int n); &#x2F;&#x2F;将n的值赋给data&amp;#125;; 使得函数f()输出为 12345678910111213141516num 1 is odd? 1num 2 is odd? 01 obje
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -408,12 +413,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/04/25/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%9C%9F%E4%B8%AD%E8%80%83%E5%8D%B7%E6%80%BB%E7%BB%93/" target="_self">
-          
-          填空题 实现逻辑门电路的两种主要半导体技术: TTL和COMS IC包括固定功能和可编程两大类,后者按结构和复杂度可细分为两大类:(PLD)和(FPGA) 8位有符号数,-85的反码和补码 74HC00字段含义,HC和00的含义 与非运算表示\(AB+CD\),或非运算表示\((A+B)(C+D)\) 芯片功能定义,数据选择器,编码器 常用D触发器和JK触发器的触发方式有两种,电平
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -455,12 +455,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/04/20/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/matrix%E7%BB%83%E4%B9%A0/" target="_self">
-          
-          Description Task 完善 Matrix 类的定义，实现简单的Matrix运算，类的定义，main函数已给出，你需要编写Matrix.cpp文件实现具体函数，记得包含类的定义。 Input m n represent the row and col of matrix a and b(They have the same shape) For next m rows, in
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -502,12 +497,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/04/19/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/static%20member2/" target="_self">
-          
-          Description SDCS will organize students to participate in the seminar。curr_ people off campus mysterious guests and organizers have confirmed their participation. Meanwhile, they have been waiting
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -549,12 +539,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/04/16/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/inservice/" target="_self">
-          
-          Description Please complete the following 4 classes: Person, Student, Worker, Inservice. Note:  Person owns data member name and sex, the output format is (For more detail, see the sample output
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -596,12 +581,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/04/16/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/matrix%20and%20vector/" target="_self">
-          
-          Problem Description Matrix can be stored in a one-dimensional vector in a row-first way, inheriting from the Vector class. According to Vector.h and Matrix.h, complete the implementation of Vector
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -643,12 +623,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/04/12/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/set%20%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
-          
-          C++ STL set容器完全攻略（超级详细） (biancheng.net) 1234567891011121314&#x2F;&#x2F;头文件#include&lt;set&gt;using namespace std;&#x2F;&#x2F;template &lt; class T,                        &#x2F;&#x2F; 键 key 和值 value 的类型           class Compare &#x3D;
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -879,6 +854,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-site-options>{"siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

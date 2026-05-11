@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一道比较综合的题目 Description 实现一个名为CSimpleString的类，该类可以完成简单的字符串操作。你需要实现类中的这类成员函数： CSimpleString();构造函数，产生一个空字符串。 CSimpleString(char*);构造函数，产生一个串，并用一个char 型字符串初始化它。 ~CSimpleString();析构函数。 const char&amp;am">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="程设记录(四)--simple String">
 <meta property="og:url" content="http://example.com/2022/03/08/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/simple%20string(%E5%A4%8D%E4%B9%A0)/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一道比较综合的题目 Description 实现一个名为CSimpleString的类，该类可以完成简单的字符串操作。你需要实现类中的这类成员函数： CSimpleString();构造函数，产生一个空字符串。 CSimpleString(char*);构造函数，产生一个串，并用一个char 型字符串初始化它。 ~CSimpleString();析构函数。 const char&amp;am">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-08T11:17:18.765Z">
 <meta property="article:modified_time" content="2022-05-08T08:02:27.198Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,117 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">程设记录(四)--simple String</h1>
             
-            <div class="markdown-body">
-              <p>一道比较综合的题目</p>
-<h1 id="description">Description</h1>
-<p>实现一个名为<code>CSimpleString</code>的类，该类可以完成简单的字符串操作。你需要实现类中的这类成员函数：</p>
-<p><code>CSimpleString();</code>构造函数，产生一个<strong>空字符串</strong>。</p>
-<p><code>CSimpleString(char*);</code>构造函数，产生一个串，并用一个<code>char</code>
-型字符串初始化它。</p>
-<p><code>~CSimpleString();</code>析构函数。</p>
-<p><code>const char&amp; operator[](unsigned int
-pos);</code>重载[]运算符，返回串中第<code>pos</code>号字符，下标从 0
-开始。</p>
-<p><code>CSimpleString&amp; operator=(const CSimpleString
-&amp;other);</code>重载=运算符，将一个<code>CSimpleString</code>对象中的内容copy到另一个<code>CSimpleString</code>对象中。</p>
-<p><code>CSimpleString operator+(const CSimpleString
-&amp;other);</code>重载+运算符，将两个<code>CSimpleString</code>对象中的串拼接起来并产生新串。</p>
-<p><code>unsigned int length();</code>返回串长度。</p>
-<h1 id="题目所给代码">题目所给代码</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CSimpleString</span> &#123;</span><br>	<span class="hljs-keyword">char</span> *str;<br>	<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> len;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-built_in">CSimpleString</span>();<br>	<span class="hljs-built_in">CSimpleString</span>(<span class="hljs-keyword">char</span>*);<br>	<span class="hljs-built_in">CSimpleString</span>(<span class="hljs-keyword">const</span> CSimpleString&amp; other);<br>	~<span class="hljs-built_in">CSimpleString</span>();<br>	<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>&amp; <span class="hljs-keyword">operator</span>[](<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> pos);<br>	CSimpleString&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> CSimpleString &amp;other);<br>	CSimpleString <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> CSimpleString &amp;other);<br>	<span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">length</span><span class="hljs-params">()</span></span>;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;SimpleString.hpp&quot;</span></span><br><span class="hljs-keyword">using</span> std::cin;<br><span class="hljs-keyword">using</span> std::cout;<br><span class="hljs-keyword">using</span> std::endl;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">char</span> str[<span class="hljs-number">100</span>];<br>	cin &gt;&gt; str;<br>	<span class="hljs-function">CSimpleString <span class="hljs-title">s1</span><span class="hljs-params">(str)</span></span>;<br>	cin &gt;&gt; str;<br>	<span class="hljs-function">CSimpleString <span class="hljs-title">s2</span><span class="hljs-params">(str)</span></span>;<br>	CSimpleString s3;<br>	s1 = s1 + s3;<br>	s2 = s3 + s2;<br>	s3 = s1 + s2;<br>	s1 = s1;<br>	s1 = s3 + s2;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; s1.<span class="hljs-built_in">length</span>(); ++i) cout &lt;&lt; s1[i];<br>	cout &lt;&lt; endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>静态成员函数没有this指针</p>
-<h1 id="我的答案">我的答案</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span><br><span class="hljs-keyword">using</span> std::cin;<br><span class="hljs-keyword">using</span> std::cout;<br><span class="hljs-keyword">using</span> std::endl;<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CSimpleString</span> &#123;</span><br>	<span class="hljs-keyword">char</span> *str;<br>	<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> len;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-built_in">CSimpleString</span>();<br>	<span class="hljs-built_in">CSimpleString</span>(<span class="hljs-keyword">char</span>*);<br>	<span class="hljs-built_in">CSimpleString</span>(<span class="hljs-keyword">const</span> CSimpleString&amp; other);<br>	~<span class="hljs-built_in">CSimpleString</span>();<br>	<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>&amp; <span class="hljs-keyword">operator</span>[](<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> pos);<br>	CSimpleString&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> CSimpleString &amp;other);<br>	CSimpleString <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> CSimpleString &amp;other);<br>	<span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">length</span><span class="hljs-params">()</span></span>;<br>&#125;;<br><br><br>CSimpleString::<span class="hljs-built_in">CSimpleString</span>()&#123;<br>	str=<span class="hljs-literal">NULL</span>;<br>	str=<span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-number">100</span>];<br>	str[<span class="hljs-number">0</span>]=<span class="hljs-string">&#x27;\0&#x27;</span>;<br>	len=<span class="hljs-number">0</span>;<br>&#125;<br>CSimpleString::<span class="hljs-built_in">CSimpleString</span>(<span class="hljs-keyword">char</span>* a)&#123;<br>	str=<span class="hljs-literal">NULL</span>;<br>	str=<span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-number">100</span>];<br>	str[<span class="hljs-number">0</span>]=<span class="hljs-string">&#x27;\0&#x27;</span>;<br>	<span class="hljs-built_in">strcpy</span>(str,a);<br>	len=<span class="hljs-built_in">strlen</span>(a);<br>&#125;<br>CSimpleString::~<span class="hljs-built_in">CSimpleString</span>()&#123;<br>	<span class="hljs-keyword">delete</span> []str; <br>&#125;<br>CSimpleString::<span class="hljs-built_in">CSimpleString</span>(<span class="hljs-keyword">const</span> CSimpleString&amp; other)&#123;<br>	len=other.len;<br>	<span class="hljs-built_in">strcpy</span>(str,other.str);<br>	str[len]=<span class="hljs-string">&#x27;\0&#x27;</span>;<br>&#125;<br>CSimpleString &amp; CSimpleString:: <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> CSimpleString &amp;other)&#123;<br>	len=other.len;<br>	<span class="hljs-built_in">strcpy</span>(str,other.str);<br>	str[len]=<span class="hljs-string">&#x27;\0&#x27;</span>;<br>	<span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br>CSimpleString  CSimpleString:: <span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> CSimpleString &amp;other)&#123;<br>	CSimpleString temp;<br>	temp.len=<span class="hljs-keyword">this</span>-&gt;len+other.len;<br>	<span class="hljs-built_in">strcpy</span>(temp.str,<span class="hljs-keyword">this</span>-&gt;str);<br>	<span class="hljs-built_in">strcat</span>(temp.str,other.str);<br>	<br>	<span class="hljs-keyword">return</span> temp;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">CSimpleString::length</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-keyword">return</span> len;<br>&#125; <br><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>&amp; CSimpleString::<span class="hljs-keyword">operator</span>[](<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> pos)&#123;<br>	<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>-&gt;str[pos];<br>&#125;<br><br></code></pre></td></tr></table></figure>
-<h1 id="参考答案">参考答案</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;SimpleString.hpp&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;new&gt;</span></span><br><br>CSimpleString::<span class="hljs-built_in">CSimpleString</span>() &#123;<br>	<span class="hljs-keyword">new</span>(<span class="hljs-keyword">this</span>) <span class="hljs-built_in">CSimpleString</span>(<span class="hljs-string">&quot;&quot;</span>);<br>&#125;<br><br>CSimpleString::<span class="hljs-built_in">CSimpleString</span>(<span class="hljs-keyword">char</span> *s) &#123;<br>	len = <span class="hljs-built_in">strlen</span>(s);<br>	str = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[len + <span class="hljs-number">1</span>];<br>	<span class="hljs-built_in">strcpy</span>(str, s);<br>&#125;<br><br>CSimpleString::<span class="hljs-built_in">CSimpleString</span>(<span class="hljs-keyword">const</span> CSimpleString&amp; other)&#123;<br>	<span class="hljs-keyword">new</span>(<span class="hljs-keyword">this</span>) <span class="hljs-built_in">CSimpleString</span>(other.str);<br>	<span class="hljs-comment">//return *this;</span><br>&#125;<br><br>CSimpleString::~<span class="hljs-built_in">CSimpleString</span>() &#123;<br>	<span class="hljs-keyword">delete</span> [] str;<br>&#125;<br><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>&amp; CSimpleString::<span class="hljs-keyword">operator</span>[](<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> pos) &#123;<br>	<span class="hljs-keyword">return</span> str[pos];<br>&#125;<br><br>CSimpleString&amp; CSimpleString::<span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> CSimpleString&amp; other) &#123;<br>	<span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span> != &amp;other) &#123;<br>		<span class="hljs-keyword">delete</span> [] str;<br>		<span class="hljs-keyword">new</span>(<span class="hljs-keyword">this</span>) <span class="hljs-built_in">CSimpleString</span>(other.str);<br>	&#125;<br>	<span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br>CSimpleString CSimpleString::<span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> CSimpleString&amp; other) &#123;<br>	CSimpleString ans;<br>	<span class="hljs-keyword">delete</span> [] (ans.str);<br>	ans.len = len + other.len;<br>	ans.str = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[ans.len + <span class="hljs-number">1</span>];<br>	<span class="hljs-built_in">strcpy</span>(ans.str, str);<br>	<span class="hljs-built_in">strcat</span>(ans.str, other.str);<br>	<span class="hljs-keyword">return</span> ans;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">CSimpleString::length</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">return</span> len;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-<h1 id="任小狗代码b">任小狗代码(◆゜∀゜）b</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&quot;SimpleString.hpp&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stddef.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstring&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br>CSimpleString::<span class="hljs-built_in">CSimpleString</span>():<span class="hljs-built_in">str</span>(<span class="hljs-literal">NULL</span>), <span class="hljs-built_in">len</span>(<span class="hljs-number">0</span>)&#123;<br>    str = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-number">1</span>];<br>    str[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;\0&#x27;</span>;<br>&#125;<br>CSimpleString::<span class="hljs-built_in">CSimpleString</span>(<span class="hljs-keyword">char</span>*aa)&#123;<br>    len = <span class="hljs-built_in">strlen</span>(aa);<br>    str = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[len + <span class="hljs-number">1</span>];<br>    <span class="hljs-built_in">strcpy</span>(str, aa);<br>    str[len] = <span class="hljs-string">&#x27;\0&#x27;</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> <span class="hljs-title">CSimpleString::length</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">return</span> len;<br>&#125;<br>CSimpleString::~<span class="hljs-built_in">CSimpleString</span>()&#123;<br>    <span class="hljs-keyword">if</span>(str) <span class="hljs-keyword">delete</span> [] str;<br>&#125;<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>&amp; CSimpleString::<span class="hljs-keyword">operator</span>[](<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> pos)&#123;<br>    <span class="hljs-keyword">return</span> str[pos];<br>&#125;<br>CSimpleString&amp; CSimpleString::<span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> CSimpleString &amp;other)&#123;<br>    <span class="hljs-keyword">if</span>(str) <span class="hljs-keyword">delete</span> [] str;<br>    len = other.len;<br>    str = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[len + <span class="hljs-number">1</span>];<br>    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i;<br>    <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; len; i++)&#123;<br>        str[i] = other.str[i];<br>    &#125;<br>    str[i] = <span class="hljs-string">&#x27;\0&#x27;</span>;<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;   <br>&#125;<br>CSimpleString CSimpleString::<span class="hljs-keyword">operator</span>+(<span class="hljs-keyword">const</span> CSimpleString &amp;other)&#123;<br>    <span class="hljs-keyword">char</span>* aa = <span class="hljs-literal">NULL</span>;<br>    aa = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span> [len + other.len + <span class="hljs-number">1</span>];<br>    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>(i &lt; len)&#123;<br>        aa[i] = str[i];<br>        i++;<br>    &#125;<br>    <span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>(i &lt; len + other.len)&#123;<br>        aa[i] = other.str[j];<br>        j++;<br>        i++;<br>    &#125;<br>    aa[i] = <span class="hljs-string">&#x27;\0&#x27;</span>;<br>    <span class="hljs-function">CSimpleString <span class="hljs-title">temp</span><span class="hljs-params">(aa)</span></span>;<br>    <span class="hljs-keyword">delete</span> [ ] aa;<br>    <span class="hljs-keyword">return</span> temp;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/03/09/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/complex%20operator/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">程设记录(五)--complex operator(一道平平无奇的重载运算符)</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/03/08/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E9%87%8D%E8%BD%BD%E6%93%8D%E4%BD%9C%E7%AC%A6()/">
-                        <span class="hidden-mobile">程设记录(三)--随便记记简单题</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -630,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

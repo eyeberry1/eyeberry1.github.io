@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目描述 深度神经网络由若干不同类型的层组成。每一层可以视为一个函数，方便起见，在本题中我们设定所有层的输入和输出都是长度为 n 的一维向量，即 x∈Rn。为了方便地搭建深度神经网络，你需要先在 layer.hpp 中设计一个表示层的抽象基类Layer，所有具体的层类型都继承自该基类，并且所有具体的层类型都要有一个 forward 方法，用以计算前向结果。在 linear.hpp 中">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="神经网络类">
 <meta property="og:url" content="http://example.com/2022/05/22/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%B1%BB/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目描述 深度神经网络由若干不同类型的层组成。每一层可以视为一个函数，方便起见，在本题中我们设定所有层的输入和输出都是长度为 n 的一维向量，即 x∈Rn。为了方便地搭建深度神经网络，你需要先在 layer.hpp 中设计一个表示层的抽象基类Layer，所有具体的层类型都继承自该基类，并且所有具体的层类型都要有一个 forward 方法，用以计算前向结果。在 linear.hpp 中">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-22T12:10:53.956Z">
 <meta property="article:modified_time" content="2022-06-08T10:07:11.631Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,121 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">神经网络类</h1>
             
-            <div class="markdown-body">
-              <h2 id="题目描述">题目描述</h2>
-<p>深度神经网络由若干不同类型的层组成。每一层可以视为一个函数，方便起见，在本题中我们设定所有层的输入和输出都是长度为
-<em>n</em> 的一维向量，即
-<strong>x</strong>∈R<em>n</em>。为了方便地搭建深度神经网络，你需要先在
-layer.hpp
-中设计一个表示层的抽象基类<code>Layer</code>，所有具体的层类型都继承自该基类，并且所有具体的层类型都要有一个
-<code>forward</code> 方法，用以计算前向结果。在 linear.hpp
-中已经实现了一个 <code>Linear</code> 层，你可以参考该层的实现来设计
-<code>Layer</code>。<code>Linear</code> 层的数学定义如下：</p>
-<p>Linear(<strong>x</strong>)=W<strong>x</strong>+<strong>b</strong></p>
-<p>其中 <em>W</em>∈R<em>n</em>×<em>n</em>,<strong>b</strong>∈R<em>n</em>
-为参数，应当在构造 <code>Linear</code> 层时输入。</p>
-<p>然后，你需要再在 conv.hpp 中实现一个 <code>Conv</code>
-层，该层的数学定义如下：</p>
-<p><span class="math display">\[Conv_i(x)=\sum_{j=0}^{2m}k_jX_{i−m+j}\]</span></p>
-<p>其中 <span class="math display">\[k∈R^{2m+1}\]</span>
-为参数，应当在构造 <code>Conv</code> 层时输入。</p>
-<p>例如，当<em>m</em>=1时，<em>o<strong>u</strong>t<strong>p</strong>u<strong>t<em>的其中一个维度，如</em>o</strong>u<strong>t</strong>p<strong>u</strong>t</em>[2]=<em>k</em>[0]∗<em>x</em>[1]+<em>k</em>[1]∗<em>x</em>[2]+<em>k</em>[2]∗<em>x</em>[3]。
-注意若有超出范围的部分则不需要计算，例如*o<strong>u</strong>t<strong>p</strong>u**t<em>[0]=</em>k<em>[1]∗</em>x<em>[0]+</em>k<em>[2]∗</em>x<em>[1]，这里不存在</em>x*[−1]就不用算它。</p>
-<h1 id="conv.hpp">conv.hpp</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iomanip&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Conv</span>:</span> <span class="hljs-keyword">public</span> Layer&#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">double</span> * K;<br>    <span class="hljs-keyword">int</span> n;<br>    <span class="hljs-keyword">int</span> m;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Conv</span>(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b,<span class="hljs-keyword">double</span> * k):<span class="hljs-built_in">n</span>(a),<span class="hljs-built_in">m</span>(b)&#123;<br>        K = <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span> [<span class="hljs-number">2</span>*m+<span class="hljs-number">1</span>];<br>        <span class="hljs-built_in">memcpy</span>( K , k , (<span class="hljs-number">2</span>*m+<span class="hljs-number">1</span>) * <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(<span class="hljs-keyword">double</span>) );<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">forward</span><span class="hljs-params">(<span class="hljs-keyword">double</span> *input,<span class="hljs-keyword">double</span> *output)</span><span class="hljs-keyword">const</span></span>&#123;<br>        <br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i &lt; n ;i++)&#123;<br>            <span class="hljs-keyword">double</span> sum = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>; j&lt;<span class="hljs-number">2</span>*m +<span class="hljs-number">1</span>; j++)&#123;<br>                <span class="hljs-keyword">if</span>(i-m+j &lt; <span class="hljs-number">0</span> ) <span class="hljs-keyword">continue</span>;<br>                <span class="hljs-keyword">if</span>(i-m+j &gt;= n ) <span class="hljs-keyword">continue</span>;<br>                sum += K[j] * input [ i- m +j ]; <br>            &#125;<br>            output[i] = sum;<br>            sum = <span class="hljs-number">0</span>;<br>        &#125;<br>    &#125;<br>    ~<span class="hljs-built_in">Conv</span>()&#123;<br>        <span class="hljs-keyword">delete</span> [] K;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h1 id="layer.hpp">layer.hpp</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span>  LAYER_H_</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span>  LAYER_H_</span><br><br><br>    <br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iomanip&gt;</span></span><br><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Layer</span>&#123;</span><br><span class="hljs-keyword">public</span>:<br><br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">forward</span><span class="hljs-params">(<span class="hljs-keyword">double</span> * <span class="hljs-keyword">const</span> input, <span class="hljs-keyword">double</span> * output)</span><span class="hljs-keyword">const</span> </span>= <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">virtual</span> ~<span class="hljs-built_in">Layer</span>()&#123;&#125;;<br><br>&#125;;<br><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br></code></pre></td></tr></table></figure>
-<h1 id="linear.hlock">linear.h(lock)</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> once</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;layer.hpp&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;new_tensor.hpp&quot;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Linear</span>:</span> <span class="hljs-keyword">public</span> Layer &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">double</span> <span class="hljs-keyword">const</span> * <span class="hljs-keyword">const</span> * <span class="hljs-keyword">const</span> _W;<br>    <span class="hljs-keyword">double</span> <span class="hljs-keyword">const</span> * <span class="hljs-keyword">const</span> _b;<br>    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> _n;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Linear</span>(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">double</span> * <span class="hljs-keyword">const</span> * <span class="hljs-keyword">const</span> W, <span class="hljs-keyword">double</span> * <span class="hljs-keyword">const</span> b): _W(<span class="hljs-built_in">new_tensor_2d</span>(n, W)), _b(<span class="hljs-built_in">new_tensor_1d</span>(n, b)), _n(n) &#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">forward</span><span class="hljs-params">(<span class="hljs-keyword">double</span> * <span class="hljs-keyword">const</span> input, <span class="hljs-keyword">double</span> * output)</span> <span class="hljs-keyword">const</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; _n; ++i) &#123;<br>            output[i] = _b[i];<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; _n; ++j)<br>                output[i] += _W[i][j] * input[j];<br>        &#125;<br>    &#125;<br>    ~<span class="hljs-built_in">Linear</span>() &#123;<br>        <span class="hljs-keyword">delete</span>[] _b;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; _n; ++i)<br>            <span class="hljs-keyword">delete</span>[] _W[i];<br>        <span class="hljs-keyword">delete</span>[] _W;<br>    &#125;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
-<h1 id="main.cpplock">main.cpp(lock)</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iomanip&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;layer.hpp&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;linear.hpp&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;conv.hpp&quot;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> d, n, m, type_mark;<br>    <span class="hljs-keyword">double</span> **W, *b, *k;<br>    std::cin &gt;&gt; d &gt;&gt; n;<br>    Layer ** layers = <span class="hljs-keyword">new</span> Layer * [d];<br>    W = <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span> * [n];<br>    b = <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span> [n];<br>    k = <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span> [n];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i)<br>        W[i] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span> [n];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; d; ++i) &#123;<br>        std::cin &gt;&gt; type_mark;<br>        <span class="hljs-keyword">if</span> (type_mark == <span class="hljs-number">0</span>) &#123;   <span class="hljs-comment">// Linear</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span>; x &lt; n; ++x)<br>                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> y = <span class="hljs-number">0</span>; y &lt; n; ++y)<br>                    std::cin &gt;&gt; W[x][y];<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span>; x &lt; n; ++x)<br>                std::cin &gt;&gt; b[x];<br>            layers[i] = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Linear</span>(n, W, b);<br>        &#125; <span class="hljs-keyword">else</span> &#123;    <span class="hljs-comment">// Conv</span><br>            std::cin &gt;&gt; m;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x = <span class="hljs-number">0</span>; x &lt; <span class="hljs-number">2</span>*m+<span class="hljs-number">1</span>; ++x)<br>                std::cin &gt;&gt; k[x];<br>            layers[i] = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Conv</span>(n, m, k);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">double</span> * x = <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span> [n];<br>    <span class="hljs-keyword">double</span> ** y = <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span> * [d];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; d; ++i)<br>        y[i] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span> [n];<br>    <span class="hljs-keyword">int</span> T;<br>    std::cout &lt;&lt; std::<span class="hljs-built_in">setiosflags</span>(std::ios::fixed) &lt;&lt; std::<span class="hljs-built_in">setprecision</span>(<span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">for</span> (std::cin &gt;&gt; T; T &gt; <span class="hljs-number">0</span>; --T) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i)<br>            std::cin &gt;&gt; x[i];<br>        layers[<span class="hljs-number">0</span>]-&gt;forward(x, y[<span class="hljs-number">0</span>]);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; d; ++i)<br>            layers[i]-&gt;forward(y[i<span class="hljs-number">-1</span>], y[i]);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n<span class="hljs-number">-1</span>; ++i)<br>            std::cout &lt;&lt; y[d<span class="hljs-number">-1</span>][i] &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span>;<br>        std::cout &lt;&lt; y[d<span class="hljs-number">-1</span>][n<span class="hljs-number">-1</span>] &lt;&lt; std::endl;<br>    &#125;<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; d; ++i) &#123;<br>        <span class="hljs-keyword">delete</span> layers[i];<br>        <span class="hljs-keyword">delete</span> [] y[i];<br>    &#125;<br>    <span class="hljs-keyword">delete</span> [] layers;<br>    <span class="hljs-keyword">delete</span> [] y;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i)<br>        <span class="hljs-keyword">delete</span> [] W[i];<br>    <span class="hljs-keyword">delete</span> [] W;<br>    <span class="hljs-keyword">delete</span> [] b;<br>    <span class="hljs-keyword">delete</span> [] k;<br>    <span class="hljs-keyword">delete</span> [] x;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-<h1 id="new_tensor.hpplock">new_tensor.hpp(lock)</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> once</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">double</span> * <span class="hljs-title">new_tensor_1d</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">double</span> * <span class="hljs-keyword">const</span> source)</span> </span>&#123;<br>    <span class="hljs-keyword">double</span> * target = <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span>[n];<br>    <span class="hljs-built_in">memcpy</span>(target, source, n * <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(<span class="hljs-keyword">double</span>));<br>    <span class="hljs-keyword">return</span> target;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">double</span> * <span class="hljs-keyword">const</span> * <span class="hljs-title">new_tensor_2d</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">double</span> * <span class="hljs-keyword">const</span> * <span class="hljs-keyword">const</span> source)</span> </span>&#123;<br>    <span class="hljs-keyword">double</span> * * target = <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span> * [n];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>        target[i] = <span class="hljs-built_in">new_tensor_1d</span>(n, source[i]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> target;<br>&#125;<br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/05/22/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E8%AF%B4%E5%81%87%E8%AF%9D/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">说假话</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/05/22/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E9%93%BE%E8%A1%A8/">
-                        <span class="hidden-mobile">链表</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -634,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

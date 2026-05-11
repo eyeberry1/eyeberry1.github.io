@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目描述 请在 orderedList.hpp 中定义以下三个类：  抽象 基类 1OrderedList ，表示一个整数链表，有以下方法：  构造函数：无参数，创建一个空的链表； void insert(int val) 向链表中插入一个元素，在 OrderedList 中该方法应当为纯虚函数； void printList() const 依次在屏幕上输出链表中的元素，">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="链表">
 <meta property="og:url" content="http://example.com/2022/05/22/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目描述 请在 orderedList.hpp 中定义以下三个类：  抽象 基类 1OrderedList ，表示一个整数链表，有以下方法：  构造函数：无参数，创建一个空的链表； void insert(int val) 向链表中插入一个元素，在 OrderedList 中该方法应当为纯虚函数； void printList() const 依次在屏幕上输出链表中的元素，">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-22T12:09:33.144Z">
 <meta property="article:modified_time" content="2022-05-22T12:10:41.542Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,120 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">链表</h1>
             
-            <div class="markdown-body">
-              <h2 id="题目描述">题目描述</h2>
-<p>请在 orderedList.hpp 中定义以下三个类：</p>
-<ol type="1">
-<li><p>抽象</p>
-<p>基类</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">OrderedList</span><br></code></pre></td></tr></table></figure>
-<p>，表示一个整数链表，有以下方法：</p>
-<ul>
-<li>构造函数：无参数，创建一个空的链表；</li>
-<li><code>void insert(int val)</code> 向链表中插入一个元素，在
-<code>OrderedList</code> 中该方法应当为纯虚函数；</li>
-<li><code>void printList() const</code>
-依次在屏幕上输出链表中的元素，元素之间用空格分隔，输出完整个链表后换行；</li>
-<li>析构函数：释放链表所占用的空间。</li>
-</ul></li>
-<li><p><strong>具体</strong>类
-<code>AscendOrderedList</code>，表示一个升序的链表，继承自
-<code>OrderedList</code>，需要重载 <code>void insert(int val)</code>
-函数来实现升序。</p></li>
-<li><p><strong>具体</strong>类
-<code>DescendOrderedList</code>，表示一个降序的链表，继承自
-<code>OrderedList</code>，需要重载 <code>void insert(int val)</code>
-函数来实现降序。</p></li>
-</ol>
-<h1 id="main.cpplock">main.cpp(lock)</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;orderedList.hpp&quot;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n, x;<br>    OrderedList * a = <span class="hljs-keyword">new</span> AscendOrderedList, * d = <span class="hljs-keyword">new</span> DescendOrderedList;<br>    std::cin &gt;&gt; n;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>        std::cin &gt;&gt; x;<br>        a-&gt;<span class="hljs-built_in">insert</span>(x);<br>        d-&gt;<span class="hljs-built_in">insert</span>(x);<br>    &#125;<br>    a-&gt;<span class="hljs-built_in">printList</span>();<br>    d-&gt;<span class="hljs-built_in">printList</span>();<br>    <span class="hljs-keyword">delete</span> a;<br>    <span class="hljs-keyword">delete</span> d;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="orderlist.hpp">orderlist.hpp</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">node</span>&#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-keyword">int</span> data;<br>    node * Node;<br>    <span class="hljs-built_in">node</span>()&#123;<br>        Node = <span class="hljs-literal">NULL</span>;<br>    &#125;<br><br>    <span class="hljs-built_in">node</span>(<span class="hljs-keyword">int</span> a)&#123;<br>        data = a;<br>        Node = <span class="hljs-literal">NULL</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// node(int a, node * b): data(a)&#123;</span><br>    <span class="hljs-comment">//     node* temp = b;</span><br>    <span class="hljs-comment">//     while(temp-&gt;Node != NULL)&#123;</span><br>    <span class="hljs-comment">//         temp = temp -&gt; Node;</span><br>    <span class="hljs-comment">//     &#125;</span><br>    <span class="hljs-comment">// &#125;</span><br>&#125;;<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OrderedList</span>&#123;</span><br><span class="hljs-keyword">public</span>:   <br>    node* head;<br><br>    <span class="hljs-built_in">OrderedList</span>()&#123;<br>        head = <span class="hljs-keyword">new</span> <span class="hljs-built_in">node</span> ();<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-keyword">int</span> val)</span> </span>= <span class="hljs-number">0</span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printList</span><span class="hljs-params">()</span><span class="hljs-keyword">const</span></span>&#123;<br>        node* temp = head;<br>        <span class="hljs-keyword">if</span>(temp -&gt; Node == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-keyword">else</span> &#123;<br>            temp = temp -&gt; Node;<br>        &#125;<br>        <span class="hljs-keyword">while</span>(temp != <span class="hljs-literal">NULL</span>)&#123;<br>            cout&lt;&lt;temp -&gt; data &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>            temp = temp -&gt; Node;<br>        &#125;<br>        cout&lt;&lt;endl;<br>    &#125;<br>    <br>    <span class="hljs-keyword">virtual</span> ~<span class="hljs-built_in">OrderedList</span>()&#123;<br>        node * temp = head;<br>        <span class="hljs-keyword">while</span>(temp -&gt; Node != <span class="hljs-literal">NULL</span>)&#123;<br>            node* a = temp;<br>            temp = temp -&gt; Node;<br>            <span class="hljs-keyword">delete</span> a;<br>        &#125;<br>        <span class="hljs-keyword">delete</span> temp;<br>    &#125;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AscendOrderedList</span> :</span> <span class="hljs-keyword">public</span> OrderedList&#123; <br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-keyword">int</span> val)</span></span>&#123;<br>        node* temp = head;<br>        <span class="hljs-keyword">if</span>(temp -&gt; Node == <span class="hljs-literal">NULL</span>)&#123;<br>            temp -&gt; Node = <span class="hljs-keyword">new</span> <span class="hljs-built_in">node</span> (val);<br>            <span class="hljs-keyword">return</span> ;<br>        &#125;<br>        temp = temp -&gt; Node;<br>        <span class="hljs-keyword">while</span>(temp -&gt;data &lt;= val &amp;&amp; temp -&gt; Node != <span class="hljs-literal">NULL</span> )&#123;<br>            temp = temp -&gt; Node;<br>        &#125;<br>        <br>        <span class="hljs-keyword">if</span>(  temp -&gt; data &gt; val )&#123;<br>            node* a = head;<br>            <span class="hljs-keyword">while</span>(a-&gt;Node != temp)&#123;<br>                a = a -&gt;Node;<br>            &#125;<br>            a-&gt;Node = <span class="hljs-keyword">new</span> <span class="hljs-built_in">node</span> (val);<br>            a-&gt;Node-&gt;Node = temp;<br>            <span class="hljs-keyword">return</span> ;<br>        &#125;<br>        <span class="hljs-keyword">if</span>( temp -&gt; Node == <span class="hljs-literal">NULL</span> )&#123;<br>            temp -&gt; Node = <span class="hljs-keyword">new</span> <span class="hljs-built_in">node</span> (val);<br>            <span class="hljs-keyword">return</span> ;<br>        &#125;<br><br><br>    &#125;<br>&#125;;<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DescendOrderedList</span> :</span> <span class="hljs-keyword">public</span> OrderedList&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-keyword">int</span> val)</span></span>&#123;<br>        node* temp = head;<br>        <span class="hljs-keyword">if</span>(temp -&gt; Node == <span class="hljs-literal">NULL</span>)&#123;<br>            temp -&gt; Node = <span class="hljs-keyword">new</span> <span class="hljs-built_in">node</span> (val);<br>            <span class="hljs-keyword">return</span> ;<br>        &#125;<br>        temp = temp -&gt; Node;<br>        <span class="hljs-keyword">while</span>(temp -&gt;data &gt;= val &amp;&amp; temp -&gt; Node != <span class="hljs-literal">NULL</span> )&#123;<br>            temp = temp -&gt; Node;<br>        &#125;<br>        <br>        <span class="hljs-keyword">if</span>(  temp -&gt; data &lt; val )&#123;<br>            node* a = head;<br>            <span class="hljs-keyword">while</span>(a-&gt;Node != temp)&#123;<br>                a = a -&gt;Node;<br>            &#125;<br>            a-&gt;Node = <span class="hljs-keyword">new</span> <span class="hljs-built_in">node</span> (val);<br>            a-&gt;Node-&gt;Node = temp;<br>            <span class="hljs-keyword">return</span> ;<br>        &#125;<br>        <span class="hljs-keyword">if</span>( temp -&gt; Node == <span class="hljs-literal">NULL</span> )&#123;<br>            temp -&gt; Node = <span class="hljs-keyword">new</span> <span class="hljs-built_in">node</span> (val);<br>            <span class="hljs-keyword">return</span> ;<br>        &#125;<br>    &#125;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/05/22/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%B1%BB/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">神经网络类</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/05/22/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E5%A4%9A%E6%80%81/">
-                        <span class="hidden-mobile">多态</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -633,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目描述 在先前Point Class 2的题目中，使用的方法是用三维的ThreeDPoint继承二维的TwoDPoint，我们可以发现，将二维点作为基类其实是不具有继承意义的。 为了实现一个具有真实继承意义的Point基类，我们在基类Point中让点的维度作为一个变量存在，这样多维度的点我们只需要继承基类就可以得到了，同时避免了Distance方法的重写。 请在 derivedPoin">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="point class 3（继承）">
 <meta property="og:url" content="http://example.com/2022/05/08/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/point%20class3(%E7%BB%A7%E6%89%BF)/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目描述 在先前Point Class 2的题目中，使用的方法是用三维的ThreeDPoint继承二维的TwoDPoint，我们可以发现，将二维点作为基类其实是不具有继承意义的。 为了实现一个具有真实继承意义的Point基类，我们在基类Point中让点的维度作为一个变量存在，这样多维度的点我们只需要继承基类就可以得到了，同时避免了Distance方法的重写。 请在 derivedPoin">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-08T08:07:01.347Z">
 <meta property="article:modified_time" content="2022-05-08T08:09:36.905Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,114 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">point class 3（继承）</h1>
             
-            <div class="markdown-body">
-              <h1 id="题目描述">题目描述</h1>
-<p>在先前<code>Point Class
-2</code>的题目中，使用的方法是用三维的<code>ThreeDPoint</code>继承二维的<code>TwoDPoint</code>，我们可以发现，将二维点作为基类其实是不具有继承意义的。</p>
-<p>为了实现一个具有真实继承意义的<code>Point</code>基类，我们在基类<code>Point</code>中让点的维度作为一个变量存在，这样多维度的点我们只需要继承基类就可以得到了，同时避免了<code>Distance</code>方法的重写。</p>
-<p>请在
-<code>derivedPoint.h</code>、<code>derivedPoint.cpp</code>、<code>point.cpp</code>中分别完成类的声明和定义。</p>
-<h1 id="hint">Hint</h1>
-<p>请根据<code>main.cpp</code>和<code>point.h</code>的内容完成代码编写</p>
-<p>在<code>getDistance</code>方法中，如果两个点维度不同，那么返回<code>-1</code></p>
-<p>出现额外方法：</p>
-<ol type="1">
-<li><code>getAbsSlope</code>为获取斜率的绝对值，如果斜率无穷则返回<code>-1</code></li>
-<li><code>isOnAxis</code>为判断点是否在坐标轴上，是返回<code>true</code>，否则返回<code>false</code></li>
-</ol>
-<h1 id="point.h">point.h</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> POINT_H</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> POINT_H</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span>&#123;</span><br>	<span class="hljs-keyword">private</span>:<br>		<span class="hljs-keyword">int</span> *coordinate; <span class="hljs-comment">// 记录坐标的数组</span><br>		<span class="hljs-keyword">int</span> dim; <span class="hljs-comment">// 维度</span><br>	<span class="hljs-keyword">public</span>:<br>		<span class="hljs-built_in">Point</span>(<span class="hljs-keyword">int</span> dim); <span class="hljs-comment">// 初始化为原点坐标</span><br>		<span class="hljs-built_in">Point</span>(<span class="hljs-keyword">int</span> dim, <span class="hljs-keyword">int</span> *coordinate);<br>		<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getDimension</span><span class="hljs-params">()</span></span>;<br>		<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getByIndex</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span></span>;<br>		<span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">getDistance</span><span class="hljs-params">(Point&amp; another)</span></span>;<br>		<span class="hljs-keyword">virtual</span> ~<span class="hljs-built_in">Point</span>();<br>&#125;;<br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br></code></pre></td></tr></table></figure>
-<h1 id="main.cpplock">main.cpp(lock)</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;point.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;derivedPoint.h&quot;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">int</span> point1[<span class="hljs-number">2</span>], point2[<span class="hljs-number">2</span>];<br>	<span class="hljs-keyword">int</span> point[<span class="hljs-number">3</span>];<br>	cin &gt;&gt; point1[<span class="hljs-number">0</span>] &gt;&gt; point1[<span class="hljs-number">1</span>];<br>	cin &gt;&gt; point2[<span class="hljs-number">0</span>] &gt;&gt; point2[<span class="hljs-number">1</span>];<br>	cin &gt;&gt; point[<span class="hljs-number">0</span>] &gt;&gt; point[<span class="hljs-number">1</span>] &gt;&gt; point[<span class="hljs-number">2</span>];<br><br><br>	<span class="hljs-function">TwoDPoint <span class="hljs-title">p1</span><span class="hljs-params">(point1)</span>, <span class="hljs-title">p2</span><span class="hljs-params">(point2)</span></span>;<br>	cout &lt;&lt; <span class="hljs-string">&quot;Distance between p1 and p2 is &quot;</span> &lt;&lt; p1.<span class="hljs-built_in">getDistance</span>(p2) &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;The absolute slope of the line through p1 and p2 is &quot;</span> &lt;&lt; p1.<span class="hljs-built_in">getAbsSlope</span>(p2) &lt;&lt; endl;<br><br>	cout &lt;&lt; <span class="hljs-string">&quot;X = &quot;</span> &lt;&lt; p2.<span class="hljs-built_in">getX</span>() &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;Y = &quot;</span> &lt;&lt; p2.<span class="hljs-built_in">getY</span>() &lt;&lt; endl;<br><br>	<span class="hljs-function">ThreeDPoint <span class="hljs-title">p</span><span class="hljs-params">(point)</span></span>;<br>	cout &lt;&lt; <span class="hljs-string">&quot;Distance between p1 and p is &quot;</span> &lt;&lt; p1.<span class="hljs-built_in">getDistance</span>(p) &lt;&lt; endl;<br>	<span class="hljs-keyword">if</span>(p.<span class="hljs-built_in">isOnAxis</span>()) cout &lt;&lt; <span class="hljs-string">&quot;ThreeDPoint is on the axis.\n&quot;</span>;<br>	<span class="hljs-keyword">else</span> cout &lt;&lt; <span class="hljs-string">&quot;ThreeDPoint is not on the axis.\n&quot;</span>;<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
-<h1 id="derived-point.cpp">derived point.cpp</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&quot;point.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cmath&gt;</span></span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TwoDPoint</span>:</span><span class="hljs-keyword">public</span> Point&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">TwoDPoint</span>(<span class="hljs-keyword">int</span>* p):<span class="hljs-built_in">Point</span>(<span class="hljs-number">2</span>, p)&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">getAbsSlope</span><span class="hljs-params">(TwoDPoint&amp; another)</span></span>&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">abs</span>(<span class="hljs-keyword">this</span>-&gt;<span class="hljs-built_in">getByIndex</span>(<span class="hljs-number">0</span>) - another.<span class="hljs-built_in">getByIndex</span>(<span class="hljs-number">0</span>) == <span class="hljs-number">0</span>) )<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1.0</span> * <span class="hljs-built_in">abs</span>(<span class="hljs-keyword">this</span>-&gt;<span class="hljs-built_in">getByIndex</span>(<span class="hljs-number">1</span>) - another.<span class="hljs-built_in">getByIndex</span>(<span class="hljs-number">1</span>)) / <span class="hljs-built_in">abs</span>(<span class="hljs-keyword">this</span>-&gt;<span class="hljs-built_in">getByIndex</span>(<span class="hljs-number">0</span>) - another.<span class="hljs-built_in">getByIndex</span>(<span class="hljs-number">0</span>));<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getX</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>-&gt;<span class="hljs-built_in">getByIndex</span>(<span class="hljs-number">0</span>);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getY</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>-&gt;<span class="hljs-built_in">getByIndex</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ThreeDPoint</span>:</span><span class="hljs-keyword">public</span> Point&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">ThreeDPoint</span>(<span class="hljs-keyword">int</span>* p):<span class="hljs-built_in">Point</span>(<span class="hljs-number">3</span>, p)&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isOnAxis</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">return</span> !<span class="hljs-keyword">this</span>-&gt;<span class="hljs-built_in">getByIndex</span>(<span class="hljs-number">0</span>) || !<span class="hljs-keyword">this</span>-&gt;<span class="hljs-built_in">getByIndex</span>(<span class="hljs-number">1</span>) || !<span class="hljs-keyword">this</span>-&gt;<span class="hljs-built_in">getByIndex</span>(<span class="hljs-number">2</span>);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<h1 id="point.cpp">point.cpp</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&quot;point.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;math.h&gt;</span></span><br>Point::<span class="hljs-built_in">Point</span>(<span class="hljs-keyword">int</span> newdim)&#123;<br>    dim = newdim;<br>    coordinate = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[dim];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; dim; i++)&#123;<br>        coordinate[i] = <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;<br>Point::<span class="hljs-built_in">Point</span>(<span class="hljs-keyword">int</span> newdim, <span class="hljs-keyword">int</span> *newcoordinate)&#123;<br>    dim = newdim;<br>    coordinate = newcoordinate;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Point::getDimension</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">return</span> dim;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Point::getByIndex</span><span class="hljs-params">(<span class="hljs-keyword">int</span> ind)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> coordinate[ind];<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">Point::getDistance</span><span class="hljs-params">(Point&amp; another)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(dim != another.dim) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    <span class="hljs-keyword">double</span> s = <span class="hljs-number">0.0</span>;<br>    <span class="hljs-keyword">int</span> dim1 = dim;<br>    <span class="hljs-keyword">while</span>(dim1 &gt; <span class="hljs-number">0</span>)&#123;<br>        --dim1;<br>        s += (<span class="hljs-keyword">this</span>-&gt;coordinate[dim1] - another.coordinate[dim1])*(<span class="hljs-keyword">this</span>-&gt;coordinate[dim1] - another.coordinate[dim1]);<br>    &#125;<br>    <span class="hljs-comment">//cout &lt;&lt; sqrt(s) &lt;&lt; endl;</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">sqrt</span>(s);<br>&#125;<br>Point::~<span class="hljs-built_in">Point</span>()&#123;<br>    <span class="hljs-comment">//delete []coordinate;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/05/08/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/simple%20complex%20class/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Complex class(重载、格式控制)</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/05/08/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/point%20class2(%E7%BB%A7%E6%89%BF)/">
-                        <span class="hidden-mobile">point class 2（继承）</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -627,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="C++ STL set容器完全攻略（超级详细） (biancheng.net) 1234567891011121314&#x2F;&#x2F;头文件#include&lt;set&gt;using namespace std;&#x2F;&#x2F;template &lt; class T,                        &#x2F;&#x2F; 键 key 和值 value 的类型           class Compare &#x3D;">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="set的使用">
 <meta property="og:url" content="http://example.com/2022/04/12/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/set%20%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="C++ STL set容器完全攻略（超级详细） (biancheng.net) 1234567891011121314&#x2F;&#x2F;头文件#include&lt;set&gt;using namespace std;&#x2F;&#x2F;template &lt; class T,                        &#x2F;&#x2F; 键 key 和值 value 的类型           class Compare &#x3D;">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-12T07:29:07.770Z">
 <meta property="article:modified_time" content="2022-04-13T07:38:48.067Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,99 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">set的使用</h1>
             
-            <div class="markdown-body">
-              <p><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/7192.html">C++ STL
-set容器完全攻略（超级详细） (biancheng.net)</a></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//头文件</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;set&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">//</span><br><span class="hljs-keyword">template</span> &lt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>,                        // 键 <span class="hljs-title">key</span> 和值 <span class="hljs-title">value</span> 的类型</span><br><span class="hljs-class">           <span class="hljs-keyword">class</span> <span class="hljs-title">Compare</span> =</span> less&lt;T&gt;,        <span class="hljs-comment">// 指定 set 容器内部的排序规则</span><br>           <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Alloc</span> =</span> allocator&lt;T&gt;      <span class="hljs-comment">// 指定分配器对象的类型</span><br>           &gt; <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">set</span>;</span><br><br>set&lt;<span class="hljs-keyword">int</span>&gt; myset;<br><br><br><br></code></pre></td></tr></table></figure>
-<h1 id="相关函数">相关函数</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp">set&lt;<span class="hljs-keyword">int</span>&gt; a;<br><span class="hljs-comment">//向set中插入元素</span><br>a.<span class="hljs-built_in">insert</span>(<span class="hljs-number">1</span>);<br>a.<span class="hljs-built_in">insert</span>(<span class="hljs-number">2</span>);<br>a.<span class="hljs-built_in">insert</span>(<span class="hljs-number">2</span>);<br><span class="hljs-comment">//set中元素的个数</span><br>a.<span class="hljs-built_in">size</span>();<br><span class="hljs-comment">//返回set容器的第一个元素的地址</span><br>a.<span class="hljs-built_in">begin</span>();<br><span class="hljs-comment">//返回set容器的最后一个元素的地址</span><br>a.<span class="hljs-built_in">end</span>();<br><span class="hljs-comment">//删除set容器中的所有元素</span><br>a.<span class="hljs-built_in">clear</span>();<br><span class="hljs-comment">//判断set容器是否为空</span><br>a.<span class="hljs-built_in">empty</span>();<br><span class="hljs-comment">//返回set容器中可能包含的元素的最大个数</span><br>a.<span class="hljs-built_in">max_size</span>();<br></code></pre></td></tr></table></figure>
-<h1 id="如何修改set里面的默认排序顺序">如何修改set里面的默认排序顺序</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;set&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">set与list容器排序区别：</span><br><span class="hljs-comment">list容器的排序是一个自带的sort成员函数，需要在sort中传一个函数名来指定排序规则；</span><br><span class="hljs-comment">set是默认插入数据就自动排序的，所以需要在插数据之前用仿函数指定排序规则</span><br><span class="hljs-comment">*/</span><br><br><br><br><span class="hljs-comment">/*************************************set容器内置数据类型排序***************************/</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printfIntSet</span><span class="hljs-params">(set&lt;<span class="hljs-keyword">int</span>&gt;&amp; s)</span><span class="hljs-comment">//打印内置数据类型int数组的函数</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">for</span> (set&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = s.<span class="hljs-built_in">begin</span>();it != s.<span class="hljs-built_in">end</span>();it++)<br>	&#123;<br>		cout &lt;&lt; *it &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>	&#125;<br>	cout &lt;&lt; endl;<br>&#125;<br><br><br><span class="hljs-comment">/*仿函数*/</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">myCompare</span>//<span class="hljs-title">int</span>数组比较大小的类，也可称为数据类型</span><br><span class="hljs-class">&#123;</span><br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-keyword">int</span> v1, <span class="hljs-keyword">int</span> v2)</span><span class="hljs-comment">//仿函数的返回值是bool类型，重载了() 运算符</span></span><br><span class="hljs-function">	</span>&#123;<br>		<span class="hljs-keyword">return</span> v1 &gt; v2;<br>	&#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">test01</span><span class="hljs-params">()</span><span class="hljs-comment">//set容器内置数据类型排序</span></span><br><span class="hljs-function"></span>&#123;<br>	set&lt;<span class="hljs-keyword">int</span>&gt; s;<br>	s.<span class="hljs-built_in">insert</span>(<span class="hljs-number">10</span>);<br>	s.<span class="hljs-built_in">insert</span>(<span class="hljs-number">100</span>);<br>	s.<span class="hljs-built_in">insert</span>(<span class="hljs-number">1</span>);<br>	s.<span class="hljs-built_in">insert</span>(<span class="hljs-number">5</span>);<br>	s.<span class="hljs-built_in">insert</span>(<span class="hljs-number">80</span>);<br><br>	<span class="hljs-built_in">printfIntSet</span>(s);<span class="hljs-comment">//默认是从小到大</span><br><br><br>	set&lt;<span class="hljs-keyword">int</span>, myCompare&gt; s1;<span class="hljs-comment">//在定义数组的时候指定排序规则</span><br>	s1.<span class="hljs-built_in">insert</span>(<span class="hljs-number">10</span>);<br>	s1.<span class="hljs-built_in">insert</span>(<span class="hljs-number">100</span>);<br>	s1.<span class="hljs-built_in">insert</span>(<span class="hljs-number">1</span>);<br>	s1.<span class="hljs-built_in">insert</span>(<span class="hljs-number">5</span>);<br>	s1.<span class="hljs-built_in">insert</span>(<span class="hljs-number">80</span>);<br><br>	<span class="hljs-keyword">for</span> (set&lt;<span class="hljs-keyword">int</span>,myCompare&gt;::iterator it = s1.<span class="hljs-built_in">begin</span>();it != s1.<span class="hljs-built_in">end</span>();it++)<br>	&#123;<br>		cout &lt;&lt; *it &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<span class="hljs-comment">//数据输出变成降序了</span><br>	&#125;<br><br>&#125;<br><br><br><span class="hljs-comment">/*************************************set容器自定义数据类型排序***************************/</span><br><br><span class="hljs-comment">//自定义的数据类型插入set容器如果不指定排序规则，编译器不知道该怎么排序，所以必须指定排序规则</span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>//自定义数据类型</span><br><span class="hljs-class">&#123;</span><br><span class="hljs-keyword">public</span>:<br><br>	<span class="hljs-built_in">Person</span>(string name, <span class="hljs-keyword">int</span> age)<br>	&#123;<br>		<span class="hljs-keyword">this</span>-&gt;m_name = name;<br>		<span class="hljs-keyword">this</span>-&gt;m_age = age;<br>	&#125;<br>	string m_name;<br>	<span class="hljs-keyword">int</span> m_age;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Compare</span>//指定排序规则的仿函数</span><br><span class="hljs-class">&#123;</span><br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Person &amp;p1, Person &amp;p2)</span><span class="hljs-comment">//加const限定不能修改传入的数据</span></span><br><span class="hljs-function">	</span>&#123;<br>		<span class="hljs-keyword">return</span> p1.m_age &gt; p2.m_age;<span class="hljs-comment">//降序</span><br>	&#125;<br><br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">test02</span><span class="hljs-params">()</span><span class="hljs-comment">//set容器自定义数据排序</span></span><br><span class="hljs-function"></span>&#123;<br>	set&lt;Person,Compare&gt; s;<br><br>	<span class="hljs-function">Person <span class="hljs-title">p1</span><span class="hljs-params">(<span class="hljs-string">&quot;张三&quot;</span>, <span class="hljs-number">18</span>)</span></span>;<br>	<span class="hljs-function">Person <span class="hljs-title">p2</span><span class="hljs-params">(<span class="hljs-string">&quot;李四&quot;</span>, <span class="hljs-number">20</span>)</span></span>;<br>	<span class="hljs-function">Person <span class="hljs-title">p3</span><span class="hljs-params">(<span class="hljs-string">&quot;王五&quot;</span>, <span class="hljs-number">19</span>)</span></span>;<br>	<span class="hljs-function">Person <span class="hljs-title">p4</span><span class="hljs-params">(<span class="hljs-string">&quot;赵六&quot;</span>, <span class="hljs-number">27</span>)</span></span>;<br>	<span class="hljs-function">Person <span class="hljs-title">p5</span><span class="hljs-params">(<span class="hljs-string">&quot;王八&quot;</span>, <span class="hljs-number">15</span>)</span></span>;<br><br>	s.<span class="hljs-built_in">insert</span>(p1);<br>	s.<span class="hljs-built_in">insert</span>(p2);<br>	s.<span class="hljs-built_in">insert</span>(p3);<br>	s.<span class="hljs-built_in">insert</span>(p4);<br>	s.<span class="hljs-built_in">insert</span>(p5);<br><br>	<span class="hljs-keyword">for</span> (set&lt;Person, Compare&gt;::iterator it = s.<span class="hljs-built_in">begin</span>();it != s.<span class="hljs-built_in">end</span>();it++)<br>	&#123;<br>		cout &lt;&lt; it-&gt;m_name &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; it-&gt;m_age &lt;&lt; endl;<br>	&#125;<br><br>&#125;<br><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-comment">//test01();//内置数据类型排序</span><br><br>	<span class="hljs-built_in">test02</span>();<span class="hljs-comment">//自定义数据类型排序</span><br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/04/16/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/matrix%20and%20vector/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">程设记录--matrix and vector</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/04/12/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/unique%20friend/">
-                        <span class="hidden-mobile">程设记录--unique friend(map)</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -612,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

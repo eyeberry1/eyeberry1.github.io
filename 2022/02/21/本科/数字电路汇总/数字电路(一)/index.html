@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Key terms: Analog 模拟 Digital 数字 Inverter: 逆变器? Pulse: 脉冲 Duty cycle: 占空比 Integrated circuit(IC) 集成电路 Fixed-function logic 固定功能逻辑 Timing diagram 时序图 Troubleshooting 故障 排除 Serial 串行 Parallel并行">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数字电路-introduction concept">
 <meta property="og:url" content="http://example.com/2022/02/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Key terms: Analog 模拟 Digital 数字 Inverter: 逆变器? Pulse: 脉冲 Duty cycle: 占空比 Integrated circuit(IC) 集成电路 Fixed-function logic 固定功能逻辑 Timing diagram 时序图 Troubleshooting 故障 排除 Serial 串行 Parallel并行">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/02/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221172223526.png">
 <meta property="og:image" content="http://example.com/2022/02/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221172539872.png">
@@ -84,7 +84,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -275,167 +289,18 @@
             <!-- SEO header -->
             <h1 style="display: none">数字电路-introduction concept</h1>
             
-            <div class="markdown-body">
-              <p>Key terms:</p>
-<p>Analog 模拟 Digital 数字</p>
-<p>Inverter: 逆变器?</p>
-<p>Pulse: 脉冲</p>
-<p>Duty cycle: 占空比</p>
-<p>Integrated circuit(IC) 集成电路</p>
-<p>Fixed-function logic 固定功能逻辑</p>
-<p>Timing diagram 时序图</p>
-<p>Troubleshooting 故障 排除</p>
-<p>Serial 串行 Parallel并行</p>
-<p>SPLD ( Simple Programmable Logic Device) 简单可编程逻辑器件</p>
-<p>CPLD (Complex Programming logic device) 复杂可编程逻辑器件</p>
-<p>FPGA （Field-Programmable Gate Array） 现场可编程逻辑门阵列</p>
-<p>Compiler 编译器</p>
-<hr>
-<h1 id="digital-and-analogy-quantities">1.1 digital and analogy
-quantities</h1>
-<h2 id="definition">definition</h2>
-<p>模拟量具有连续的数值，数字量具有离散的数值。</p>
-<h2 id="the-digital-advantage数字量优点">the digital
-advantage(数字量优点)</h2>
-<p>数字量的优点
-在电学应用方面，数字量表示法和模拟量表示法相比有一定的优势。</p>
-<ol type="1">
-<li>数字数据和模拟数据相比，前者在处理和传输方面更有效、更可靠。</li>
-<li>数字数据在需要保存时，更显示了它的优越性。例如，转换成数字形式的音乐，要比相对应的模拟形式更简洁，复制时更精确、更清晰。噪声（不需要的电压波动）几乎不会影响数字数据，但会影响模拟信号。</li>
-</ol>
-<h1 id="binary-digitslogic-levelsand-digital-waveforms二进制数逻辑电平和数字波形">1.2
-binary digits,logic levels,and digital
-waveforms(二进制数、逻辑电平和数字波形)</h1>
-<h2 id="binary-digits">1.2.1 binary digits</h2>
-<p>positive logic (正逻辑): HIGH=1,LOW=0</p>
-<h2 id="logic-levels">1.2.2 logic levels</h2>
-<p><img src="/2022/02/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221172223526.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="digital-waveforms">1.2.3 digital waveforms</h2>
-<figure>
-<img src="/2022/02/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221172539872.png" srcset="/img/loading.gif" lazyload alt="理想脉冲">
-<figcaption aria-hidden="true">理想脉冲</figcaption>
-</figure>
-<p>The Pulse A pulse has two edges: a <strong>leading edge</strong> that
-occurs first at time to and a <strong>trailing edge</strong> that occurs
-last at time</p>
-<figure>
-<img src="/2022/02/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221172639206.png" srcset="/img/loading.gif" lazyload alt="非理想脉冲">
-<figcaption aria-hidden="true">非理想脉冲</figcaption>
-</figure>
-<p><img src="/2022/02/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221172940668.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2022/02/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221173050567.png" srcset="/img/loading.gif" lazyload> <span class="math display">\[
-f=\frac{1}{T}\\
-duty cycle(占空比)=(\frac{t_w}{T})\times100\%
-\]</span></p>
-<h2 id="a-digital-waveform-carries-binary-information数字波形携带二进制信息">1.2.4
-A Digital Waveform Carries Binary
-Information(数字波形携带二进制信息)</h2>
-<figure>
-<img src="/2022/02/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221173914930.png" srcset="/img/loading.gif" lazyload alt="例子">
-<figcaption aria-hidden="true">例子</figcaption>
-</figure>
-<p>timing diagram</p>
-<p><img src="/2022/02/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221174141615.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="data-transfer数据转换">1.2.5 data transfer(数据转换)</h2>
-<p>两种方式:serial and parallel(串行和并行)</p>
-<p><img src="/2022/02/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221174429117.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="basic-logic-operations基本逻辑操作">1.3 basic logic
-operations(基本逻辑操作)</h1>
-<figure>
-<img src="/2022/02/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221175827593.png" srcset="/img/loading.gif" lazyload alt="image-20220221175827593">
-<figcaption aria-hidden="true">image-20220221175827593</figcaption>
-</figure>
-<figure>
-<img src="/2022/02/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221175845207.png" srcset="/img/loading.gif" lazyload alt="image-20220221175845207">
-<figcaption aria-hidden="true">image-20220221175845207</figcaption>
-</figure>
-<p><img src="/2022/02/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221175857158-16454375545001.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2022/02/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/image-20220221175915683.png" srcset="/img/loading.gif" lazyload></p>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/02/23/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A04/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Lumerical脚本语言学习( 四)-Simulation region</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/02/20/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A03/">
-                        <span class="hidden-mobile">Lumerical脚本语言学习(三)-结构搭建</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -693,6 +558,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

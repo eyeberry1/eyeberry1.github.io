@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目所给代码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include &quot;SimpleClock.h&quot;int main() &amp;#123;		Clock clock1;	cin &gt;&gt; clock1;	cout &lt;&lt; &quot;c">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="程设记录(十四)--Overload simple clock">
 <meta property="og:url" content="http://example.com/2022/03/23/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/Overload%20simple%20clock/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目所给代码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include &quot;SimpleClock.h&quot;int main() &amp;#123;		Clock clock1;	cin &gt;&gt; clock1;	cout &lt;&lt; &quot;c">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-23T12:40:55.114Z">
 <meta property="article:modified_time" content="2022-03-23T14:05:36.719Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,98 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">程设记录(十四)--Overload simple clock</h1>
             
-            <div class="markdown-body">
-              <p>题目所给代码</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;SimpleClock.h&quot;</span></span><br><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<br>	Clock clock1;<br>	cin &gt;&gt; clock1;<br>	cout &lt;&lt; <span class="hljs-string">&quot;cin &gt;&gt; clock1&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;&gt;&gt; clock1 ---- &quot;</span> &lt;&lt; clock1 &lt;&lt; endl &lt;&lt; endl;<br>	<br>	<span class="hljs-function">Clock <span class="hljs-title">clock2</span><span class="hljs-params">(clock1)</span></span>;<br>	cout &lt;&lt; <span class="hljs-string">&quot;clock2(clock1)&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;&gt;&gt; clock1 ---- &quot;</span> &lt;&lt; clock1 &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;&gt;&gt; clock2 ---- &quot;</span> &lt;&lt; clock2 &lt;&lt; endl &lt;&lt; endl;<br>	<br>	Clock clock3 = clock1 ++;<br>	Clock clock4 = ++ clock2;<br>	cout &lt;&lt; <span class="hljs-string">&quot;clock3 = clock1 ++&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;clock4 = ++ clock2&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;&gt;&gt; clock1 ---- &quot;</span> &lt;&lt; clock1 &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;&gt;&gt; clock2 ---- &quot;</span> &lt;&lt; clock2 &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;&gt;&gt; clock3 ---- &quot;</span> &lt;&lt; clock3 &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;&gt;&gt; clock4 ---- &quot;</span> &lt;&lt; clock4 &lt;&lt; endl &lt;&lt; endl;<br>	<br>	<span class="hljs-function">Clock <span class="hljs-title">clock5</span><span class="hljs-params">(<span class="hljs-number">11</span>, <span class="hljs-number">45</span>, <span class="hljs-number">14</span>)</span></span>;<br>	Clock clock6 = clock1 + clock5;<br>	cout &lt;&lt; <span class="hljs-string">&quot;clock5(11, 45, 14)&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;clock6 = clock1 + clock5&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;&gt;&gt; clock1 ---- &quot;</span> &lt;&lt; clock1 &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;&gt;&gt; clock5 ---- &quot;</span> &lt;&lt; clock5 &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;&gt;&gt; clock6 ---- &quot;</span> &lt;&lt; clock6 &lt;&lt; endl &lt;&lt; endl;<br>	<br>	Clock clock7;<br>	clock7 += clock5;<br>	clock7 += clock6;<br>	cout &lt;&lt; <span class="hljs-string">&quot;clock7()&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;clock7 += clock5&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;clock7 += clock6&quot;</span> &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;&gt;&gt; clock5 ---- &quot;</span> &lt;&lt; clock5 &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;&gt;&gt; clock6 ---- &quot;</span> &lt;&lt; clock6 &lt;&lt; endl;<br>	cout &lt;&lt; <span class="hljs-string">&quot;&gt;&gt; clock7 ---- &quot;</span> &lt;&lt; clock7 &lt;&lt; endl;<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
-<p>simpleclock.h</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> SIMPLECLOCK_H</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SIMPLECLOCK_H</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Clock</span> &#123;</span><br><br><span class="hljs-keyword">private</span>:<br>	<span class="hljs-keyword">int</span> hour;<br>	<span class="hljs-keyword">int</span> minute;<br>	<span class="hljs-keyword">int</span> second;<br>	<br><span class="hljs-keyword">public</span>:<br>	<br>	<span class="hljs-comment">// Implemented.</span><br>	<span class="hljs-built_in">Clock</span>(): <span class="hljs-built_in">hour</span>(<span class="hljs-number">0</span>), <span class="hljs-built_in">minute</span>(<span class="hljs-number">0</span>), <span class="hljs-built_in">second</span>(<span class="hljs-number">0</span>) &#123;&#125;<br>	<span class="hljs-built_in">Clock</span>( <span class="hljs-keyword">int</span> hour_,  <span class="hljs-keyword">int</span> minute_,  <span class="hljs-keyword">int</span> second_): <span class="hljs-built_in">hour</span>(hour_), <span class="hljs-built_in">minute</span>(minute_), <span class="hljs-built_in">second</span>(second_) &#123;&#125; <br>	<br>	<br>	<span class="hljs-comment">// Not implemented.</span><br>	<br>	Clock&amp; <span class="hljs-keyword">operator</span> += (<span class="hljs-keyword">const</span> Clock &amp;right);<br>	Clock <span class="hljs-keyword">operator</span> + (<span class="hljs-keyword">const</span> Clock &amp;right) <span class="hljs-keyword">const</span>;<br>	Clock&amp; <span class="hljs-keyword">operator</span> ++ ();<br>	Clock <span class="hljs-keyword">operator</span> ++ (<span class="hljs-keyword">int</span>) ;<br>	<br>	<span class="hljs-keyword">friend</span> istream &amp; <span class="hljs-keyword">operator</span> &gt;&gt; (istream &amp;is, Clock &amp;object);<br>	<span class="hljs-keyword">friend</span> ostream &amp; <span class="hljs-keyword">operator</span> &lt;&lt; (ostream &amp;os, <span class="hljs-keyword">const</span> Clock &amp;object);<br><br>&#125;;<br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> </span><br><br></code></pre></td></tr></table></figure>
-<h1 id="所写代码">所写代码</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><code class="hljs c++"><br><br>Clock Clock::<span class="hljs-keyword">operator</span> + (<span class="hljs-keyword">const</span> Clock &amp;right) <span class="hljs-keyword">const</span> &#123;<br>	<br>	Clock c;<br>	<br>	<span class="hljs-comment">// Deal with hour.</span><br>	c.hour = (<span class="hljs-keyword">this</span>-&gt;hour + right.hour) % <span class="hljs-number">24</span>;<br>	<br>	<span class="hljs-comment">// Deal with minute.</span><br>	c.hour = (c.hour + (<span class="hljs-keyword">this</span>-&gt;minute + right.minute) / <span class="hljs-number">60</span>) % <span class="hljs-number">24</span>;<br>	c.minute = (<span class="hljs-keyword">this</span>-&gt;minute + right.minute) % <span class="hljs-number">60</span>;<br>	<br>	<span class="hljs-comment">// Deal with second.</span><br>	c.hour = (c.hour + (c.minute + (<span class="hljs-keyword">this</span>-&gt;second + right.second) / <span class="hljs-number">60</span>) / <span class="hljs-number">60</span>) % <span class="hljs-number">24</span>;<br>	c.minute = (c.minute + (<span class="hljs-keyword">this</span>-&gt;second + right.second) / <span class="hljs-number">60</span>) % <span class="hljs-number">60</span>;<br>	c.second = (<span class="hljs-keyword">this</span>-&gt;second + right.second) % <span class="hljs-number">60</span>;<br>	<br>	<span class="hljs-keyword">return</span> c;<br>&#125;<br><br><br>Clock&amp; Clock::<span class="hljs-keyword">operator</span> += (<span class="hljs-keyword">const</span> Clock &amp;right) &#123;<br>	<br>	<span class="hljs-comment">// Deal with hour.</span><br>	<span class="hljs-keyword">this</span>-&gt;hour = (<span class="hljs-keyword">this</span>-&gt;hour + right.hour) % <span class="hljs-number">24</span>;<br>	<br>	<span class="hljs-comment">// Deal with minute.</span><br>	<span class="hljs-keyword">this</span>-&gt;hour = (<span class="hljs-keyword">this</span>-&gt;hour + (<span class="hljs-keyword">this</span>-&gt;minute + right.minute) / <span class="hljs-number">60</span>) % <span class="hljs-number">24</span>;<br>	<span class="hljs-keyword">this</span>-&gt;minute = (<span class="hljs-keyword">this</span>-&gt;minute + right.minute) % <span class="hljs-number">60</span>;<br>	<br>	<span class="hljs-comment">// Deal with second.</span><br>	<span class="hljs-keyword">this</span>-&gt;hour = (<span class="hljs-keyword">this</span>-&gt;hour + (<span class="hljs-keyword">this</span>-&gt;minute + (<span class="hljs-keyword">this</span>-&gt;second + right.second) / <span class="hljs-number">60</span>) / <span class="hljs-number">60</span>) % <span class="hljs-number">24</span>;<br>	<span class="hljs-keyword">this</span>-&gt;minute = (<span class="hljs-keyword">this</span>-&gt;minute + (<span class="hljs-keyword">this</span>-&gt;second + right.second) / <span class="hljs-number">60</span>) % <span class="hljs-number">60</span>;<br>	<span class="hljs-keyword">this</span>-&gt;second = (<span class="hljs-keyword">this</span>-&gt;second + right.second) % <span class="hljs-number">60</span>;<br>	<br>	<span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br><br>Clock &amp; Clock::<span class="hljs-keyword">operator</span> ++ () &#123;<br>	<span class="hljs-function">Clock <span class="hljs-title">adder</span><span class="hljs-params">(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>)</span></span>;<br>	*<span class="hljs-keyword">this</span> += adder;<br>	<span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br><br><br>Clock Clock::<span class="hljs-keyword">operator</span> ++ (<span class="hljs-keyword">int</span>) &#123;<br>	<span class="hljs-function">Clock <span class="hljs-title">c</span><span class="hljs-params">(*<span class="hljs-keyword">this</span>)</span></span>;<br>	++ *<span class="hljs-keyword">this</span>;<br>	<span class="hljs-keyword">return</span> c;<br>&#125;<br><br><br>istream &amp; <span class="hljs-keyword">operator</span> &gt;&gt; (istream &amp;is, Clock &amp;object) &#123;<br>	<span class="hljs-keyword">int</span> hour, minute, second;<br>	is &gt;&gt; hour &gt;&gt; minute &gt;&gt; second;<br>	<br>	hour %= <span class="hljs-number">24</span>;<br>	<br>	hour = (hour + minute / <span class="hljs-number">60</span>) % <span class="hljs-number">24</span>;<br>	minute %= <span class="hljs-number">60</span>;<br>	<br>	hour = (hour + (minute + second / <span class="hljs-number">60</span>) / <span class="hljs-number">60</span>) % <span class="hljs-number">24</span>;<br>	minute = (minute + second / <span class="hljs-number">60</span>) % <span class="hljs-number">60</span>;<br>	second %= <span class="hljs-number">60</span>;<br>	<br>	object.hour = hour;<br>	object.minute = minute;<br>	object.second = second;<br>	<span class="hljs-keyword">return</span> is;<br>&#125;<br><br><br>ostream &amp; <span class="hljs-keyword">operator</span> &lt;&lt; (ostream &amp;os, <span class="hljs-keyword">const</span> Clock &amp;object) &#123;<br>	os &lt;&lt; object.hour &lt;&lt; <span class="hljs-string">&quot;:&quot;</span> &lt;&lt; object.minute &lt;&lt; <span class="hljs-string">&quot;:&quot;</span> &lt;&lt; object.second;<br>	<span class="hljs-keyword">return</span> os;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/03/28/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E4%B8%83%E7%AB%A0/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">第七章- LATCHES,FLIP-FLOPS,TIMERS(锁存器\触发器\定时器)</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/03/23/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/virtual%20class/">
-                        <span class="hidden-mobile">程设记录(十三)--virtual class</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -611,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

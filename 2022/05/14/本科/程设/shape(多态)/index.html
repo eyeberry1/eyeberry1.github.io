@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Description 声明一个Shape抽象类，在此基础上派生出Rectangle类和Circle类，两者都有GetArea()和GetPerim()函数，用来计算面积和周长，麻烦封装以上各类，编写程序。需要提交类Shape、Rectangle、Cricle。 以下是主函数： 1234567891011121314151617int main ()&amp;#123;	double n,a,b,c">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shape(多态)">
 <meta property="og:url" content="http://example.com/2022/05/14/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/shape(%E5%A4%9A%E6%80%81)/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description 声明一个Shape抽象类，在此基础上派生出Rectangle类和Circle类，两者都有GetArea()和GetPerim()函数，用来计算面积和周长，麻烦封装以上各类，编写程序。需要提交类Shape、Rectangle、Cricle。 以下是主函数： 1234567891011121314151617int main ()&amp;#123;	double n,a,b,c">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-14T09:17:11.258Z">
 <meta property="article:modified_time" content="2022-05-14T09:25:52.529Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,117 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">shape(多态)</h1>
             
-            <div class="markdown-body">
-              <h1 id="description">Description</h1>
-<p>声明一个<code>Shape</code>抽象类，在此基础上派生出<code>Rectangle</code>类和<code>Circle</code>类，两者都有<code>GetArea()</code>和<code>GetPerim()</code>函数，用来计算面积和周长，麻烦封装以上各类，编写程序。需要提交类<code>Shape</code>、<code>Rectangle</code>、<code>Cricle</code>。</p>
-<p>以下是主函数：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">double</span> n,a,b,c;<br>	cin&gt;&gt;n;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>	&#123;<br>		Shape *s;<br>		cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;<br>		s = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Rectangle</span>(a,b);<br>		cout&lt;&lt;s-&gt;<span class="hljs-built_in">GetArea</span>()&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;s-&gt;<span class="hljs-built_in">GetPerim</span>()&lt;&lt;endl;<br>		<span class="hljs-keyword">delete</span> s;<br>		s = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Circle</span>(c);<br>		cout&lt;&lt;s-&gt;<span class="hljs-built_in">GetArea</span>()&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;s-&gt;<span class="hljs-built_in">GetPerim</span>()&lt;&lt;endl;<br>		<span class="hljs-keyword">delete</span> s;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="input">Input</h1>
-<p>第一行输入<code>n</code>，表示<em>n</em>个测试例子；接下来有<em>n</em>行，每一行输入数<code>a</code>、<code>b</code>、<code>c</code>，表示矩形的宽、长，以及圆形的半径。</p>
-<p><strong>输入处理已经由框架代码处理，你无需另外处理。</strong></p>
-<h1 id="output">Output</h1>
-<p>对应每一行输入：</p>
-<ul>
-<li>第一行输出矩形的面积、周长；</li>
-<li>第二行输出圆形的面积、周长。</li>
-</ul>
-<p><strong>输出处理已经由框架代码处理，你无需另外处理。</strong></p>
-<h1 id="sample-input">Sample Input</h1>
-<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">1</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">2</span> <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
-<h1 id="sample-output">Sample Output</h1>
-<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">4 </span><span class="hljs-number">8</span><br><span class="hljs-number">28.26</span> <span class="hljs-number">18.84</span><br></code></pre></td></tr></table></figure>
-<h1 id="hint">Hint</h1>
-<p>我们已经为你定义了圆周率<code>PI</code>，请勿使用其他数值。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> PI = <span class="hljs-number">3.14</span>;<br></code></pre></td></tr></table></figure>
-<h1 id="framework.cpplock">framework.cpp(lock)</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> PI = <span class="hljs-number">3.14</span>;<br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;source.h&quot;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-comment">//freopen(&quot;in.txt&quot;, &quot;r&quot;, stdin);</span><br>	<span class="hljs-comment">//freopen(&quot;out.txt&quot;, &quot;w&quot;, stdout);</span><br>	<span class="hljs-keyword">double</span> n,a,b,c;<br>	cin&gt;&gt;n;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>	&#123;<br>		Shape *s;<br>		cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;<br>		s = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Rectangle</span>(a,b);<br>		cout&lt;&lt;s-&gt;<span class="hljs-built_in">GetArea</span>()&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;s-&gt;<span class="hljs-built_in">GetPerim</span>()&lt;&lt;endl;<br>		<span class="hljs-keyword">delete</span> s;<br>		s = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Circle</span>(c);<br>		cout&lt;&lt;s-&gt;<span class="hljs-built_in">GetArea</span>()&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;s-&gt;<span class="hljs-built_in">GetPerim</span>()&lt;&lt;endl;<br>		<span class="hljs-keyword">delete</span> s;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="source.h">source.h</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Shape</span> &#123;</span><br>	<span class="hljs-keyword">public</span>:<br>		<span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">double</span> <span class="hljs-title">GetArea</span><span class="hljs-params">()</span> </span>&#123;&#125;;<br>		<span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">double</span> <span class="hljs-title">GetPerim</span><span class="hljs-params">()</span> </span>&#123;&#125;;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span>:</span> <span class="hljs-keyword">public</span> Shape &#123;<br>	<span class="hljs-keyword">private</span>:<br>		<span class="hljs-keyword">double</span> length;<br>		<span class="hljs-keyword">double</span> height;<br>	<span class="hljs-keyword">public</span>:<br>		<span class="hljs-built_in">Rectangle</span>(<span class="hljs-keyword">double</span> l, <span class="hljs-keyword">double</span> h) &#123;<br>			length = l;<br>			height = h;<br>		&#125;<br>		<span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">double</span> <span class="hljs-title">GetArea</span><span class="hljs-params">()</span> </span>&#123;<br>			<span class="hljs-keyword">return</span> length * height;<br>		&#125;<br>		<span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">double</span> <span class="hljs-title">GetPerim</span><span class="hljs-params">()</span> </span>&#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-number">2</span>*(length + height);<br>		&#125;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Circle</span>:</span> <span class="hljs-keyword">public</span> Shape &#123;<br>	<span class="hljs-keyword">private</span>:<br>		<span class="hljs-keyword">double</span> radius;<br>	<span class="hljs-keyword">public</span>:<br>		<span class="hljs-built_in">Circle</span>(<span class="hljs-keyword">double</span> r) &#123;<br>			radius = r;<br>		&#125;<br>		<span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">double</span> <span class="hljs-title">GetArea</span><span class="hljs-params">()</span> </span>&#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-number">3.14</span> * radius * radius;<br>		&#125;<br>		<span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">double</span> <span class="hljs-title">GetPerim</span><span class="hljs-params">()</span> </span>&#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-number">6.28</span> * radius;<br>		&#125;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/05/14/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/time/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">time(继承)</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/05/14/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E5%A4%9A%E6%80%81(%E6%B7%98%E5%AE%9D%E6%8E%92%E5%BA%8F)/">
-                        <span class="hidden-mobile">多态</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -630,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

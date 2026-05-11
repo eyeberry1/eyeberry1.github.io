@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="栈类 12345678910111213141516171819202122232425262728#ifndef STACK_HPP#define STACK_HPP#include &lt;stddef.h&gt;class Stack &amp;#123;  struct node &amp;#123;    int num;    node* next;    node() &amp;#123; num &#x3D; 0">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="程设记录--实现栈类">
 <meta property="og:url" content="http://example.com/2022/04/06/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E7%94%A8%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0%E6%A0%88%E7%B1%BB/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="栈类 12345678910111213141516171819202122232425262728#ifndef STACK_HPP#define STACK_HPP#include &lt;stddef.h&gt;class Stack &amp;#123;  struct node &amp;#123;    int num;    node* next;    node() &amp;#123; num &#x3D; 0">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-06T08:59:06.541Z">
 <meta property="article:modified_time" content="2022-04-06T09:22:43.963Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,98 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">程设记录--实现栈类</h1>
             
-            <div class="markdown-body">
-              <h1 id="栈类">栈类</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> STACK_HPP</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> STACK_HPP</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stddef.h&gt;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stack</span> &#123;</span><br>  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> &#123;</span><br>    <span class="hljs-keyword">int</span> num;<br>    node* next;<br>    <span class="hljs-built_in">node</span>() &#123; num = <span class="hljs-number">0</span>; next = <span class="hljs-literal">NULL</span>; &#125;<br>    <span class="hljs-built_in">node</span>(<span class="hljs-keyword">int</span> n, node* p = <span class="hljs-literal">NULL</span>) &#123; num = n; next = p; &#125;<br>  &#125;;<br><br>  node* data;<br><span class="hljs-keyword">public</span>:<br>  <span class="hljs-built_in">Stack</span>();                        <span class="hljs-comment">// 构造一个空栈</span><br>  <span class="hljs-built_in">Stack</span>(<span class="hljs-keyword">const</span> Stack&amp;);            <span class="hljs-comment">// 拷贝构造函数</span><br>  ~<span class="hljs-built_in">Stack</span>();                       <span class="hljs-comment">// 注意内存回收</span><br><br>  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span></span>;                 <span class="hljs-comment">// 入栈</span><br>  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span></span>;                     <span class="hljs-comment">// 出栈</span><br>  <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">top</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;                <span class="hljs-comment">// 查看栈顶元素，若栈为空，返回0</span><br>  <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;             <span class="hljs-comment">// 判断栈是否为空</span><br>  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">clear</span><span class="hljs-params">()</span></span>;                   <span class="hljs-comment">// 清空栈</span><br>&#125;;<br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br><br></code></pre></td></tr></table></figure>
-<h1 id="补充">补充</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;Stack.hpp&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br>Stack::<span class="hljs-built_in">Stack</span>()&#123;<br>    data=<span class="hljs-keyword">new</span> node;<br>&#125;<br>Stack::<span class="hljs-built_in">Stack</span>(<span class="hljs-keyword">const</span> Stack&amp; a) &#123;<br><br>    Stack b;<br>    <span class="hljs-keyword">for</span>(node *i=a.data;i-&gt;next!=<span class="hljs-literal">NULL</span>;i=i-&gt;next)<br>        b.<span class="hljs-built_in">push</span>(i-&gt;num);<br>    data=<span class="hljs-keyword">new</span> node;<br>    <span class="hljs-keyword">for</span>(;!b.<span class="hljs-built_in">empty</span>();b.<span class="hljs-built_in">pop</span>())<br>        <span class="hljs-built_in">push</span>(b.<span class="hljs-built_in">top</span>());<br>&#125;<br>Stack::~<span class="hljs-built_in">Stack</span>()&#123;<br>    <span class="hljs-built_in">clear</span>();<br>    <span class="hljs-keyword">delete</span> data;<br>&#125;<br><br><span class="hljs-keyword">void</span> Stack:: <span class="hljs-built_in">push</span>(<span class="hljs-keyword">int</span> n)&#123;<br>    data=<span class="hljs-keyword">new</span> <span class="hljs-built_in">node</span>(n,data);<br>&#125;<span class="hljs-comment">// 入栈</span><br><span class="hljs-keyword">void</span> Stack:: <span class="hljs-built_in">pop</span>()&#123;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">empty</span>()) <span class="hljs-keyword">return</span>;<br>    node* temp=data;<br>    data=data-&gt;next;<br>    <span class="hljs-keyword">delete</span> temp;   <br>&#125;<span class="hljs-comment">// 出栈</span><br><span class="hljs-keyword">int</span> Stack:: <span class="hljs-built_in">top</span>() <span class="hljs-keyword">const</span>&#123;<br>    <span class="hljs-keyword">return</span> data-&gt;num;<br>&#125;<span class="hljs-comment">// 查看栈顶元素，若栈为空，返回0</span><br><span class="hljs-keyword">bool</span> Stack:: <span class="hljs-built_in">empty</span>() <span class="hljs-keyword">const</span>&#123;<br>    <span class="hljs-keyword">return</span> data-&gt;next==<span class="hljs-literal">NULL</span>;<br>&#125;<span class="hljs-comment">// 判断栈是否为空</span><br><span class="hljs-keyword">void</span> Stack:: <span class="hljs-built_in">clear</span>()&#123;<br>    <span class="hljs-keyword">while</span>(!<span class="hljs-built_in">empty</span>())&#123;<br>        <span class="hljs-built_in">pop</span>();<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
-<p>拷贝构造函数也可以这样子写</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++">stack:: <span class="hljs-built_in">stack</span>(<span class="hljs-keyword">const</span> stack &amp; a)&#123;<br>    node* p=a.data;<br>    data=<span class="hljs-keyword">new</span> node;<br>    data-&gt;num=p-&gt;num;<br>    data-&gt;next=<span class="hljs-literal">NULL</span>;<br>    p=p-&gt;next;<br>    <span class="hljs-keyword">while</span>(p!=<span class="hljs-literal">NULL</span>)<br>    &#123;<br>    	node *s=data;<br>    	<span class="hljs-keyword">while</span>(s-&gt;next!=<span class="hljs-literal">NULL</span>)<br>    		s=s-&gt;next;<br>		node *k=<span class="hljs-keyword">new</span> node;<br>    	s-&gt;next=k;<br>    	k-&gt;num=p-&gt;num;<br>    	k-&gt;next=<span class="hljs-literal">NULL</span>;<br>    	p=p-&gt;next;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/04/06/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/figure(%E8%99%9A%E5%87%BD%E6%95%B0)/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">程设记录--多态(虚函数)</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/04/06/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E4%B8%83%E7%AB%A0(%E4%BA%8C)/">
-                        <span class="hidden-mobile">第七章- LATCHES,FLIP-FLOPS,TIMERS(锁存器\触发器\定时器)</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -611,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

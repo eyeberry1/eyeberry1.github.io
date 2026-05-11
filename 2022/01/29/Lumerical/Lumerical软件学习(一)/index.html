@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Theory of Lumerical Solvers-FDTD commonly used software  FDTD solutions MODE solutions CHARGE solutions HEAT solutions INTERCONNECT etc  FDTD: finite-difference time -domain method Maxwel">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lumerical 软件学习(一)-FDTD">
 <meta property="og:url" content="http://example.com/2022/01/29/Lumerical/Lumerical%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0(%E4%B8%80)/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Theory of Lumerical Solvers-FDTD commonly used software  FDTD solutions MODE solutions CHARGE solutions HEAT solutions INTERCONNECT etc  FDTD: finite-difference time -domain method Maxwel">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/01/29/Lumerical/Lumerical%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0(%E4%B8%80)/image-20220130151611557.png">
 <meta property="og:image" content="http://example.com/2022/01/29/Lumerical/Lumerical%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0(%E4%B8%80)/image-20220130152919859.png">
@@ -79,7 +79,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -270,228 +284,18 @@
             <!-- SEO header -->
             <h1 style="display: none">Lumerical 软件学习(一)-FDTD</h1>
             
-            <div class="markdown-body">
-              <h1 id="theory-of-lumerical-solvers-fdtd">Theory of Lumerical
-Solvers-FDTD</h1>
-<h2 id="commonly-used-software">commonly used software</h2>
-<ol type="1">
-<li>FDTD solutions</li>
-<li>MODE solutions</li>
-<li>CHARGE solutions</li>
-<li>HEAT solutions</li>
-<li>INTERCONNECT</li>
-<li>etc</li>
-</ol>
-<h2 id="fdtd-finite-difference-time--domain-method">FDTD:
-finite-difference time -domain method</h2>
-<p>Maxwell's equations:</p>
-<p>等我学完再写(先挖个坑)</p>
-<p>Discretize the fields in <strong>time and space</strong></p>
-<h3 id="an-important-parameter-point-per-wavelength">An important
-parameter: <strong>point per wavelength</strong></h3>
-<p>Defined by<strong>"Mesh arruracy"</strong>,ranging from 1-10.Usually
-set to 2</p>
-<p>The frequency domain response is calculated by Fourier transform.
-Many quantities are derived from the frequency domain fields, such as
-the Poynting vector, transmission and reflection spectrum, the field
-power profile,etc.</p>
-<p>frequency domain: 频域</p>
-<p>Poynting vector: 坡印亭矢量</p>
-<p>field power profile: 场强分布</p>
-<h3 id="essential-components-of-fdtd-simulation">Essential components of
-FDTD simulation:</h3>
-<p>Structure(几何结构)</p>
-<p>Material(材料)</p>
-<p>Source(光源)</p>
-<p>Simulation region(仿真区域)</p>
-<p>Monitor(监视器)</p>
-<h4 id="sorce"><strong>Sorce</strong></h4>
-<ol type="1">
-<li><p>Dipole source: utilized as point source</p>
-<p>(偶极子光源,用于仿真点光源)</p></li>
-<li><p>Plane wave: ideal source with <strong>infinite size</strong></p>
-<p>(平面波,大小无限大,通常用于周期性结构)</p></li>
-<li><p>TPSF(total-field scatter-field source):</p>
-<ol type="1">
-<li>inside the source region</li>
-</ol>
-<p>-<strong>incident light</strong>(入射光) and <strong>scattering
-light</strong>(散射光)</p>
-<ol start="2" type="1">
-<li>outside the source region</li>
-</ol>
-<p>-only <strong>scatter light</strong></p>
-<figure>
-<img src="/2022/01/29/Lumerical/Lumerical%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0(%E4%B8%80)/image-20220130151611557.png" srcset="/img/loading.gif" lazyload alt="TPSF示意图">
-<figcaption aria-hidden="true">TPSF示意图</figcaption>
-</figure>
-<p>(粉色箭头表示入射光入射方向,蓝色箭头表示电场振动方向)</p>
-<p>(白色区域内包含入射场和散射场,白色区域外只有散射场,方便计算)</p></li>
-<li><p>Gaussian source: represnts light from laser source(激光器) or
-light from anobjective lens(物镜) with a given NA</p>
-<p>(nonperiodic) (Grating Coupler)</p></li>
-<li><p>Mode source: represents <strong>eigen modes</strong> (e.g. TE/TM)
-in waveguides(表示波导中的本征模式)</p>
-<p>补充:</p>
-<figure>
-<img src="/2022/01/29/Lumerical/Lumerical%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0(%E4%B8%80)/image-20220130152919859.png" srcset="/img/loading.gif" lazyload alt="补充">
-<figcaption aria-hidden="true">补充</figcaption>
-</figure></li>
-</ol>
-<h4 id="simulation-region">Simulation region</h4>
-<h5 id="boundary-condition"><strong>Boundary condition</strong></h5>
-<ol type="1">
-<li><p>PML: perfectly matched layer,</p>
-<p><strong>100% absorption, 0% reflection</strong></p></li>
-<li><p>Metal: perfect electric conductor (PEC)</p>
-<p><strong>100% reflection, 0% absorption</strong></p>
-<p>(usually used when there is nearly <strong>no light at the
-boundaries</strong> of simulation region, because it takes the
-<strong>shortest time</strong> to simulate using Metal
-boundaries)</p></li>
-<li><p>Periodic boundaries: used when the <strong>structures</strong>
-and <strong>field prolife</strong> are <strong>periodic</strong> ,for
-<strong>vertical</strong> incident light</p></li>
-<li><p>Bloch boundaries: similar to periodic boundaries,</p>
-<p>but for <strong>angled</strong> incident light</p>
-<p><strong>(periodic/bloch boundaries work with <em>plane
-wave</em>)</strong></p></li>
-<li><p>Symmetric/anti-symmetric boundaries: used when the structures and
-field are <strong>symmetric or anti-symmetric </strong> <strong>(e.g. TE
-mode, positive electric field against negative electric
-field)</strong></p></li>
-</ol>
-<h5 id="tips">tips</h5>
-<p>A tip for set-up: apply <strong>symmetric</strong> conditions to the
-boundaries which are parallel to the<strong>blue</strong> arrow of light
-(representing the electric field)</p>
-<figure>
-<img src="/2022/01/29/Lumerical/Lumerical%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0(%E4%B8%80)/image-20220130155238019.png" srcset="/img/loading.gif" lazyload alt="symmetric/anti-symmetric boundaries">
-<figcaption aria-hidden="true">symmetric/anti-symmetric
-boundaries</figcaption>
-</figure>
-<p>平行于蓝色线设置对称的边界条件</p>
-<p>垂直于蓝色线设置设置反对称的边界条件</p>
-<p><strong>PML boundaries and dipole sources</strong></p>
-<figure>
-<img src="/2022/01/29/Lumerical/Lumerical%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0(%E4%B8%80)/image-20220130155713273.png" srcset="/img/loading.gif" lazyload alt="PML boundaries and dipole sources">
-<figcaption aria-hidden="true">PML boundaries and dipole
-sources</figcaption>
-</figure>
-<h4 id="materials-and-monitor">Materials and Monitor</h4>
-<figure>
-<img src="/2022/01/29/Lumerical/Lumerical%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0(%E4%B8%80)/image-20220130160250255.png" srcset="/img/loading.gif" lazyload alt="material and monitor">
-<figcaption aria-hidden="true">material and monitor</figcaption>
-</figure>
-<p>反射谱和透射谱(微环结构)</p>
-<figure>
-<img src="/2022/01/29/Lumerical/Lumerical%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0(%E4%B8%80)/image-20220130160420464.png" srcset="/img/loading.gif" lazyload alt="反射谱和透射谱(微环结构)">
-<figcaption aria-hidden="true">反射谱和透射谱(微环结构)</figcaption>
-</figure>
-<h3 id="applications-of-fdtd">Applications of FDTD:</h3>
-<p>nanophotonic devices with aribitrary shape</p>
-<figure>
-<img src="/2022/01/29/Lumerical/Lumerical%E8%BD%AF%E4%BB%B6%E5%AD%A6%E4%B9%A0(%E4%B8%80)/image-20220130140657831.png" srcset="/img/loading.gif" lazyload alt="application">
-<figcaption aria-hidden="true">application</figcaption>
-</figure>
-<p>Intergrated Optics: 集成光学</p>
-<p>CMOs image sensors: 图像传感器</p>
-<p>Solar Cells: 太阳能电池</p>
-<p>OLEDs(OrganicLight-Emitting Diode): 有机发光二极管</p>
-<p>Nanoparticles: 纳米粒子</p>
-<p>Plasmonics: 等离子体</p>
-<p>Liquid crystals: 液晶</p>
-<p>photonic crystals: 光子晶体</p>
-<p>Grating devices: 光栅器件</p>
-<p>Lithography: 光刻</p>
-<p>Metamaterials: 超材料</p>
-<p>Defect detection: 缺陷检测</p>
-<p>预告: 下次写MODE</p>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/Lumerical/">Lumerical</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Lumerical/">Lumerical</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/01/31/Lumerical/Lumerical%E4%BB%BF%E7%9C%9F%E5%AE%9E%E4%BE%8B(%E4%B8%80)-%E5%BE%AE%E7%8E%AF%E8%B0%83%E5%88%B6%E5%99%A8/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Lumerical仿真实例(一)-微环调制器</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/01/29/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB-%E4%BA%8C-%E7%A1%85%E5%9F%BA%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8/">
-                        <span class="hidden-mobile">文献阅读(二)硅基光栅耦合器</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -749,6 +553,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

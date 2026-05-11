@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="参考了csdn的文章,属于转载 自动精度 12345678910111213addfdtd;set(&quot;dimension&quot;,2);#三维仿真区域(重点)set(&quot;x&quot;,0);set(&quot;y&quot;,0);set(&quot;z min&quot;,-10*nm);set(&quot;z max&quot;,2*um);set(&quot;x">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lumerical脚本语言学习( 四)-Simulation region">
 <meta property="og:url" content="http://example.com/2022/02/23/Lumerical/lumerical%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A04/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="参考了csdn的文章,属于转载 自动精度 12345678910111213addfdtd;set(&quot;dimension&quot;,2);#三维仿真区域(重点)set(&quot;x&quot;,0);set(&quot;y&quot;,0);set(&quot;z min&quot;,-10*nm);set(&quot;z max&quot;,2*um);set(&quot;x">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-23T12:27:01.187Z">
 <meta property="article:modified_time" content="2022-02-23T14:12:55.548Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,142 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">Lumerical脚本语言学习( 四)-Simulation region</h1>
             
-            <div class="markdown-body">
-              <p>参考了csdn的文章,属于转载</p>
-<h2 id="自动精度">自动精度</h2>
-<figure class="highlight routeros"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><pre><code class="hljs routeros">addfdtd;<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;dimension&quot;</span>,2);#三维仿真区域(重点)<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;x&quot;</span>,0);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;y&quot;</span>,0);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;z min&quot;</span>,-10*nm);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;z max&quot;</span>,2*um);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;x span&quot;</span>,0.2*um);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;y span&quot;</span>,0.4*um);<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;x min bc&quot;</span>,<span class="hljs-string">&quot;periodic&quot;</span>);#设置x方向周期边界条件(重点)<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;y min bc&quot;</span>,<span class="hljs-string">&quot;periodic&quot;</span>);#设置y方向周期边界条件<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;Mesh type&quot;</span>,<span class="hljs-string">&quot;auto non-uniform&quot;</span>);#仿真网格为自动精度<br><span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;Mesh accuracy&quot;</span>,3);#高精度<br><br></code></pre></td></tr></table></figure>
-<p>set(“dimension”,2)：仿真空间维度，“dimension”参数一般有两个值：1和2，其中1表示仿真的区域是二维区域，2表示仿真三维区域。这里设置为2，表示我们仿真的是一个三维区域</p>
-<p>set(“x min
-bc”,“periodic”)：边界条件，根据实际的仿真区域（维度）设置，有"x max
-bc"，“x min bc”，“y max bc”等多个边界，可选用的边界条件见下表：</p>
-<table>
-<thead>
-<tr class="header">
-<th>边界条件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>PML(100% absorption, 0% reflection)</td>
-<td>完美匹配层</td>
-</tr>
-<tr class="even">
-<td>Metal(0% absorption, 100% reflection)</td>
-<td>金属边界</td>
-</tr>
-<tr class="odd">
-<td>Periodic</td>
-<td>周期边界</td>
-</tr>
-<tr class="even">
-<td>Symmetric</td>
-<td>对称边界</td>
-</tr>
-<tr class="odd">
-<td>Anti-Symmetric</td>
-<td>非对称边界</td>
-</tr>
-<tr class="even">
-<td>Bloch</td>
-<td>适合斜入射</td>
-</tr>
-<tr class="odd">
-<td>PMC</td>
-<td>理想磁导体</td>
-</tr>
-</tbody>
-</table>
-<p>set(“Mesh type”,“auto non-uniform”)：网格类型，有“auto
-non-uniform”、“custom non-uniform”、"uniform"三种可选，一般默认为“auto
-non-uniform”，若不需更改网格类型，本条代码可不写。这里使用的是默认的自动精度</p>
-<p>set(“Mesh accuracy”,3)：自动网格精度，在“auto
-non-uniform”模式下设置。有1~8一共8个等级，精度随着数字的增大而提高，<strong>一般默认为2</strong>，不建议太高，容易给CPU带来很大的负担。这里设置为3，属于高精度仿真.</p>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/Lumerical/">Lumerical</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Lumerical/">Lumerical</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/02/24/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E4%BA%8C%E7%AB%A0/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数字电路-数字系统\运算\编码</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/02/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF(%E4%B8%80)/">
-                        <span class="hidden-mobile">数字电路-introduction concept</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -655,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

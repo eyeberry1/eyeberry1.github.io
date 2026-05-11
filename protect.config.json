@@ -1,0 +1,21 @@
+{
+  "defaultProtect": true,
+  "publicWhitelist": [
+    "about/index.html",
+    "links/index.html",
+    "404.html"
+  ],
+  "protectedStandalonePages": [
+    "talk/index.html"
+  ],
+  "listVisibility": "title-meta",
+  "searchMode": "title-only",
+  "rememberMode": "localStorage",
+  "listNoindex": true,
+  "seoProtectedDescription": "This content is protected and requires a password.",
+  "robotsAllow": [
+    "/about/",
+    "/links/",
+    "/404.html"
+  ]
+}

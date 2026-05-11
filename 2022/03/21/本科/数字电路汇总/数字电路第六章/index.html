@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Basic Adders The Half-Adder (半加器) \[ 0+0&#x3D;0 \] \[ 0+1&#x3D;1 \] \[ 1+0&#x3D;1\\ \] \[ 1+1+0\\ \]   \(C_{out}\)是输出进位,Sum是当前位 Full-adder (全加器)  两个半加器组成一个全加器   全加器内部结构  Parallel Binary Adders">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第六章-Functions of Combinational Logic">
 <meta property="og:url" content="http://example.com/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Basic Adders The Half-Adder (半加器) \[ 0+0&#x3D;0 \] \[ 0+1&#x3D;1 \] \[ 1+0&#x3D;1\\ \] \[ 1+1+0\\ \]   \(C_{out}\)是输出进位,Sum是当前位 Full-adder (全加器)  两个半加器组成一个全加器   全加器内部结构  Parallel Binary Adders">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321150942530.png">
 <meta property="og:image" content="http://example.com/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321150902155.png">
@@ -117,7 +117,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -308,249 +322,18 @@
             <!-- SEO header -->
             <h1 style="display: none">第六章-Functions of Combinational Logic</h1>
             
-            <div class="markdown-body">
-              <h1 id="basic-adders">Basic Adders</h1>
-<h2 id="the-half-adder-半加器">The Half-Adder (半加器)</h2>
-<p><span class="math display">\[
-0+0=0
-\]</span> <span class="math display">\[
-0+1=1
-\]</span> <span class="math display">\[
-1+0=1\\
-\]</span> <span class="math display">\[
-1+1+0\\
-\]</span></p>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321150942530.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321150902155.png" srcset="/img/loading.gif" lazyload></p>
-<p><span class="math inline">\(C_{out}\)</span>是输出进位,Sum是当前位</p>
-<h2 id="full-adder-全加器">Full-adder (全加器)</h2>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321151023031.png" srcset="/img/loading.gif" lazyload></p>
-<p>两个半加器组成一个全加器</p>
-<figure>
-<img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321151241549.png" srcset="/img/loading.gif" lazyload alt="全加器内部结构">
-<figcaption aria-hidden="true">全加器内部结构</figcaption>
-</figure>
-<h1 id="parallel-binary-adders">Parallel Binary Adders</h1>
-<p>完成多位相加的操作</p>
-<figure>
-<img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321151501598.png" srcset="/img/loading.gif" lazyload alt="两位相加">
-<figcaption aria-hidden="true">两位相加</figcaption>
-</figure>
-<figure>
-<img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321151541348.png" srcset="/img/loading.gif" lazyload alt="三位数字相加(101和011)">
-<figcaption aria-hidden="true">三位数字相加(101和011)</figcaption>
-</figure>
-<figure>
-<img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321151837883.png" srcset="/img/loading.gif" lazyload alt="全加器组合">
-<figcaption aria-hidden="true">全加器组合</figcaption>
-</figure>
-<p>投票系统</p>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321152428642.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="ripple-carry-versus-look-ahead-carry-adders异步进位和超前进位">Ripple
-Carry versus Look-Ahead Carry Adders(异步进位和超前进位)</h1>
-<ol type="1">
-<li>Ripple carry adder: the carry output of each fulladder is connected
-to the carry input of the next higher-order stage. – <strong>Time
-delay</strong></li>
-<li>The look-ahead carry adder: anticipates the output carry of each
-stage, and based on the inputs, produces the output carry by
-<strong>either carry generation or carry propagation</strong>
-(进位生成或进位传输)</li>
-</ol>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321152739284.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321152852130.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321153743622.png" srcset="/img/loading.gif" lazyload></p>
-<p>The output carry for each full-adder stage is dependent only on the
-initial input carry (<span class="math inline">\(C_{in1}\)</span>), the
-<span class="math inline">\(C_g\)</span> and <span class="math inline">\(C_p\)</span> functions of that stage, and the
-<span class="math inline">\(C_g\)</span> and <span class="math inline">\(C_p\)</span> functions of the preceding
-stages.</p>
-<figure>
-<img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321153912328.png" srcset="/img/loading.gif" lazyload alt="三级延迟">
-<figcaption aria-hidden="true">三级延迟</figcaption>
-</figure>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321154247904.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="comparators">Comparators</h1>
-<p>同或门或者异或门实现</p>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321154421716.png" srcset="/img/loading.gif" lazyload></p>
-<figure>
-<img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321154650201.png" srcset="/img/loading.gif" lazyload alt="两位数比较">
-<figcaption aria-hidden="true">两位数比较</figcaption>
-</figure>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321154759071.png" srcset="/img/loading.gif" lazyload></p>
-<p>不相等的情况</p>
-<figure>
-<img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321155556586.png" srcset="/img/loading.gif" lazyload alt="判断大于小于">
-<figcaption aria-hidden="true">判断大于小于</figcaption>
-</figure>
-<h2 id="hc85"><strong>74HC85</strong></h2>
-<p>四个比特的比较器</p>
-<figure>
-<img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220326233202126.png" srcset="/img/loading.gif" lazyload alt="74HC85">
-<figcaption aria-hidden="true">74HC85</figcaption>
-</figure>
-<p>也<strong>可以级联成进行八个比特位比较</strong></p>
-<p><strong>最低位的输入等号一定要为高电平,大于和小于输入一定要为低电平</strong></p>
-<h1 id="decoders">Decoders</h1>
-<p>译码器就相当于将输入和输出建立映射关系,一一对应</p>
-<h2 id="二进制译码门">二进制译码门</h2>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321155943509.png" srcset="/img/loading.gif" lazyload></p>
-<p>如果要译四位,那么需要16个译码门</p>
-<p>十六选一</p>
-<figure>
-<img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321165617559.png" srcset="/img/loading.gif" lazyload alt="四位译码器">
-<figcaption aria-hidden="true">四位译码器</figcaption>
-</figure>
-<h2 id="hc154十六选一译码器">74HC154(十六选一译码器)</h2>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220326234429974.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="使用74hc154进行5位数的译码">使用74HC154进行5位数的译码</h2>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220326234530066.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="bcd译码门">BCD译码门</h2>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321160527760.png" srcset="/img/loading.gif" lazyload></p>
-<figure>
-<img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321160640341.png" srcset="/img/loading.gif" lazyload alt="低电平为有效输出">
-<figcaption aria-hidden="true">低电平为有效输出</figcaption>
-</figure>
-<h2 id="hc42bcd转换位十进制">74HC42(bcd转换位十进制)</h2>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220326234623537.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="ls47bcd到7段">74LS47(BCD到7段)</h2>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220326234939206.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220321174447606.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="encoders">Encoders</h1>
-<h2 id="十进制到bcd">十进制到BCD</h2>
-<figure>
-<img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220326235130929.png" srcset="/img/loading.gif" lazyload alt="Logic symbol for a decimal-to-BCD encoder">
-<figcaption aria-hidden="true">Logic symbol for a decimal-to-BCD
-encoder</figcaption>
-</figure>
-<figure>
-<img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220326235154069.png" srcset="/img/loading.gif" lazyload alt="逻辑电路">
-<figcaption aria-hidden="true">逻辑电路</figcaption>
-</figure>
-<h2 id="hc147-decimal-to-bcd-priority-encoder">74HC147 decimal-to-BCD
-priority encoder</h2>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220326235210369.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="ls148-8-line-to-3-line-encoder">74LS148 8-line-to-3-line
-encoder</h2>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220326235323395.png" srcset="/img/loading.gif" lazyload></p>
-<ol type="1">
-<li>EI Enable input (active LOW)</li>
-<li>EO Enable output (LOW when EI is LOW and none active inputs)</li>
-<li>GS Output for expansion (LOW when EI is LOW and any of the inputs is
-active)</li>
-</ol>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220326235447580.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="multiplexersdata-selectors">Multiplexers(Data Selectors)</h1>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220326235623326.png" srcset="/img/loading.gif" lazyload></p>
-<figure>
-<img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220326235648364.png" srcset="/img/loading.gif" lazyload alt="举例">
-<figcaption aria-hidden="true">举例</figcaption>
-</figure>
-<h2 id="ls151-8-input-data-selectormultiplexer">74LS151 8-input data
-selector/multiplexer</h2>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220326235723496.png" srcset="/img/loading.gif" lazyload></p>
-<p>Use 74LS151s and any other logic necessary to multiplex 16 data lines
-onto a single data-output line</p>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220326235823211.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="重要例子考试警告">重要例子(考试警告)</h2>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220326235924598.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220326235955362.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220327000010444.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220327000129112.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220327000151025.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="demultiplexers多路分配器">Demultiplexers(多路分配器)</h1>
-<img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220328201227818.png" srcset="/img/loading.gif" lazyload class title="基本原理">
-<h1 id="hc154多路分配器">74HC154多路分配器</h1>
-<img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220328201106979.png" srcset="/img/loading.gif" lazyload class title="74HC154">
-<h1 id="parity-generatorscheckers">Parity Generators/Checkers</h1>
-<h1 id="ls2809位奇偶校验器发生器">74LS280(9位奇偶校验器/发生器)</h1>
-<img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220328201351112.png" srcset="/img/loading.gif" lazyload class>
-<p><img src="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%85%AD%E7%AB%A0/image-20220328201700007.png" srcset="/img/loading.gif" lazyload></p>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/">数字电路</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/03/23/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E5%A4%9A%E7%BB%A7%E6%89%BF/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">程设记录(十二)--多继承</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/03/21/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E4%BA%94%E7%AB%A0/">
-                        <span class="hidden-mobile">第五章-combination logic analysis</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -808,6 +591,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

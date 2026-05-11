@@ -62,8 +62,8 @@
             var index_title = -1;
             var index_content = -1;
             var first_occur = -1;
-            // only match articles with not empty contents
-            if (data_content !== '') {
+            // allow title-only results for protected posts
+            if (data_content !== '' || data_title !== '') {
               keywords.forEach(function(keyword, i) {
                 index_title = data_title.indexOf(keyword);
                 index_content = data_content.indexOf(keyword);
@@ -87,7 +87,7 @@
             if (isMatch) {
               resultHTML += '<a href=\'' + data_url + '\' class=\'list-group-item list-group-item-action font-weight-bolder search-list-title\'>' + orig_data_title + '</a>';
               var content = orig_data_content;
-              if (first_occur >= 0) {
+              if (content && first_occur >= 0) {
                 // cut out 100 characters
                 var start = first_occur - 20;
                 var end = first_occur + 80;

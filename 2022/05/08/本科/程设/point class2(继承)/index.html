@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Description Recall the &quot;Point&quot; class before, we want to create TwoDPoint class to model a point in a two-dimensional space.(Default value (0,0), int). It has functions to get its coordinates getX(">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="point class 2（继承）">
 <meta property="og:url" content="http://example.com/2022/05/08/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/point%20class2(%E7%BB%A7%E6%89%BF)/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description Recall the &quot;Point&quot; class before, we want to create TwoDPoint class to model a point in a two-dimensional space.(Default value (0,0), int). It has functions to get its coordinates getX(">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-08T08:00:11.103Z">
 <meta property="article:modified_time" content="2022-05-08T08:04:05.431Z">
@@ -71,7 +71,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -262,115 +276,18 @@
             <!-- SEO header -->
             <h1 style="display: none">point class 2（继承）</h1>
             
-            <div class="markdown-body">
-              <h1 id="description">Description</h1>
-<p>Recall the "Point" class before, we want to create
-<code>TwoDPoint</code> class to model a point in a two-dimensional
-space.(Default value <code>(0,0)</code>, <code>int</code>). It has
-functions to get its coordinates <code>getX()</code>,
-<code>getY()</code> and a member function to calculate the distance
-between it and another TwoDPoint <code>distance</code>(return type
-<code>double</code>).</p>
-<p>Based on <code>TwoDPoint</code>, create a class named
-<code>ThreeDPoint</code> to model a point in a three-dimensional
-space.<code>x</code>, <code>y</code>, <code>z</code> represent x-, y-
-and z-coordinates(Default value <code>(0,0,0)</code>,
-<code>int</code>).Let <code>ThreeDPoint</code> be derived from
-<code>TwoDPoint</code>, adding function <code>getZ()</code> and overload
-the member function<code>distance</code>.</p>
-<h1 id="hint">Hint</h1>
-<p>Get to know details in <code>framework.cpp</code> and try to separate
-declaration and definition in <code>Points.h</code> and
-<code>Points.cpp</code> .</p>
-<h1 id="framwork.cpplock">framwork.cpp(lock)</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;Points.h&quot;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br>ostream&amp; <span class="hljs-keyword">operator</span>&lt;&lt;(ostream&amp; out, <span class="hljs-keyword">const</span> TwoDPoint&amp; point)<br>&#123;<br>    out &lt;&lt; <span class="hljs-string">&#x27;(&#x27;</span> &lt;&lt; point.<span class="hljs-built_in">getX</span>() &lt;&lt; <span class="hljs-string">&#x27;,&#x27;</span> &lt;&lt; point.<span class="hljs-built_in">getY</span>() &lt;&lt; <span class="hljs-string">&#x27;)&#x27;</span>;<br>    <span class="hljs-keyword">return</span> out;<br>&#125;<br>ostream&amp; <span class="hljs-keyword">operator</span>&lt;&lt;(ostream&amp; out, <span class="hljs-keyword">const</span> ThreeDPoint&amp; point)<br>&#123;<br>    out &lt;&lt; <span class="hljs-string">&#x27;(&#x27;</span> &lt;&lt; point.<span class="hljs-built_in">getX</span>() &lt;&lt; <span class="hljs-string">&#x27;,&#x27;</span> &lt;&lt; point.<span class="hljs-built_in">getY</span>() &lt;&lt; <span class="hljs-string">&#x27;,&#x27;</span> &lt;&lt; point.<span class="hljs-built_in">getZ</span>() &lt;&lt; <span class="hljs-string">&#x27;)&#x27;</span>;<br>    <span class="hljs-keyword">return</span> out;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>  <span class="hljs-comment">//2-D Point</span><br>  TwoDPoint pa1, pa;<br>  <span class="hljs-keyword">int</span> pa2_x, pa2_y;<br>  cin &gt;&gt; pa2_x &gt;&gt; pa2_y;<br>  <span class="hljs-function">TwoDPoint <span class="hljs-title">pa2</span><span class="hljs-params">(pa2_x,pa2_y)</span></span>;<br>  cout &lt;&lt; <span class="hljs-string">&quot;Distance between &quot;</span> &lt;&lt; pa1 &lt;&lt; <span class="hljs-string">&quot; and &quot;</span> &lt;&lt; pa2 &lt;&lt;<span class="hljs-string">&quot; is &quot;</span>&lt;&lt;pa1.<span class="hljs-built_in">distance</span>(pa2) &lt;&lt; endl;<br>  <br>  <span class="hljs-comment">//3-D Point</span><br>  ThreeDPoint pb1;<br>  <span class="hljs-keyword">int</span> pb2_x, pb2_y, pb2_z, pb3_x, pb3_y, pb3_z;<br>  cin &gt;&gt; pb2_x &gt;&gt; pb2_y &gt;&gt; pb2_z;<br>  cin &gt;&gt; pb3_x &gt;&gt; pb3_y &gt;&gt; pb3_z;<br>  <span class="hljs-function">ThreeDPoint <span class="hljs-title">pb2</span><span class="hljs-params">(pb2_x, pb2_y, pb2_z)</span>, <span class="hljs-title">pb3</span><span class="hljs-params">(pb3_x, pb3_y, pb3_z)</span></span>;<br>  cout &lt;&lt; <span class="hljs-string">&quot;Distance between &quot;</span> &lt;&lt; pb1 &lt;&lt; <span class="hljs-string">&quot; and &quot;</span> &lt;&lt; pb2 &lt;&lt;<span class="hljs-string">&quot; is &quot;</span>&lt;&lt;pb1.<span class="hljs-built_in">distance</span>(pb2) &lt;&lt; endl;<br>  cout &lt;&lt; <span class="hljs-string">&quot;Distance between &quot;</span> &lt;&lt; pb1 &lt;&lt; <span class="hljs-string">&quot; and &quot;</span> &lt;&lt; pb3 &lt;&lt;<span class="hljs-string">&quot; is &quot;</span>&lt;&lt;pb1.<span class="hljs-built_in">distance</span>(pb3) &lt;&lt; endl;<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-<h1 id="points.hpp">points.hpp</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cmath&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TwoDPoint</span>&#123;</span><br><span class="hljs-keyword">protected</span>:<br>    <span class="hljs-keyword">int</span> x, y;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">TwoDPoint</span>(<span class="hljs-keyword">int</span> xx = <span class="hljs-number">0</span>, <span class="hljs-keyword">int</span> yy = <span class="hljs-number">0</span>):<span class="hljs-built_in">x</span>(xx), <span class="hljs-built_in">y</span>(yy)&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getX</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>&#123;<span class="hljs-keyword">return</span> x;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getY</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>&#123;<span class="hljs-keyword">return</span> y;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">distance</span><span class="hljs-params">(<span class="hljs-keyword">const</span> TwoDPoint&amp; other)</span></span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">sqrt</span>( <span class="hljs-number">1.0</span> * (x + other.<span class="hljs-built_in">getX</span>()) * (x + other.<span class="hljs-built_in">getX</span>()) + <span class="hljs-number">1.0</span> * (y + other.<span class="hljs-built_in">getY</span>()) * (y + other.<span class="hljs-built_in">getY</span>()));<br>    &#125;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ThreeDPoint</span>:</span><span class="hljs-keyword">public</span> TwoDPoint&#123;<br>    <span class="hljs-keyword">int</span> z;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">ThreeDPoint</span>(<span class="hljs-keyword">int</span> xx = <span class="hljs-number">0</span>, <span class="hljs-keyword">int</span> yy = <span class="hljs-number">0</span>, <span class="hljs-keyword">int</span> zz = <span class="hljs-number">0</span>):<span class="hljs-built_in">TwoDPoint</span>(xx, yy), <span class="hljs-built_in">z</span>(zz)&#123;&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getZ</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>&#123;<br>        <span class="hljs-keyword">return</span> z;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">distance</span><span class="hljs-params">(<span class="hljs-keyword">const</span> ThreeDPoint&amp; other)</span></span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">sqrt</span>( <span class="hljs-number">1.0</span> * (x + other.<span class="hljs-built_in">getX</span>()) * (x + other.<span class="hljs-built_in">getX</span>()) + <span class="hljs-number">1.0</span> * (y + other.<span class="hljs-built_in">getY</span>()) * (y + other.<span class="hljs-built_in">getY</span>()) +  <span class="hljs-number">1.0</span> * (z + other.<span class="hljs-built_in">getZ</span>()) * (z + other.<span class="hljs-built_in">getZ</span>()));<br>    &#125;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/C/">C++</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/05/08/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/point%20class3(%E7%BB%A7%E6%89%BF)/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">point class 3（继承）</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/05/08/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/simple%20complex%20class(%E5%A4%8D%E4%B9%A0)/">
-                        <span class="hidden-mobile">Complex class(重载、格式控制)</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -628,6 +545,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

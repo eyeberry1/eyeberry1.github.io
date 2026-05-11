@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="mode 脚本学习 pid_grating_coupler_preliminar_design.lsf 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748## Calculate the optimal grating pitch from the effective##">
+    <meta name="description" content="This content is protected and requires a password.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="inverse design of grating coupler -- script learning">
 <meta property="og:url" content="http://example.com/2022/07/13/Lumerical/mode%20%E8%84%9A%E6%9C%AC/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="mode 脚本学习 pid_grating_coupler_preliminar_design.lsf 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748## Calculate the optimal grating pitch from the effective##">
+<meta property="og:description" content="This content is protected and requires a password.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-07-13T08:44:10.741Z">
 <meta property="article:modified_time" content="2022-07-22T01:28:33.116Z">
@@ -72,7 +72,21 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
@@ -263,257 +277,18 @@
             <!-- SEO header -->
             <h1 style="display: none">inverse design of grating coupler -- script learning</h1>
             
-            <div class="markdown-body">
-              <p>mode 脚本学习</p>
-<h1 id="pid_grating_coupler_preliminar_design.lsf">pid_grating_coupler_preliminar_design.lsf</h1>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></div></td><td class="code"><pre><code class="hljs lumerical">## Calculate the optimal grating pitch from the effective<br>## indices of the slab modes using the FDE solver in MODE.<br><br>clear;<br>load(&quot;pid_grating_coupler_preliminary_design&quot;);<br><br># ------------------<br># Design Parameters:<br># ------------------<br>mode_num = 1; # TM<br>theta_deg = 5.0;<br>theta = theta_deg*pi/180;<br>setanalysis(&#x27;wavelength&#x27;,1.55e-6);<br>?lambda = getanalysis(&quot;wavelength&quot;);<br>index_SiO2 = 1.44401;<br>waveguide_thickness = 220e-9;<br>etch = 80e-9;<br><br># -----------<br># Slab Modes:<br># -----------<br><br># slab mode on thinest part of the grating<br>switchtolayout;<br>setnamed(&quot;::model&quot;, &quot;thickness&quot;, waveguide_thickness);<br>setnamed(&quot;::model&quot;, &quot;etch_depth&quot;, etch);<br>findmodes;<br>neff_thin = real(getresult(&quot;FDE::data::mode&quot;+num2str(mode_num),&quot;neff&quot;));<br><br># slab mode on thickest part of the grating<br>switchtolayout;<br>setnamed(&quot;::model&quot;, &quot;thickness&quot;, waveguide_thickness);<br>setnamed(&quot;::model&quot;, &quot;etch_depth&quot;, 0);<br>findmodes; # first mode should be TEz slab mode confined to the grating<br>neff_thick = real(getresult(&quot;FDE::data::mode&quot;+num2str(mode_num),&quot;neff&quot;));<br><br># ---------------------------------<br># Grating Pitch Initial Parameters:<br># ---------------------------------<br>F0 = 0.95;<br>?x0 = -2.5;<br>?R = 0.03;<br>?a = neff_thin - index_SiO2*sin(theta);<br>?b = neff_thick - neff_thin;<br><br>initial_params = [ x0, R, a, b ];<br>jsonsave(&quot;pid_grating_coupler_initial_params.json&quot;, initial_params);<br><br></code></pre></td></tr></table></figure>
-<h1 id="setanalysis">setanalysis</h1>
-<p>Sets calculation parameters in MODE' FDE and FEEM analysis
-window.</p>
-<table>
-<colgroup>
-<col style="width: 39%">
-<col style="width: 60%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><strong>Syntax</strong></th>
-<th style="text-align: left;"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">?setanalysis;</td>
-<td style="text-align: left;">Lists all the parameters in the analysis
-window.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">setanalysis("property", value);</td>
-<td style="text-align: left;">Sets"property" to value.</td>
-</tr>
-</tbody>
-</table>
-<h1 id="getanalysis">getanalysis</h1>
-<table>
-<colgroup>
-<col style="width: 28%">
-<col style="width: 71%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><strong>Syntax</strong></th>
-<th style="text-align: left;"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">?getanalysis;</td>
-<td style="text-align: left;">Lists all the parameters in the analysis
-window.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">getanalysis("property");</td>
-<td style="text-align: left;">Returns the current value for the
-particular property on the analysis window</td>
-</tr>
-</tbody>
-</table>
-<h1 id="findmodes---script-command">findmodes - Script command</h1>
-<p><a target="_blank" rel="noopener" href="https://optics.ansys.com/hc/en-us/articles/360020687354">MODE</a></p>
-<p>Calculates the modes supported by the structure using the current
-calculation settings. This function is the script equivalent to the
-"Calculate Modes" button. Each mode will be saved as a D-CARD named
-"modeX", where X is the xth mode found. The D-CARD saves data such as
-effective index and mode profile.</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><strong>Syntax</strong></th>
-<th style="text-align: left;"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">n=findmodes;</td>
-<td style="text-align: left;">n will be equal to the number of modes
-found.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Example</strong></p>
-<p>To perform a frequency sweep on the first mode and plot the
-dispersion:</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">switchtolayout</span>;<br><span class="hljs-attribute">findmodes</span>;selectmode(<span class="hljs-number">1</span>);setanalysis(<span class="hljs-string">&quot;track selected mode&quot;</span>,<span class="hljs-number">1</span>);setanalysis(<span class="hljs-string">&quot;detailed dispersion calculation&quot;</span>,<span class="hljs-number">1</span>);<br><span class="hljs-attribute">frequencysweep</span>;D=getdata(<span class="hljs-string">&quot;frequencysweep&quot;</span>,<span class="hljs-string">&quot;D&quot;</span>);f=getdata(<span class="hljs-string">&quot;frequencysweep&quot;</span>,<span class="hljs-string">&quot;f_D&quot;</span>);<br><span class="hljs-attribute">plot</span>(c/f*<span class="hljs-number">1</span>e<span class="hljs-number">6</span>,D*<span class="hljs-number">1</span>e<span class="hljs-number">6</span>,<span class="hljs-string">&quot;Wavelength (um)&quot;</span>, <span class="hljs-string">&quot;Dispersion (ps/nm/km)&quot;</span>);<br></code></pre></td></tr></table></figure>
-<h1 id="section">?</h1>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://support.lumerical.com/hc/en-us/articles/360034410434--">?</a>:
-Display output on screen.</li>
-</ul>
-<h1 id="getresult">getresult</h1>
-<p>Get results from simulation objects. Results will be returned as
-datasets.</p>
-<table>
-<colgroup>
-<col style="width: 36%">
-<col style="width: 63%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><strong>Syntax</strong></th>
-<th style="text-align: left;"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">?getresult("monitor_name");</td>
-<td style="text-align: left;">Returns the names of all the results for
-the monitor. All the dataset and scalar matrix results will be returned
-in this case.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">R = getresult("monitor_name","T");</td>
-<td style="text-align: left;">Returns the result T from the monitor. T
-is a dataset.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Examples</strong></p>
-<p>This example shows how to get the electric field dataset from a
-monitor. We then apply a number of operations to the dataset, such as
-finding the maximum |E|^2 value, viewing the dataset with the
-visualizer, and creating a plot of Ex at the first frequency point.</p>
-<p>Note that E is a dataset, rather than a simple matrix based variable.
-Data within the dataset can be accessed with the '.' operator, as shown
-below.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs sql"># <span class="hljs-keyword">get</span> Electric field dataset<br>E<span class="hljs-operator">=</span>getresult(&quot;monitor&quot;,&quot;E&quot;);<br># output dataset <span class="hljs-keyword">value</span> <span class="hljs-keyword">to</span> prompt<br>?E;<br># <span class="hljs-keyword">check</span> size <span class="hljs-keyword">of</span> position vectors <span class="hljs-keyword">and</span> data matrices<br>?size(E.f);<br>?size(E.Ex);<br># find maximum <span class="hljs-operator">|</span>E<span class="hljs-operator">|</span><span class="hljs-operator">^</span><span class="hljs-number">2</span> <span class="hljs-keyword">value</span> <br>?<span class="hljs-built_in">max</span>(E.E2);<br># <span class="hljs-keyword">view</span> dataset <span class="hljs-keyword">with</span> visualizer<br>visualize(E);<br># <span class="hljs-keyword">select</span> <span class="hljs-keyword">first</span> frequency point <span class="hljs-keyword">of</span> Ex data, <span class="hljs-keyword">then</span> <span class="hljs-keyword">create</span> plot<br>Ex <span class="hljs-operator">=</span> pinch(E.Ex,<span class="hljs-number">4</span>,<span class="hljs-number">1</span>); <br>image(E.x<span class="hljs-operator">*</span><span class="hljs-number">1e6</span>,E.y<span class="hljs-operator">*</span><span class="hljs-number">1e6</span>,Ex,&quot;x (um)&quot;,&quot;y (um)&quot;,&quot;Ex&quot;);<br> E vs x, y, z, lambda<span class="hljs-operator">/</span>f<br> <span class="hljs-keyword">result</span>: <br> <span class="hljs-number">5</span> <span class="hljs-number">1</span> <br> <span class="hljs-keyword">result</span>: <br> <span class="hljs-number">343</span> <span class="hljs-number">255</span> <span class="hljs-number">1</span> <span class="hljs-number">5</span> <br> <span class="hljs-keyword">result</span>: <br> <span class="hljs-number">3.223651</span> <br></code></pre></td></tr></table></figure>
-<h1 id="num2str">num2str</h1>
-<p>Converts an integer, floating point number, or matrix into a string.
-Matrices can only be 1D or 2D. Users can use the format script command
-to change the precision of the output or since the 2019b r6 releases,
-users can specify the format by providing a second argument to the
-command.</p>
-<table>
-<colgroup>
-<col style="width: 29%">
-<col style="width: 70%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><strong>Syntax</strong></th>
-<th style="text-align: left;"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">out = num2str(x);</td>
-<td style="text-align: left;">Converts the number x into a string. x can
-also be a 1D or 2D matrix. The tab character (rather than space) will be
-used as delimiter(分隔符) between columns.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">out = num2str(x, format);</td>
-<td style="text-align: left;">Converts the number x into a string. x can
-also be a 1D or 2D matrix. The format type options include:
-<strong>integers</strong> : %u: unsigned integer, takes the absolute
-value of the input %d: decimal signed integer, rounds the input %i:
-decimal signed integer, rounds the input <strong>floating point</strong>
-: %f: double %g: double %G: double, capital 'E' used for the exponential
-notation <strong>exponential</strong> : %e: double %E: double, capital
-'E' used for the exponential notationWith the above format type options,
-both width and precision can be defined for the conversion. Boost
-formatting can also be used. These flags appear directly after the "%"
-in the format argument: <strong>flags</strong> : +: shows sign for all
-numbers 0: pad to full width with leading zero</td>
-</tr>
-</tbody>
-</table>
+<section class="protect-panel" data-protect-gate>
+  <h2 class="protect-title">Protected content</h2>
+  <p class="protect-copy">This page requires the site password.</p>
+  <form class="protect-form" data-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-protect-status></p>
+</section>
+<div class="markdown-body" data-protect-content-target></div>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/Lumerical/">Lumerical</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Lumerical/">Lumerical</a>
-                    
-                      <a class="hover-with-bg" href="/tags/script/">script</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/07/13/Lumerical/inverse%20design%20%E8%BF%87%E7%A8%8B%E5%B1%95%E7%A4%BA/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">inverse design of grating coupler -- process presentation</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/07/08/Lumerical/%E5%85%89%E6%A0%85%E8%80%A6%E5%90%88%E5%99%A8%E7%9A%84%E9%80%86%E8%AE%BE%E8%AE%A1/">
-                        <span class="hidden-mobile">Inverse Design of Grating Coupler</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="waline"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#waline', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@waline/client@1/dist/Waline.min.js', function() {
-        var options = Object.assign(
-          {"serverURL":"waline-review.vercel.app","path":"window.location.pathname","placeholder":"请文明评论呀","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","avatar":"retro","avatarCDN":"https://seccdn.libravatar.org/avatar/","avatarForce":false,"wordLimit":0,"pageSize":10,"highlight":true},
-          {
-            el: '#waline',
-            path: window.location.pathname
-          }
-        )
-        new Waline(options);
-        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
-          Fluid.plugins.initFancyBox('#waline .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
+            <article class="comments d-none" data-protect-comments="true"></article>
           </article>
         </div>
       </div>
@@ -771,6 +546,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-page-options>{"payloadPath":"./__protected.json","siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 

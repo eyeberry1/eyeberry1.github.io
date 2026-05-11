@@ -51,13 +51,38 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+  .protect-panel { max-width: 560px; margin: 2rem auto; padding: 2rem; border: 1px solid rgba(47,65,84,0.18); border-radius: 8px; background: #fff; }
+  .protect-title { margin-bottom: 0.75rem; font-size: 1.5rem; }
+  .protect-copy { margin-bottom: 1rem; color: #5c6773; }
+  .protect-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .protect-input { flex: 1 1 260px; min-height: 44px; padding: 0.75rem 0.9rem; border: 1px solid rgba(47,65,84,0.25); border-radius: 6px; }
+  .protect-button { min-height: 44px; padding: 0.75rem 1.1rem; border: none; border-radius: 6px; background: #2f4154; color: #fff; }
+  .protect-status { margin-top: 0.75rem; min-height: 1.2rem; color: #5c6773; }
+  .protect-error { color: #b42318; }
+  .protect-site-gated .index-excerpt { display: none !important; }
+  [data-protect-hide] { display: none !important; }
+</style>
+</head>
 
 
 <body>
   <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
+
+<section class="protect-panel protect-site-panel" data-site-protect-gate>
+  <h2 class="protect-title">Protected blog</h2>
+  <p class="protect-copy">Unlock to read post content.</p>
+  <form class="protect-form" data-site-protect-form>
+    <input class="protect-input" type="password" autocomplete="current-password" data-site-protect-input placeholder="Enter password">
+    <button class="protect-button" type="submit">Unlock</button>
+  </form>
+  <p class="protect-status" data-site-protect-status></p>
+</section>
+
     <a class="navbar-brand" href="/">
       <strong>eyeberry</strong>
     </a>
@@ -220,12 +245,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/03/19/%E6%9C%AC%E7%A7%91/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E5%BA%94%E7%94%A8/" target="_self">
-          
-          自然语言命题的符号化 判断原子命题和复合命题   判断复合命题和原子命题    条件命题的符号化   条件命题的符号化      普通逻辑问题的符号化分析 符号化下面的推理，并构造论证验证其有效性 如果小王来，则小张和小李中恰好有一人来。如果小张来，则小赵就不来。所以，如果小赵来了，但小李没来，则小王也没来。
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -267,12 +287,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/03/19/%E6%9C%AC%E7%A7%91/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E7%9A%84%E6%8E%A8%E7%90%86%E7%90%86%E8%AE%BA/" target="_self">
-          
-          自然推理系统的推理规则    例题   附加前提法 验证该公式的有效性? \[ p \wedge q \rightarrow s \vee r, q \rightarrow p, r \rightarrow s \Rightarrow q \rightarrow s \] 验证结论为蕴涵式的推理的有效性需要使用附加前提法 将结论中的蕴涵式的前件作为附加的前提一起来
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -314,12 +329,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/03/16/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/Virtual%20World/" target="_self">
-          
-          所给的测试代码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -361,12 +371,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/03/13/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E7%BB%A7%E6%89%BF%E7%9A%84%E9%A1%BA%E5%BA%8F/" target="_self">
-          
-          完成类B 12345678910111213class B: public A &amp;#123;	public:		B(int x, int y): A(x), b(y) &amp;#123;&amp;#125;;		void show() &amp;#123;			A::show();			cout&lt;&lt;&quot;b&#x3D;&quot; &lt;&lt; b &lt;&lt; endl;		&amp;#125;;	priv
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -408,12 +413,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/03/13/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/animal%20and%20human/" target="_self">
-          
-          题目所给代码 123456789101112131415161718192021#include &lt;iostream&gt;#include &lt;string&gt;#include &quot;animal.h&quot;#include &quot;human.h&quot;int main() &amp;#123;    std::string s, n;    int e;    st
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -455,12 +455,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/03/13/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E7%BB%A7%E6%89%BFcar/" target="_self">
-          
-          sample output 123456789101112131415&#x2F;&#x2F;--- build car ---Construct a car&#x2F;&#x2F;--- build wheel ---Construct a wheel&#x2F;&#x2F;--- build red car ---Construct a carConstruct a wheelConstruct a wheelConstruct a wheelCon
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -502,12 +497,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/03/13/%E6%9C%AC%E7%A7%91/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E6%B1%87%E6%80%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF%E7%AC%AC%E5%9B%9B%E7%AB%A0(%E4%BA%8C)/" target="_self">
-          
-          卡诺图化简重点 传统方法化简  这种化简方法还是有些复杂 卡诺图化简 Karnaugh Map  A systematic method for simplifying Boolean expressions Produce the simplest SOP or POS expression Presents all of the possible values of inpu
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -549,12 +539,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/03/11/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E7%BB%A7%E6%89%BF%E5%90%84%E7%A7%8D%E7%B1%BB%E7%9A%84%E9%A1%BA%E5%BA%8F/" target="_self">
-          
-          这题关于继承的时候各种类的创建和销毁顺序 1234567891011121314151617181920212223 #include &lt;iostream&gt;#include &quot;Inheritance.hpp&quot;using std::cin;using std::cout;using std::endl;using std::string;int main() &amp;#1
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -596,12 +581,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/03/09/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/%E5%88%86%E6%95%B0(%E8%BE%83%E9%9A%BE)/" target="_self">
-          
-          两百五十行代码给我写麻了 题目所给代码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#ifndef RATIONAL_H_#define RATIONAL_H_#include &lt;string&gt;using namespace std;class Ra
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -643,12 +623,7 @@
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2022/03/09/%E6%9C%AC%E7%A7%91/%E7%A8%8B%E8%AE%BE/complex%20operator/" target="_self">
-          
-          Description 实现复数的操作符重载，你需要做的是，将complex.h文件的函数声明，全部在complex.cpp中实现。 类的声明如下： 1234567891011121314151617181920class COMPLEX&amp;#123;public:	COMPLEX(double r &#x3D; 0, double i &#x3D; 0); &#x2F;&#x2F; 构造函数	COMPLEX(const COMPL
-        </a>
-      </p>
+      
 
       <div class="index-btm post-metas">
         
@@ -879,6 +854,8 @@ typing("hitokoto", '『' + data.hitokoto + '』' + '<br /> <h5>'+ '——' + '�
 <script  src="/js/boot.js" ></script>
 
 
+<script src="/js/protect-runtime.js"></script>
+<script type="application/json" data-protect-site-options>{"siteSalt":"d0abqV4+JRWEbFyD4P6qvg==","passwordHash":"yE3iZfFZkHakS2JmCYOVFAmk/YRua5Dm+bcBbtyaDrE="}</script>
 </body>
 </html>
 
