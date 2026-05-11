@@ -62,6 +62,8 @@ await writeFile(
   'utf8'
 );
 
+await writeFile(path.join(tempDir, '.nojekyll'), '', 'utf8');
+
 for (const relPath of relFiles) {
   if (!relPath.endsWith('.html')) {
     continue;
