@@ -197,80 +197,6 @@
     setStatus('');
   }
 
-  function installSearchGuard() {
-    var button = qs('#search-btn .nav-link');
-    if (!button) {
-      return;
-    }
-    button.addEventListener('click', function() {
-      if (document.body.classList.contains('protect-site-gated') &&
-          !document.body.classList.contains('protect-site-unlocked')) {
-        var siteStatus = qs('[data-site-protect-status]');
-        if (siteStatus) {
-          siteStatus.textContent = 'Search is available after unlocking protected content.';
-          siteStatus.classList.remove('protect-error');
-        }
-      }
-    });
-  }
-
-  function markSiteUnlocked() {
-    document.body.classList.remove('protect-site-gated');
-    document.body.classList.add('protect-site-unlocked');
-  }
-
-  function installSiteGate() {
-    var optionsNode = qs('script[data-protect-site-options]');
-    if (!optionsNode) {
-      return Promise.resolve();
-    }
-
-    document.body.classList.add('protect-site-gated');
-
-    var options = JSON.parse(optionsNode.textContent);
-    var form = qs('[data-site-protect-form]');
-    var input = qs('[data-site-protect-input]');
-    var status = qs('[data-site-protect-status]');
-
-    function updateStatus(message, isError) {
-      if (!status) {
-        return;
-      }
-      status.textContent = message || '';
-      status.classList.toggle('protect-error', !!isError);
-    }
-
-    installSearchGuard();
-
-    if (shouldReuseStoredHash(options.passwordHash)) {
-      markSiteUnlocked();
-      return Promise.resolve();
-    }
-
-    return new Promise(function(resolve) {
-      form.addEventListener('submit', async function(event) {
-        event.preventDefault();
-        updateStatus('Checking password...', false);
-        var password = input.value;
-        var hash = await sha256Base64(password + '::' + options.siteSalt);
-        if (hash !== options.passwordHash) {
-          updateStatus('Incorrect password.', true);
-          return;
-        }
-        try {
-          window.sessionStorage.setItem(STORAGE_PLAIN_KEY, password);
-        } catch (error) {
-          // ignore session storage failures
-        }
-        persistHash(hash);
-        persistPassword(password);
-        markSiteUnlocked();
-        updateStatus('');
-        resolve();
-      });
-    });
-  }
-
   function installPageGate() {
     var optionsNode = qs('script[data-protect-page-options]');
     if (!optionsNode) {
@@ -330,9 +256,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    installSiteGate().then(function() {
-      return installPageGate();
-    }).catch(function(error) {
+    installPageGate().catch(function(error) {
       setStatus('Failed to initialize protected content.', true);
     });
   });

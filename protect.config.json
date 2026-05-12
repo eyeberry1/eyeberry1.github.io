@@ -11,7 +11,7 @@
   "listVisibility": "title-meta",
   "searchMode": "title-only",
   "rememberMode": "localStorage",
-  "listNoindex": true,
+  "listNoindex": false,
   "seoProtectedDescription": "This content is protected and requires a password.",
   "robotsAllow": [
     "/about/",

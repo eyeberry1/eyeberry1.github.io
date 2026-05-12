@@ -175,30 +175,9 @@ function protectListPage(relPath, html) {
   html = html.replace(/<p class="index-excerpt">[\s\S]*?<\/p>/g, '');
   html = html.replace(/<meta name="description" content="[^"]*">/g, `<meta name="description" content="${escapeAttr(config.seoProtectedDescription)}">`);
   html = html.replace(/<meta property="og:description" content="[^"]*">/g, `<meta property="og:description" content="${escapeAttr(config.seoProtectedDescription)}">`);
-  html = ensureNoindex(html);
+  html = removeNoindex(html);
   html = injectStyle(html);
   html = injectRuntimeScript(html);
-  html = injectJsonScript(html, 'data-protect-site-options', {
-    siteSalt: SITE_SALT,
-    passwordHash: PASSWORD_HASH
-  });
-
-  const gate = `
-<section class="protect-panel protect-site-panel" data-site-protect-gate>
-  <h2 class="protect-title">Protected blog</h2>
-  <p class="protect-copy">Unlock to read post content.</p>
-  <form class="protect-form" data-site-protect-form>
-    <input class="protect-input" type="password" autocomplete="current-password" data-site-protect-input placeholder="Enter password">
-    <button class="protect-button" type="submit">Unlock</button>
-  </form>
-  <p class="protect-status" data-site-protect-status></p>
-</section>
-`;
-
-  if (html.includes('<div class="container">')) {
-    html = html.replace('<div class="container">', `<div class="container">\n${gate}`);
-  }
-
   return html;
 }
 
